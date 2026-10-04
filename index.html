@@ -255,18 +255,20 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <section id="vMios" hidden>
 <div id="amigosBox"><h2 class="sec-h">Amigos</h2>
 <div id="solBox" hidden><h3 class="who-h">Solicitudes</h3><div id="listaSol" class="list"></div></div>
-<p class="meta" id="amHint">Toca el nombre de alguien en un plan para añadirle como amigo.</p>
+<input id="busca" type="search" placeholder="🔍 Buscar personas por nombre" autocomplete="off" style="margin-bottom:8px">
+<div id="resBusca" class="list" hidden></div>
+<p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 <div id="dmBox" hidden><h2 class="sec-h">Mensajes</h2><div id="listaDM" class="list"></div></div>
 <h2 class="sec-h">Mis planes</h2>
 <div id="listaMios" class="list"></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 28 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 30 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mis planes</button></nav>
 
-<div id="plusMenu" class="plusmenu" hidden><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mPlan" type="button">Nuevo plan</button></div>
+<div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mPlan" type="button">Nuevo plan</button></div>
 
 <section id="aqui" class="sheet" aria-label="Estoy aquí">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -341,16 +343,17 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 
 <section id="nueva" class="sheet" aria-label="Nuevo plan">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<h2>Nuevo plan</h2>
+<h2 id="np-t">Nuevo plan</h2>
+<button id="f-mover" class="sec" type="button" hidden style="margin:0 0 6px">📍 Cambiar ubicación en el mapa</button>
 <label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
 <label>Tipo</label><div class="chips" id="f-tipos"></div>
 <label for="f-emoji">Emoji para la redondita del mapa</label>
 <input id="f-emoji" placeholder="Escribe uno o elige abajo" style="font-size:22px"><div class="cats" id="cats"></div><div class="emojis" id="emojis"></div>
 <div class="prevrow"><div id="pinprev"></div><span class="meta">Así se verá tu chincheta en el mapa</span></div>
-<div class="row">
-<div><label for="f-fecha">Cuándo</label><input id="f-fecha" type="datetime-local"></div>
-<div><label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6"></div>
-</div>
+<label>Fecha y hora</label>
+<div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
+<div class="row"><div><label for="f-dia">Día</label><input id="f-dia" type="date"></div><div><label for="f-hora">Hora</label><input id="f-hora" type="time"></div></div>
+<label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6">
 <label for="f-vis">¿Quién puede verlo?</label>
 <select id="f-vis"><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
 <div id="privBox" hidden><label for="f-cod">Código de acceso</label>
@@ -379,6 +382,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <h2>¿Cómo te llamas?</h2>
 <p class="meta">Es el nombre que verán los demás en los planes a los que vayas.</p>
 <label for="p-nombre">Nombre</label><input id="p-nombre" maxlength="24" placeholder="Ej. Marta">
+<label class="chk"><input type="checkbox" id="p-buscable" checked> Aparecer cuando otras personas me buscan por nombre</label>
 <div class="row" style="margin-top:14px"><button class="sec" id="p-cancel" type="button">Cancelar</button><button id="p-ok" type="button">Guardar</button></div>
 <div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
@@ -679,7 +683,7 @@ function irAMiUbicacion(){
 $("loc").onclick=()=>{compartido=false;irAMiUbicacion()};
 irAMiUbicacion();
 
-let colocando=false,tipoSel="otro",ruta=null,capaRuta=null,burbuja=null,solVista=new Set(),solInit=false,invitadoA=new Map(),invVista=new Set(),invInit=false,invPlan=null;
+let colocando=false,tipoSel="otro",ruta=null,capaRuta=null,burbuja=null,solVista=new Set(),solInit=false,invitadoA=new Map(),invVista=new Set(),invInit=false,invPlan=null,perfiles=[],miBuscable=true;
 const km=m=>m<1000?(Math.round(m/10)*10)+" m":(m/1000).toLocaleString("es",{maximumFractionDigits:1})+" km";
 const durTxt=sg=>{const m=Math.max(1,Math.round(sg/60));return m<60?m+" min":Math.floor(m/60)+" h "+(m%60)+" min"};
 function haversine(a,b){const R=6371000,r=x=>x*Math.PI/180,dLa=r(b.lat-a.lat),dLo=r(b.lng-a.lng),h=Math.sin(dLa/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
@@ -738,7 +742,7 @@ function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>
 const SB_URL="https://gluinrtmrrfecbhjwvdl.supabase.co",SB_KEY="sb_publishable_qjY62DUZEKjXFqMfX14x7w_TBe-grRt";
 let sb=null,uid=null,nombres={},chats={},perfilOk=false,cargando=true,errCon="";
 try{sb=supabase.createClient(SB_URL,SB_KEY)}catch(e){errCon="No se pudo cargar el servidor."}
-let dms={},dmCon=null,visto={},toastTmr=null,amigosSet=new Set(),invCod="",quitarOk=false,bloqueados=new Set(),denCtx=null,solRec=[],solEnv=[],perCtx=null;
+let dms={},dmCon=null,visto={},toastTmr=null,amigosSet=new Set(),invCod="",quitarOk=false,bloqueados=new Set(),denCtx=null,solRec=[],solEnv=[],perCtx=null,editId=null;
 try{visto=JSON.parse(localStorage.getItem("avl_visto")||"{}")}catch(e){}
 const guardaVisto=()=>{try{localStorage.setItem("avl_visto",JSON.stringify(visto))}catch(e){}};
 const ultimoId=l=>l&&l.length?l[l.length-1].id:0;
@@ -789,7 +793,7 @@ async function recarga(){
     const res=await Promise.all([
       sb.from("planes").select("*").order("creado",{ascending:false}).limit(300),
       sb.from("participantes").select("plan_id,user_id,pagado"),
-      sb.from("profiles").select("id,nombre"),
+      sb.from("profiles").select("id,nombre,buscable"),
       sb.from("aqui").select("*"),
       sb.from("planes_codigo").select("plan_id,codigo"),
       sb.from("mensajes").select("*").order("creado",{ascending:true}).limit(1500),
@@ -799,13 +803,17 @@ async function recarga(){
       sb.from("solicitudes").select("de,para"),
       sb.from("plan_invitaciones").select("plan_id,user_id,de")
     ]);
-    const er=res.find(x=>x.error);if(er)throw er.error;
-    const [pl,pa,pr,aq,co,ms,dr,am,bl,sl,il]=res;
+    let pr=res[2];
+    if(pr.error&&/buscable/i.test(pr.error.message||""))pr=await sb.from("profiles").select("id,nombre");
+    const er=res.find((x,i)=>i!==2&&x.error)||(pr.error?pr:null);if(er)throw er.error;
+    const [pl,pa,,aq,co,ms,dr,am,bl,sl,il]=res;
     bloqueados=new Set(bl.data.map(r=>r.bloqueado_id));
     solRec=sl.data.filter(r=>r.para===uid&&!bloqueados.has(r.de)).map(r=>r.de);
     solEnv=sl.data.filter(r=>r.de===uid&&!bloqueados.has(r.para)).map(r=>r.para);
     invitadoA=new Map(il.data.filter(r=>r.user_id===uid&&!bloqueados.has(r.de)).map(r=>[r.plan_id,r.de]));
     nombres={};pr.data.forEach(p=>{nombres[p.id]=p.nombre});
+    perfiles=pr.data.map(p=>({id:p.id,nombre:p.nombre,buscable:p.buscable}));
+    const yoPerf=pr.data.find(p=>p.id===uid);miBuscable=!yoPerf||yoPerf.buscable!==false;$("p-buscable").checked=miBuscable;
     const nom=i=>nombres[i]||"Alguien";
     const nuevasSol=solRec.filter(u=>!solVista.has(u));
     if(solInit&&nuevasSol.length)avisa("👥 "+nom(nuevasSol[0])+" quiere ser tu amigo",()=>abrePersona(nuevasSol[0]));
@@ -829,7 +837,7 @@ async function recarga(){
     let primera=true;try{primera=!localStorage.getItem("avl_visto")}catch(e){}
     if(primera){lista.forEach(a=>{if(a.kind!=="aqui")visto["p"+a.id]=ultimoId(a.chat)});Object.keys(dms).forEach(u=>{visto["d"+u]=ultimoId(dms[u])});guardaVisto()}
   }catch(e){errCon=(e&&e.message)||"Sin conexión con el servidor."}
-  cargando=false;if($("dm").classList.contains("open")&&dmCon)pintaDM();if($("persona").classList.contains("open")&&perCtx)pintaPersona();if($("invitar").classList.contains("open")&&invPlan)pintaInvitar();render();sincronizaSeguimiento();
+  cargando=false;if($("dm").classList.contains("open")&&dmCon)pintaDM();if($("persona").classList.contains("open")&&perCtx)pintaPersona();if($("invitar").classList.contains("open")&&invPlan)pintaInvitar();pintaBusca();render();sincronizaSeguimiento();
 }
 function suscribir(){
   let tmr=null;const pronto=()=>{clearTimeout(tmr);tmr=setTimeout(recarga,400)};
@@ -944,7 +952,7 @@ ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="c
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
 <button id="unir" class="big" ${lleno?"disabled":""}>${yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button>
-<div class="mini">${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}${a.fecha?`<button id="cal" class="sec" type="button">Calendario</button>`:""}</div>
+<div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}${a.fecha?`<button id="cal" class="sec" type="button">Calendario</button>`:""}</div>
 ${(yo||soyOrg(a))?rutaHTML(a):""}
 ${a.nivel?`<p class="meta"><span class="chip"><i style="background:${NIVC[a.nivel]||"#7B8A80"}"></i>${esc(a.nivel)}</span></p>`:""}
 ${a.punto?`<p class="meta">Punto de encuentro: <b style="color:var(--ink)">${esc(a.punto)}</b></p>`:""}
@@ -962,7 +970,7 @@ ${seguridad(a)}
   on("volver",()=>{tab="info";render()});
   on("gochat",()=>{tab="chat";render()});
   on("gofotos",()=>{tab="fotos";render()});
-  on("invGo",()=>abreInvitar(a.id));on("rechInv",()=>rechazarInvitacion(a.id));
+  on("editGo",()=>abrirEdicion(a));on("invGo",()=>abreInvitar(a.id));on("rechInv",()=>rechazarInvitacion(a.id));
   on("denPlan",()=>abreDenuncia(a.orgId,a.id));on("bloqOrg",()=>bloquear(a.orgId));
   on("rutaGo",()=>calcularRuta(a));on("rutaQuita",()=>{quitaRuta();render()});
   d.querySelectorAll("[data-rm]").forEach(el=>{el.onclick=()=>calcularRuta(a,el.dataset.rm)});
@@ -990,7 +998,42 @@ ${seguridad(a)}
     const m=$("msgs");m.scrollTop=m.scrollHeight;
   }
 }
-function cerrarForm(){pend=null;foto="";colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
+function limpiaForm(){
+  ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
+  $("f-plazas").value=6;$("f-nivel").selectedIndex=0;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();
+}
+function abrirEdicion(a){
+  editId=a.id;pend={lat:a.lat,lng:a.lng};
+  const conocido=!!TIPOS[a.tipo];tipoSel=conocido?a.tipo:"otro";$("f-tipo").value=conocido?"":a.tipo;
+  $("f-titulo").value=a.titulo;$("f-emoji").value=a.emoji||"";
+  $("f-dia").value=a.fecha?a.fecha.slice(0,10):"";$("f-hora").value=a.fecha?a.fecha.slice(11,16):"";
+  $("f-plazas").value=a.max;$("f-nivel").value=a.nivel||"Todos los niveles";
+  $("f-punto").value=a.punto||"";$("f-desc").value=a.desc||"";$("f-equipo").value=a.equipo||"";$("f-emerg").value=a.emerg||"";
+  $("f-precio").value=a.precio||"";$("f-link").value=a.link||"";$("f-pago").value=a.pago||"";
+  $("f-vis").value=a.priv?"codigo":a.soloAmigos?"amigos":"todos";
+  $("privBox").hidden=!a.priv;$("f-cod").value=a.priv?fmtCod(a.codigo):"";
+  $("np-t").textContent="Editar plan";$("f-ok").textContent="Guardar cambios";$("f-mover").hidden=false;
+  pintaTipos();
+  const det=$("nueva").querySelector("details");if(det)det.open=true;
+  sel=null;render();
+  $("nueva").classList.add("open");
+}
+async function guardaEdicion(id,campos,priv,cod){
+  const a=data.find(x=>x.id===id);
+  if(a&&campos.plazas<a.asist.length)throw new Error("Ya hay "+a.asist.length+" personas apuntadas: no puedes bajar de ahí.");
+  const r=await sb.from("planes").update(campos).eq("id",id);if(r.error)throw r.error;
+  if(priv){const c=await sb.from("planes_codigo").upsert({plan_id:id,codigo:cod});if(c.error)throw c.error}
+  else{await sb.from("planes_codigo").delete().eq("plan_id",id)}
+  if(a){
+    const cambios=[];
+    if(a.titulo!==campos.titulo)cambios.push("el nombre");
+    if((a.fecha||"")!==(campos.fecha||""))cambios.push("la fecha u hora");
+    if(a.lat!==campos.lat||a.lng!==campos.lng)cambios.push("el lugar");
+    if((a.punto||"")!==(campos.punto||""))cambios.push("el punto de encuentro");
+    if(cambios.length){try{await sb.from("mensajes").insert({plan_id:id,texto:"✏️ El organizador ha cambiado "+cambios.join(", ")+"."})}catch(e){}}
+  }
+}
+function cerrarForm(){if(editId){limpiaForm()}editId=null;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
 function elegir(id){burbuja=null;tab="info";delId=null;cerrarForm();sel=id;render()}
 
 map.on("click",e=>{
@@ -1008,7 +1051,7 @@ $("bExp").onclick=()=>irA("explorar");
 $("bMios").onclick=()=>irA("mios");
 function plusMenu(v){$("plusMenu").hidden=!v;if(v)$("crearBtn").classList.add("open");else $("crearBtn").classList.remove("open")}
 $("crearBtn").onclick=()=>plusMenu($("plusMenu").hidden);
-$("mPlan").onclick=()=>{plusMenu(false);irA("explorar");sel=null;cerrarForm();render();colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el mapa para marcar el lugar";$("colocarOk").disabled=true;$("map").scrollIntoView({behavior:"smooth",block:"center"})};
+$("mPlan").onclick=()=>{plusMenu(false);irA("explorar");sel=null;cerrarForm();render();colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el mapa para marcar el lugar";$("colocarOk").disabled=true;$("colocarOk").textContent="Crear plan aquí";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
 $("listaAmigos").addEventListener("click",e=>{
   const v=e.target.closest("[data-ver]");
   if(v){const a=data.find(x=>x.kind==="aqui"&&x.uid===v.dataset.ver);if(a){irA("explorar");map.setView([a.lat,a.lng],15);elegir(a.id)}return}
@@ -1033,6 +1076,39 @@ async function rechazarInvitacion(pid){
 $("iv-lista").addEventListener("click",async e=>{
   const i=e.target.closest("[data-ivi]"),c=e.target.closest("[data-ivc]");
   if(i)await invitarAPlan(invPlan,i.dataset.ivi);else if(c)await cancelarInvitacion(invPlan,c.dataset.ivc);
+});
+const sinAcentos=t=>String(t).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+function buscaPersonas(texto){
+  const q=sinAcentos(String(texto||"").trim());
+  if(q.length<2)return [];
+  return perfiles.filter(p=>p.id!==uid&&p.buscable!==false&&!bloqueados.has(p.id)&&sinAcentos(p.nombre).includes(q)).sort((a,b)=>a.nombre.localeCompare(b.nombre)).slice(0,15);
+}
+function pintaBusca(){
+  const t=String($("busca").value||"").trim(),box=$("resBusca");
+  if(sinAcentos(t).length<2){box.hidden=true;box.innerHTML="";return}
+  const res=buscaPersonas(t);
+  box.hidden=false;
+  box.innerHTML=res.length?res.map(p=>{
+    const amigo=esAmigo(p.id),env=solEnv.includes(p.id),rec=solRec.includes(p.id);
+    const est=amigo?"👥 Ya sois amigos":env?"Solicitud enviada":rec?"Quiere ser tu amigo":"";
+    const btn=amigo||env?"":rec?`<button type="button" data-bacc2="${esc(p.id)}" style="padding:6px 12px;font-size:14px">Aceptar</button>`:`<button type="button" data-badd="${esc(p.id)}" style="padding:6px 12px;font-size:14px">Añadir</button>`;
+    return `<div class="item" data-per="${esc(p.id)}"><div class="th" style="background:hsl(${hash(p.nombre)%360} 45% 40%)"><span style="font-size:24px;font-weight:700">${esc((Array.from(p.nombre)[0]||"?").toUpperCase())}</span></div><div style="flex:1;min-width:0"><b>${esc(p.nombre)}</b><small>${est}</small></div>${btn}</div>`;
+  }).join(""):`<p class="meta">No encuentro a nadie con ese nombre. Puede que aún no se haya registrado o que no aparezca en las búsquedas.</p>`;
+}
+$("busca").addEventListener("input",pintaBusca);
+$("resBusca").addEventListener("click",e=>{
+  const a=e.target.closest("[data-badd]"),c=e.target.closest("[data-bacc2]");
+  if(a){enviarSolicitud(a.dataset.badd);return}
+  if(c){responderSolicitud(c.dataset.bacc2,true);return}
+  const i=e.target.closest(".item");if(i)abrePersona(i.dataset.per);
+});
+$("mBus").onclick=()=>{plusMenu(false);irA("mios");setTimeout(()=>{const b=$("busca");b.scrollIntoView({behavior:"smooth",block:"center"});b.focus()},150)};
+$("p-buscable").addEventListener("change",async()=>{
+  if(!sb||!uid)return;
+  const v=$("p-buscable").checked;
+  if(!await perfilListo()){$("p-buscable").checked=true;return}
+  try{const r=await sb.from("profiles").update({buscable:v}).eq("id",uid);if(r.error)throw r.error;miBuscable=v}
+  catch(e){$("p-buscable").checked=miBuscable;fallo(e)}
 });
 async function enviarSolicitud(u){
   if(!me){pedirNombre(()=>enviarSolicitud(u));return}
@@ -1184,7 +1260,8 @@ $("a-ok").onclick=()=>{
   },()=>{$("a-ok").disabled=false;alert("No pude obtener tu ubicación. Activa el permiso de ubicación para este sitio en los ajustes de Safari.")},{enableHighAccuracy:true,timeout:10000});
 };
 $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],15);elegir(+i.dataset.id)}});
-$("colocarNo").onclick=()=>{salirColocar();pend=null};
+$("colocarNo").onclick=()=>{salirColocar();if(editId){const a=data.find(x=>x.id===editId);if(a)pend={lat:a.lat,lng:a.lng};$("nueva").classList.add("open")}else pend=null};
+$("f-mover").onclick=()=>{$("nueva").classList.remove("open");colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el nuevo lugar del plan";$("colocarOk").disabled=true;$("colocarOk").textContent="Usar este lugar";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
 $("colocarOk").onclick=()=>{if(!pend)return;colocando=false;$("colocar").hidden=true;$("nueva").classList.add("open")};
 $("f-vis").addEventListener("change",()=>{const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
 $("f-cod-gen").onclick=()=>{$("f-cod").value=fmtCod(genCod())};
@@ -1202,6 +1279,15 @@ $("cod-ok").onclick=async()=>{
     else{await recarga();$("codigo").classList.remove("open");const a=data.find(x=>x.id===r.data);if(a)abreImportado(a)}
   }catch(e){$("cod-err").textContent=(e&&e.message)||"No pude comprobar el código."}
   $("cod-ok").disabled=false;
+};
+$("f-dias").onclick=e=>{
+  const b=e.target.closest("button");if(!b)return;
+  const n=new Date(),d=new Date(n.getFullYear(),n.getMonth(),n.getDate()),k=b.dataset.d;
+  if(k==="1")d.setDate(d.getDate()+1);
+  else if(k==="sab")d.setDate(d.getDate()+((6-d.getDay()+7)%7));
+  else if(k==="dom")d.setDate(d.getDate()+((7-d.getDay())%7));
+  $("f-dia").value=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  if(!$("f-hora").value)$("f-hora").value="10:00";
 };
 $("f-tipos").onclick=e=>{const b=e.target.closest("button");if(b){tipoSel=b.dataset.k;pintaTipos()}};
 $("f-cancel").onclick=cerrarForm;
@@ -1227,14 +1313,21 @@ $("f-ok").onclick=async()=>{
   try{
     if(!await perfilListo())throw new Error("Pon tu nombre primero");
     const custom=$("f-tipo").value.trim(),tipo=custom?norm(custom):tipoSel,t=$("f-titulo").value.trim()||(TIPOS[tipo]||tipo);
-    const max=Math.max(2,Math.min(50,+$("f-plazas").value||6)),fch=$("f-fecha").value,lat=pend.lat,lng=pend.lng;
-    const r=await sb.from("planes").insert({tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,nivel:$("f-nivel").value,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA}).select("id").single();
-    if(r.error)throw r.error;
-    const id=r.data.id;
-    if(priv){const c=await sb.from("planes_codigo").insert({plan_id:id,codigo:cod});if(c.error)throw c.error}
-    const p=await sb.from("participantes").insert({plan_id:id,user_id:uid});if(p.error)throw p.error;
-    ["f-titulo","f-fecha","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>$(i).value="");$("f-nivel").selectedIndex=0;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();
-    await recarga();map.setView([lat,lng],14);elegir(id);
+    const max=Math.max(2,Math.min(50,+$("f-plazas").value||6)),dia=$("f-dia").value,fch=dia?dia+"T"+($("f-hora").value||"10:00"):"",lat=pend.lat,lng=pend.lng;
+    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,nivel:$("f-nivel").value,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA};
+    if(editId){
+      const id=editId;
+      await guardaEdicion(id,campos,priv,cod);
+      limpiaForm();await recarga();map.setView([lat,lng],14);elegir(id);
+    }else{
+      const r=await sb.from("planes").insert(campos).select("id").single();
+      if(r.error)throw r.error;
+      const id=r.data.id;
+      if(priv){const c=await sb.from("planes_codigo").insert({plan_id:id,codigo:cod});if(c.error)throw c.error}
+      const p=await sb.from("participantes").insert({plan_id:id,user_id:uid});if(p.error)throw p.error;
+      limpiaForm();
+      await recarga();map.setView([lat,lng],14);elegir(id);
+    }
   }catch(e){fallo(e)}
   $("f-ok").disabled=false;
 };
