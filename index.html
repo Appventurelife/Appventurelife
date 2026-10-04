@@ -267,7 +267,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 33 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 35 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -386,6 +386,17 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <label for="p-nombre">Nombre</label><input id="p-nombre" maxlength="24" placeholder="Ej. Marta">
 <label class="chk"><input type="checkbox" id="p-buscable" checked> Aparecer cuando otras personas me buscan por nombre</label>
 <div class="row" style="margin-top:14px"><button class="sec" id="p-cancel" type="button">Cancelar</button><button id="p-ok" type="button">Guardar</button></div>
+<div id="cuentaBox">
+<h3 class="who-h" style="margin-top:16px">Tu cuenta</h3>
+<p class="meta" id="cu-estado"></p>
+<div id="cu-form">
+<input id="cu-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" placeholder="tu@correo.com">
+<div class="row" style="margin-top:8px"><button class="sec" id="cu-guardar" type="button">Guardar mi cuenta</button><button class="sec" id="cu-entrar" type="button">Ya tengo cuenta</button></div>
+<div id="cu-paso2" hidden style="margin-top:8px"><input id="cu-codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="Código del correo"><button id="cu-ok" type="button" style="margin-top:8px;width:100%">Confirmar código</button></div>
+</div>
+<p class="meta" id="cu-msg"></p>
+<button class="sec" id="cu-salir" type="button" hidden style="width:100%">Cerrar sesión en este navegador</button>
+</div>
 <div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
 </section>
@@ -568,7 +579,7 @@ async function guardaNombre(n){
   pintaYo();
 }
 let cbNombre=null;
-function pedirNombre(cb){cbNombre=cb||null;$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
+function pedirNombre(cb){cbNombre=cb||null;if(sb)cuPinta();$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
 $("yo").onclick=()=>pedirNombre();
 $("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);$("perfil").classList.remove("open");const c=cbNombre;cbNombre=null;if(c)c()};
 $("p-cancel").onclick=()=>{$("perfil").classList.remove("open");cbNombre=null};
@@ -601,6 +612,72 @@ const chkAcepta=()=>{$("ac-ok").disabled=!($("ac-edad").checked&&$("ac-term").ch
 $("ac-edad").addEventListener("change",chkAcepta);$("ac-term").addEventListener("change",chkAcepta);
 $("ac-ok").onclick=()=>{try{localStorage.setItem("avl_acepta",VER_TERM)}catch(e){}$("acepta").hidden=true;cierraPortada();arranca()};
 async function registraAceptacion(){try{await sb.from("aceptaciones").upsert({user_id:uid,version:VER_TERM},{onConflict:"user_id,version",ignoreDuplicates:true})}catch(e){}}
+/* cuenta con correo: para ser la misma persona en Safari, en la app de la pantalla de inicio y en otros móviles */
+let cuModo="",cuEmail="",sb2=null;
+function cuCliente(){if(!sb2)sb2=supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:"avl-tmp"}});return sb2}
+async function cuEsTemporal(){try{const r=await sb.auth.getUser();const u=r.data&&r.data.user;return !u||!!u.is_anonymous||!u.email}catch(e){return true}}
+async function cuPinta(){
+  let u=null;try{const r=await sb.auth.getUser();u=r.data&&r.data.user}catch(e){}
+  const temp=!u||!!u.is_anonymous||!u.email;
+  $("cu-estado").textContent=temp?"Ahora tu cuenta solo existe en este navegador: si abres la app desde otro sitio (Safari, la pantalla de inicio u otro móvil) serás otra persona. Guárdala con tu correo para ser siempre la misma.":"Cuenta guardada con "+u.email+". Entra con ese correo desde cualquier sitio y serás la misma persona.";
+  $("cu-form").hidden=!temp;$("cu-salir").hidden=temp;
+  $("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg("");cuModo="";
+}
+let cuUltimoMsg="";
+function cuMsg(t){cuUltimoMsg=t;$("cu-msg").textContent=t}
+async function cuEnviar(modo,emailRaw){
+  const email=String(emailRaw||"").trim().toLowerCase();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){cuMsg("Escribe un correo válido.");return}
+  cuMsg("Enviando…");
+  try{
+    if(modo==="guardar"){const r=await sb.auth.updateUser({email});if(r.error)throw r.error}
+    else{const r=await cuCliente().auth.signInWithOtp({email,options:{shouldCreateUser:false}});if(r.error)throw r.error}
+    cuModo=modo;cuEmail=email;$("cu-paso2").hidden=false;
+    cuMsg("Te hemos enviado un código a "+email+". Escríbelo aquí abajo (mira también en spam).");
+    $("cu-codigo").focus();
+  }catch(e){
+    const m=String((e&&e.message)||e);
+    cuMsg(
+      modo==="guardar"&&/already|registered|exists/i.test(m)?"Ese correo ya tiene una cuenta. Pulsa «Ya tengo cuenta» para entrar con ella.":
+      modo==="entrar"&&/signups not allowed|not found|invalid/i.test(m)?"No encuentro una cuenta guardada con ese correo. Primero guárdala desde el navegador donde ya tienes tus amigos.":
+      /rate|limit|seconds/i.test(m)?"Has pedido demasiados códigos. Espera un rato e inténtalo otra vez.":
+      "No se pudo enviar el código: "+m);
+  }
+}
+async function cuConfirmar(tokenRaw){
+  const token=String(tokenRaw||"").replace(/\D/g,"");
+  if(token.length<6){cuMsg("Escribe el código que te ha llegado al correo.");return}
+  $("cu-ok").disabled=true;
+  try{
+    if(cuModo==="guardar"){
+      const r=await sb.auth.verifyOtp({email:cuEmail,token,type:"email_change"});if(r.error)throw r.error;
+      await cuPinta();cuMsg("¡Listo! Tu cuenta está guardada. Ya puedes entrar con este correo desde otro sitio.");
+    }else if(cuModo==="entrar"){
+      const r=await cuCliente().auth.verifyOtp({email:cuEmail,token,type:"email"});if(r.error)throw r.error;
+      const ses=r.data&&r.data.session;if(!ses)throw new Error("sin sesión");
+      if(await cuEsTemporal()&&uid&&uid!==ses.user.id){try{await sb.from("profiles").delete().eq("id",uid)}catch(e){}}
+      const s2=await sb.auth.setSession({access_token:ses.access_token,refresh_token:ses.refresh_token});if(s2.error)throw s2.error;
+      try{localStorage.removeItem("avl_nombre")}catch(e){}
+      location.reload();return;
+    }
+  }catch(e){
+    const m=String((e&&e.message)||e);
+    cuMsg(/expired|invalid/i.test(m)?"Ese código no vale o ha caducado. Pide uno nuevo.":"No se pudo confirmar: "+m);
+  }
+  $("cu-ok").disabled=false;
+}
+$("cu-guardar").onclick=()=>cuEnviar("guardar",$("cu-email").value);
+$("cu-entrar").onclick=async()=>{
+  if(await cuEsTemporal()&&!confirm("Al entrar con tu cuenta guardada, lo que hayas hecho en este navegador como cuenta temporal se borrará (por ejemplo, los planes a los que te hayas apuntado). ¿Seguir?"))return;
+  cuEnviar("entrar",$("cu-email").value);
+};
+$("cu-ok").onclick=()=>cuConfirmar($("cu-codigo").value);
+$("cu-salir").onclick=async()=>{
+  if(!confirm("Vas a cerrar sesión en este navegador. Podrás volver a entrar con tu correo. ¿Seguir?"))return;
+  try{await sb.auth.signOut()}catch(e){}
+  try{localStorage.removeItem("avl_nombre")}catch(e){}
+  location.reload();
+};
 let borrarOk=false;
 $("p-borrar").onclick=async()=>{
   if(!borrarOk){borrarOk=true;$("p-borrar").textContent="¿Seguro? Se borrarán tu nombre, tus planes y tus mensajes. Toca otra vez";return}
