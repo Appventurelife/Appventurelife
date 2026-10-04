@@ -246,7 +246,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <h2 class="sec-h">Mis planes</h2>
 <div id="listaMios" class="list"></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 23 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 24 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mis planes</button></nav>
@@ -292,7 +292,19 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <h2 id="dm-t">Mensajes</h2>
 <div class="chat" id="dm-msgs"></div>
 <button id="dm-quitar" class="sec" type="button" hidden style="margin-bottom:10px;font-size:14px;padding:6px 12px">Quitar de amigos</button>
+<div class="mini"><button id="dm-bloq" class="sec" type="button">Bloquear</button><button id="dm-den" class="sec" type="button">Denunciar</button></div>
 <div class="send"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="dm-ok" type="button">Enviar</button></div>
+</section>
+
+<section id="denuncia" class="sheet" aria-label="Denunciar">
+<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
+<h2 id="den-t">Denunciar</h2>
+<label for="den-motivo">Motivo</label>
+<select id="den-motivo"><option>Contenido ofensivo o inapropiado</option><option>Acoso o amenazas</option><option>Estafa o spam</option><option>Plan peligroso o ilegal</option><option>Parece menor de edad</option><option>Otro</option></select>
+<label for="den-detalle">Cuéntanos qué ha pasado (opcional)</label>
+<textarea id="den-detalle" rows="3" maxlength="500" placeholder="Escribe aquí..."></textarea>
+<label class="chk" id="den-bloq-l"><input type="checkbox" id="den-bloq" checked> También bloquear a esta persona</label>
+<div class="row" style="margin-top:14px"><button class="sec" id="den-no" type="button">Cancelar</button><button id="den-ok" type="button">Enviar denuncia</button></div>
 </section>
 
 <section id="amistad" class="sheet" aria-label="Invitación de amistad">
@@ -344,6 +356,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta">Es el nombre que verán los demás en los planes a los que vayas.</p>
 <label for="p-nombre">Nombre</label><input id="p-nombre" maxlength="24" placeholder="Ej. Marta">
 <div class="row" style="margin-top:14px"><button class="sec" id="p-cancel" type="button">Cancelar</button><button id="p-ok" type="button">Guardar</button></div>
+<div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
 </section>
 
@@ -703,7 +716,7 @@ function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>
 const SB_URL="https://gluinrtmrrfecbhjwvdl.supabase.co",SB_KEY="sb_publishable_qjY62DUZEKjXFqMfX14x7w_TBe-grRt";
 let sb=null,uid=null,nombres={},chats={},perfilOk=false,cargando=true,errCon="";
 try{sb=supabase.createClient(SB_URL,SB_KEY)}catch(e){errCon="No se pudo cargar el servidor."}
-let dms={},dmCon=null,visto={},toastTmr=null,amigosSet=new Set(),invCod="",quitarOk=false;
+let dms={},dmCon=null,visto={},toastTmr=null,amigosSet=new Set(),invCod="",quitarOk=false,bloqueados=new Set(),denCtx=null;
 try{visto=JSON.parse(localStorage.getItem("avl_visto")||"{}")}catch(e){}
 const guardaVisto=()=>{try{localStorage.setItem("avl_visto",JSON.stringify(visto))}catch(e){}};
 const ultimoId=l=>l&&l.length?l[l.length-1].id:0;
@@ -756,23 +769,25 @@ async function recarga(){
       sb.from("planes_codigo").select("plan_id,codigo"),
       sb.from("mensajes").select("*").order("creado",{ascending:true}).limit(1500),
       sb.from("directos").select("*").order("creado",{ascending:true}).limit(1500),
-      sb.from("amigos").select("amigo_id")
+      sb.from("amigos").select("amigo_id"),
+      sb.from("bloqueos").select("bloqueado_id")
     ]);
     const er=res.find(x=>x.error);if(er)throw er.error;
-    const [pl,pa,pr,aq,co,ms,dr,am]=res;
+    const [pl,pa,pr,aq,co,ms,dr,am,bl]=res;
+    bloqueados=new Set(bl.data.map(r=>r.bloqueado_id));
     nombres={};pr.data.forEach(p=>{nombres[p.id]=p.nombre});
     const nom=i=>nombres[i]||"Alguien";
-    chats={};ms.data.forEach(m=>{(chats[m.plan_id]=chats[m.plan_id]||[]).push({id:m.id,uid:m.user_id,n:nom(m.user_id),t:Date.parse(m.creado),txt:m.texto})});
-    dms={};dr.data.forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)})});
-    amigosSet=new Set(am.data.map(r=>r.amigo_id));
+    chats={};ms.data.filter(m=>!bloqueados.has(m.user_id)).forEach(m=>{(chats[m.plan_id]=chats[m.plan_id]||[]).push({id:m.id,uid:m.user_id,n:nom(m.user_id),t:Date.parse(m.creado),txt:m.texto})});
+    dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)})});
+    amigosSet=new Set(am.data.map(r=>r.amigo_id).filter(u=>!bloqueados.has(u)));
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});
-    const lista=pl.data.map(r=>{
+    const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
       return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,nivel:r.nivel||"",punto:r.punto||"",desc:r.descr||"",foto:"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}}});
-    aq.data.forEach(r=>{lista.push({id:-(hash(r.user_id)%1000000000)-1,kind:"aqui",tipo:"aqui",titulo:r.titulo||"",emoji:r.emoji||"",lat:r.lat,lng:r.lng,orgId:r.user_id,uid:r.user_id,org:nom(r.user_id),asist:[],asistIds:[],pagos:[],pagosIds:[],max:0,t:Date.parse(r.creado),hasta:r.hasta?Date.parse(r.hasta):0})});
+    aq.data.filter(r=>!bloqueados.has(r.user_id)).forEach(r=>{lista.push({id:-(hash(r.user_id)%1000000000)-1,kind:"aqui",tipo:"aqui",titulo:r.titulo||"",emoji:r.emoji||"",lat:r.lat,lng:r.lng,orgId:r.user_id,uid:r.user_id,org:nom(r.user_id),asist:[],asistIds:[],pagos:[],pagosIds:[],max:0,t:Date.parse(r.creado),hasta:r.hasta?Date.parse(r.hasta):0})});
     data=lista;errCon="";
     let primera=true;try{primera=!localStorage.getItem("avl_visto")}catch(e){}
     if(primera){lista.forEach(a=>{if(a.kind!=="aqui")visto["p"+a.id]=ultimoId(a.chat)});Object.keys(dms).forEach(u=>{visto["d"+u]=ultimoId(dms[u])});guardaVisto()}
@@ -787,7 +802,7 @@ function suscribir(){
     .on("postgres_changes",{event:"*",schema:"public",table:"aqui"},pronto)
     .on("postgres_changes",{event:"*",schema:"public",table:"profiles"},pronto)
     .on("postgres_changes",{event:"INSERT",schema:"public",table:"mensajes"},p=>{
-      const m=p.new;if(!m)return;
+      const m=p.new;if(!m||bloqueados.has(m.user_id))return;
       const l=(chats[m.plan_id]=chats[m.plan_id]||[]);
       if(!l.some(x=>x.id===m.id)){
         l.push({id:m.id,uid:m.user_id,n:nombres[m.user_id]||"Alguien",t:Date.parse(m.creado),txt:m.texto});
@@ -800,7 +815,7 @@ function suscribir(){
       }})
     .on("postgres_changes",{event:"*",schema:"public",table:"amigos"},pronto)
     .on("postgres_changes",{event:"INSERT",schema:"public",table:"directos"},p=>{
-      const m=p.new;if(!m||(m.para!==uid&&m.de!==uid))return;
+      const m=p.new;if(!m||(m.para!==uid&&m.de!==uid)||bloqueados.has(m.de))return;
       const u=m.de===uid?m.para:m.de,l=(dms[u]=dms[u]||[]);
       if(l.some(x=>x.id===m.id))return;
       l.push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)});
@@ -843,6 +858,8 @@ function render(){
   try{document.title=(tot?"("+tot+") ":"")+"AppVentureLife"}catch(e){}
   const am=[...amigosSet].map(u=>({u,n:nombres[u]||"Alguien",pin:data.find(x=>x.kind==="aqui"&&x.uid===u),pl:advAll.filter(a=>a.orgId===u||(a.asistIds||[]).includes(u))}));
   $("listaAmigos").innerHTML=am.length?am.map(x=>`<div class="item" data-am="${esc(x.u)}"><div class="th" style="background:#C8892B"><span class="em" style="font-size:26px">👥</span></div><div style="flex:1;min-width:0"><b>${esc(x.n)}</b><small>${x.pin?"📍 Compartiendo ubicación":"Sin ubicación compartida"}${x.pl.length?" · Va a: "+esc(x.pl.slice(0,2).map(p=>p.titulo).join(", ")):""}</small></div>${x.pin?`<button type="button" class="sec" data-ver="${esc(x.u)}" style="padding:6px 10px;font-size:13px">Ver</button>`:""}</div>`).join(""):`<p class="meta">Aún no tienes amigos. Pulsa «Invitar amigos» y mándales el enlace por WhatsApp.</p>`;
+  $("bloqBox").hidden=!bloqueados.size;
+  $("listaBloq").innerHTML=[...bloqueados].map(u=>`<div class="item"><div style="flex:1;min-width:0"><b>${esc(nombres[u]||"Alguien")}</b></div><button type="button" class="sec" data-desb="${esc(u)}" style="padding:6px 12px;font-size:14px">Desbloquear</button></div>`).join("");
   const convs=Object.keys(dms).map(u=>({u,l:dms[u]})).filter(c=>c.l.length).sort((x,y)=>y.l[y.l.length-1].t-x.l[x.l.length-1].t);
   $("dmBox").hidden=!convs.length;
   $("listaDM").innerHTML=convs.map(c=>{const ult=c.l[c.l.length-1],n=sinLeerDM(c.u);return `<div class="item" data-dm="${esc(c.u)}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:26px">💬</span></div><div style="flex:1;min-width:0"><b>${esc(nombres[c.u]||"Alguien")}</b><small>${esc(ult.txt.slice(0,50))}</small></div>${n?`<span class="tag" style="background:#C4472F">${n}</span>`:""}</div>`}).join("");
@@ -851,8 +868,9 @@ function render(){
   const a=vivos().find(x=>x.id===sel),d=$("detalle");
   if(!a){d.classList.remove("open");return}
   if(a.kind==="aqui"){
-    d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="cover ph" style="background:#1E7BFF;height:110px"><span class="em" style="font-size:56px">${esc(a.emoji||"📍")}</span></div><h2>${esc(a.org)}</h2><p style="margin:0 0 4px;font-size:18px">${esc(a.titulo||"Está por aquí")}</p><p class="meta">${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):" · hasta que lo quite"}</p>${soyOrg(a)&&watchId!=null?`<p class="meta">📡 Siguiendo tu movimiento (con la app abierta)</p>`:""}${soyOrg(a)?`<div class="acts"><button id="del" type="button">Dejar de compartir</button></div>`:`<button id="dmGo" class="big" type="button">💬 Escribir mensaje</button>`}`;
+    d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="cover ph" style="background:#1E7BFF;height:110px"><span class="em" style="font-size:56px">${esc(a.emoji||"📍")}</span></div><h2>${esc(a.org)}</h2><p style="margin:0 0 4px;font-size:18px">${esc(a.titulo||"Está por aquí")}</p><p class="meta">${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):" · hasta que lo quite"}</p>${soyOrg(a)&&watchId!=null?`<p class="meta">📡 Siguiendo tu movimiento (con la app abierta)</p>`:""}${soyOrg(a)?`<div class="acts"><button id="del" type="button">Dejar de compartir</button></div>`:`<button id="dmGo" class="big" type="button">💬 Escribir mensaje</button><div class="mini"><button id="bloqGo" class="sec" type="button">Bloquear</button><button id="denGo" class="sec" type="button">Denunciar</button></div>`}`;
     d.classList.add("open");
+    if(!soyOrg(a)){const bg=$("bloqGo"),dg=$("denGo");if(bg)bg.onclick=()=>bloquear(a.uid);if(dg)dg.onclick=()=>abreDenuncia(a.uid,null)}
     if(!soyOrg(a)&&$("dmGo"))$("dmGo").onclick=()=>{if(!me){pedirNombre(()=>$("dmGo").click());return}abreDM(a.uid)};
     if(soyOrg(a))$("del").onclick=async()=>{try{const r=await sb.from("aqui").delete().eq("user_id",uid);if(r.error)throw r.error;pararSeguimiento();sel=null;await recarga()}catch(e){fallo(e)}};
     return;
@@ -883,7 +901,7 @@ ${tiempoHTML(a)}
 ${a.precio>0?`<div class="pay"><b>${precioTxt(a.precio)} por persona</b>${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Otras formas de pago: ${esc(a.pago)}</p>`:""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}</div>`:""}
 ${quien(a)}
 ${seguridad(a)}
-<div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}</div>`;
+<div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>`;
   }
   d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>${tab==="info"?cover:""}${body}`;
   d.classList.add("open");
@@ -891,6 +909,7 @@ ${seguridad(a)}
   on("volver",()=>{tab="info";render()});
   on("gochat",()=>{tab="chat";render()});
   on("gofotos",()=>{tab="fotos";render()});
+  on("denPlan",()=>abreDenuncia(a.orgId,a.id));on("bloqOrg",()=>bloquear(a.orgId));
   on("rutaGo",()=>calcularRuta(a));on("rutaQuita",()=>{quitaRuta();render()});
   d.querySelectorAll("[data-rm]").forEach(el=>{el.onclick=()=>calcularRuta(a,el.dataset.rm)});
   on("copCod",async()=>{try{await navigator.clipboard.writeText(fmtCod(a.codigo));$("copCod").textContent="¡Copiado!"}catch(e){prompt("Código:",fmtCod(a.codigo))}});
@@ -982,6 +1001,41 @@ $("dm-quitar").onclick=async()=>{
   quitarOk=false;$("dm-quitar").textContent="Quitar de amigos";
   try{const r=await sb.rpc("quitar_amigo",{p_amigo:dmCon});if(r.error)throw r.error;await recarga();pintaDM()}catch(e){fallo(e)}
 };
+async function bloquear(u,silencio){
+  if(!sb||!uid)return;
+  if(!silencio&&!confirm("¿Bloquear a "+(nombres[u]||"esta persona")+"? No verás sus planes, mensajes ni ubicación, y no podrá escribirte."))return;
+  try{
+    const r=await sb.rpc("bloquear_usuario",{p_user:u});if(r.error)throw r.error;
+    sel=null;if(dmCon===u){$("dm").classList.remove("open");dmCon=null}
+    await recarga();
+  }catch(e){fallo(e)}
+}
+function abreDenuncia(userId,planId){
+  denCtx={userId:userId||null,planId:planId||null};
+  $("den-t").textContent=planId?"Denunciar este plan":"Denunciar a "+(nombres[userId]||"esta persona");
+  $("den-detalle").value="";$("den-bloq").checked=!!userId;$("den-bloq-l").hidden=!userId;
+  $("denuncia").classList.add("open");
+}
+$("den-no").onclick=()=>$("denuncia").classList.remove("open");
+$("den-ok").onclick=async()=>{
+  if(!me){pedirNombre(()=>$("den-ok").click());return}
+  if(!denCtx)return;
+  try{
+    if(!await perfilListo())return;
+    const r=await sb.from("denuncias").insert({contra_user:denCtx.userId,contra_plan:denCtx.planId,motivo:$("den-motivo").value,detalle:$("den-detalle").value.trim().slice(0,500)});
+    if(r.error)throw r.error;
+    const u=denCtx.userId,bloq=$("den-bloq").checked&&u;
+    $("denuncia").classList.remove("open");
+    if(bloq)await bloquear(u,true);
+    alert("Gracias. Hemos recibido tu denuncia.");
+  }catch(e){fallo(e)}
+};
+$("dm-bloq").onclick=()=>bloquear(dmCon);
+$("dm-den").onclick=()=>abreDenuncia(dmCon,null);
+$("listaBloq").addEventListener("click",async e=>{
+  const b=e.target.closest("[data-desb]");if(!b)return;
+  try{const r=await sb.from("bloqueos").delete().eq("user_id",uid).eq("bloqueado_id",b.dataset.desb);if(r.error)throw r.error;await recarga()}catch(x){fallo(x)}
+});
 $("listaDM").addEventListener("click",e=>{const i=e.target.closest(".item");if(i)abreDM(i.dataset.dm)});
 const enviaDM=async()=>{
   const v=$("dm-txt").value.trim();if(!v||!dmCon)return;
