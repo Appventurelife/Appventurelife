@@ -121,7 +121,7 @@ html:has(.sheet.open),body:has(.sheet.open){overflow:hidden}
 .welcome{position:fixed;inset:0;z-index:2000;background:linear-gradient(180deg,#1C6FD1 0%,#0A2A5E 100%);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;overflow:hidden;transition:opacity .4s}
 .welcome.out{opacity:0;pointer-events:none}
 .welcome .bg{position:absolute;left:0;right:0;bottom:0;width:100%;height:48%;pointer-events:none}
-.sun{position:absolute;top:11%;right:13%;width:88px;height:88px;border-radius:50%;background:#FFD66B;box-shadow:0 0 60px 22px rgba(255,214,107,.4)}
+.sun{position:absolute;top:4%;right:7%;width:76px;height:76px;border-radius:50%;background:#FFD66B;box-shadow:0 0 60px 22px rgba(255,214,107,.4)}
 .waves{position:absolute;left:0;bottom:0;width:200%;height:80px;animation:flow 9s linear infinite;pointer-events:none}
 .waves svg{width:100%;height:100%;display:block}
 @keyframes flow{to{transform:translateX(-50%)}}
@@ -227,6 +227,11 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 .fotos video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s}
 .fotos video.on{opacity:1}
 .welcome .wc,.welcome .waves{z-index:2}
+.welcome{padding-bottom:250px}
+.wlogo{position:absolute;left:22px;top:calc(20px + env(safe-area-inset-top,0px));z-index:3;animation:up .7s both}
+@media (max-height:700px){.welcome{padding-bottom:24px}.wlegal{bottom:66px!important;font-size:12px!important;line-height:1.45!important}}
+.wlegal{position:absolute;left:0;right:0;bottom:72px;z-index:3;text-align:center;font-size:13px;line-height:1.6;color:#fff;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.wlegal a{color:#fff;text-decoration:underline}
 </style>
 </head>
 <body>
@@ -235,14 +240,15 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="sun"></div>
 <svg class="bg" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 200V100l55-55 45 45 55-70 70 80 45-40 130 90v50z" fill="#4A90E2" opacity=".5"/><path d="M0 200v-70l80-45 65 50 85-65 80 65 90-30v95z" fill="#0D3470"/></svg>
 <div class="waves"><svg viewBox="0 0 800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28q50-30 100 0t100 0t100 0t100 0t100 0t100 0t100 0t100 0V60H0z" fill="#5BC0EB" opacity=".9"/></svg></div>
+<svg class="wlogo" width="58" height="58" viewBox="0 0 34 34" aria-hidden="true"><path d="M2 26L12 8l6 10 4-6 10 14z" fill="#fff"/><path d="M2 30c4-3 7 3 11 0s7 3 11 0 6 2 8 0" fill="none" stroke="#7FD0F5" stroke-width="2.5" stroke-linecap="round"/></svg>
 <div class="wc">
-<svg width="64" height="64" viewBox="0 0 34 34" aria-hidden="true"><path d="M2 26L12 8l6 10 4-6 10 14z" fill="#fff"/><path d="M2 30c4-3 7 3 11 0s7 3 11 0 6 2 8 0" fill="none" stroke="#7FD0F5" stroke-width="2.5" stroke-linecap="round"/></svg>
 <div class="beta">🧪 Versión de prueba</div>
 <h1>AppVentureLife</h1>
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
+<div class="wlegal">AppVentureLife · versión 43 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
 </div>
 
 <main>
@@ -278,7 +284,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 37 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 43 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -313,6 +319,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <label class="chk"><input type="checkbox" id="ac-edad"> Tengo 18 años o más</label>
 <label class="chk"><input type="checkbox" id="ac-term"> <span>He leído y acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos de uso</a> y la <a href="privacidad.html" target="_blank" rel="noopener">Política de privacidad</a></span></label>
 <p class="meta" style="margin:10px 0 0">Las actividades al aire libre y acuáticas tienen riesgos. Cada persona es responsable de su seguridad.</p>
+<p class="meta" style="margin:8px 0 0">Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></p>
 <button id="ac-ok" type="button" disabled>Aceptar y entrar</button>
 </div>
 </div>
