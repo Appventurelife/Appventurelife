@@ -253,20 +253,18 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 </details>
 </section>
 <section id="vMios" hidden>
+<div id="dmBox"><h2 class="sec-h">Mensajes</h2><div id="listaDM" class="list"></div></div>
 <div id="amigosBox"><h2 class="sec-h">Amigos</h2>
 <div id="solBox" hidden><h3 class="who-h">Solicitudes</h3><div id="listaSol" class="list"></div></div>
 <input id="busca" type="search" placeholder="🔍 Buscar personas por nombre" autocomplete="off" style="margin-bottom:8px">
 <div id="resBusca" class="list" hidden></div>
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
-<div id="dmBox" hidden><h2 class="sec-h">Mensajes</h2><div id="listaDM" class="list"></div></div>
-<h2 class="sec-h">Mis planes</h2>
-<div id="listaMios" class="list"></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 30 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 31 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
 </main>
 
-<nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mis planes</button></nav>
+<nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
 
 <div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mPlan" type="button">Nuevo plan</button></div>
 
@@ -370,7 +368,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <label for="f-precio">Precio por persona en € (vacío = gratis)</label><input id="f-precio" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej. 35">
 <label for="f-link">Enlace de pago de Stripe</label><input id="f-link" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
 <label for="f-pago">Otras formas de pago</label><input id="f-pago" maxlength="80" placeholder="Ej. Bizum al 600 000 000">
-<div hidden><label class="subir" for="f-foto" style="color:var(--ink);font-size:16px;margin:0">Añadir foto de portada</label><input id="f-foto" type="file" accept="image/*" hidden><img id="prev" alt="Vista previa" hidden></div>
+<div style="margin-top:10px"><label class="subir" for="f-foto" style="color:var(--ink);font-size:16px;margin:0">Añadir foto de portada</label><input id="f-foto" type="file" accept="image/*" hidden><img id="prev" alt="Vista previa" hidden><button id="f-foto-quitar" class="sec" type="button" hidden style="margin-top:6px;font-size:14px;padding:6px 12px">Quitar foto</button></div>
 </details>
 <div class="row" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button id="f-ok" type="button">Publicar</button></div>
 </section>
@@ -742,7 +740,7 @@ function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>
 const SB_URL="https://gluinrtmrrfecbhjwvdl.supabase.co",SB_KEY="sb_publishable_qjY62DUZEKjXFqMfX14x7w_TBe-grRt";
 let sb=null,uid=null,nombres={},chats={},perfilOk=false,cargando=true,errCon="";
 try{sb=supabase.createClient(SB_URL,SB_KEY)}catch(e){errCon="No se pudo cargar el servidor."}
-let dms={},dmCon=null,visto={},toastTmr=null,amigosSet=new Set(),invCod="",quitarOk=false,bloqueados=new Set(),denCtx=null,solRec=[],solEnv=[],perCtx=null,editId=null;
+let dms={},dmCon=null,visto={},toastTmr=null,amigosSet=new Set(),invCod="",quitarOk=false,bloqueados=new Set(),denCtx=null,solRec=[],solEnv=[],perCtx=null,editId=null,quitarFoto=false;
 try{visto=JSON.parse(localStorage.getItem("avl_visto")||"{}")}catch(e){}
 const guardaVisto=()=>{try{localStorage.setItem("avl_visto",JSON.stringify(visto))}catch(e){}};
 const ultimoId=l=>l&&l.length?l[l.length-1].id:0;
@@ -824,7 +822,7 @@ async function recarga(){
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});
     const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,nivel:r.nivel||"",punto:r.punto||"",desc:r.descr||"",foto:"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,nivel:r.nivel||"",punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
@@ -908,9 +906,8 @@ function render(){
   else if(invPend.length){const [id,de]=invPend[0],p=data.find(x=>x.id===id);bs.hidden=false;bs.innerHTML=`<span>✉️ <b>${esc(nombres[de]||"Alguien")}</b> te invita a «${esc(p.titulo)}»${nPend>1?" (+"+(nPend-1)+" más)":""}</span><button type="button" data-bver="${id}" style="padding:6px 12px;font-size:14px">Ver</button><button type="button" class="sec" data-bno="${id}" style="padding:6px 12px;font-size:14px">No</button>`}
   else bs.hidden=true;
   const mios=advAll.filter(mia).sort(orden);
-  $("listaMios").innerHTML=mios.length?mios.map(card).join(""):`<p class="meta">Aún no tienes planes. Apúntate a uno o crea el tuyo con el botón +.</p>`;
   const tot=totalSinLeer()+solRec.length;
-  $("bMios").textContent="Mis planes"+(mios.length?" ("+mios.length+")":"")+(tot?" · "+tot+" 💬":"");
+  $("bMios").textContent="Mensajes"+(tot?" · "+tot+" 💬":"");
   try{document.title=(tot?"("+tot+") ":"")+"AppVentureLife"}catch(e){}
   const sol=[...solRec.map(u=>({u,t:"r"})),...solEnv.map(u=>({u,t:"e"}))];
   $("solBox").hidden=!sol.length;
@@ -919,9 +916,14 @@ function render(){
   $("listaAmigos").innerHTML=am.length?am.map(x=>`<div class="item" data-am="${esc(x.u)}"><div class="th" style="background:#C8892B"><span class="em" style="font-size:26px">👥</span></div><div style="flex:1;min-width:0"><b>${esc(x.n)}</b><small>${x.pin?"📍 Compartiendo ubicación":"Sin ubicación compartida"}${x.pl.length?" · Va a: "+esc(x.pl.slice(0,2).map(p=>p.titulo).join(", ")):""}</small></div>${x.pin?`<button type="button" class="sec" data-ver="${esc(x.u)}" style="padding:6px 10px;font-size:13px">Ver</button>`:""}</div>`).join(""):`<p class="meta">Aún no tienes amigos. Toca el nombre de alguien en un plan para enviarle una solicitud.</p>`;
   $("bloqBox").hidden=!bloqueados.size;
   $("listaBloq").innerHTML=[...bloqueados].map(u=>`<div class="item"><div style="flex:1;min-width:0"><b>${esc(nombres[u]||"Alguien")}</b></div><button type="button" class="sec" data-desb="${esc(u)}" style="padding:6px 12px;font-size:14px">Desbloquear</button></div>`).join("");
-  const convs=Object.keys(dms).map(u=>({u,l:dms[u]})).filter(c=>c.l.length).sort((x,y)=>y.l[y.l.length-1].t-x.l[x.l.length-1].t);
-  $("dmBox").hidden=!convs.length;
-  $("listaDM").innerHTML=convs.map(c=>{const ult=c.l[c.l.length-1],n=sinLeerDM(c.u);return `<div class="item" data-dm="${esc(c.u)}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:26px">💬</span></div><div style="flex:1;min-width:0"><b>${esc(nombres[c.u]||"Alguien")}</b><small>${esc(ult.txt.slice(0,50))}</small></div>${n?`<span class="tag" style="background:#C4472F">${n}</span>`:""}</div>`}).join("");
+  const convDM=Object.keys(dms).map(u=>({tipo:"d",u,l:dms[u]})).filter(c=>c.l.length).map(c=>({...c,t:c.l[c.l.length-1].t}));
+  const convPl=advAll.filter(a=>(voy(a)||soyOrg(a))&&a.chat&&a.chat.length).map(a=>({tipo:"p",a,t:a.chat[a.chat.length-1].t}));
+  const convs=[...convDM,...convPl].sort((x,y)=>y.t-x.t);
+  $("listaDM").innerHTML=convs.length?convs.map(c=>{
+    if(c.tipo==="d"){const ult=c.l[c.l.length-1],n=sinLeerDM(c.u);return `<div class="item" data-dm="${esc(c.u)}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:26px">💬</span></div><div style="flex:1;min-width:0"><b>${esc(nombres[c.u]||"Alguien")}</b><small>${esc(ult.txt.slice(0,50))}</small></div>${n?`<span class="tag" style="background:#C4472F">${n}</span>`:""}</div>`}
+    const a=c.a,ult=a.chat[a.chat.length-1],n=sinLeerPlan(a);
+    return `<div class="item" data-planchat="${a.id}"><div class="th" style="background:${col(a)}">${sym(a,26)}</div><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(ult.uid===uid?"Tú":ult.n)}: ${esc(ult.txt.slice(0,40))}</small></div>${n?`<span class="tag" style="background:#C4472F">${n}</span>`:""}</div>`;
+  }).join(""):`<p class="meta">Aún no tienes mensajes. Toca el nombre de un amigo, o de alguien en un plan, para escribirle.</p>`;
   const sv=$("srv");if(sv)sv.textContent=!sb?"Servidor: no cargó":errCon?"Servidor: ERROR · "+errCon:cargando?"Servidor: conectando…":"Servidor: conectado · "+advAll.length+" planes visibles · tu id "+String(uid).slice(0,4);
 
   const a=vivos().find(x=>x.id===sel),d=$("detalle");
@@ -1013,10 +1015,23 @@ function abrirEdicion(a){
   $("f-vis").value=a.priv?"codigo":a.soloAmigos?"amigos":"todos";
   $("privBox").hidden=!a.priv;$("f-cod").value=a.priv?fmtCod(a.codigo):"";
   $("np-t").textContent="Editar plan";$("f-ok").textContent="Guardar cambios";$("f-mover").hidden=false;
+  foto="";quitarFoto=false;if(a.foto){$("prev").src=a.foto;$("prev").hidden=false;$("f-foto-quitar").hidden=false}else{$("prev").hidden=true;$("f-foto-quitar").hidden=true}
   pintaTipos();
   const det=$("nueva").querySelector("details");if(det)det.open=true;
   sel=null;render();
   $("nueva").classList.add("open");
+}
+async function subirFotoPlan(id,dataUrl,rutaVieja){
+  const blob=await (await fetch(dataUrl)).blob();
+  const ruta=id+"/"+Date.now().toString(36)+Math.random().toString(36).slice(2,8)+".jpg";
+  const up=await sb.storage.from("fotos").upload(ruta,blob,{contentType:"image/jpeg",upsert:false});
+  if(up.error)throw up.error;
+  const u=await sb.from("planes").update({foto:ruta}).eq("id",id);if(u.error)throw u.error;
+  if(rutaVieja){try{await sb.storage.from("fotos").remove([rutaVieja])}catch(e){}}
+}
+async function quitarFotoPlan(id,ruta){
+  const u=await sb.from("planes").update({foto:null}).eq("id",id);if(u.error)throw u.error;
+  if(ruta){try{await sb.storage.from("fotos").remove([ruta])}catch(e){}}
 }
 async function guardaEdicion(id,campos,priv,cod){
   const a=data.find(x=>x.id===id);
@@ -1033,7 +1048,7 @@ async function guardaEdicion(id,campos,priv,cod){
     if(cambios.length){try{await sb.from("mensajes").insert({plan_id:id,texto:"✏️ El organizador ha cambiado "+cambios.join(", ")+"."})}catch(e){}}
   }
 }
-function cerrarForm(){if(editId){limpiaForm()}editId=null;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
+function cerrarForm(){if(editId){limpiaForm()}editId=null;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
 function elegir(id){burbuja=null;tab="info";delId=null;cerrarForm();sel=id;render()}
 
 map.on("click",e=>{
@@ -1044,7 +1059,6 @@ map.on("click",e=>{
   ponPunto(e.latlng);
 });
 $("lista").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],14);elegir(+i.dataset.id)}});
-$("listaMios").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);irA("explorar");if(a)map.setView([a.lat,a.lng],14);elegir(+i.dataset.id)}});
 $("filtros").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.r){filtro="";fFecha=""}else if(b.dataset.d!==undefined){fFecha=fFecha===b.dataset.d?"":b.dataset.d}else{filtro=filtro===b.dataset.f?"":b.dataset.f}render()};
 $("rutaX").onclick=()=>{quitaRuta();render()};
 $("bExp").onclick=()=>irA("explorar");
@@ -1199,7 +1213,11 @@ $("listaBloq").addEventListener("click",async e=>{
   const b=e.target.closest("[data-desb]");if(!b)return;
   try{const r=await sb.from("bloqueos").delete().eq("user_id",uid).eq("bloqueado_id",b.dataset.desb);if(r.error)throw r.error;await recarga()}catch(x){fallo(x)}
 });
-$("listaDM").addEventListener("click",e=>{const i=e.target.closest(".item");if(i)abreDM(i.dataset.dm)});
+$("listaDM").addEventListener("click",e=>{
+  const i=e.target.closest(".item");if(!i)return;
+  if(i.dataset.planchat){const pl=data.find(x=>x.id===+i.dataset.planchat);if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id);tab="chat";render()}}
+  else abreDM(i.dataset.dm);
+});
 const enviaDM=async()=>{
   const v=$("dm-txt").value.trim();if(!v||!dmCon)return;
   if(!me){pedirNombre(enviaDM);return}
@@ -1280,6 +1298,8 @@ $("cod-ok").onclick=async()=>{
   }catch(e){$("cod-err").textContent=(e&&e.message)||"No pude comprobar el código."}
   $("cod-ok").disabled=false;
 };
+$("f-foto").addEventListener("change",()=>{quitarFoto=false;$("f-foto-quitar").hidden=false});
+$("f-foto-quitar").onclick=()=>{foto="";quitarFoto=true;$("prev").hidden=true;$("f-foto-quitar").hidden=true;$("f-foto").value=""};
 $("f-dias").onclick=e=>{
   const b=e.target.closest("button");if(!b)return;
   const n=new Date(),d=new Date(n.getFullYear(),n.getMonth(),n.getDate()),k=b.dataset.d;
@@ -1317,7 +1337,12 @@ $("f-ok").onclick=async()=>{
     const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,nivel:$("f-nivel").value,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA};
     if(editId){
       const id=editId;
+      const aPrev=data.find(x=>x.id===id);
       await guardaEdicion(id,campos,priv,cod);
+      try{
+        if(foto)await subirFotoPlan(id,foto,aPrev?aPrev.fotoPath:"");
+        else if(quitarFoto&&aPrev&&aPrev.fotoPath)await quitarFotoPlan(id,aPrev.fotoPath);
+      }catch(e){alert("Los cambios se han guardado, pero no se pudo actualizar la foto: "+((e&&e.message)||""))}
       limpiaForm();await recarga();map.setView([lat,lng],14);elegir(id);
     }else{
       const r=await sb.from("planes").insert(campos).select("id").single();
@@ -1325,6 +1350,7 @@ $("f-ok").onclick=async()=>{
       const id=r.data.id;
       if(priv){const c=await sb.from("planes_codigo").insert({plan_id:id,codigo:cod});if(c.error)throw c.error}
       const p=await sb.from("participantes").insert({plan_id:id,user_id:uid});if(p.error)throw p.error;
+      if(foto){try{await subirFotoPlan(id,foto,"")}catch(e){alert("El plan se ha creado, pero no se pudo subir la foto: "+((e&&e.message)||""))}}
       limpiaForm();
       await recarga();map.setView([lat,lng],14);elegir(id);
     }
