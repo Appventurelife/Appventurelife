@@ -139,7 +139,7 @@ html:has(.sheet.open),body:has(.sheet.open){overflow:hidden}
 .top2 .sec{color:#fff;border-color:rgba(255,255,255,.55);margin-left:auto;padding:6px 12px;font-size:14px}
 main{padding-bottom:120px}
 .mapwrap{margin-top:-30px}
-#map{height:52vh;min-height:320px}
+#map{height:66vh;min-height:360px}
 .locbtn{position:absolute;right:12px;top:12px;z-index:500}
 .crosshair{position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-44px 0 0 -22px;z-index:600;pointer-events:none;filter:drop-shadow(0 3px 3px rgba(0,0,0,.45))}
 .placebar{position:absolute;left:10px;right:10px;bottom:12px;z-index:600;display:flex;gap:8px;align-items:center;background:var(--card);border-radius:14px;padding:10px 12px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
@@ -163,6 +163,12 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 #persona{z-index:1200}
 #denuncia{z-index:1250}
 #perfil{z-index:1300}
+.burbuja{position:absolute;left:50%;bottom:54px;transform:translateX(-50%);background:var(--card);color:var(--ink);border-radius:14px;padding:8px 12px;box-shadow:0 3px 12px rgba(0,0,0,.35);width:max-content;max-width:210px;text-align:center;cursor:pointer;z-index:5}
+.burbuja b{display:block;font-size:15px;line-height:1.2;white-space:normal}
+.burbuja small{display:block;color:var(--mut);font-size:12px;margin-top:2px;font-weight:400}
+.burbuja::after{content:"";position:absolute;left:50%;bottom:-7px;margin-left:-7px;border:7px solid transparent;border-bottom:0;border-top-color:var(--card)}
+.bannersol{position:absolute;left:10px;right:10px;bottom:34px;z-index:550;display:flex;gap:8px;align-items:center;background:var(--card);color:var(--ink);border:2px solid #C8892B;border-radius:14px;padding:8px 10px;box-shadow:0 4px 14px rgba(0,0,0,.35);font-size:14px}
+.bannersol span{flex:1;min-width:0}
 .lnk{cursor:pointer;text-decoration:underline;text-decoration-color:rgba(0,0,0,.3);font-weight:700}
 .pin.amigo{box-shadow:0 0 0 4px #FFD66B,0 2px 6px rgba(0,0,0,.35)}
 .amigob{position:absolute;left:-8px;top:-9px;font-size:14px;line-height:1}
@@ -235,12 +241,15 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div id="rutaChip" class="rutachip" hidden><span id="rutaTxt"></span><button id="rutaX" type="button" aria-label="Quitar ruta">✕</button></div>
 <svg id="centro" class="crosshair" viewBox="0 0 24 24" hidden aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="#FFD66B" stroke="#0A2A5E" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" fill="#0A2A5E"/></svg>
 <div id="colocar" class="placebar" hidden><span id="colocarTxt">Toca el mapa para marcar el lugar</span><button id="colocarNo" class="sec" type="button" aria-label="Cancelar">✕</button><button id="colocarOk" type="button" disabled>Crear plan aquí</button></div>
+<div id="bannerSol" class="bannersol" hidden></div>
 <div class="attr">&copy; OpenStreetMap · rutas OSRM</div>
 </div>
 <p class="hint" style="margin:8px 2px 0">Toca el mapa para crear un plan en ese punto, o una chincheta para ver un plan.</p>
 <div id="filtros"></div>
+<details id="listaDet" class="mas" style="margin-top:12px"><summary id="listaSum">📋 Ver lista de planes</summary>
 <div id="ahoraBox" hidden><h2 class="sec-h">Ahora mismo</h2><div id="ahora" class="list"></div></div>
 <div id="lista" class="list"></div>
+</details>
 </section>
 <section id="vMios" hidden>
 <div id="amigosBox"><h2 class="sec-h">Amigos</h2>
@@ -251,7 +260,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <h2 class="sec-h">Mis planes</h2>
 <div id="listaMios" class="list"></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 26 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 27 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mis planes</button></nav>
@@ -662,7 +671,7 @@ function irAMiUbicacion(){
 $("loc").onclick=()=>{compartido=false;irAMiUbicacion()};
 irAMiUbicacion();
 
-let colocando=false,tipoSel="otro",ruta=null,capaRuta=null;
+let colocando=false,tipoSel="otro",ruta=null,capaRuta=null,burbuja=null,solVista=new Set(),solInit=false;
 const km=m=>m<1000?(Math.round(m/10)*10)+" m":(m/1000).toLocaleString("es",{maximumFractionDigits:1})+" km";
 const durTxt=sg=>{const m=Math.max(1,Math.round(sg/60));return m<60?m+" min":Math.floor(m/60)+" h "+(m%60)+" min"};
 function haversine(a,b){const R=6371000,r=x=>x*Math.PI/180,dLa=r(b.lat-a.lat),dLo=r(b.lng-a.lng),h=Math.sin(dLa/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
@@ -787,6 +796,9 @@ async function recarga(){
     solEnv=sl.data.filter(r=>r.de===uid&&!bloqueados.has(r.para)).map(r=>r.para);
     nombres={};pr.data.forEach(p=>{nombres[p.id]=p.nombre});
     const nom=i=>nombres[i]||"Alguien";
+    const nuevasSol=solRec.filter(u=>!solVista.has(u));
+    if(solInit&&nuevasSol.length)avisa("👥 "+nom(nuevasSol[0])+" quiere ser tu amigo",()=>abrePersona(nuevasSol[0]));
+    solVista=new Set(solRec);solInit=true;
     chats={};ms.data.filter(m=>!bloqueados.has(m.user_id)).forEach(m=>{(chats[m.plan_id]=chats[m.plan_id]||[]).push({id:m.id,uid:m.user_id,n:nom(m.user_id),t:Date.parse(m.creado),txt:m.texto})});
     dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)})});
     amigosSet=new Set(am.data.map(r=>r.amigo_id).filter(u=>!bloqueados.has(u)));
@@ -825,9 +837,7 @@ function suscribir(){
       }})
     .on("postgres_changes",{event:"*",schema:"public",table:"amigos"},pronto)
     .on("postgres_changes",{event:"*",schema:"public",table:"solicitudes"},p=>{
-      const m=p.new;
-      if(p.eventType==="INSERT"&&m&&m.para===uid&&!bloqueados.has(m.de)){recarga().then(()=>avisa("👥 "+(nombres[m.de]||"Alguien")+" quiere ser tu amigo",()=>abrePersona(m.de)))}
-      else pronto();
+      pronto();
     })
     .on("postgres_changes",{event:"INSERT",schema:"public",table:"directos"},p=>{
       const m=p.new;if(!m||(m.para!==uid&&m.de!==uid)||bloqueados.has(m.de))return;
@@ -857,8 +867,8 @@ function render(){
   $("filtros").innerHTML=`<button class="fchip${!filtro&&!fFecha?" on":""}" data-r="1">Todo</button><button class="fchip${fFecha==="hoy"?" on":""}" data-d="hoy">Hoy</button><button class="fchip${fFecha==="finde"?" on":""}" data-d="finde">Este finde</button>`+chipsT;
   const adv=advAll.filter(a=>(!filtro||a.tipo===filtro)&&cumpleFecha(a)).sort(orden);
   adv.concat(aq).forEach(a=>{
-    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}" style="background:${col(a)}">${sym(a,22)}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
-    L.marker([a.lat,a.lng],{icon:ic}).on("click",()=>elegir(a.id)).addTo(capa);
+    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}" style="background:${col(a)}">${sym(a,22)}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+    L.marker([a.lat,a.lng],{icon:ic,zIndexOffset:a.id===burbuja?1000:0}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
   });
   const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.nivel&&a.nivel!=="Todos los niveles"?" · "+esc(a.nivel):""}${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
   $("lista").innerHTML=adv.length?adv.map(card).join(""):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"No hay planes con estos filtros. Pulsa + para crear uno."}</p>`;
@@ -866,6 +876,9 @@ function render(){
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
   const rc=$("rutaChip");
   if(ruta&&ruta.estado==="ok"){const pa=data.find(x=>x.id===ruta.id);rc.hidden=false;$("rutaTxt").textContent=(pa?pa.titulo+" · ":"")+km(ruta.dist)+" · "+durTxt(ruta.dur)+" "+PERFIL[ruta.modo][1]}else rc.hidden=true;
+  $("listaSum").textContent="📋 Ver lista de planes ("+adv.length+")";
+  const bs=$("bannerSol");
+  if(solRec.length){const u=solRec[0];bs.hidden=false;bs.innerHTML=`<span>👥 <b>${esc(nombres[u]||"Alguien")}</b> quiere ser tu amigo${solRec.length>1?" (+"+(solRec.length-1)+" más)":""}</span><button type="button" data-bacc="${esc(u)}" style="padding:6px 12px;font-size:14px">Aceptar</button><button type="button" class="sec" data-brec="${esc(u)}" style="padding:6px 12px;font-size:14px">No</button>`}else bs.hidden=true;
   const mios=advAll.filter(mia).sort(orden);
   $("listaMios").innerHTML=mios.length?mios.map(card).join(""):`<p class="meta">Aún no tienes planes. Apúntate a uno o crea el tuyo con el botón +.</p>`;
   const tot=totalSinLeer()+solRec.length;
@@ -956,11 +969,12 @@ ${seguridad(a)}
   }
 }
 function cerrarForm(){pend=null;foto="";colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
-function elegir(id){tab="info";delId=null;cerrarForm();sel=id;render()}
+function elegir(id){burbuja=null;tab="info";delId=null;cerrarForm();sel=id;render()}
 
 map.on("click",e=>{
   plusMenu(false);
   if($("nueva").classList.contains("open")){marcaPunto(e.latlng);return}
+  if(burbuja!=null){burbuja=null;render();return}
   if(sel){sel=null;render();return}
   ponPunto(e.latlng);
 });
@@ -1011,6 +1025,10 @@ function pintaPersona(){
   on2("pe-dm",()=>{$("persona").classList.remove("open");abreDM(u)});on2("pe-quitar",()=>quitarAmigo(u));
   on2("pe-bloq",()=>bloquear(u));on2("pe-den",()=>{$("persona").classList.remove("open");abreDenuncia(u,null)});
 }
+$("bannerSol").addEventListener("click",e=>{
+  const a=e.target.closest("[data-bacc]"),r=e.target.closest("[data-brec]");
+  if(a)responderSolicitud(a.dataset.bacc,true);else if(r)responderSolicitud(r.dataset.brec,false);else if(solRec.length)abrePersona(solRec[0]);
+});
 $("listaSol").addEventListener("click",e=>{
   const a=e.target.closest("[data-acc]"),r=e.target.closest("[data-rec]"),c=e.target.closest("[data-can]");
   if(a){responderSolicitud(a.dataset.acc,true);return}
@@ -1182,6 +1200,8 @@ dbp.then(()=>mediaAll()).then(m=>{media=m;render()}).catch(()=>{});
 render();
 if(aceptado())arranca();
 setInterval(render,60000);
+setInterval(()=>{if(!document.hidden&&uid&&sb&&aceptado())recarga()},25000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&uid&&sb&&aceptado())recarga()});
 </script>
 </body>
 </html>
