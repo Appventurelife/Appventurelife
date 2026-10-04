@@ -6,6 +6,12 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>AppVentureLife</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20100%20100%27%3E%3Cdefs%3E%3ClinearGradient%20id=%27g%27%20x1=%270%27%20y1=%270%27%20x2=%270%27%20y2=%271%27%3E%3Cstop%20offset=%270%27%20stop-color=%27%231C6FD1%27/%3E%3Cstop%20offset=%271%27%20stop-color=%27%230A2A5E%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width=%27100%27%20height=%27100%27%20rx=%2722%27%20fill=%27url%28%23g%29%27/%3E%3Cpath%20d=%27M20%2062L38%2029l12%2019%208-11%2022%2025z%27%20fill=%27white%27/%3E%3Cpath%20d=%27M18%2076c8-8%2014%208%2022%200s14%208%2022%200%2012%206%2020%200%27%20fill=%27none%27%20stroke=%27%237FD0F5%27%20stroke-width=%276%27%20stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="AppVentureLife">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0A2A5E">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#E9EFE7;--ink:#17301F;--mut:#58705E;--card:#fff;--line:#C6D3C4;--cta:#1F5A3A;--ctat:#fff;--pin:#F2B632;
@@ -261,7 +267,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 31 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 33 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -359,8 +365,6 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
 <details class="mas"><summary>Añadir más detalles</summary>
 <label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
-<label for="f-nivel">Nivel</label>
-<select id="f-nivel"><option>Todos los niveles</option><option>Fácil</option><option>Medio</option><option>Difícil</option></select>
 <label for="f-punto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
 <label for="f-desc">Descripción</label><textarea id="f-desc" rows="3" placeholder="Qué vais a hacer, qué hay que llevar..."></textarea>
 <label for="f-equipo">Equipo necesario</label><input id="f-equipo" maxlength="120" placeholder="Ej. Chaleco, crema solar, agua">
@@ -496,7 +500,7 @@ async function pideTiempo(a,key){
 const b64=t=>btoa(unescape(encodeURIComponent(t))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
 const unb64=t=>decodeURIComponent(escape(atob(t.replace(/-/g,"+").replace(/_/g,"/"))));
 const datosComp=a=>{
-  const o={id:a.id,tipo:a.tipo,t:a.titulo,f:a.fecha||"",c:a.fecha?"":a.cuando,m:a.max,la:+(+a.lat).toFixed(5),ln:+(+a.lng).toFixed(5),n:a.nivel,p:a.punto,d:a.desc,pr:a.precio,l:a.link,pg:a.pago,e:a.emoji,o:a.org,q:a.equipo,em:a.emerg};
+  const o={id:a.id,tipo:a.tipo,t:a.titulo,f:a.fecha||"",c:a.fecha?"":a.cuando,m:a.max,la:+(+a.lat).toFixed(5),ln:+(+a.lng).toFixed(5),p:a.punto,d:a.desc,pr:a.precio,l:a.link,pg:a.pago,e:a.emoji,o:a.org,q:a.equipo,em:a.emerg};
   Object.keys(o).forEach(k=>{if(o[k]===""||o[k]==null||o[k]===0)delete o[k]});
   return o;
 };
@@ -531,7 +535,6 @@ function calendario(a){
   const l=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//AppVentureLife//ES","CALSCALE:GREGORIAN","BEGIN:VEVENT","UID:av-"+a.id+"@appventurelife.com","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+/,""),"DTSTART:"+ini,"DTEND:"+fin,"SUMMARY:"+x(a.titulo),"LOCATION:"+x(a.punto||(a.lat.toFixed(5)+", "+a.lng.toFixed(5))),"DESCRIPTION:"+x((a.desc||"")+(a.equipo?"\nEquipo: "+a.equipo:"")),"END:VEVENT","END:VCALENDAR"];
   location.href="data:text/calendar;charset=utf-8,"+encodeURIComponent(l.join("\r\n"));
 }
-const NIVC={"Fácil":"#4C9A4C","Medio":"#D9A21B","Difícil":"#C4472F","Todos los niveles":"#7B8A80"};
 let tab="info",filtro="",data=[],sel=null,pend=null,pendMarker=null,yoMarker=null,delId=null,foto="";
 let me="";try{me=localStorage.getItem("avl_nombre")||""}catch(e){}
 function save(){}
@@ -822,7 +825,7 @@ async function recarga(){
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});
     const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,nivel:r.nivel||"",punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
@@ -892,7 +895,7 @@ function render(){
     const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}" style="background:${col(a)}">${sym(a,22)}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.lat,a.lng],{icon:ic,zIndexOffset:a.id===burbuja?1000:0}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
   });
-  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.nivel&&a.nivel!=="Todos los niveles"?" · "+esc(a.nivel):""}${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
+  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
   $("lista").innerHTML=lst.length?lst.map(card).join(""):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
   $("ahoraBox").hidden=!aq.length;
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
@@ -956,7 +959,6 @@ ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(
 <button id="unir" class="big" ${lleno?"disabled":""}>${yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button>
 <div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}${a.fecha?`<button id="cal" class="sec" type="button">Calendario</button>`:""}</div>
 ${(yo||soyOrg(a))?rutaHTML(a):""}
-${a.nivel?`<p class="meta"><span class="chip"><i style="background:${NIVC[a.nivel]||"#7B8A80"}"></i>${esc(a.nivel)}</span></p>`:""}
 ${a.punto?`<p class="meta">Punto de encuentro: <b style="color:var(--ink)">${esc(a.punto)}</b></p>`:""}
 ${a.equipo?`<p class="meta">Equipo: <b style="color:var(--ink)">${esc(a.equipo)}</b></p>`:""}
 ${a.desc?`<p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
@@ -1002,14 +1004,14 @@ ${seguridad(a)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-plazas").value=6;$("f-nivel").selectedIndex=0;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();
+  $("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};
   const conocido=!!TIPOS[a.tipo];tipoSel=conocido?a.tipo:"otro";$("f-tipo").value=conocido?"":a.tipo;
   $("f-titulo").value=a.titulo;$("f-emoji").value=a.emoji||"";
   $("f-dia").value=a.fecha?a.fecha.slice(0,10):"";$("f-hora").value=a.fecha?a.fecha.slice(11,16):"";
-  $("f-plazas").value=a.max;$("f-nivel").value=a.nivel||"Todos los niveles";
+  $("f-plazas").value=a.max;
   $("f-punto").value=a.punto||"";$("f-desc").value=a.desc||"";$("f-equipo").value=a.equipo||"";$("f-emerg").value=a.emerg||"";
   $("f-precio").value=a.precio||"";$("f-link").value=a.link||"";$("f-pago").value=a.pago||"";
   $("f-vis").value=a.priv?"codigo":a.soloAmigos?"amigos":"todos";
@@ -1334,7 +1336,7 @@ $("f-ok").onclick=async()=>{
     if(!await perfilListo())throw new Error("Pon tu nombre primero");
     const custom=$("f-tipo").value.trim(),tipo=custom?norm(custom):tipoSel,t=$("f-titulo").value.trim()||(TIPOS[tipo]||tipo);
     const max=Math.max(2,Math.min(50,+$("f-plazas").value||6)),dia=$("f-dia").value,fch=dia?dia+"T"+($("f-hora").value||"10:00"):"",lat=pend.lat,lng=pend.lng;
-    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,nivel:$("f-nivel").value,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA};
+    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA};
     if(editId){
       const id=editId;
       const aPrev=data.find(x=>x.id===id);
