@@ -147,6 +147,16 @@ main{padding-bottom:120px}
 .mapwrap{margin-top:-30px}
 #map{height:66vh;min-height:360px}
 .locbtn{position:absolute;right:12px;top:12px;z-index:500}
+.buscamapa{position:absolute;left:12px;right:72px;top:12px;z-index:700}
+.buscamapa input{width:100%;margin:0;padding:12px 40px 12px 16px;border-radius:99px;border:2px solid var(--card);background:var(--card);color:var(--ink);box-shadow:0 3px 10px rgba(0,0,0,.3);font-size:16px}
+.buscamapa>button{position:absolute;right:6px;top:6px;width:32px;height:32px;padding:0;border-radius:50%;background:var(--bg);color:var(--ink)}
+.resmapa{margin-top:6px;background:var(--card);color:var(--ink);border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.35);max-height:46vh;overflow:auto}
+.resmapa .r{display:flex;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.08);cursor:pointer}
+.resmapa .r:last-child{border:0}
+.resmapa .r b{display:block;font-size:15px;line-height:1.2}
+.resmapa .r small{display:block;color:var(--mut);font-size:12px;margin-top:1px}
+.resmapa .r .ic{font-size:22px;width:28px;text-align:center;flex:none}
+.resmapa p{margin:0;padding:12px;color:var(--mut);font-size:14px}
 .crosshair{position:absolute;left:50%;top:50%;width:44px;height:44px;margin:-44px 0 0 -22px;z-index:600;pointer-events:none;filter:drop-shadow(0 3px 3px rgba(0,0,0,.45))}
 .placebar{position:absolute;left:10px;right:10px;bottom:12px;z-index:600;display:flex;gap:8px;align-items:center;background:var(--card);border-radius:14px;padding:10px 12px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
 .placebar span{flex:1;font-weight:700;font-size:14px}
@@ -201,7 +211,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 #cod-in,#f-cod{letter-spacing:2px;text-transform:uppercase}
 .ruta{border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;margin:0 0 12px}
 .payb.sec2{background:transparent;color:var(--ink);border:1.5px solid var(--line);margin-top:0;padding:8px 12px;font-size:14px}
-.rutachip{position:absolute;left:12px;top:12px;right:72px;z-index:500;background:var(--card);border-radius:99px;padding:5px 5px 5px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(0,0,0,.3);font-size:14px;font-weight:700}
+.rutachip{position:absolute;left:12px;top:64px;right:72px;z-index:500;background:var(--card);border-radius:99px;padding:5px 5px 5px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(0,0,0,.3);font-size:14px;font-weight:700}
 .rutachip span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .rutachip button{width:30px;height:30px;padding:0;border-radius:50%;background:var(--bg);color:var(--ink)}
 .plusmenu{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:950;display:flex;flex-direction:column;gap:8px;align-items:center}
@@ -244,14 +254,15 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <section id="vExplorar">
 <div class="mapwrap">
 <div id="map" role="application" aria-label="Mapa de planes"></div>
+<div class="buscamapa"><input id="buscaMapa" type="search" placeholder="🔍 Buscar sitio, restaurante o pueblo" autocomplete="off" autocapitalize="off" enterkeyhint="search"><button id="buscaX" type="button" aria-label="Borrar" hidden>✕</button><div id="resMapa" class="resmapa" hidden></div></div>
 <button id="loc" type="button" class="round locbtn" aria-label="Mi ubicación"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></button>
 <div id="rutaChip" class="rutachip" hidden><span id="rutaTxt"></span><button id="rutaX" type="button" aria-label="Quitar ruta">✕</button></div>
 <svg id="centro" class="crosshair" viewBox="0 0 24 24" hidden aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="#FFD66B" stroke="#0A2A5E" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" fill="#0A2A5E"/></svg>
 <div id="colocar" class="placebar" hidden><span id="colocarTxt">Toca el mapa para marcar el lugar</span><button id="colocarNo" class="sec" type="button" aria-label="Cancelar">✕</button><button id="colocarOk" type="button" disabled>Crear plan aquí</button></div>
 <div id="bannerSol" class="bannersol" hidden></div>
-<div class="attr">&copy; OpenStreetMap · rutas OSRM</div>
+<div class="attr">&copy; OpenStreetMap · rutas OSRM · búsqueda Photon</div>
 </div>
-<p class="hint" style="margin:8px 2px 0">Toca el mapa para crear un plan en ese punto, o una chincheta para ver un plan.</p>
+<p class="hint" style="margin:8px 2px 0">Busca un sitio arriba, o toca el mapa para crear un plan en ese punto. Toca una chincheta para ver un plan.</p>
 <div id="filtros"></div>
 <details id="listaDet" class="mas" style="margin-top:12px" open><summary id="listaSum">📋 Mis planes e invitaciones</summary>
 <div id="ahoraBox" hidden><h2 class="sec-h">Ahora mismo</h2><div id="ahora" class="list"></div></div>
@@ -267,7 +278,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 35 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 36 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -807,11 +818,80 @@ function irA(v){
   else{$("bMios").classList.add("on");$("bExp").classList.remove("on");salirColocar()}
   window.scrollTo(0,0);render();
 }
-function salirColocar(){colocando=false;$("centro").hidden=true;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}}
+function salirColocar(){lugarSug="";colocando=false;$("centro").hidden=true;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}}
 function marcaPunto(ll){
   pend=ll;
   if(pendMarker)pendMarker.setLatLng(ll);
   else pendMarker=L.circleMarker(ll,{radius:12,color:"#17301F",weight:3,dashArray:"4 6",fillColor:"#FFD66B",fillOpacity:.9,interactive:false}).addTo(map);
+}
+let lugarSug="",buscaT=null,buscaN=0,resultadosMapa=[];const cacheBusca={};
+function lugarDeFeature(f){
+  const p=(f&&f.properties)||{},c=(f&&f.geometry&&f.geometry.coordinates)||[];
+  if(c.length<2||!isFinite(+c[0])||!isFinite(+c[1]))return null;
+  const calle=[p.street,p.housenumber].filter(Boolean).join(" ");
+  const nombre=p.name||calle||p.city||"";
+  if(!nombre)return null;
+  const det=[calle&&calle!==nombre?calle:"",p.district&&p.district!==nombre?p.district:"",p.city&&p.city!==nombre?p.city:"",p.state,p.country].filter(Boolean).join(", ");
+  const k=p.osm_key||"",v=p.osm_value||"";
+  const emojis={restaurant:"🍽️",fast_food:"🍔",cafe:"☕",bar:"🍺",pub:"🍺",hotel:"🏨",hostel:"🏨",camp_site:"⛺",beach:"🏖️",marina:"⚓",harbour:"⚓",peak:"⛰️",viewpoint:"🌄",supermarket:"🛒",pharmacy:"💊",fuel:"⛽",parking:"🅿️"};
+  const ic=emojis[v]||(k==="place"?"🏘️":k==="natural"?"🌿":k==="shop"?"🛍️":k==="tourism"?"🧭":k==="highway"?"🛣️":"📍");
+  const esLugar=k==="place"||k==="boundary";
+  return {nombre,det,lat:+c[1],lng:+c[0],ic,zoom:esLugar?(v==="city"?12:v==="town"?13:14):17};
+}
+async function buscaLugares(q){
+  const clave=q.toLowerCase();
+  if(cacheBusca[clave])return cacheBusca[clave];
+  let sesgo="";
+  try{const c=map.getCenter();if(map.getZoom()>=6&&isFinite(c.lat)&&isFinite(c.lng))sesgo="&lat="+c.lat.toFixed(3)+"&lon="+c.lng.toFixed(3)}catch(e){}
+  const r=await fetch("https://photon.komoot.io/api/?limit=8&q="+encodeURIComponent(q)+sesgo);
+  if(!r.ok){const e=new Error("http "+r.status);e.status=r.status;throw e}
+  const j=await r.json();
+  const vistos=new Set(),res=[];
+  for(const f of (j.features||[])){
+    const l=lugarDeFeature(f);if(!l)continue;
+    const k=l.nombre+"|"+l.lat.toFixed(4)+"|"+l.lng.toFixed(4);
+    if(vistos.has(k))continue;vistos.add(k);res.push(l);
+  }
+  cacheBusca[clave]=res;return res;
+}
+function planesQue(q){
+  const n=sinAcentos(q);
+  return vivos().filter(a=>a.kind!=="aqui"&&sinAcentos(a.titulo+" "+(a.punto||"")).includes(n)).slice(0,3);
+}
+function pintaResMapa(res,locales,msg){
+  const box=$("resMapa");
+  if(msg){box.innerHTML=`<p>${esc(msg)}</p>`;box.hidden=false;return}
+  const h=locales.map(a=>`<div class="r" data-plan="${a.id}"><span class="ic">📌</span><div><b>${esc(a.titulo)}</b><small>Plan · ${esc(a.cuando)}</small></div></div>`).join("")
+    +res.map((l,i)=>`<div class="r" data-i="${i}"><span class="ic">${l.ic}</span><div><b>${esc(l.nombre)}</b><small>${esc(l.det)}</small></div></div>`).join("");
+  box.innerHTML=h||`<p>No encuentro ese sitio. Prueba con otro nombre o añade el pueblo (por ejemplo «Bar Carlos, Gandía»).</p>`;
+  box.hidden=false;
+}
+async function lanzaBusqueda(qIn){
+  const q=String(qIn!==undefined?qIn:$("buscaMapa").value).trim();
+  $("buscaX").hidden=!q;
+  if(q.length<3){$("resMapa").hidden=true;return}
+  const n=++buscaN,locales=planesQue(q);
+  if(!locales.length)pintaResMapa([],[],"Buscando…");
+  try{
+    const res=await buscaLugares(q);
+    if(n!==buscaN)return;
+    resultadosMapa=res;pintaResMapa(res,locales,"");
+  }catch(e){
+    if(n!==buscaN)return;
+    resultadosMapa=[];
+    pintaResMapa([],locales,locales.length?"":((e&&e.status===429)?"Demasiadas búsquedas seguidas. Espera un momento.":"No se pudo buscar ahora. Revisa la conexión e inténtalo otra vez."));
+  }
+}
+function elegirLugar(l){
+  $("resMapa").hidden=true;
+  plusMenu(false);sel=null;burbuja=null;cerrarForm();render();
+  const ll={lat:l.lat,lng:l.lng};
+  map.setView(ll,l.zoom);
+  ponPunto(ll);
+  lugarSug=[l.nombre,l.det].filter(Boolean).join(", ").slice(0,80);
+  $("colocarTxt").textContent="📍 "+l.nombre;
+  $("colocarOk").textContent="Crear plan aquí";
+  $("map").scrollIntoView({behavior:"smooth",block:"center"});
 }
 function ponPunto(ll){marcaPunto(ll);colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Plan en este punto";$("colocarOk").disabled=false}
 function pintaPrev(){const c=$("f-tipo").value.trim(),t=c?norm(c):tipoSel,a={tipo:t,emoji:ultimo($("f-emoji").value)};$("pinprev").innerHTML=`<div class="pin" style="background:${col(a)}">${sym(a,22)}</div>`}
@@ -1127,19 +1207,28 @@ async function guardaEdicion(id,campos,priv,cod){
     if(cambios.length){try{await sb.from("mensajes").insert({plan_id:id,texto:"✏️ El organizador ha cambiado "+cambios.join(", ")+"."})}catch(e){}}
   }
 }
-function cerrarForm(){if(editId){limpiaForm()}editId=null;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
+function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
 function elegir(id){burbuja=null;tab="info";delId=null;cerrarForm();sel=id;render()}
 
 map.on("click",e=>{
-  plusMenu(false);
+  plusMenu(false);$("resMapa").hidden=true;
   if($("nueva").classList.contains("open")){marcaPunto(e.latlng);return}
   if(burbuja!=null){burbuja=null;render();return}
   if(sel){sel=null;render();return}
+  lugarSug="";
   ponPunto(e.latlng);
 });
 $("lista").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],14);elegir(+i.dataset.id)}});
 $("filtros").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.r){filtro="";fFecha=""}else if(b.dataset.d!==undefined){fFecha=fFecha===b.dataset.d?"":b.dataset.d}else{filtro=filtro===b.dataset.f?"":b.dataset.f}render()};
 $("rutaX").onclick=()=>{quitaRuta();render()};
+$("buscaMapa").addEventListener("input",()=>{clearTimeout(buscaT);buscaT=setTimeout(()=>lanzaBusqueda(),550)});
+$("buscaMapa").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();clearTimeout(buscaT);lanzaBusqueda();$("buscaMapa").blur()}});
+$("buscaX").onclick=()=>{$("buscaMapa").value="";$("buscaX").hidden=true;$("resMapa").hidden=true;buscaN++};
+$("resMapa").addEventListener("click",e=>{
+  const r=e.target.closest(".r");if(!r)return;
+  if(r.dataset.plan){const a=data.find(x=>x.id===+r.dataset.plan);$("resMapa").hidden=true;if(a){map.setView([a.lat,a.lng],15);elegir(a.id)}return}
+  const l=resultadosMapa[+r.dataset.i];if(l)elegirLugar(l);
+});
 $("bExp").onclick=()=>irA("explorar");
 $("bMios").onclick=()=>irA("mios");
 function plusMenu(v){$("plusMenu").hidden=!v;if(v)$("crearBtn").classList.add("open");else $("crearBtn").classList.remove("open")}
@@ -1359,7 +1448,7 @@ $("a-ok").onclick=()=>{
 $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],15);elegir(+i.dataset.id)}});
 $("colocarNo").onclick=()=>{salirColocar();if(editId){const a=data.find(x=>x.id===editId);if(a)pend={lat:a.lat,lng:a.lng};$("nueva").classList.add("open")}else pend=null};
 $("f-mover").onclick=()=>{$("nueva").classList.remove("open");colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el nuevo lugar del plan";$("colocarOk").disabled=true;$("colocarOk").textContent="Usar este lugar";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
-$("colocarOk").onclick=()=>{if(!pend)return;colocando=false;$("colocar").hidden=true;$("nueva").classList.add("open")};
+$("colocarOk").onclick=()=>{if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);$("nueva").classList.add("open")};
 $("f-vis").addEventListener("change",()=>{const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
 $("f-cod-gen").onclick=()=>{$("f-cod").value=fmtCod(genCod())};
 $("cod-no").onclick=()=>$("codigo").classList.remove("open");
