@@ -159,6 +159,7 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .sheet .fchip.on{background:var(--cta);color:var(--ctat);border-color:var(--cta)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 4px}
 .item small{display:block}
+.lnk{cursor:pointer;text-decoration:underline;text-decoration-color:rgba(0,0,0,.3);font-weight:700}
 .pin.amigo{box-shadow:0 0 0 4px #FFD66B,0 2px 6px rgba(0,0,0,.35)}
 .amigob{position:absolute;left:-8px;top:-9px;font-size:14px;line-height:1}
 #invBox{margin:8px 0 12px}
@@ -239,14 +240,14 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 </section>
 <section id="vMios" hidden>
 <div id="amigosBox"><h2 class="sec-h">Amigos</h2>
-<div class="mini" style="margin-bottom:8px"><button id="invitar" type="button">Invitar amigos</button></div>
-<div id="invBox" hidden><input id="inv-link" readonly><div class="mini" style="margin-top:8px"><button id="inv-wa" type="button">WhatsApp</button><button id="inv-copy" class="sec" type="button">Copiar enlace</button></div></div>
+<div id="solBox" hidden><h3 class="who-h">Solicitudes</h3><div id="listaSol" class="list"></div></div>
+<p class="meta" id="amHint">Toca el nombre de alguien en un plan para añadirle como amigo.</p>
 <div id="listaAmigos" class="list"></div></div>
 <div id="dmBox" hidden><h2 class="sec-h">Mensajes</h2><div id="listaDM" class="list"></div></div>
 <h2 class="sec-h">Mis planes</h2>
 <div id="listaMios" class="list"></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 24 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 25 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mis planes</button></nav>
@@ -291,9 +292,17 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2 id="dm-t">Mensajes</h2>
 <div class="chat" id="dm-msgs"></div>
+<button id="dm-add" class="sec" type="button" hidden style="margin-bottom:10px;font-size:14px;padding:6px 12px">Añadir a amigos</button>
 <button id="dm-quitar" class="sec" type="button" hidden style="margin-bottom:10px;font-size:14px;padding:6px 12px">Quitar de amigos</button>
 <div class="mini"><button id="dm-bloq" class="sec" type="button">Bloquear</button><button id="dm-den" class="sec" type="button">Denunciar</button></div>
 <div class="send"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="dm-ok" type="button">Enviar</button></div>
+</section>
+
+<section id="persona" class="sheet" aria-label="Persona">
+<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
+<h2 id="pe-n">Persona</h2>
+<p class="meta" id="pe-e"></p>
+<div id="pe-acc"></div>
 </section>
 
 <section id="denuncia" class="sheet" aria-label="Denunciar">
@@ -305,13 +314,6 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <textarea id="den-detalle" rows="3" maxlength="500" placeholder="Escribe aquí..."></textarea>
 <label class="chk" id="den-bloq-l"><input type="checkbox" id="den-bloq" checked> También bloquear a esta persona</label>
 <div class="row" style="margin-top:14px"><button class="sec" id="den-no" type="button">Cancelar</button><button id="den-ok" type="button">Enviar denuncia</button></div>
-</section>
-
-<section id="amistad" class="sheet" aria-label="Invitación de amistad">
-<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<h2 id="am-t">Invitación</h2>
-<p class="meta" id="am-p"></p>
-<div class="row" style="margin-top:14px"><button class="sec" id="am-no" type="button">Ahora no</button><button id="am-ok" type="button">Aceptar</button></div>
 </section>
 
 <section id="detalle" class="sheet" aria-label="Detalle del plan"></section>
@@ -328,7 +330,8 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div><label for="f-fecha">Cuándo</label><input id="f-fecha" type="datetime-local"></div>
 <div><label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6"></div>
 </div>
-<label class="chk"><input type="checkbox" id="f-priv"> 🔒 Plan privado (solo con código)</label>
+<label for="f-vis">¿Quién puede verlo?</label>
+<select id="f-vis"><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
 <div id="privBox" hidden><label for="f-cod">Código de acceso</label>
 <div class="row"><input id="f-cod" maxlength="20" autocapitalize="characters" autocomplete="off"><button id="f-cod-gen" class="sec" type="button" style="flex:none;padding:10px 14px">Otro</button></div>
 <p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
@@ -376,7 +379,7 @@ const sym=(a,s)=>a.emoji?`<span class="em" style="font-size:${s}px">${esc(a.emoj
 const norm=v=>{v=v.trim();if(!v)return"otro";const k=Object.keys(TIPOS).find(k=>TIPOS[k].toLowerCase()===v.toLowerCase());return k||v};
 const hash=t=>{let h=0;for(const c of t)h=(h*31+c.charCodeAt(0))>>>0;return h};
 const col=a=>a.kind==="aqui"?"#1E7BFF":TIPOS[a.tipo]?`var(--t-${a.tipo})`:`hsl(${hash(String(a.tipo).toLowerCase())%360} 50% 38%)`;
-const quien=a=>`<p class="meta" style="margin-bottom:4px">Organiza <b style="color:var(--ink)">${esc(a.org)}</b></p><h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user"${a.precio>0&&soyOrg(a)?` data-p="${esc(u)}" style="cursor:pointer"`:""}><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":""}${a.precio>0?`<em class="pg${pg?" ok":""}">${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
+const quien=a=>`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b></p><h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
 const migra=a=>{if(!Array.isArray(a.asist)){a.asist=[];for(let i=0;i<(a.n||0);i++)a.asist.push(i===0&&a.yo&&me?me:"Participante")}if(!a.org)a.org=a.asist[0]||"Anónimo"};
 const vivos=()=>data.filter(a=>!a.hasta||a.hasta>Date.now());
 const hace=t=>{const m=Math.round((Date.now()-t)/60000);return m<1?"ahora mismo":m<60?"hace "+m+" min":"hace "+Math.floor(m/60)+" h"};
@@ -495,8 +498,6 @@ function abrirCodigo(){$("cod-err").textContent="";$("cod-in").value="";$("codig
 function importaEnlace(){
   const h=location.hash;let m=h.match(/^#p=(\d+)/);
   if(m){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;const a=data.find(x=>x.id===+m[1]);if(a)abreImportado(a);else alert("No encontré ese plan. Puede que sea privado o que ya no exista.");return}
-  m=h.match(/^#amigo=([A-Za-z0-9]+)/);
-  if(m){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;invitacionAmistad(m[1].toUpperCase());return}
   if(/^#codigo/.test(h)){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;abrirCodigo()}
 }
 /* añadir al calendario (.ics) */
@@ -716,7 +717,7 @@ function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>
 const SB_URL="https://gluinrtmrrfecbhjwvdl.supabase.co",SB_KEY="sb_publishable_qjY62DUZEKjXFqMfX14x7w_TBe-grRt";
 let sb=null,uid=null,nombres={},chats={},perfilOk=false,cargando=true,errCon="";
 try{sb=supabase.createClient(SB_URL,SB_KEY)}catch(e){errCon="No se pudo cargar el servidor."}
-let dms={},dmCon=null,visto={},toastTmr=null,amigosSet=new Set(),invCod="",quitarOk=false,bloqueados=new Set(),denCtx=null;
+let dms={},dmCon=null,visto={},toastTmr=null,amigosSet=new Set(),invCod="",quitarOk=false,bloqueados=new Set(),denCtx=null,solRec=[],solEnv=[],perCtx=null;
 try{visto=JSON.parse(localStorage.getItem("avl_visto")||"{}")}catch(e){}
 const guardaVisto=()=>{try{localStorage.setItem("avl_visto",JSON.stringify(visto))}catch(e){}};
 const ultimoId=l=>l&&l.length?l[l.length-1].id:0;
@@ -736,6 +737,8 @@ const totalSinLeer=()=>data.filter(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))).redu
 function pintaDM(){
   const l=dms[dmCon]||[];
   $("dm-quitar").hidden=!esAmigo(dmCon);
+  $("dm-add").hidden=esAmigo(dmCon)||solEnv.includes(dmCon);
+  $("dm-add").textContent=solRec.includes(dmCon)?"Aceptar solicitud de amistad":"Añadir a amigos";
   $("dm-t").textContent="💬 "+(nombres[dmCon]||"Mensajes");
   $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
   const c=$("dm-msgs");c.scrollTop=c.scrollHeight;
@@ -770,11 +773,14 @@ async function recarga(){
       sb.from("mensajes").select("*").order("creado",{ascending:true}).limit(1500),
       sb.from("directos").select("*").order("creado",{ascending:true}).limit(1500),
       sb.from("amigos").select("amigo_id"),
-      sb.from("bloqueos").select("bloqueado_id")
+      sb.from("bloqueos").select("bloqueado_id"),
+      sb.from("solicitudes").select("de,para")
     ]);
     const er=res.find(x=>x.error);if(er)throw er.error;
-    const [pl,pa,pr,aq,co,ms,dr,am,bl]=res;
+    const [pl,pa,pr,aq,co,ms,dr,am,bl,sl]=res;
     bloqueados=new Set(bl.data.map(r=>r.bloqueado_id));
+    solRec=sl.data.filter(r=>r.para===uid&&!bloqueados.has(r.de)).map(r=>r.de);
+    solEnv=sl.data.filter(r=>r.de===uid&&!bloqueados.has(r.para)).map(r=>r.para);
     nombres={};pr.data.forEach(p=>{nombres[p.id]=p.nombre});
     const nom=i=>nombres[i]||"Alguien";
     chats={};ms.data.filter(m=>!bloqueados.has(m.user_id)).forEach(m=>{(chats[m.plan_id]=chats[m.plan_id]||[]).push({id:m.id,uid:m.user_id,n:nom(m.user_id),t:Date.parse(m.creado),txt:m.texto})});
@@ -783,7 +789,7 @@ async function recarga(){
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});
     const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,nivel:r.nivel||"",punto:r.punto||"",desc:r.descr||"",foto:"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,nivel:r.nivel||"",punto:r.punto||"",desc:r.descr||"",foto:"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}}});
@@ -792,7 +798,7 @@ async function recarga(){
     let primera=true;try{primera=!localStorage.getItem("avl_visto")}catch(e){}
     if(primera){lista.forEach(a=>{if(a.kind!=="aqui")visto["p"+a.id]=ultimoId(a.chat)});Object.keys(dms).forEach(u=>{visto["d"+u]=ultimoId(dms[u])});guardaVisto()}
   }catch(e){errCon=(e&&e.message)||"Sin conexión con el servidor."}
-  cargando=false;if($("dm").classList.contains("open")&&dmCon)pintaDM();render();sincronizaSeguimiento();
+  cargando=false;if($("dm").classList.contains("open")&&dmCon)pintaDM();if($("persona").classList.contains("open")&&perCtx)pintaPersona();render();sincronizaSeguimiento();
 }
 function suscribir(){
   let tmr=null;const pronto=()=>{clearTimeout(tmr);tmr=setTimeout(recarga,400)};
@@ -814,6 +820,11 @@ function suscribir(){
         render();
       }})
     .on("postgres_changes",{event:"*",schema:"public",table:"amigos"},pronto)
+    .on("postgres_changes",{event:"*",schema:"public",table:"solicitudes"},p=>{
+      const m=p.new;
+      if(p.eventType==="INSERT"&&m&&m.para===uid&&!bloqueados.has(m.de)){recarga().then(()=>avisa("👥 "+(nombres[m.de]||"Alguien")+" quiere ser tu amigo",()=>abrePersona(m.de)))}
+      else pronto();
+    })
     .on("postgres_changes",{event:"INSERT",schema:"public",table:"directos"},p=>{
       const m=p.new;if(!m||(m.para!==uid&&m.de!==uid)||bloqueados.has(m.de))return;
       const u=m.de===uid?m.para:m.de,l=(dms[u]=dms[u]||[]);
@@ -845,7 +856,7 @@ function render(){
     const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}" style="background:${col(a)}">${sym(a,22)}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.lat,a.lng],{icon:ic}).on("click",()=>elegir(a.id)).addTo(capa);
   });
-  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.nivel&&a.nivel!=="Todos los niveles"?" · "+esc(a.nivel):""}${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
+  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.nivel&&a.nivel!=="Todos los niveles"?" · "+esc(a.nivel):""}${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
   $("lista").innerHTML=adv.length?adv.map(card).join(""):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"No hay planes con estos filtros. Pulsa + para crear uno."}</p>`;
   $("ahoraBox").hidden=!aq.length;
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
@@ -853,11 +864,14 @@ function render(){
   if(ruta&&ruta.estado==="ok"){const pa=data.find(x=>x.id===ruta.id);rc.hidden=false;$("rutaTxt").textContent=(pa?pa.titulo+" · ":"")+km(ruta.dist)+" · "+durTxt(ruta.dur)+" "+PERFIL[ruta.modo][1]}else rc.hidden=true;
   const mios=advAll.filter(mia).sort(orden);
   $("listaMios").innerHTML=mios.length?mios.map(card).join(""):`<p class="meta">Aún no tienes planes. Apúntate a uno o crea el tuyo con el botón +.</p>`;
-  const tot=totalSinLeer();
+  const tot=totalSinLeer()+solRec.length;
   $("bMios").textContent="Mis planes"+(mios.length?" ("+mios.length+")":"")+(tot?" · "+tot+" 💬":"");
   try{document.title=(tot?"("+tot+") ":"")+"AppVentureLife"}catch(e){}
+  const sol=[...solRec.map(u=>({u,t:"r"})),...solEnv.map(u=>({u,t:"e"}))];
+  $("solBox").hidden=!sol.length;
+  $("listaSol").innerHTML=sol.map(x=>x.t==="r"?`<div class="item" data-per="${esc(x.u)}"><div style="flex:1;min-width:0"><b>${esc(nombres[x.u]||"Alguien")}</b><small>quiere ser tu amigo</small></div><button type="button" data-acc="${esc(x.u)}" style="padding:6px 12px;font-size:14px">Aceptar</button><button type="button" class="sec" data-rec="${esc(x.u)}" style="padding:6px 12px;font-size:14px">Rechazar</button></div>`:`<div class="item" data-per="${esc(x.u)}"><div style="flex:1;min-width:0"><b>${esc(nombres[x.u]||"Alguien")}</b><small>Solicitud enviada</small></div><button type="button" class="sec" data-can="${esc(x.u)}" style="padding:6px 12px;font-size:14px">Cancelar</button></div>`).join("");
   const am=[...amigosSet].map(u=>({u,n:nombres[u]||"Alguien",pin:data.find(x=>x.kind==="aqui"&&x.uid===u),pl:advAll.filter(a=>a.orgId===u||(a.asistIds||[]).includes(u))}));
-  $("listaAmigos").innerHTML=am.length?am.map(x=>`<div class="item" data-am="${esc(x.u)}"><div class="th" style="background:#C8892B"><span class="em" style="font-size:26px">👥</span></div><div style="flex:1;min-width:0"><b>${esc(x.n)}</b><small>${x.pin?"📍 Compartiendo ubicación":"Sin ubicación compartida"}${x.pl.length?" · Va a: "+esc(x.pl.slice(0,2).map(p=>p.titulo).join(", ")):""}</small></div>${x.pin?`<button type="button" class="sec" data-ver="${esc(x.u)}" style="padding:6px 10px;font-size:13px">Ver</button>`:""}</div>`).join(""):`<p class="meta">Aún no tienes amigos. Pulsa «Invitar amigos» y mándales el enlace por WhatsApp.</p>`;
+  $("listaAmigos").innerHTML=am.length?am.map(x=>`<div class="item" data-am="${esc(x.u)}"><div class="th" style="background:#C8892B"><span class="em" style="font-size:26px">👥</span></div><div style="flex:1;min-width:0"><b>${esc(x.n)}</b><small>${x.pin?"📍 Compartiendo ubicación":"Sin ubicación compartida"}${x.pl.length?" · Va a: "+esc(x.pl.slice(0,2).map(p=>p.titulo).join(", ")):""}</small></div>${x.pin?`<button type="button" class="sec" data-ver="${esc(x.u)}" style="padding:6px 10px;font-size:13px">Ver</button>`:""}</div>`).join(""):`<p class="meta">Aún no tienes amigos. Toca el nombre de alguien en un plan para enviarle una solicitud.</p>`;
   $("bloqBox").hidden=!bloqueados.size;
   $("listaBloq").innerHTML=[...bloqueados].map(u=>`<div class="item"><div style="flex:1;min-width:0"><b>${esc(nombres[u]||"Alguien")}</b></div><button type="button" class="sec" data-desb="${esc(u)}" style="padding:6px 12px;font-size:14px">Desbloquear</button></div>`).join("");
   const convs=Object.keys(dms).map(u=>({u,l:dms[u]})).filter(c=>c.l.length).sort((x,y)=>y.l[y.l.length-1].t-x.l[x.l.length-1].t);
@@ -868,9 +882,9 @@ function render(){
   const a=vivos().find(x=>x.id===sel),d=$("detalle");
   if(!a){d.classList.remove("open");return}
   if(a.kind==="aqui"){
-    d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="cover ph" style="background:#1E7BFF;height:110px"><span class="em" style="font-size:56px">${esc(a.emoji||"📍")}</span></div><h2>${esc(a.org)}</h2><p style="margin:0 0 4px;font-size:18px">${esc(a.titulo||"Está por aquí")}</p><p class="meta">${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):" · hasta que lo quite"}</p>${soyOrg(a)&&watchId!=null?`<p class="meta">📡 Siguiendo tu movimiento (con la app abierta)</p>`:""}${soyOrg(a)?`<div class="acts"><button id="del" type="button">Dejar de compartir</button></div>`:`<button id="dmGo" class="big" type="button">💬 Escribir mensaje</button><div class="mini"><button id="bloqGo" class="sec" type="button">Bloquear</button><button id="denGo" class="sec" type="button">Denunciar</button></div>`}`;
+    d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="cover ph" style="background:#1E7BFF;height:110px"><span class="em" style="font-size:56px">${esc(a.emoji||"📍")}</span></div><h2>${esc(a.org)}</h2><p style="margin:0 0 4px;font-size:18px">${esc(a.titulo||"Está por aquí")}</p><p class="meta">${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):" · hasta que lo quite"}</p>${soyOrg(a)&&watchId!=null?`<p class="meta">📡 Siguiendo tu movimiento (con la app abierta)</p>`:""}${soyOrg(a)?`<div class="acts"><button id="del" type="button">Dejar de compartir</button></div>`:`<button id="dmGo" class="big" type="button">💬 Escribir mensaje</button><div class="mini"><button id="perGo" class="sec" type="button">👥 Amigo</button><button id="bloqGo" class="sec" type="button">Bloquear</button><button id="denGo" class="sec" type="button">Denunciar</button></div>`}`;
     d.classList.add("open");
-    if(!soyOrg(a)){const bg=$("bloqGo"),dg=$("denGo");if(bg)bg.onclick=()=>bloquear(a.uid);if(dg)dg.onclick=()=>abreDenuncia(a.uid,null)}
+    if(!soyOrg(a)){const bg=$("bloqGo"),dg=$("denGo"),pg=$("perGo");if(pg)pg.onclick=()=>abrePersona(a.uid);if(bg)bg.onclick=()=>bloquear(a.uid);if(dg)dg.onclick=()=>abreDenuncia(a.uid,null)}
     if(!soyOrg(a)&&$("dmGo"))$("dmGo").onclick=()=>{if(!me){pedirNombre(()=>$("dmGo").click());return}abreDM(a.uid)};
     if(soyOrg(a))$("del").onclick=async()=>{try{const r=await sb.from("aqui").delete().eq("user_id",uid);if(r.error)throw r.error;pararSeguimiento();sel=null;await recarga()}catch(e){fallo(e)}};
     return;
@@ -883,13 +897,14 @@ function render(){
   if(tab==="chat"&&puede&&a.chat.length){const ult=ultimoId(a.chat);if((visto["p"+a.id]||0)<ult){visto["p"+a.id]=ult;guardaVisto()}}
   let body;
   if(tab==="chat"){
-    body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Chat del grupo</h3>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":esc(m.n)} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" type="button">Enviar</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
+    body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Chat del grupo</h3>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" type="button">Enviar</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
   }else if(tab==="fotos"){
     body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Fotos y vídeos</h3>${puede?`<label class="subir" for="m-file" style="margin-bottom:6px">Añadir fotos o vídeos</label><input id="m-file" type="file" accept="image/*,video/*" multiple hidden><p class="meta" id="m-estado"></p>`:`<p class="meta">Solo quien va al plan puede subir fotos y vídeos.</p>`}<div class="gal">${ms.length?ms.map(m=>`<div class="tile" data-m="${m.id}">${m.kind==="vid"?`<video src="${urlOf(m)}#t=0.1" preload="metadata" muted playsinline></video><span class="play">▶</span>`:`<img src="${urlOf(m)}" alt="">`}</div>`).join(""):`<p class="meta" style="grid-column:1/-1;text-align:center">Aún no hay fotos ni vídeos.</p>`}</div>`;
   }else{
     body=`<h2>${esc(a.titulo)}</h2>
 <p class="meta">${esc(TIPOS[a.tipo]||a.tipo)} · ${esc(textoCuando(a))}${a.precio>0?" · "+precioTxt(a.precio)+" por persona":""}</p>
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
+${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 <button id="unir" class="big" ${lleno?"disabled":""}>${yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button>
 <div class="mini"><button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}${a.fecha?`<button id="cal" class="sec" type="button">Calendario</button>`:""}</div>
 ${(yo||soyOrg(a))?rutaHTML(a):""}
@@ -925,7 +940,8 @@ ${seguridad(a)}
     }catch(e){fallo(e)}
   });
   on("del",async()=>{if(delId!==a.id){delId=a.id;$("del").textContent="¿Seguro? Toca otra vez";return}try{const r=await sb.from("planes").delete().eq("id",a.id);if(r.error)throw r.error;if(ruta&&ruta.id===a.id)quitaRuta();sel=null;delId=null;await recarga()}catch(e){fallo(e)}});
-  d.querySelectorAll("[data-p]").forEach(el=>{el.onclick=async()=>{const u=el.dataset.p,ya=(a.pagosIds||[]).includes(u);try{const r=await sb.from("participantes").update({pagado:!ya}).eq("plan_id",a.id).eq("user_id",u);if(r.error)throw r.error;await recarga()}catch(e){fallo(e)}}});
+  d.querySelectorAll("[data-u]").forEach(el=>{el.onclick=ev=>{if(ev.target.closest("[data-p]"))return;abrePersona(el.dataset.u)}});
+  d.querySelectorAll("[data-p]").forEach(el=>{el.onclick=async ev=>{ev.stopPropagation();const u=el.dataset.p,ya=(a.pagosIds||[]).includes(u);try{const r=await sb.from("participantes").update({pagado:!ya}).eq("plan_id",a.id).eq("user_id",u);if(r.error)throw r.error;await recarga()}catch(e){fallo(e)}}});
   if(tab==="fotos"){d.querySelectorAll(".tile").forEach(el=>{el.onclick=()=>abrir(el.dataset.m)});if($("m-file"))$("m-file").onchange=subir(a)}
   if(tab==="chat"&&puede){
     const send=async()=>{const v=$("c-txt").value.trim();if(!v)return;$("c-txt").value="";try{const r=await sb.from("mensajes").insert({plan_id:a.id,texto:v}).select().single();if(r.error)throw r.error;const m=r.data,l=(chats[a.id]=chats[a.id]||[]);if(!l.some(x=>x.id===m.id))l.push({id:m.id,uid:uid,n:me,t:Date.parse(m.creado),txt:m.texto});a.chat=l;render();setTimeout(()=>{const c=$("c-txt");if(c)c.focus()},0)}catch(e){fallo(e)}};
@@ -953,49 +969,52 @@ $("bMios").onclick=()=>irA("mios");
 function plusMenu(v){$("plusMenu").hidden=!v;if(v)$("crearBtn").classList.add("open");else $("crearBtn").classList.remove("open")}
 $("crearBtn").onclick=()=>plusMenu($("plusMenu").hidden);
 $("mPlan").onclick=()=>{plusMenu(false);irA("explorar");sel=null;cerrarForm();render();colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el mapa para marcar el lugar";$("colocarOk").disabled=true;$("map").scrollIntoView({behavior:"smooth",block:"center"})};
-const genCodInv=()=>{const A="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",r=crypto.getRandomValues(new Uint8Array(10));return [...r].map(x=>A[x%A.length]).join("")};
-async function miCodigoInv(){
-  const r=await sb.from("invitaciones").select("codigo").eq("user_id",uid).maybeSingle();if(r.error)throw r.error;
-  if(r.data&&r.data.codigo)return r.data.codigo;
-  const c=genCodInv(),w=await sb.from("invitaciones").upsert({user_id:uid,codigo:c});if(w.error)throw w.error;return c;
-}
-$("invitar").onclick=async()=>{
-  if(!me){pedirNombre(()=>$("invitar").click());return}
-  if(!sb||!uid){alert("Aún no hay conexión con el servidor.");return}
-  try{
-    if(!await perfilListo())return;
-    const c=await miCodigoInv();
-    $("inv-link").value=location.origin+location.pathname+"#amigo="+c;$("invBox").hidden=false;
-  }catch(e){fallo(e)}
-};
-$("inv-wa").onclick=()=>window.open("https://wa.me/?text="+encodeURIComponent("Añádeme como amigo en AppVentureLife para ver mis planes: "+$("inv-link").value),"_blank");
-$("inv-copy").onclick=async()=>{try{await navigator.clipboard.writeText($("inv-link").value);$("inv-copy").textContent="¡Copiado!"}catch(e){prompt("Copia este enlace:",$("inv-link").value)}};
 $("listaAmigos").addEventListener("click",e=>{
   const v=e.target.closest("[data-ver]");
   if(v){const a=data.find(x=>x.kind==="aqui"&&x.uid===v.dataset.ver);if(a){irA("explorar");map.setView([a.lat,a.lng],15);elegir(a.id)}return}
-  const i=e.target.closest(".item");if(i)abreDM(i.dataset.am);
+  const i=e.target.closest(".item");if(i)abrePersona(i.dataset.am);
 });
-async function invitacionAmistad(c){
-  try{
-    const r=await sb.rpc("ver_invitacion",{p_codigo:c});if(r.error)throw r.error;
-    const x=Array.isArray(r.data)?r.data[0]:r.data;
-    if(!x){alert("Esta invitación no es válida.");return}
-    if(x.user_id===uid){alert("Esa invitación es tuya. Mándasela a un amigo.");return}
-    if(esAmigo(x.user_id)){alert("Ya sois amigos.");return}
-    invCod=c;$("am-t").textContent=x.nombre+" te invita";
-    $("am-p").textContent="Si aceptáis, os haréis amigos y veréis los planes y chinchetas del otro destacados en el mapa.";
-    $("amistad").classList.add("open");
-  }catch(e){fallo(e)}
-}
-$("am-no").onclick=()=>$("amistad").classList.remove("open");
-$("am-ok").onclick=async()=>{
-  if(!me){pedirNombre(()=>$("am-ok").click());return}
+async function enviarSolicitud(u){
+  if(!me){pedirNombre(()=>enviarSolicitud(u));return}
   try{
     if(!await perfilListo())return;
-    const r=await sb.rpc("aceptar_amistad",{p_codigo:invCod});if(r.error)throw r.error;
-    $("amistad").classList.remove("open");await recarga();alert("¡Ya sois amigos!");
+    const r=await sb.rpc("enviar_solicitud",{p_para:u});if(r.error)throw r.error;
+    await recarga();
+    if(r.data==="amigos")alert("¡Ya sois amigos!");else if(r.data==="ya_amigos")alert("Ya sois amigos.");else avisa("✅ Solicitud enviada a "+(nombres[u]||"esa persona"),null);
   }catch(e){fallo(e)}
-};
+}
+async function responderSolicitud(u,ok){
+  try{const r=await sb.rpc("responder_solicitud",{p_de:u,p_aceptar:ok});if(r.error)throw r.error;await recarga();if(ok)avisa("🎉 Ahora eres amigo de "+(nombres[u]||"esa persona"),null)}catch(e){fallo(e)}
+}
+async function cancelarSolicitud(u){
+  try{const r=await sb.rpc("cancelar_solicitud",{p_para:u});if(r.error)throw r.error;await recarga()}catch(e){fallo(e)}
+}
+async function quitarAmigo(u){
+  if(!confirm("¿Quitar a "+(nombres[u]||"esta persona")+" de tus amigos?"))return;
+  try{const r=await sb.rpc("quitar_amigo",{p_amigo:u});if(r.error)throw r.error;await recarga()}catch(e){fallo(e)}
+}
+function abrePersona(u){if(!u||u===uid)return;perCtx=u;pintaPersona();$("persona").classList.add("open")}
+function pintaPersona(){
+  const u=perCtx,n=nombres[u]||"Alguien";let est="",acc="";
+  if(esAmigo(u)){est="👥 Sois amigos";acc=`<button id="pe-dm" type="button">💬 Escribir mensaje</button><button id="pe-quitar" class="sec" type="button">Quitar de amigos</button>`}
+  else if(solRec.includes(u)){est=esc(n)+" quiere ser tu amigo";acc=`<button id="pe-ok" type="button">Aceptar</button><button id="pe-no" class="sec" type="button">Rechazar</button>`}
+  else if(solEnv.includes(u)){est="Solicitud enviada";acc=`<button id="pe-can" class="sec" type="button">Cancelar solicitud</button>`}
+  else{acc=`<button id="pe-add" type="button">👥 Añadir a amigos</button>`}
+  $("pe-n").textContent=n;$("pe-e").innerHTML=est;
+  $("pe-acc").innerHTML=`<div class="mini" style="flex-direction:column;align-items:stretch">${acc}</div><div class="mini" style="margin-top:6px"><button id="pe-bloq" class="sec" type="button">Bloquear</button><button id="pe-den" class="sec" type="button">Denunciar</button></div>`;
+  const on2=(id,fn)=>{const e=$(id);if(e)e.onclick=fn};
+  on2("pe-add",()=>enviarSolicitud(u));on2("pe-ok",()=>responderSolicitud(u,true));on2("pe-no",()=>responderSolicitud(u,false));on2("pe-can",()=>cancelarSolicitud(u));
+  on2("pe-dm",()=>{$("persona").classList.remove("open");abreDM(u)});on2("pe-quitar",()=>quitarAmigo(u));
+  on2("pe-bloq",()=>bloquear(u));on2("pe-den",()=>{$("persona").classList.remove("open");abreDenuncia(u,null)});
+}
+$("listaSol").addEventListener("click",e=>{
+  const a=e.target.closest("[data-acc]"),r=e.target.closest("[data-rec]"),c=e.target.closest("[data-can]");
+  if(a){responderSolicitud(a.dataset.acc,true);return}
+  if(r){responderSolicitud(r.dataset.rec,false);return}
+  if(c){cancelarSolicitud(c.dataset.can);return}
+  const i=e.target.closest(".item");if(i)abrePersona(i.dataset.per);
+});
+$("dm-add").onclick=()=>solRec.includes(dmCon)?responderSolicitud(dmCon,true):enviarSolicitud(dmCon);
 $("dm-quitar").onclick=async()=>{
   if(!quitarOk){quitarOk=true;$("dm-quitar").textContent="¿Seguro? Toca otra vez";return}
   quitarOk=false;$("dm-quitar").textContent="Quitar de amigos";
@@ -1006,7 +1025,7 @@ async function bloquear(u,silencio){
   if(!silencio&&!confirm("¿Bloquear a "+(nombres[u]||"esta persona")+"? No verás sus planes, mensajes ni ubicación, y no podrá escribirte."))return;
   try{
     const r=await sb.rpc("bloquear_usuario",{p_user:u});if(r.error)throw r.error;
-    sel=null;if(dmCon===u){$("dm").classList.remove("open");dmCon=null}
+    sel=null;$("persona").classList.remove("open");if(dmCon===u){$("dm").classList.remove("open");dmCon=null}
     await recarga();
   }catch(e){fallo(e)}
 }
@@ -1099,7 +1118,7 @@ $("a-ok").onclick=()=>{
 $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],15);elegir(+i.dataset.id)}});
 $("colocarNo").onclick=()=>{salirColocar();pend=null};
 $("colocarOk").onclick=()=>{if(!pend)return;colocando=false;$("colocar").hidden=true;$("nueva").classList.add("open")};
-$("f-priv").addEventListener("change",()=>{$("privBox").hidden=!$("f-priv").checked;if($("f-priv").checked&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
+$("f-vis").addEventListener("change",()=>{const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
 $("f-cod-gen").onclick=()=>{$("f-cod").value=fmtCod(genCod())};
 $("cod-no").onclick=()=>$("codigo").classList.remove("open");
 $("cod-ok").onclick=async()=>{
@@ -1131,7 +1150,7 @@ $("f-foto").onchange=e=>{
 $("f-ok").onclick=async()=>{
   const lk=$("f-link").value.trim();
   if(lk&&!okLink(lk)){alert("El enlace de pago debe empezar por https://");$("f-link").focus();return}
-  const priv=$("f-priv").checked,cod=normCod($("f-cod").value);
+  const vis=$("f-vis").value,priv=vis==="codigo",soloA=vis==="amigos",cod=normCod($("f-cod").value);
   if(priv&&cod.length<6){alert("El código debe tener al menos 6 caracteres.");$("f-cod").focus();return}
   if(!pend){alert("Elige primero el lugar en el mapa.");return}
   if(!me){pedirNombre(()=>$("f-ok").click());return}
@@ -1141,12 +1160,12 @@ $("f-ok").onclick=async()=>{
     if(!await perfilListo())throw new Error("Pon tu nombre primero");
     const custom=$("f-tipo").value.trim(),tipo=custom?norm(custom):tipoSel,t=$("f-titulo").value.trim()||(TIPOS[tipo]||tipo);
     const max=Math.max(2,Math.min(50,+$("f-plazas").value||6)),fch=$("f-fecha").value,lat=pend.lat,lng=pend.lng;
-    const r=await sb.from("planes").insert({tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,nivel:$("f-nivel").value,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv}).select("id").single();
+    const r=await sb.from("planes").insert({tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,nivel:$("f-nivel").value,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA}).select("id").single();
     if(r.error)throw r.error;
     const id=r.data.id;
     if(priv){const c=await sb.from("planes_codigo").insert({plan_id:id,codigo:cod});if(c.error)throw c.error}
     const p=await sb.from("participantes").insert({plan_id:id,user_id:uid});if(p.error)throw p.error;
-    ["f-titulo","f-fecha","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>$(i).value="");$("f-nivel").selectedIndex=0;$("f-priv").checked=false;$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();
+    ["f-titulo","f-fecha","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>$(i).value="");$("f-nivel").selectedIndex=0;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();
     await recarga();map.setView([lat,lng],14);elegir(id);
   }catch(e){fallo(e)}
   $("f-ok").disabled=false;
