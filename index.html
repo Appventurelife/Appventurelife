@@ -159,6 +159,11 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .sheet .fchip.on{background:var(--cta);color:var(--ctat);border-color:var(--cta)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 4px}
 .item small{display:block}
+.pin{position:relative}
+.lock{position:absolute;right:-7px;top:-9px;font-size:15px;line-height:1}
+label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--ink);margin:14px 0 4px}
+input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
+#cod-in,#f-cod{letter-spacing:2px;text-transform:uppercase}
 .ruta{border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;margin:0 0 12px}
 .payb.sec2{background:transparent;color:var(--ink);border:1.5px solid var(--line);margin-top:0;padding:8px 12px;font-size:14px}
 .rutachip{position:absolute;left:12px;top:12px;right:72px;z-index:500;background:var(--card);border-radius:99px;padding:5px 5px 5px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(0,0,0,.3);font-size:14px;font-weight:700}
@@ -218,6 +223,7 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 <h2 class="sec-h">Mis planes</h2>
 <div id="listaMios" class="list"></div>
 </section>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 15 (planes privados)</p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mis planes</button></nav>
@@ -235,6 +241,15 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 <div class="row" style="margin-top:14px"><button class="sec" id="a-cancel" type="button">Cancelar</button><button id="a-ok" type="button">Compartir mi ubicación</button></div>
 </section>
 
+<section id="codigo" class="sheet" aria-label="Plan privado">
+<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
+<h2>🔒 Plan privado</h2>
+<p class="meta">Este plan solo se abre con el código que te dio quien lo organiza.</p>
+<label for="cod-in">Código</label><input id="cod-in" autocapitalize="characters" autocomplete="off" placeholder="Ej. K7M-4QX" style="font-size:20px">
+<p class="warn" id="cod-err" style="min-height:1.3em;margin:6px 0"></p>
+<div class="row"><button class="sec" id="cod-no" type="button">Cancelar</button><button id="cod-ok" type="button">Entrar</button></div>
+</section>
+
 <section id="detalle" class="sheet" aria-label="Detalle del plan"></section>
 
 <section id="nueva" class="sheet" aria-label="Nuevo plan">
@@ -249,6 +264,10 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 <div><label for="f-fecha">Cuándo</label><input id="f-fecha" type="datetime-local"></div>
 <div><label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6"></div>
 </div>
+<label class="chk"><input type="checkbox" id="f-priv"> 🔒 Plan privado (solo con código)</label>
+<div id="privBox" hidden><label for="f-cod">Código de acceso</label>
+<div class="row"><input id="f-cod" maxlength="20" autocapitalize="characters" autocomplete="off"><button id="f-cod-gen" class="sec" type="button" style="flex:none;padding:10px 14px">Otro</button></div>
+<p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
 <details class="mas"><summary>Añadir más detalles</summary>
 <label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
 <label for="f-nivel">Nivel</label>
@@ -383,31 +402,45 @@ async function pideTiempo(a,key){
 /* compartir por WhatsApp (el enlace lleva los datos de la aventura) */
 const b64=t=>btoa(unescape(encodeURIComponent(t))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
 const unb64=t=>decodeURIComponent(escape(atob(t.replace(/-/g,"+").replace(/_/g,"/"))));
-const enlace=a=>{
+const datosComp=a=>{
   const o={id:a.id,tipo:a.tipo,t:a.titulo,f:a.fecha||"",c:a.fecha?"":a.cuando,m:a.max,la:+(+a.lat).toFixed(5),ln:+(+a.lng).toFixed(5),n:a.nivel,p:a.punto,d:a.desc,pr:a.precio,l:a.link,pg:a.pago,e:a.emoji,o:a.org,q:a.equipo,em:a.emerg};
   Object.keys(o).forEach(k=>{if(o[k]===""||o[k]==null||o[k]===0)delete o[k]});
-  return location.origin+location.pathname+"#av="+b64(JSON.stringify(o));
+  return o;
 };
-function textoCompartir(a){return `${a.emoji||"🌊"} ${a.titulo}${a.fecha?" · "+fmtF(a.fecha):""}${a.precio>0?" · "+precioTxt(a.precio):""}\nÚnete en AppVentureLife:`}
-function compartir(a){window.open("https://wa.me/?text="+encodeURIComponent(textoCompartir(a)+" "+enlace(a)),"_blank")}
-async function copiar(a){const u=enlace(a);try{await navigator.clipboard.writeText(u);if($("copiar"))$("copiar").textContent="¡Enlace copiado!"}catch(e){prompt("Copia este enlace:",u)}}
+const enlace=a=>location.origin+location.pathname+"#av="+b64(JSON.stringify(datosComp(a)));
+/* planes privados: el enlace va CIFRADO con el código (AES-GCM + PBKDF2); sin el código no se puede leer */
+const _enc=new TextEncoder(),_dec=new TextDecoder();
+const bufB64=u8=>{let t="";u8.forEach(b=>t+=String.fromCharCode(b));return btoa(t).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")};
+const b64Buf=t=>Uint8Array.from(atob(t.replace(/-/g,"+").replace(/_/g,"/")),c=>c.charCodeAt(0));
+const normCod=c=>String(c==null?"":c).toUpperCase().replace(/[\s-]+/g,"");
+const fmtCod=c=>String(c||"").replace(/(.{3})(?=.)/g,"$1-");
+const genCod=()=>{const A="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",r=crypto.getRandomValues(new Uint8Array(6));return [...r].map(x=>A[x%A.length]).join("")};
+async function claveDe(cod,salt){const base=await crypto.subtle.importKey("raw",_enc.encode(normCod(cod)),"PBKDF2",false,["deriveKey"]);return crypto.subtle.deriveKey({name:"PBKDF2",salt,iterations:150000,hash:"SHA-256"},base,{name:"AES-GCM",length:256},false,["encrypt","decrypt"])}
+async function cifra(obj,cod){const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12)),k=await claveDe(cod,salt),ct=new Uint8Array(await crypto.subtle.encrypt({name:"AES-GCM",iv},k,_enc.encode(JSON.stringify(obj)))),out=new Uint8Array(28+ct.length);out.set(salt,0);out.set(iv,16);out.set(ct,28);return bufB64(out)}
+async function descifra(txt,cod){const u=b64Buf(txt),k=await claveDe(cod,u.slice(0,16)),pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:u.slice(16,28)},k,u.slice(28));return JSON.parse(_dec.decode(pt))}
+const enlacePriv=async a=>location.origin+location.pathname+"#pv="+await cifra(datosComp(a),a.codigo);
+function textoCompartir(a){if(a.priv)return "🔒 Plan privado en AppVentureLife. Para entrar necesitas el código que te dará quien lo organiza:";return `${a.emoji||"🌊"} ${a.titulo}${a.fecha?" · "+fmtF(a.fecha):""}${a.precio>0?" · "+precioTxt(a.precio):""}\nÚnete en AppVentureLife:`}
+async function compartir(a){const t=textoCompartir(a);if(a.priv){try{const u=await enlacePriv(a);location.href="https://wa.me/?text="+encodeURIComponent(t+" "+u)}catch(e){alert("No pude cifrar el enlace en este navegador.")}return}window.open("https://wa.me/?text="+encodeURIComponent(t+" "+enlace(a)),"_blank")}
+async function copiar(a){let u;try{u=a.priv?await enlacePriv(a):enlace(a)}catch(e){alert("No pude cifrar el enlace en este navegador.");return}try{await navigator.clipboard.writeText(u);if($("copiar"))$("copiar").textContent="¡Enlace copiado!"}catch(e){prompt("Copia este enlace:",u)}}
+function importaDatos(o,priv){
+  const s=(v,n)=>String(v==null?"":v).slice(0,n);
+  const num=(v,lo,hi,d)=>{v=+v;return isFinite(v)?Math.min(hi,Math.max(lo,v)):d};
+  const id=num(o.id,1,9e15,Date.now());
+  let a=data.find(x=>x.id===id);
+  if(!a){
+    const f=/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(o.f||"")?o.f:"";
+    a={id,tipo:s(o.tipo,40)||"otro",titulo:s(o.t,80)||"Aventura",fecha:f,cuando:f?fmtF(f):(s(o.c,60)||"Por definir"),max:num(o.m,2,50,6),lat:num(o.la,-90,90,0),lng:num(o.ln,-180,180,0),asist:[],org:s(o.o,24)||"Organizador",nivel:s(o.n,30),punto:s(o.p,80),desc:s(o.d,600),foto:"",emoji:s(o.e,8),precio:num(o.pr,0,9999,0),link:okLink(s(o.l,300)),pago:s(o.pg,80),pagos:[],equipo:s(o.q,120),emerg:s(o.em,60),chat:[],priv:!!priv,codigo:""};
+    a.asist=[a.org];data.push(a);save();
+  }
+  return a;
+}
+function abreImportado(a){compartido=true;setTimeout(()=>{if(a.lat||a.lng)map.setView([a.lat,a.lng],14);elegir(a.id)},300)}
+let cargaPend=null;
 function importaEnlace(){
-  const m=location.hash.match(/^#av=([\w-]+)/);if(!m)return;
-  try{
-    const o=JSON.parse(unb64(m[1]));
-    const s=(v,n)=>String(v==null?"":v).slice(0,n);
-    const num=(v,lo,hi,d)=>{v=+v;return isFinite(v)?Math.min(hi,Math.max(lo,v)):d};
-    const id=num(o.id,1,9e15,Date.now());
-    history.replaceState(null,"",location.pathname);
-    let a=data.find(x=>x.id===id);
-    if(!a){
-      const f=/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(o.f||"")?o.f:"";
-      a={id,tipo:s(o.tipo,40)||"otro",titulo:s(o.t,80)||"Aventura",fecha:f,cuando:f?fmtF(f):(s(o.c,60)||"Por definir"),max:num(o.m,2,50,6),lat:num(o.la,-90,90,0),lng:num(o.ln,-180,180,0),asist:[],org:s(o.o,24)||"Organizador",nivel:s(o.n,30),punto:s(o.p,80),desc:s(o.d,600),foto:"",emoji:s(o.e,8),precio:num(o.pr,0,9999,0),link:okLink(s(o.l,300)),pago:s(o.pg,80),pagos:[],equipo:s(o.q,120),emerg:s(o.em,60),chat:[]};
-      a.asist=[a.org];data.push(a);save();
-    }
-    compartido=true;
-    setTimeout(()=>{if(a.lat||a.lng)map.setView([a.lat,a.lng],14);elegir(a.id)},300);
-  }catch(e){}
+  const h=location.hash;let m=h.match(/^#av=([\w-]+)/);
+  if(m){try{const o=JSON.parse(unb64(m[1]));history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;abreImportado(importaDatos(o,false))}catch(e){}return}
+  m=h.match(/^#pv=([\w-]+)/);
+  if(m){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;cargaPend=m[1];$("cod-err").textContent="";$("cod-in").value="";$("codigo").classList.add("open")}
 }
 /* añadir al calendario (.ics) */
 function calendario(a){
@@ -616,10 +649,10 @@ function render(){
   $("filtros").innerHTML=`<button class="fchip${!filtro&&!fFecha?" on":""}" data-r="1">Todo</button><button class="fchip${fFecha==="hoy"?" on":""}" data-d="hoy">Hoy</button><button class="fchip${fFecha==="finde"?" on":""}" data-d="finde">Este finde</button>`+chipsT;
   const adv=advAll.filter(a=>(!filtro||a.tipo===filtro)&&cumpleFecha(a)).sort(orden);
   adv.concat(aq).forEach(a=>{
-    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}" style="background:${col(a)}">${sym(a,22)}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}" style="background:${col(a)}">${sym(a,22)}${a.priv?`<span class="lock">🔒</span>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.lat,a.lng],{icon:ic}).on("click",()=>elegir(a.id)).addTo(capa);
   });
-  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.nivel&&a.nivel!=="Todos los niveles"?" · "+esc(a.nivel):""}${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
+  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.nivel&&a.nivel!=="Todos los niveles"?" · "+esc(a.nivel):""}${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
   $("lista").innerHTML=adv.length?adv.map(card).join(""):`<p class="meta">No hay planes con estos filtros. Pulsa + para crear uno.</p>`;
   $("ahoraBox").hidden=!aq.length;
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
@@ -650,8 +683,9 @@ function render(){
   }else{
     body=`<h2>${esc(a.titulo)}</h2>
 <p class="meta">${esc(TIPOS[a.tipo]||a.tipo)} · ${esc(textoCuando(a))}${a.precio>0?" · "+precioTxt(a.precio)+" por persona":""}</p>
+${a.priv?`<p class="meta">🔒 Plan privado${a.org===me?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
 <button id="unir" class="big" ${lleno?"disabled":""}>${yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button>
-<div class="mini"><button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}</button><button id="gofotos" class="sec" type="button">Fotos${ms.length?" ("+ms.length+")":""}</button><button id="wa" class="sec" type="button">WhatsApp</button>${a.fecha?`<button id="cal" class="sec" type="button">Calendario</button>`:""}</div>
+<div class="mini"><button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}</button><button id="gofotos" class="sec" type="button">Fotos${ms.length?" ("+ms.length+")":""}</button>${!a.priv||a.org===me?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}${a.fecha?`<button id="cal" class="sec" type="button">Calendario</button>`:""}</div>
 ${(yo||a.org===me)?rutaHTML(a):""}
 ${a.nivel?`<p class="meta"><span class="chip"><i style="background:${NIVC[a.nivel]||"#7B8A80"}"></i>${esc(a.nivel)}</span></p>`:""}
 ${a.punto?`<p class="meta">Punto de encuentro: <b style="color:var(--ink)">${esc(a.punto)}</b></p>`:""}
@@ -661,7 +695,7 @@ ${tiempoHTML(a)}
 ${a.precio>0?`<div class="pay"><b>${precioTxt(a.precio)} por persona</b>${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Otras formas de pago: ${esc(a.pago)}</p>`:""}${yo&&a.org!==me&&!(a.pagos||[]).includes(me)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.org===me?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}</div>`:""}
 ${quien(a)}
 ${seguridad(a)}
-<div class="acts"><button id="copiar" class="sec" type="button">Copiar enlace</button>${a.org===me?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}</div>`;
+<div class="acts">${!a.priv||a.org===me?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${a.org===me?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}</div>`;
   }
   d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>${tab==="info"?cover:""}${body}`;
   d.classList.add("open");
@@ -671,6 +705,7 @@ ${seguridad(a)}
   on("gofotos",()=>{tab="fotos";render()});
   on("rutaGo",()=>calcularRuta(a));on("rutaQuita",()=>{quitaRuta();render()});
   d.querySelectorAll("[data-rm]").forEach(el=>{el.onclick=()=>calcularRuta(a,el.dataset.rm)});
+  on("copCod",async()=>{try{await navigator.clipboard.writeText(fmtCod(a.codigo));$("copCod").textContent="¡Copiado!"}catch(e){prompt("Código:",fmtCod(a.codigo))}});
   on("wa",()=>compartir(a));on("copiar",()=>copiar(a));on("cal",()=>calendario(a));
   on("yapague",()=>{a.chat=a.chat||[];a.chat.push({n:me,t:Date.now(),txt:"💶 Ya he pagado, ¿puedes confirmarlo?"});save();tab="chat";render()});
   on("unir",()=>{if(!me){pedirNombre(()=>$("unir").click());return}if(yo){a.asist=a.asist.filter(x=>x!==me);if(ruta&&ruta.id===a.id)quitaRuta()}else if(a.asist.length<a.max){a.asist.push(me);setTimeout(()=>calcularRuta(a),150)}save();render()});
@@ -723,6 +758,16 @@ $("a-ok").onclick=()=>{
 $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],15);elegir(+i.dataset.id)}});
 $("colocarNo").onclick=()=>{salirColocar();pend=null};
 $("colocarOk").onclick=()=>{if(!pend)return;colocando=false;$("colocar").hidden=true;$("nueva").classList.add("open")};
+$("f-priv").addEventListener("change",()=>{$("privBox").hidden=!$("f-priv").checked;if($("f-priv").checked&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
+$("f-cod-gen").onclick=()=>{$("f-cod").value=fmtCod(genCod())};
+$("cod-no").onclick=()=>$("codigo").classList.remove("open");
+$("cod-ok").onclick=async()=>{
+  const c=$("cod-in").value;if(normCod(c).length<4){$("cod-err").textContent="Escribe el código completo.";return}
+  $("cod-ok").disabled=true;$("cod-err").textContent="Comprobando…";
+  try{const o=await descifra(cargaPend,c);const a=importaDatos(o,true);$("codigo").classList.remove("open");abreImportado(a)}
+  catch(e){$("cod-err").textContent="Código incorrecto. Revísalo e inténtalo de nuevo."}
+  $("cod-ok").disabled=false;
+};
 $("f-tipos").onclick=e=>{const b=e.target.closest("button");if(b){tipoSel=b.dataset.k;pintaTipos()}};
 $("f-cancel").onclick=cerrarForm;
 $("f-foto").onchange=e=>{
@@ -738,13 +783,15 @@ $("f-foto").onchange=e=>{
 $("f-ok").onclick=()=>{
   const lk=$("f-link").value.trim();
   if(lk&&!okLink(lk)){alert("El enlace de pago debe empezar por https://");$("f-link").focus();return}
+  const priv=$("f-priv").checked,cod=normCod($("f-cod").value);
+  if(priv&&cod.length<6){alert("El código debe tener al menos 6 caracteres.");$("f-cod").focus();return}
   if(!pend){alert("Elige primero el lugar en el mapa.");return}
   if(!me){pedirNombre(()=>$("f-ok").click());return}
   const custom=$("f-tipo").value.trim(),tipo=custom?norm(custom):tipoSel,t=$("f-titulo").value.trim()||(TIPOS[tipo]||tipo);
   const max=Math.max(2,Math.min(50,+$("f-plazas").value||6)),fch=$("f-fecha").value;
-  const a={id:Date.now(),tipo,titulo:t,fecha:fch,cuando:fch?fmtF(fch):"Por definir",max,lat:pend.lat,lng:pend.lng,asist:[me],org:me,nivel:$("f-nivel").value,punto:$("f-punto").value.trim(),desc:$("f-desc").value.trim(),foto,emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value),pago:$("f-pago").value.trim(),pagos:[],equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim()};
+  const a={id:Date.now(),tipo,titulo:t,fecha:fch,cuando:fch?fmtF(fch):"Por definir",max,lat:pend.lat,lng:pend.lng,asist:[me],org:me,nivel:$("f-nivel").value,punto:$("f-punto").value.trim(),desc:$("f-desc").value.trim(),foto,emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value),pago:$("f-pago").value.trim(),pagos:[],equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),priv,codigo:priv?cod:""};
   data.push(a);save();
-  ["f-titulo","f-fecha","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>$(i).value="");$("f-nivel").selectedIndex=0;tipoSel="otro";pintaTipos();
+  ["f-titulo","f-fecha","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>$(i).value="");$("f-nivel").selectedIndex=0;$("f-priv").checked=false;$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();
   map.setView([a.lat,a.lng],14);elegir(a.id);
 };
 pintaTipos();
