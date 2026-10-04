@@ -226,7 +226,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <h2 class="sec-h">Mis planes</h2>
 <div id="listaMios" class="list"></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 19 (en pruebas)<br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 20 (en pruebas)<br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mis planes</button></nav>
@@ -241,6 +241,8 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <label for="a-emoji">Emoji</label><input id="a-emoji" placeholder="📍" style="font-size:22px"><div class="emojis" id="a-emojis"></div>
 <label for="a-dur">Durante</label>
 <select id="a-dur"><option value="1">1 hora</option><option value="3" selected>3 horas</option><option value="8">8 horas</option><option value="0">Hasta que lo quite</option></select>
+<label class="chk"><input type="checkbox" id="a-live" checked> Mover mi chincheta mientras me muevo</label>
+<p class="meta" style="margin:2px 0 0">Solo se actualiza con la app abierta; al bloquear el móvil se para.</p>
 <div class="row" style="margin-top:14px"><button class="sec" id="a-cancel" type="button">Cancelar</button><button id="a-ok" type="button">Compartir mi ubicación</button></div>
 </section>
 
@@ -677,7 +679,7 @@ async function recarga(){
     aq.data.forEach(r=>{lista.push({id:-(hash(r.user_id)%1000000000)-1,kind:"aqui",tipo:"aqui",titulo:r.titulo||"",emoji:r.emoji||"",lat:r.lat,lng:r.lng,orgId:r.user_id,uid:r.user_id,org:nom(r.user_id),asist:[],asistIds:[],pagos:[],pagosIds:[],max:0,t:Date.parse(r.creado),hasta:r.hasta?Date.parse(r.hasta):0})});
     data=lista;errCon="";
   }catch(e){errCon=(e&&e.message)||"Sin conexión con el servidor."}
-  cargando=false;render();
+  cargando=false;render();sincronizaSeguimiento();
 }
 function suscribir(){
   let tmr=null;const pronto=()=>{clearTimeout(tmr);tmr=setTimeout(recarga,400)};
@@ -726,9 +728,9 @@ function render(){
   const a=vivos().find(x=>x.id===sel),d=$("detalle");
   if(!a){d.classList.remove("open");return}
   if(a.kind==="aqui"){
-    d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="cover ph" style="background:#1E7BFF;height:110px"><span class="em" style="font-size:56px">${esc(a.emoji||"📍")}</span></div><h2>${esc(a.org)}</h2><p style="margin:0 0 4px;font-size:18px">${esc(a.titulo||"Está por aquí")}</p><p class="meta">${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):" · hasta que lo quite"}</p>${soyOrg(a)?`<div class="acts"><button id="del" type="button">Dejar de compartir</button></div>`:""}`;
+    d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="cover ph" style="background:#1E7BFF;height:110px"><span class="em" style="font-size:56px">${esc(a.emoji||"📍")}</span></div><h2>${esc(a.org)}</h2><p style="margin:0 0 4px;font-size:18px">${esc(a.titulo||"Está por aquí")}</p><p class="meta">${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):" · hasta que lo quite"}</p>${soyOrg(a)&&watchId!=null?`<p class="meta">📡 Siguiendo tu movimiento (con la app abierta)</p>`:""}${soyOrg(a)?`<div class="acts"><button id="del" type="button">Dejar de compartir</button></div>`:""}`;
     d.classList.add("open");
-    if(soyOrg(a))$("del").onclick=async()=>{try{const r=await sb.from("aqui").delete().eq("user_id",uid);if(r.error)throw r.error;sel=null;await recarga()}catch(e){fallo(e)}};
+    if(soyOrg(a))$("del").onclick=async()=>{try{const r=await sb.from("aqui").delete().eq("user_id",uid);if(r.error)throw r.error;pararSeguimiento();sel=null;await recarga()}catch(e){fallo(e)}};
     return;
   }
   const yo=voy(a),lleno=a.asist.length>=a.max&&!yo,quedan=a.max-a.asist.length;
@@ -813,6 +815,26 @@ $("a-emojis").innerHTML=["📍","🏋️","🏠","☕","🏃","🍕","🏖️","
 $("a-emojis").onclick=e=>{const b=e.target.closest("button");if(b)$("a-emoji").value=b.textContent};
 $("a-emoji").addEventListener("input",e=>{e.target.value=ultimo(e.target.value)});
 $("a-cancel").onclick=()=>$("aqui").classList.remove("open");
+let watchId=null,ultimoEnvio={t:0,lat:0,lng:0};
+function pararSeguimiento(){if(watchId!=null&&navigator.geolocation)navigator.geolocation.clearWatch(watchId);watchId=null;try{localStorage.removeItem("avl_live")}catch(e){}}
+function iniciarSeguimiento(){
+  if(watchId!=null||!navigator.geolocation)return;
+  try{localStorage.setItem("avl_live","1")}catch(e){}
+  watchId=navigator.geolocation.watchPosition(async p=>{
+    const mi=data.find(x=>x.kind==="aqui"&&x.uid===uid);
+    if(!mi||(mi.hasta&&mi.hasta<Date.now())){pararSeguimiento();return}
+    const lat=p.coords.latitude,lng=p.coords.longitude,ahora=Date.now();
+    if(ahora-ultimoEnvio.t<15000)return;
+    if(ultimoEnvio.t&&haversine({lat:ultimoEnvio.lat,lng:ultimoEnvio.lng},{lat,lng})<25)return;
+    ultimoEnvio={t:ahora,lat,lng};
+    try{const r=await sb.from("aqui").update({lat,lng}).eq("user_id",uid);if(r.error)throw r.error}catch(e){}
+  },()=>{},{enableHighAccuracy:true,maximumAge:10000,timeout:30000});
+}
+function sincronizaSeguimiento(){
+  const mi=data.find(x=>x.kind==="aqui"&&x.uid===uid);
+  let live=false;try{live=localStorage.getItem("avl_live")==="1"}catch(e){}
+  if(mi&&live&&(!mi.hasta||mi.hasta>Date.now()))iniciarSeguimiento();else if(!mi)pararSeguimiento();
+}
 $("a-ok").onclick=()=>{
   if(!me){pedirNombre(()=>$("a-ok").click());return}
   if(!navigator.geolocation){alert("Tu navegador no permite usar la ubicación.");return}
@@ -823,6 +845,8 @@ $("a-ok").onclick=()=>{
       const h=+$("a-dur").value;
       const r=await sb.from("aqui").upsert({user_id:uid,titulo:$("a-txt").value.trim(),emoji:ultimo($("a-emoji").value)||"📍",lat:p.coords.latitude,lng:p.coords.longitude,hasta:h?new Date(Date.now()+h*3600000).toISOString():null});
       if(r.error)throw r.error;
+      ultimoEnvio={t:Date.now(),lat:p.coords.latitude,lng:p.coords.longitude};
+      if($("a-live").checked)iniciarSeguimiento();else pararSeguimiento();
       $("a-txt").value="";$("a-emoji").value="";$("aqui").classList.remove("open");
       await recarga();
       const a=data.find(x=>x.kind==="aqui"&&x.uid===uid);if(a){map.setView([a.lat,a.lng],15);elegir(a.id)}
