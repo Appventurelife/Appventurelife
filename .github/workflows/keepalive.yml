@@ -1,0 +1,21 @@
+name: Mantener Supabase despierto
+
+on:
+  schedule:
+    - cron: "0 9 */3 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consultar la base de datos
+        run: |
+          code=$(curl -sS -o /dev/null -w "%{http_code}" \
+            "https://gluinrtmrrfecbhjwvdl.supabase.co/rest/v1/planes?select=id&limit=1" \
+            -H "apikey: sb_publishable_qjY62DUZEKjXFqMfX14x7w_TBe-grRt")
+          echo "Respuesta de Supabase: $code"
+          case "$code" in
+            2*) echo "Todo bien: el proyecto sigue activo." ;;
+            *)  echo "Algo falla (código $code)"; exit 1 ;;
+          esac
