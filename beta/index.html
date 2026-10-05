@@ -150,6 +150,11 @@ main{padding-bottom:120px}
 #map{height:66vh;min-height:360px}
 .locbtn{position:absolute;right:12px;top:12px;z-index:500}
 .inibox{border:2px dashed #B8C4B5;border-radius:14px;padding:10px 12px;margin:10px 0}
+.leaflet-top.leaflet-right{margin-top:58px}
+.leaflet-control-layers{border:0!important;border-radius:14px!important;box-shadow:0 3px 10px rgba(0,0,0,.3)!important}
+.leaflet-control-layers-toggle{width:44px!important;height:44px!important;background-size:26px 26px!important;border-radius:14px}
+.leaflet-control-layers-expanded{font-size:16px;padding:10px 14px!important;color:#17301F}
+.leaflet-control-layers-expanded label{display:block;padding:6px 0}
 .buscamapa{position:absolute;left:12px;right:72px;top:12px;z-index:700}
 .buscamapa input{width:100%;margin:0;padding:12px 40px 12px 16px;border-radius:99px;border:2px solid var(--card);background:var(--card);color:var(--ink);box-shadow:0 3px 10px rgba(0,0,0,.3);font-size:16px}
 .buscamapa>button{position:absolute;right:6px;top:6px;width:32px;height:32px;padding:0;border-radius:50%;background:var(--bg);color:var(--ink)}
@@ -252,7 +257,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 49 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
+<div class="wlegal">AppVentureLife · versión 50 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
 </div>
 
 <main>
@@ -288,7 +293,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 49 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 50 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -789,7 +794,7 @@ let baseActual="🗺️ Calles";
 try{const g=localStorage.getItem("avl_mapa");if(g&&BASES[g])baseActual=g}catch(e){}
 BASES[baseActual].l.addTo(map);pintaAtribucion(baseActual);
 const basesCtl={};Object.keys(BASES).forEach(k=>{basesCtl[k]=BASES[k].l});
-L.control.layers(basesCtl,null,{position:"bottomright"}).addTo(map);
+L.control.layers(basesCtl,null,{position:"topright"}).addTo(map);
 map.on("baselayerchange",e=>{try{localStorage.setItem("avl_mapa",e.name)}catch(_e){}pintaAtribucion(e.name)});
 const capa=L.layerGroup().addTo(map);
 function irAMiUbicacion(){
