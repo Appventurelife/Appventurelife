@@ -252,7 +252,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 48 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
+<div class="wlegal">AppVentureLife · versión 49 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
 </div>
 
 <main>
@@ -288,7 +288,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 48 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 49 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -777,7 +777,20 @@ document.addEventListener("touchend",()=>{if(!sw)return;const sh=sw.sh,dy=sw.dy;
 /* mapa */
 const map=L.map("map",{zoomControl:false,attributionControl:false}).setView([40.4168,-3.7038],6);
 const CARTO_KEY="cb1_4a0g_1_c9a08985d607c5ad800cb989";
-L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20}).addTo(map);
+const IGN=(srv,capa)=>"https://www.ign.es/wmts/"+srv+"?service=WMTS&request=GetTile&version=1.0.0&layer="+capa+"&style=default&tilematrixset=GoogleMapsCompatible&format=image/jpeg&TileMatrix={z}&TileCol={x}&TileRow={y}";
+const BASES={
+  "🗺️ Calles":{ac:"© OpenStreetMap contributors",l:L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19})},
+  "☀️ Claro":{ac:"© OpenStreetMap contributors © CARTO",l:L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20})},
+  "🥾 Montaña":{ac:"© Instituto Geográfico Nacional de España (CC BY 4.0)",l:L.tileLayer(IGN("mapa-raster","MTN"),{maxZoom:19})},
+  "🛰️ Satélite":{ac:"PNOA cedido por © Instituto Geográfico Nacional de España",l:L.tileLayer(IGN("pnoa-ma","OI.OrthoimageCoverage"),{maxZoom:19})}
+};
+function pintaAtribucion(nombre){try{const e=document.querySelector(".attr");if(e)e.textContent=(BASES[nombre]||BASES["🗺️ Calles"]).ac+" · rutas OSRM · búsqueda Photon"}catch(_e){}}
+let baseActual="🗺️ Calles";
+try{const g=localStorage.getItem("avl_mapa");if(g&&BASES[g])baseActual=g}catch(e){}
+BASES[baseActual].l.addTo(map);pintaAtribucion(baseActual);
+const basesCtl={};Object.keys(BASES).forEach(k=>{basesCtl[k]=BASES[k].l});
+L.control.layers(basesCtl,null,{position:"bottomright"}).addTo(map);
+map.on("baselayerchange",e=>{try{localStorage.setItem("avl_mapa",e.name)}catch(_e){}pintaAtribucion(e.name)});
 const capa=L.layerGroup().addTo(map);
 function irAMiUbicacion(){
   if(!navigator.geolocation){alert("Tu navegador no permite usar la ubicación.");return}
