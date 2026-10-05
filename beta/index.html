@@ -252,7 +252,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 47 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
+<div class="wlegal">AppVentureLife · versión 48 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
 </div>
 
 <main>
@@ -288,7 +288,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 47 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 48 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -381,6 +381,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" style="margin:4px 0 8px">La chincheta del mapa es el <b>destino</b> (por ejemplo, el castillo). Aquí marcas <b>dónde quedáis</b> para empezar a caminar.</p>
 <p id="iniTxt" class="meta" style="margin:0 0 8px"></p>
 <div class="row"><button class="sec" id="iniMarcar" type="button">🚩 Marcar el inicio</button><button class="sec" id="iniQuitar" type="button" hidden>Quitar</button></div>
+<button class="sec" id="iniNombreBtn" type="button" hidden style="margin-top:8px;width:100%">📍 Poner el nombre de este sitio como punto de encuentro</button>
 </div>
 <label>Fecha y hora</label>
 <div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
@@ -393,7 +394,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
 <details class="mas"><summary>Añadir más detalles</summary>
 <label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
-<label for="f-punto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
+<label for="f-punto" id="lblPunto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
 <label for="f-desc">Descripción</label><textarea id="f-desc" rows="3" placeholder="Qué vais a hacer, qué hay que llevar..."></textarea>
 <label for="f-equipo">Equipo necesario</label><input id="f-equipo" maxlength="120" placeholder="Ej. Chaleco, crema solar, agua">
 <label for="f-emerg">Contacto de emergencia del organizador</label><input id="f-emerg" maxlength="60" placeholder="Ej. Ana · 600 000 000">
@@ -790,7 +791,7 @@ function irAMiUbicacion(){
 $("loc").onclick=()=>{compartido=false;irAMiUbicacion()};
 irAMiUbicacion();
 
-let colocando=false,tipoSel="otro",ruta=null,capaRuta=null,burbuja=null,solVista=new Set(),solInit=false,invitadoA=new Map(),invVista=new Set(),invInit=false,invPlan=null,perfiles=[],miBuscable=true,iniPend=null,iniMarker=null,modoIni=false,iniTmp=null,tramos={},capaTramo=null,tramoId=null;
+let colocando=false,tipoSel="otro",ruta=null,capaRuta=null,burbuja=null,solVista=new Set(),solInit=false,invitadoA=new Map(),invVista=new Set(),invInit=false,invPlan=null,perfiles=[],miBuscable=true,iniPend=null,iniMarker=null,modoIni=false,iniTmp=null,tramos={},capaTramo=null,tramoId=null,iniNombre="",iniTmpNombre="",puntoAuto="";
 const km=m=>m<1000?(Math.round(m/10)*10)+" m":(m/1000).toLocaleString("es",{maximumFractionDigits:1})+" km";
 const durTxt=sg=>{const m=Math.max(1,Math.round(sg/60));return m<60?m+" min":Math.floor(m/60)+" h "+(m%60)+" min"};
 function haversine(a,b){const R=6371000,r=x=>x*Math.PI/180,dLa=r(b.lat-a.lat),dLo=r(b.lng-a.lng),h=Math.sin(dLa/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
@@ -837,14 +838,37 @@ function irA(v){
   window.scrollTo(0,0);render();
 }
 function salirColocar(){lugarSug="";colocando=false;$("centro").hidden=true;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}}
+const cacheNombres={};
+async function nombreDeLugar(ll){
+  const k=ll.lat.toFixed(4)+","+ll.lng.toFixed(4);
+  if(k in cacheNombres)return cacheNombres[k];
+  const pide=async extra=>{
+    const r=await fetch("https://photon.komoot.io/reverse?limit=1&lon="+ll.lng.toFixed(5)+"&lat="+ll.lat.toFixed(5)+extra);
+    if(!r.ok)throw 0;
+    const f=((await r.json()).features||[])[0],p=(f&&f.properties)||{};
+    const n=p.name||p.street||"",c=p.city||p.district||p.county||"";
+    return [n,c&&c!==n?c:""].filter(Boolean).join(", ");
+  };
+  let n="";
+  try{n=await pide("&radius=3&osm_tag=place")}catch(e){}
+  if(!n){try{n=await pide("")}catch(e){}}
+  return cacheNombres[k]=n;
+}
+function sugerirPunto(forzar){
+  if(!iniNombre||!esTipoRuta())return;
+  const f=$("f-punto"),v=f.value.trim();
+  if(forzar||!v||v===puntoAuto||v===lugarSug){f.value=iniNombre.slice(0,80);puntoAuto=f.value}
+}
 function tipoActual(){const c=String(($("f-tipo")||{}).value||"").trim();return c?norm(c):tipoSel}
 function esTipoRuta(){const t=tipoActual();return t==="ruta"||t==="bici"}
 function pintaIni(){
   const caja=$("iniBox");caja.hidden=!esTipoRuta();
-  if(caja.hidden)return;
+  if(caja.hidden){$("lblPunto").textContent="Punto de encuentro";return}
   $("iniTxt").textContent=iniPend?"Inicio marcado ✓"+(pend?" · a "+km(haversine(iniPend,pend))+" del destino (en línea recta)":""):"Todavía no has marcado el inicio. Es opcional, pero ayuda a que todos sepan dónde quedáis.";
   $("iniMarcar").textContent=iniPend?"🚩 Cambiar el inicio":"🚩 Marcar el inicio";
   $("iniQuitar").hidden=!iniPend;
+  $("iniNombreBtn").hidden=!iniPend;
+  $("lblPunto").textContent="Dónde quedáis (punto de encuentro = inicio de la ruta)";
 }
 function iconoInicio(){return L.divIcon({className:"",html:`<div class="pin" style="background:#E8590C"><span class="em" style="font-size:20px">🚩</span></div>`,iconSize:[44,44],iconAnchor:[22,22]})}
 function ponIniMarker(ll){
@@ -861,16 +885,23 @@ function empezarIni(){
   $("colocarOk").textContent="Usar este inicio";$("colocarOk").disabled=!iniPend;
   $("map").scrollIntoView({behavior:"smooth",block:"center"});
 }
-function fijaIniTmp(ll){
+function fijaIniTmp(ll,nombre){
   iniTmp={lat:ll.lat,lng:ll.lng};ponIniMarker(iniTmp);
+  iniTmpNombre=nombre||"";
+  if(!nombre){const t=iniTmp;nombreDeLugar(t).then(n=>{if(iniTmp===t)iniTmpNombre=n})}
   $("colocarOk").disabled=false;
   $("colocarTxt").textContent="Inicio aquí"+(pend?" · a "+km(haversine(iniTmp,pend))+" del destino":"");
 }
-function terminaIni(ok){
+async function terminaIni(ok){
   modoIni=false;$("colocar").hidden=true;$("colocarOk").textContent="Crear plan aquí";
-  if(ok&&iniTmp)iniPend={lat:iniTmp.lat,lng:iniTmp.lng};
+  const nuevo=ok&&iniTmp;
+  if(nuevo){iniPend={lat:iniTmp.lat,lng:iniTmp.lng};iniNombre=iniTmpNombre}
   if(iniPend)ponIniMarker(iniPend);else quitaIniMarker();
-  iniTmp=null;pintaIni();$("nueva").classList.add("open");
+  const t=iniTmp;iniTmp=null;pintaIni();$("nueva").classList.add("open");
+  if(nuevo){
+    if(!iniNombre){iniNombre=await nombreDeLugar(iniPend)}
+    sugerirPunto(false);
+  }
 }
 const modoTramo=a=>a.tipo==="bici"?"bici":"pie";
 async function cargaTramo(a){
@@ -925,7 +956,7 @@ function lugarDeFeature(f){
   const emojis={restaurant:"🍽️",fast_food:"🍔",cafe:"☕",bar:"🍺",pub:"🍺",hotel:"🏨",hostel:"🏨",camp_site:"⛺",beach:"🏖️",marina:"⚓",harbour:"⚓",peak:"⛰️",viewpoint:"🌄",supermarket:"🛒",pharmacy:"💊",fuel:"⛽",parking:"🅿️"};
   const ic=emojis[v]||(k==="place"?"🏘️":k==="natural"?"🌿":k==="shop"?"🛍️":k==="tourism"?"🧭":k==="highway"?"🛣️":"📍");
   const esLugar=k==="place"||k==="boundary";
-  return {nombre,det,lat:+c[1],lng:+c[0],ic,zoom:esLugar?(v==="city"?12:v==="town"?13:14):17};
+  return {nombre,det,ciudad:p.city||p.district||"",lat:+c[1],lng:+c[0],ic,zoom:esLugar?(v==="city"?12:v==="town"?13:14):17};
 }
 async function buscaLugares(q){
   const clave=q.toLowerCase();
@@ -973,12 +1004,12 @@ async function lanzaBusqueda(qIn){
 }
 function elegirLugar(l){
   $("resMapa").hidden=true;
-  if(modoIni){map.setView([l.lat,l.lng],Math.min(l.zoom,16));fijaIniTmp({lat:l.lat,lng:l.lng});return}
+  if(modoIni){map.setView([l.lat,l.lng],Math.min(l.zoom,16));fijaIniTmp({lat:l.lat,lng:l.lng},[l.nombre,l.ciudad&&l.ciudad!==l.nombre?l.ciudad:""].filter(Boolean).join(", "));return}
   plusMenu(false);sel=null;burbuja=null;cerrarForm();render();
   const ll={lat:l.lat,lng:l.lng};
   map.setView(ll,l.zoom);
   ponPunto(ll);
-  lugarSug=[l.nombre,l.det].filter(Boolean).join(", ").slice(0,80);
+  lugarSug=[l.nombre,l.ciudad&&l.ciudad!==l.nombre?l.ciudad:""].filter(Boolean).join(", ").slice(0,80);
   $("colocarTxt").textContent="📍 "+l.nombre;
   $("colocarOk").textContent="Crear plan aquí";
   $("map").scrollIntoView({behavior:"smooth",block:"center"});
@@ -1264,7 +1295,7 @@ function limpiaForm(){
   $("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();
 }
 function abrirEdicion(a){
-  editId=a.id;pend={lat:a.lat,lng:a.lng};iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
+  editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
   const conocido=!!TIPOS[a.tipo];tipoSel=conocido?a.tipo:"otro";$("f-tipo").value=conocido?"":a.tipo;
   $("f-titulo").value=a.titulo;$("f-emoji").value=a.emoji||"";
   $("f-dia").value=a.fecha?a.fecha.slice(0,10):"";$("f-hora").value=a.fecha?a.fecha.slice(11,16):"";
@@ -1307,7 +1338,7 @@ async function guardaEdicion(id,campos,priv,cod){
     if(cambios.length){try{await sb.from("mensajes").insert({plan_id:id,texto:"✏️ El organizador ha cambiado "+cambios.join(", ")+"."})}catch(e){}}
   }
 }
-function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;quitaIniMarker();$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
+function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;iniNombre="";iniTmpNombre="";puntoAuto="";quitaIniMarker();$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
 function elegir(id){burbuja=null;tab="info";delId=null;cerrarForm();sel=id;const pa=data.find(x=>x.id===id);if(pa&&pa.ini){cargaTramo(pa);try{map.fitBounds([[pa.ini.lat,pa.ini.lng],[pa.lat,pa.lng]],{padding:[60,60]})}catch(e){}}render()}
 
 map.on("click",e=>{
@@ -1633,7 +1664,16 @@ $("emojis").addEventListener("click",()=>setTimeout(pintaPrev,0));
 $("f-tipo").addEventListener("input",pintaPrev);
 $("f-tipo").addEventListener("input",pintaIni);
 $("iniMarcar").onclick=empezarIni;
-$("iniQuitar").onclick=()=>{iniPend=null;quitaIniMarker();pintaIni()};
+$("iniQuitar").onclick=()=>{iniPend=null;iniNombre="";quitaIniMarker();pintaIni()};
+async function poneNombreInicio(){
+  if(!iniPend)return;
+  const b=$("iniNombreBtn"),antes=b.textContent;b.disabled=true;b.textContent="Buscando el nombre…";
+  const n=iniNombre||await nombreDeLugar(iniPend);
+  b.disabled=false;b.textContent=antes;
+  if(!n){alert("No encuentro un nombre para ese sitio. Escríbelo tú en el campo de abajo.");return}
+  iniNombre=n;sugerirPunto(true);
+}
+$("iniNombreBtn").onclick=poneNombreInicio;
 dbp.then(()=>mediaAll()).then(m=>{media=m;render()}).catch(()=>{});
 render();
 if(aceptado())arranca();
