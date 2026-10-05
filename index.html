@@ -147,6 +147,7 @@ main{padding-bottom:120px}
 .mapwrap{margin-top:-30px}
 #map{height:66vh;min-height:360px}
 .locbtn{position:absolute;right:12px;top:12px;z-index:500}
+.inibox{border:2px dashed #B8C4B5;border-radius:14px;padding:10px 12px;margin:10px 0}
 .buscamapa{position:absolute;left:12px;right:72px;top:12px;z-index:700}
 .buscamapa input{width:100%;margin:0;padding:12px 40px 12px 16px;border-radius:99px;border:2px solid var(--card);background:var(--card);color:var(--ink);box-shadow:0 3px 10px rgba(0,0,0,.3);font-size:16px}
 .buscamapa>button{position:absolute;right:6px;top:6px;width:32px;height:32px;padding:0;border-radius:50%;background:var(--bg);color:var(--ink)}
@@ -248,7 +249,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 44 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
+<div class="wlegal">AppVentureLife · versión 48 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
 </div>
 
 <main>
@@ -266,7 +267,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <svg id="centro" class="crosshair" viewBox="0 0 24 24" hidden aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="#FFD66B" stroke="#0A2A5E" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" fill="#0A2A5E"/></svg>
 <div id="colocar" class="placebar" hidden><span id="colocarTxt">Toca el mapa para marcar el lugar</span><button id="colocarNo" class="sec" type="button" aria-label="Cancelar">✕</button><button id="colocarOk" type="button" disabled>Crear plan aquí</button></div>
 <div id="bannerSol" class="bannersol" hidden></div>
-<div class="attr">&copy; OpenStreetMap · rutas OSRM · búsqueda Photon</div>
+<div class="attr">&copy; OpenStreetMap contributors &copy; CARTO · rutas OSRM · búsqueda Photon</div>
 </div>
 <p class="hint" style="margin:8px 2px 0">Busca un sitio arriba, o toca el mapa para crear un plan en ese punto. Toca una chincheta para ver un plan.</p>
 <div id="filtros"></div>
@@ -284,7 +285,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 44 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 48 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -372,6 +373,13 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <label for="f-emoji">Emoji para la redondita del mapa</label>
 <input id="f-emoji" placeholder="Escribe uno o elige abajo" style="font-size:22px"><div class="cats" id="cats"></div><div class="emojis" id="emojis"></div>
 <div class="prevrow"><div id="pinprev"></div><span class="meta">Así se verá tu chincheta en el mapa</span></div>
+<div id="iniBox" class="inibox" hidden>
+<b>🚩 Inicio de la ruta</b>
+<p class="meta" style="margin:4px 0 8px">La chincheta del mapa es el <b>destino</b> (por ejemplo, el castillo). Aquí marcas <b>dónde quedáis</b> para empezar a caminar.</p>
+<p id="iniTxt" class="meta" style="margin:0 0 8px"></p>
+<div class="row"><button class="sec" id="iniMarcar" type="button">🚩 Marcar el inicio</button><button class="sec" id="iniQuitar" type="button" hidden>Quitar</button></div>
+<button class="sec" id="iniNombreBtn" type="button" hidden style="margin-top:8px;width:100%">📍 Poner el nombre de este sitio como punto de encuentro</button>
+</div>
 <label>Fecha y hora</label>
 <div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
 <div class="row"><div><label for="f-dia">Día</label><input id="f-dia" type="date"></div><div><label for="f-hora">Hora</label><input id="f-hora" type="time"></div></div>
@@ -383,7 +391,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
 <details class="mas"><summary>Añadir más detalles</summary>
 <label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
-<label for="f-punto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
+<label for="f-punto" id="lblPunto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
 <label for="f-desc">Descripción</label><textarea id="f-desc" rows="3" placeholder="Qué vais a hacer, qué hay que llevar..."></textarea>
 <label for="f-equipo">Equipo necesario</label><input id="f-equipo" maxlength="120" placeholder="Ej. Chaleco, crema solar, agua">
 <label for="f-emerg">Contacto de emergencia del organizador</label><input id="f-emerg" maxlength="60" placeholder="Ej. Ana · 600 000 000">
@@ -546,7 +554,7 @@ async function claveDe(cod,salt){const base=await crypto.subtle.importKey("raw",
 async function cifra(obj,cod){const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12)),k=await claveDe(cod,salt),ct=new Uint8Array(await crypto.subtle.encrypt({name:"AES-GCM",iv},k,_enc.encode(JSON.stringify(obj)))),out=new Uint8Array(28+ct.length);out.set(salt,0);out.set(iv,16);out.set(ct,28);return bufB64(out)}
 async function descifra(txt,cod){const u=b64Buf(txt),k=await claveDe(cod,u.slice(0,16)),pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:u.slice(16,28)},k,u.slice(28));return JSON.parse(_dec.decode(pt))}
 const enlacePriv=async a=>location.origin+location.pathname+"#pv="+await cifra(datosComp(a),a.codigo);
-function textoCompartir(a){if(a.priv)return "🔒 Plan privado en AppVentureLife. Abre el enlace y escribe el código que te darán:";return `${a.emoji||"🌊"} ${a.titulo}${a.fecha?" · "+fmtF(a.fecha):""}${a.precio>0?" · "+precioTxt(a.precio):""}\nÚnete en AppVentureLife:`}
+function textoCompartir(a){if(a.priv)return "🔒 Plan privado en AppVentureLife. Abre el enlace y escribe el código que te darán:";return `${a.emoji||"🌊"} ${a.titulo}${a.fecha?" · "+fmtF(a.fecha):""}${a.precio>0?" · "+precioTxt(a.precio):""}${a.ini?"\n🚩 Inicio de la ruta: https://www.google.com/maps?q="+(+a.ini.lat).toFixed(5)+","+(+a.ini.lng).toFixed(5):""}\nÚnete en AppVentureLife:`}
 function compartir(a){window.open("https://wa.me/?text="+encodeURIComponent(textoCompartir(a)+" "+enlaceDe(a)),"_blank")}
 async function copiar(a){const u=enlaceDe(a);try{await navigator.clipboard.writeText(u);if($("copiar"))$("copiar").textContent="¡Enlace copiado!"}catch(e){prompt("Copia este enlace:",u)}}
 function abreImportado(a){compartido=true;setTimeout(()=>{if(a.lat||a.lng)map.setView([a.lat,a.lng],14);elegir(a.id)},300)}
@@ -765,7 +773,8 @@ document.addEventListener("touchmove",e=>{if(!sw)return;sw.dy=Math.max(0,e.touch
 document.addEventListener("touchend",()=>{if(!sw)return;const sh=sw.sh,dy=sw.dy;sw=null;sh.style.transition="";if(dy>90)cerrarSheet(sh);else sh.style.transform=""});
 /* mapa */
 const map=L.map("map",{zoomControl:false,attributionControl:false}).setView([40.4168,-3.7038],6);
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19}).addTo(map);
+const CARTO_KEY="cb1_4a0g_1_c9a08985d607c5ad800cb989";
+L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20}).addTo(map);
 const capa=L.layerGroup().addTo(map);
 function irAMiUbicacion(){
   if(!navigator.geolocation){alert("Tu navegador no permite usar la ubicación.");return}
@@ -779,7 +788,7 @@ function irAMiUbicacion(){
 $("loc").onclick=()=>{compartido=false;irAMiUbicacion()};
 irAMiUbicacion();
 
-let colocando=false,tipoSel="otro",ruta=null,capaRuta=null,burbuja=null,solVista=new Set(),solInit=false,invitadoA=new Map(),invVista=new Set(),invInit=false,invPlan=null,perfiles=[],miBuscable=true;
+let colocando=false,tipoSel="otro",ruta=null,capaRuta=null,burbuja=null,solVista=new Set(),solInit=false,invitadoA=new Map(),invVista=new Set(),invInit=false,invPlan=null,perfiles=[],miBuscable=true,iniPend=null,iniMarker=null,modoIni=false,iniTmp=null,tramos={},capaTramo=null,tramoId=null,iniNombre="",iniTmpNombre="",puntoAuto="";
 const km=m=>m<1000?(Math.round(m/10)*10)+" m":(m/1000).toLocaleString("es",{maximumFractionDigits:1})+" km";
 const durTxt=sg=>{const m=Math.max(1,Math.round(sg/60));return m<60?m+" min":Math.floor(m/60)+" h "+(m%60)+" min"};
 function haversine(a,b){const R=6371000,r=x=>x*Math.PI/180,dLa=r(b.lat-a.lat),dLo=r(b.lng-a.lng),h=Math.sin(dLa/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
@@ -791,10 +800,10 @@ function calcularRuta(a,modo){
   if(capaRuta){map.removeLayer(capaRuta);capaRuta=null}
   ruta={id:a.id,modo,estado:"buscando"};render();
   navigator.geolocation.getCurrentPosition(async p=>{
-    const pos={lat:p.coords.latitude,lng:p.coords.longitude},recta=haversine(pos,a);
+    const pos={lat:p.coords.latitude,lng:p.coords.longitude},recta=haversine(pos,a.ini||a);
     ruta={id:a.id,modo,recta,estado:"calculando"};render();
     try{
-      const u=`https://routing.openstreetmap.de/${PERFIL[modo][0]}/route/v1/driving/${pos.lng.toFixed(5)},${pos.lat.toFixed(5)};${(+a.lng).toFixed(5)},${(+a.lat).toFixed(5)}?overview=full&geometries=geojson`;
+      const u=`https://routing.openstreetmap.de/${PERFIL[modo][0]}/route/v1/driving/${pos.lng.toFixed(5)},${pos.lat.toFixed(5)};${(+(a.ini||a).lng).toFixed(5)},${(+(a.ini||a).lat).toFixed(5)}?overview=full&geometries=geojson`;
       const r=await (await fetch(u)).json();
       const rt=r.routes&&r.routes[0];if(!rt)throw 0;
       if(!ruta||ruta.id!==a.id)return;
@@ -815,8 +824,8 @@ function rutaHTML(a){
   else if(r.estado==="ok")txt=`<p style="margin:6px 0 2px"><b>${km(r.dist)}</b> · ${durTxt(r.dur)} ${PERFIL[m][1]}</p><p class="meta" style="margin:0 0 6px">En línea recta: ${km(r.recta)}. La ruta está dibujada en el mapa.</p>`;
   else if(r.estado==="sinruta")txt=`<p class="meta" style="margin:6px 0">En línea recta: <b style="color:var(--ink)">${km(r.recta)}</b>. No pude calcular la ruta aquí; usa tu app de mapas.</p>`;
   else txt=`<p class="meta" style="margin:6px 0">No pude obtener tu ubicación. Activa el permiso de ubicación para este sitio en los ajustes de Safari.</p>`;
-  const dest=`${(+a.lat).toFixed(6)},${(+a.lng).toFixed(6)}`;
-  return `<div class="ruta"><b>Cómo llegar</b><div class="chips" style="margin:6px 0">${modos}</div>${txt}<div class="mini" style="margin:6px 0 0"><a class="payb sec2" href="https://maps.apple.com/?daddr=${dest}&dirflg=${PERFIL[m][3]}" target="_blank" rel="noopener">Apple Maps</a><a class="payb sec2" href="https://www.google.com/maps/dir/?api=1&destination=${dest}&travelmode=${PERFIL[m][2]}" target="_blank" rel="noopener noreferrer">Google Maps</a>${r&&r.estado==="ok"?`<button id="rutaQuita" class="sec" type="button">Quitar ruta</button>`:""}</div></div>`;
+  const dest=`${(+(a.ini||a).lat).toFixed(6)},${(+(a.ini||a).lng).toFixed(6)}`;
+  return `<div class="ruta"><b>${a.ini?"Cómo llegar al inicio de la ruta":"Cómo llegar"}</b><div class="chips" style="margin:6px 0">${modos}</div>${txt}<div class="mini" style="margin:6px 0 0"><a class="payb sec2" href="https://maps.apple.com/?daddr=${dest}&dirflg=${PERFIL[m][3]}" target="_blank" rel="noopener">Apple Maps</a><a class="payb sec2" href="https://www.google.com/maps/dir/?api=1&destination=${dest}&travelmode=${PERFIL[m][2]}" target="_blank" rel="noopener noreferrer">Google Maps</a>${r&&r.estado==="ok"?`<button id="rutaQuita" class="sec" type="button">Quitar ruta</button>`:""}</div></div>`;
 }
 function irA(v){
   plusMenu(false);
@@ -826,10 +835,111 @@ function irA(v){
   window.scrollTo(0,0);render();
 }
 function salirColocar(){lugarSug="";colocando=false;$("centro").hidden=true;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}}
+const cacheNombres={};
+async function nombreDeLugar(ll){
+  const k=ll.lat.toFixed(4)+","+ll.lng.toFixed(4);
+  if(k in cacheNombres)return cacheNombres[k];
+  const pide=async extra=>{
+    const r=await fetch("https://photon.komoot.io/reverse?limit=1&lon="+ll.lng.toFixed(5)+"&lat="+ll.lat.toFixed(5)+extra);
+    if(!r.ok)throw 0;
+    const f=((await r.json()).features||[])[0],p=(f&&f.properties)||{};
+    const n=p.name||p.street||"",c=p.city||p.district||p.county||"";
+    return [n,c&&c!==n?c:""].filter(Boolean).join(", ");
+  };
+  let n="";
+  try{n=await pide("&radius=3&osm_tag=place")}catch(e){}
+  if(!n){try{n=await pide("")}catch(e){}}
+  return cacheNombres[k]=n;
+}
+function sugerirPunto(forzar){
+  if(!iniNombre||!esTipoRuta())return;
+  const f=$("f-punto"),v=f.value.trim();
+  if(forzar||!v||v===puntoAuto||v===lugarSug){f.value=iniNombre.slice(0,80);puntoAuto=f.value}
+}
+function tipoActual(){const c=String(($("f-tipo")||{}).value||"").trim();return c?norm(c):tipoSel}
+function esTipoRuta(){const t=tipoActual();return t==="ruta"||t==="bici"}
+function pintaIni(){
+  const caja=$("iniBox");caja.hidden=!esTipoRuta();
+  if(caja.hidden){$("lblPunto").textContent="Punto de encuentro";return}
+  $("iniTxt").textContent=iniPend?"Inicio marcado ✓"+(pend?" · a "+km(haversine(iniPend,pend))+" del destino (en línea recta)":""):"Todavía no has marcado el inicio. Es opcional, pero ayuda a que todos sepan dónde quedáis.";
+  $("iniMarcar").textContent=iniPend?"🚩 Cambiar el inicio":"🚩 Marcar el inicio";
+  $("iniQuitar").hidden=!iniPend;
+  $("iniNombreBtn").hidden=!iniPend;
+  $("lblPunto").textContent="Dónde quedáis (punto de encuentro = inicio de la ruta)";
+}
+function iconoInicio(){return L.divIcon({className:"",html:`<div class="pin" style="background:#E8590C"><span class="em" style="font-size:20px">🚩</span></div>`,iconSize:[44,44],iconAnchor:[22,22]})}
+function ponIniMarker(ll){
+  if(iniMarker)iniMarker.setLatLng(ll);
+  else iniMarker=L.marker(ll,{icon:iconoInicio(),interactive:false,zIndexOffset:900}).addTo(map);
+}
+function quitaIniMarker(){if(iniMarker){map.removeLayer(iniMarker);iniMarker=null}}
+function empezarIni(){
+  modoIni=true;iniTmp=iniPend?{lat:iniPend.lat,lng:iniPend.lng}:null;
+  $("nueva").classList.remove("open");
+  if(iniPend)ponIniMarker(iniPend);
+  $("colocar").hidden=false;
+  $("colocarTxt").textContent=iniPend?"Toca otro punto para mover el inicio":"Toca el mapa donde empieza la ruta (donde quedáis)";
+  $("colocarOk").textContent="Usar este inicio";$("colocarOk").disabled=!iniPend;
+  $("map").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function fijaIniTmp(ll,nombre){
+  iniTmp={lat:ll.lat,lng:ll.lng};ponIniMarker(iniTmp);
+  iniTmpNombre=nombre||"";
+  if(!nombre){const t=iniTmp;nombreDeLugar(t).then(n=>{if(iniTmp===t)iniTmpNombre=n})}
+  $("colocarOk").disabled=false;
+  $("colocarTxt").textContent="Inicio aquí"+(pend?" · a "+km(haversine(iniTmp,pend))+" del destino":"");
+}
+async function terminaIni(ok){
+  modoIni=false;$("colocar").hidden=true;$("colocarOk").textContent="Crear plan aquí";
+  const nuevo=ok&&iniTmp;
+  if(nuevo){iniPend={lat:iniTmp.lat,lng:iniTmp.lng};iniNombre=iniTmpNombre}
+  if(iniPend)ponIniMarker(iniPend);else quitaIniMarker();
+  const t=iniTmp;iniTmp=null;pintaIni();$("nueva").classList.add("open");
+  if(nuevo){
+    if(!iniNombre){iniNombre=await nombreDeLugar(iniPend)}
+    sugerirPunto(false);
+  }
+}
+const modoTramo=a=>a.tipo==="bici"?"bici":"pie";
+async function cargaTramo(a){
+  if(!a||!a.ini)return;
+  const k=a.id+"|"+a.ini.lat+","+a.ini.lng+"|"+a.lat+","+a.lng;
+  if(tramos[a.id]&&tramos[a.id].k===k)return;
+  tramos[a.id]={k,estado:"calculando"};
+  try{
+    const u=`https://routing.openstreetmap.de/${PERFIL[modoTramo(a)][0]}/route/v1/driving/${(+a.ini.lng).toFixed(5)},${(+a.ini.lat).toFixed(5)};${(+a.lng).toFixed(5)},${(+a.lat).toFixed(5)}?overview=full&geometries=geojson`;
+    const r=await (await fetch(u)).json();
+    const rt=r.routes&&r.routes[0];if(!rt)throw 0;
+    tramos[a.id]={k,estado:"ok",dist:rt.distance,dur:rt.duration,geom:rt.geometry};
+  }catch(e){tramos[a.id]={k,estado:"sinruta"}}
+  render();
+}
+function tramoHTML(a){
+  if(!a.ini)return "";
+  const t=tramos[a.id],recta=haversine(a.ini,a),m=modoTramo(a);
+  let txt;
+  if(!t||t.estado==="calculando")txt=`<p class="meta" style="margin:6px 0">En línea recta: <b style="color:var(--ink)">${km(recta)}</b>. Calculando el camino…</p>`;
+  else if(t.estado==="ok")txt=`<p style="margin:6px 0 2px"><b>${km(t.dist)}</b> · ${durTxt(t.dur)} ${PERFIL[m][1]} del inicio al destino</p><p class="meta" style="margin:0">En línea recta: ${km(recta)}. El tramo está dibujado en el mapa (línea naranja con la bandera 🚩 en el inicio).</p>`;
+  else txt=`<p class="meta" style="margin:6px 0">Del inicio al destino hay <b style="color:var(--ink)">${km(recta)}</b> en línea recta. No pude calcular el camino aquí.</p>`;
+  return `<div class="ruta"><b>🥾 La ruta</b><p class="meta" style="margin:4px 0">🚩 Quedamos en el <b>inicio</b>${a.punto?`: <b style="color:var(--ink)">${esc(a.punto)}</b>`:""}. Desde ahí vamos ${m==="bici"?"en bici":"a pie"} hasta el destino.</p>${txt}<div class="mini" style="margin:6px 0 0"><button id="verTramo" class="sec" type="button">Ver el tramo en el mapa</button></div></div>`;
+}
+function sincronizaTramo(){
+  const a=sel?data.find(x=>x.id===sel):null;
+  if(!a||!a.ini){if(capaTramo){map.removeLayer(capaTramo);capaTramo=null}tramoId=null;return}
+  const t=tramos[a.id],clave=a.id+"|"+(t?t.estado:"")+"|"+a.ini.lat+","+a.ini.lng+"|"+a.lat+","+a.lng;
+  if(capaTramo&&tramoId===clave)return;
+  if(capaTramo){map.removeLayer(capaTramo);capaTramo=null}
+  tramoId=clave;
+  capaTramo=L.layerGroup().addTo(map);
+  L.marker([a.ini.lat,a.ini.lng],{icon:iconoInicio(),interactive:false,zIndexOffset:900}).addTo(capaTramo);
+  if(t&&t.estado==="ok")L.geoJSON(t.geom,{style:{color:"#E8590C",weight:5,opacity:.95}}).addTo(capaTramo);
+  else L.polyline([[a.ini.lat,a.ini.lng],[a.lat,a.lng]],{color:"#E8590C",weight:4,dashArray:"4 8",opacity:.9}).addTo(capaTramo);
+}
 function marcaPunto(ll){
   pend=ll;
   if(pendMarker)pendMarker.setLatLng(ll);
   else pendMarker=L.circleMarker(ll,{radius:12,color:"#17301F",weight:3,dashArray:"4 6",fillColor:"#FFD66B",fillOpacity:.9,interactive:false}).addTo(map);
+  pintaIni();
 }
 let lugarSug="",buscaT=null,buscaN=0,resultadosMapa=[];const cacheBusca={};
 function lugarDeFeature(f){
@@ -843,7 +953,7 @@ function lugarDeFeature(f){
   const emojis={restaurant:"🍽️",fast_food:"🍔",cafe:"☕",bar:"🍺",pub:"🍺",hotel:"🏨",hostel:"🏨",camp_site:"⛺",beach:"🏖️",marina:"⚓",harbour:"⚓",peak:"⛰️",viewpoint:"🌄",supermarket:"🛒",pharmacy:"💊",fuel:"⛽",parking:"🅿️"};
   const ic=emojis[v]||(k==="place"?"🏘️":k==="natural"?"🌿":k==="shop"?"🛍️":k==="tourism"?"🧭":k==="highway"?"🛣️":"📍");
   const esLugar=k==="place"||k==="boundary";
-  return {nombre,det,lat:+c[1],lng:+c[0],ic,zoom:esLugar?(v==="city"?12:v==="town"?13:14):17};
+  return {nombre,det,ciudad:p.city||p.district||"",lat:+c[1],lng:+c[0],ic,zoom:esLugar?(v==="city"?12:v==="town"?13:14):17};
 }
 async function buscaLugares(q){
   const clave=q.toLowerCase();
@@ -891,18 +1001,19 @@ async function lanzaBusqueda(qIn){
 }
 function elegirLugar(l){
   $("resMapa").hidden=true;
+  if(modoIni){map.setView([l.lat,l.lng],Math.min(l.zoom,16));fijaIniTmp({lat:l.lat,lng:l.lng},[l.nombre,l.ciudad&&l.ciudad!==l.nombre?l.ciudad:""].filter(Boolean).join(", "));return}
   plusMenu(false);sel=null;burbuja=null;cerrarForm();render();
   const ll={lat:l.lat,lng:l.lng};
   map.setView(ll,l.zoom);
   ponPunto(ll);
-  lugarSug=[l.nombre,l.det].filter(Boolean).join(", ").slice(0,80);
+  lugarSug=[l.nombre,l.ciudad&&l.ciudad!==l.nombre?l.ciudad:""].filter(Boolean).join(", ").slice(0,80);
   $("colocarTxt").textContent="📍 "+l.nombre;
   $("colocarOk").textContent="Crear plan aquí";
   $("map").scrollIntoView({behavior:"smooth",block:"center"});
 }
 function ponPunto(ll){marcaPunto(ll);colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Plan en este punto";$("colocarOk").disabled=false}
 function pintaPrev(){const c=$("f-tipo").value.trim(),t=c?norm(c):tipoSel,a={tipo:t,emoji:ultimo($("f-emoji").value)};$("pinprev").innerHTML=`<div class="pin" style="background:${col(a)}">${sym(a,22)}</div>`}
-function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>`<button type="button" class="fchip${tipoSel===k?" on":""}" data-k="${k}">${esc(v)}</button>`).join("");pintaPrev()}
+function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>`<button type="button" class="fchip${tipoSel===k?" on":""}" data-k="${k}">${esc(v)}</button>`).join("");pintaPrev();pintaIni()}
 /* ===== servidor (Supabase) ===== */
 const SB_URL="https://gluinrtmrrfecbhjwvdl.supabase.co",SB_KEY="sb_publishable_qjY62DUZEKjXFqMfX14x7w_TBe-grRt";
 let sb=null,uid=null,nombres={},chats={},perfilOk=false,cargando=true,errCon="";
@@ -989,7 +1100,7 @@ async function recarga(){
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});
     const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
@@ -1059,6 +1170,14 @@ function render(){
     const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}" style="background:${col(a)}">${sym(a,22)}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.lat,a.lng],{icon:ic,zIndexOffset:a.id===burbuja?1000:0}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
   });
+  adv.filter(a=>a.ini&&a.id!==sel).forEach(a=>{
+    cargaTramo(a);
+    const t=tramos[a.id];
+    if(t&&t.estado==="ok")L.geoJSON(t.geom,{style:{color:"#E8590C",weight:3,opacity:.85},interactive:false}).addTo(capa);
+    else L.polyline([[a.ini.lat,a.ini.lng],[a.lat,a.lng]],{color:"#E8590C",weight:3,dashArray:"4 8",opacity:.85,interactive:false}).addTo(capa);
+    const fi=L.divIcon({className:"",html:`<div class="pin" style="background:#E8590C;transform:scale(.72)"><span class="em" style="font-size:20px">🚩</span></div>`,iconSize:[44,44],iconAnchor:[22,22]});
+    L.marker([a.ini.lat,a.ini.lng],{icon:fi,zIndexOffset:500}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
+  });
   const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
   $("lista").innerHTML=lst.length?lst.map(card).join(""):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
   $("ahoraBox").hidden=!aq.length;
@@ -1093,6 +1212,7 @@ function render(){
   }).join(""):`<p class="meta">Aún no tienes mensajes. Toca el nombre de un amigo, o de alguien en un plan, para escribirle.</p>`;
   const sv=$("srv");if(sv)sv.textContent=!sb?"Servidor: no cargó":errCon?"Servidor: ERROR · "+errCon:cargando?"Servidor: conectando…":"Servidor: conectado · "+advAll.length+" planes visibles · tu id "+String(uid).slice(0,4);
 
+  sincronizaTramo();
   const a=vivos().find(x=>x.id===sel),d=$("detalle");
   if(!a){d.classList.remove("open");return}
   if(a.kind==="aqui"){
@@ -1122,6 +1242,7 @@ ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
 <button id="unir" class="big" ${lleno?"disabled":""}>${yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button>
 <div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}${a.fecha?`<button id="cal" class="sec" type="button">Calendario</button>`:""}</div>
+${tramoHTML(a)}
 ${(yo||soyOrg(a))?rutaHTML(a):""}
 ${a.punto?`<p class="meta">Punto de encuentro: <b style="color:var(--ink)">${esc(a.punto)}</b></p>`:""}
 ${a.equipo?`<p class="meta">Equipo: <b style="color:var(--ink)">${esc(a.equipo)}</b></p>`:""}
@@ -1140,7 +1261,7 @@ ${seguridad(a)}
   on("gofotos",()=>{tab="fotos";render()});
   on("editGo",()=>abrirEdicion(a));on("invGo",()=>abreInvitar(a.id));on("rechInv",()=>rechazarInvitacion(a.id));
   on("denPlan",()=>abreDenuncia(a.orgId,a.id));on("bloqOrg",()=>bloquear(a.orgId));
-  on("rutaGo",()=>calcularRuta(a));on("rutaQuita",()=>{quitaRuta();render()});
+  on("verTramo",()=>{sel=null;render();try{map.fitBounds([[a.ini.lat,a.ini.lng],[a.lat,a.lng]],{padding:[60,60]});$("map").scrollIntoView({behavior:"smooth",block:"center"})}catch(e){}});on("rutaGo",()=>calcularRuta(a));on("rutaQuita",()=>{quitaRuta();render()});
   d.querySelectorAll("[data-rm]").forEach(el=>{el.onclick=()=>calcularRuta(a,el.dataset.rm)});
   on("copCod",async()=>{try{await navigator.clipboard.writeText(fmtCod(a.codigo));$("copCod").textContent="¡Copiado!"}catch(e){prompt("Código:",fmtCod(a.codigo))}});
   on("wa",()=>compartir(a));on("copiar",()=>copiar(a));on("cal",()=>calendario(a));
@@ -1171,7 +1292,7 @@ function limpiaForm(){
   $("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();
 }
 function abrirEdicion(a){
-  editId=a.id;pend={lat:a.lat,lng:a.lng};
+  editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
   const conocido=!!TIPOS[a.tipo];tipoSel=conocido?a.tipo:"otro";$("f-tipo").value=conocido?"":a.tipo;
   $("f-titulo").value=a.titulo;$("f-emoji").value=a.emoji||"";
   $("f-dia").value=a.fecha?a.fecha.slice(0,10):"";$("f-hora").value=a.fecha?a.fecha.slice(11,16):"";
@@ -1214,11 +1335,12 @@ async function guardaEdicion(id,campos,priv,cod){
     if(cambios.length){try{await sb.from("mensajes").insert({plan_id:id,texto:"✏️ El organizador ha cambiado "+cambios.join(", ")+"."})}catch(e){}}
   }
 }
-function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
-function elegir(id){burbuja=null;tab="info";delId=null;cerrarForm();sel=id;render()}
+function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;iniNombre="";iniTmpNombre="";puntoAuto="";quitaIniMarker();$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
+function elegir(id){burbuja=null;tab="info";delId=null;cerrarForm();sel=id;const pa=data.find(x=>x.id===id);if(pa&&pa.ini){cargaTramo(pa);try{map.fitBounds([[pa.ini.lat,pa.ini.lng],[pa.lat,pa.lng]],{padding:[60,60]})}catch(e){}}render()}
 
 map.on("click",e=>{
   plusMenu(false);$("resMapa").hidden=true;
+  if(modoIni){fijaIniTmp(e.latlng);return}
   if($("nueva").classList.contains("open")){marcaPunto(e.latlng);return}
   if(burbuja!=null){burbuja=null;render();return}
   if(sel){sel=null;render();return}
@@ -1453,9 +1575,9 @@ $("a-ok").onclick=()=>{
   },()=>{$("a-ok").disabled=false;alert("No pude obtener tu ubicación. Activa el permiso de ubicación para este sitio en los ajustes de Safari.")},{enableHighAccuracy:true,timeout:10000});
 };
 $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],15);elegir(+i.dataset.id)}});
-$("colocarNo").onclick=()=>{salirColocar();if(editId){const a=data.find(x=>x.id===editId);if(a)pend={lat:a.lat,lng:a.lng};$("nueva").classList.add("open")}else pend=null};
+$("colocarNo").onclick=()=>{if(modoIni){terminaIni(false);return}salirColocar();if(editId){const a=data.find(x=>x.id===editId);if(a)pend={lat:a.lat,lng:a.lng};$("nueva").classList.add("open")}else pend=null};
 $("f-mover").onclick=()=>{$("nueva").classList.remove("open");colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el nuevo lugar del plan";$("colocarOk").disabled=true;$("colocarOk").textContent="Usar este lugar";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
-$("colocarOk").onclick=()=>{if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);$("nueva").classList.add("open")};
+$("colocarOk").onclick=()=>{if(modoIni){terminaIni(true);return}if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);$("nueva").classList.add("open")};
 $("f-vis").addEventListener("change",()=>{const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
 $("f-cod-gen").onclick=()=>{$("f-cod").value=fmtCod(genCod())};
 $("cod-no").onclick=()=>$("codigo").classList.remove("open");
@@ -1509,7 +1631,8 @@ $("f-ok").onclick=async()=>{
     if(!await perfilListo())throw new Error("Pon tu nombre primero");
     const custom=$("f-tipo").value.trim(),tipo=custom?norm(custom):tipoSel,t=$("f-titulo").value.trim()||(TIPOS[tipo]||tipo);
     const max=Math.max(2,Math.min(50,+$("f-plazas").value||6)),dia=$("f-dia").value,fch=dia?dia+"T"+($("f-hora").value||"10:00"):"",lat=pend.lat,lng=pend.lng;
-    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA};
+    const iniCampos=(esTipoRuta()||(editId&&(data.find(x=>x.id===editId)||{}).ini))?{ini_lat:iniPend?iniPend.lat:null,ini_lng:iniPend?iniPend.lng:null}:{};
+    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA,...iniCampos};
     if(editId){
       const id=editId;
       const aPrev=data.find(x=>x.id===id);
@@ -1536,6 +1659,18 @@ pintaTipos();
 $("f-emoji").addEventListener("input",pintaPrev);
 $("emojis").addEventListener("click",()=>setTimeout(pintaPrev,0));
 $("f-tipo").addEventListener("input",pintaPrev);
+$("f-tipo").addEventListener("input",pintaIni);
+$("iniMarcar").onclick=empezarIni;
+$("iniQuitar").onclick=()=>{iniPend=null;iniNombre="";quitaIniMarker();pintaIni()};
+async function poneNombreInicio(){
+  if(!iniPend)return;
+  const b=$("iniNombreBtn"),antes=b.textContent;b.disabled=true;b.textContent="Buscando el nombre…";
+  const n=iniNombre||await nombreDeLugar(iniPend);
+  b.disabled=false;b.textContent=antes;
+  if(!n){alert("No encuentro un nombre para ese sitio. Escríbelo tú en el campo de abajo.");return}
+  iniNombre=n;sugerirPunto(true);
+}
+$("iniNombreBtn").onclick=poneNombreInicio;
 dbp.then(()=>mediaAll()).then(m=>{media=m;render()}).catch(()=>{});
 render();
 if(aceptado())arranca();
