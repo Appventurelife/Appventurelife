@@ -263,7 +263,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 54 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
+<div class="wlegal">AppVentureLife · versión 55 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
 </div>
 
 <main>
@@ -300,7 +300,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 54 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 55 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -455,7 +455,6 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <label for="ov-nombre">Nombre completo o razón social</label><input id="ov-nombre" maxlength="120" autocomplete="name">
 <label for="ov-nif">NIF / CIF</label><input id="ov-nif" maxlength="20" autocapitalize="characters" autocomplete="off">
 <label for="ov-web">Web o Instagram de tu actividad</label><input id="ov-web" maxlength="200" placeholder="Ej. instagram.com/tuperfil" autocapitalize="off">
-<label class="chk"><input type="checkbox" id="ov-seguro"> Tengo seguro de responsabilidad civil para mis actividades</label>
 <label class="chk"><input type="checkbox" id="ov-acepto"> Me hago cargo de los cobros, devoluciones, permisos, seguros e impuestos de mis planes. AppVentureLife solo facilita el contacto entre personas.</label>
 <p class="meta" id="ov-msg"></p>
 <div class="row" style="margin-top:14px"><button class="sec" id="ov-cancel" type="button">Cancelar</button><button id="ov-ok" type="button">Enviar solicitud</button></div>
@@ -1743,7 +1742,7 @@ async function abrirVerif(){
   if(await cuEsTemporal()){alert("Para pedir la verificación guarda antes tu cuenta con tu correo. Se hace en un momento desde tu perfil.");pedirNombre();return}
   const o=miOrg||{};
   $("ov-nombre").value=o.nombre_legal||"";$("ov-nif").value=o.nif||"";$("ov-web").value=o.contacto_publico||"";
-  $("ov-seguro").checked=!!o.seguro;$("ov-acepto").checked=false;$("ov-msg").textContent="";
+  $("ov-acepto").checked=false;$("ov-msg").textContent="";
   $("perfil").classList.remove("open");$("orgver").classList.add("open");
 }
 async function enviarVerif(){
@@ -1755,7 +1754,7 @@ async function enviarVerif(){
   const b=$("ov-ok");b.disabled=true;msg("");
   try{
     if(!sb||!uid)throw new Error("Aún no hay conexión con el servidor.");
-    const fila={user_id:uid,nombre_legal:nombre,nif,contacto_publico:web||null,seguro:$("ov-seguro").checked,acepta_condiciones:true,estado:"pendiente",motivo:null,resuelto:null};
+    const fila={user_id:uid,nombre_legal:nombre,nif,contacto_publico:web||null,acepta_condiciones:true,estado:"pendiente",motivo:null,resuelto:null};
     const r=await sb.from("organizadores").upsert(fila);if(r.error)throw r.error;
     $("orgver").classList.remove("open");await recarga();pintaOrg();
     alert("Solicitud enviada. La revisaremos pronto.");
@@ -1769,7 +1768,7 @@ async function pintaAdmin(){
     if(a.error||!a.data){box.hidden=true;return}
     const r=await sb.rpc("admin_solicitudes");if(r.error)throw r.error;
     const filas=r.data||[];
-    $("adminLista").innerHTML=filas.length?filas.map(f=>`<div class="item" style="display:block;cursor:default"><b>${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")} · ${f.seguro?"con seguro":"sin seguro"}${f.contacto_publico?" · "+esc(f.contacto_publico):""}</small><small><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`).join(""):'<p class="meta">No hay solicitudes.</p>';
+    $("adminLista").innerHTML=filas.length?filas.map(f=>`<div class="item" style="display:block;cursor:default"><b>${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")} ${f.contacto_publico?" · "+esc(f.contacto_publico):""}</small><small><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`).join(""):'<p class="meta">No hay solicitudes.</p>';
     box.hidden=false;
   }catch(e){box.hidden=true}
 }
