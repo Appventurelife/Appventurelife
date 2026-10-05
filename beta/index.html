@@ -263,7 +263,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 56 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
+<div class="wlegal">AppVentureLife · versión 58 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -300,12 +300,12 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 56 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 58 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
 
-<div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mPlan" type="button">Nuevo plan</button></div>
+<div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mAdmin" type="button" hidden>👑 Panel del dueño</button><button id="mPlan" type="button">Nuevo plan</button></div>
 
 <section id="aqui" class="sheet" aria-label="Estoy aquí">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -333,9 +333,9 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="acbox">
 <h2>Antes de entrar</h2>
 <label class="chk"><input type="checkbox" id="ac-edad"> Tengo 18 años o más</label>
-<label class="chk"><input type="checkbox" id="ac-term"> <span>He leído y acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos de uso</a> y la <a href="privacidad.html" target="_blank" rel="noopener">Política de privacidad</a></span></label>
+<label class="chk"><input type="checkbox" id="ac-term"> <span>He leído y acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos de uso</a> y la <a href="privacidad.html" target="_blank" rel="noopener">Política de privacidad</a> (<a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> y <a href="cookies.html" target="_blank" rel="noopener">Cookies</a>)</span></label>
 <p class="meta" style="margin:10px 0 0">Las actividades al aire libre y acuáticas tienen riesgos. Cada persona es responsable de su seguridad.</p>
-<p class="meta" style="margin:8px 0 0">Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></p>
+<p class="meta" style="margin:8px 0 0">Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 <button id="ac-ok" type="button" disabled>Aceptar y entrar</button>
 </div>
 </div>
@@ -386,8 +386,8 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
 <label>Tipo</label><div class="chips" id="f-tipos"></div>
 <div id="iniBox" class="inibox" hidden>
-<b><svg width="18" height="18" viewBox="0 0 100 100" style="vertical-align:-3px" aria-hidden="true"><use href="#avl-tile"/></svg> Inicio de la ruta</b>
-<p class="meta" style="margin:4px 0 8px">La chincheta del mapa es el <b>destino</b> (por ejemplo, el castillo). Aquí marcas <b>dónde quedáis</b> para empezar a caminar.</p>
+<b><svg width="18" height="18" viewBox="0 0 100 100" style="vertical-align:-3px" aria-hidden="true"><use href="#avl-tile"/></svg> Punto de salida (opcional)</b>
+<p class="meta" style="margin:4px 0 8px">La chincheta del mapa es el <b>destino</b>. Si quedáis en otro sitio para salir (el parking, el puerto, el aeropuerto...), márcalo aquí.</p>
 <p id="iniTxt" class="meta" style="margin:0 0 8px"></p>
 <div class="row"><button class="sec" id="iniMarcar" type="button">Marcar el inicio</button><button class="sec" id="iniQuitar" type="button" hidden>Quitar</button></div>
 <button class="sec" id="iniNombreBtn" type="button" hidden style="margin-top:8px;width:100%">📍 Poner el nombre de este sitio como punto de encuentro</button>
@@ -444,7 +444,6 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="org-estado"></p>
 <button class="sec" id="org-abrir" type="button" style="width:100%" hidden>Quiero ser organizador verificado</button>
 </div>
-<div id="adminBox" hidden><h3 class="who-h" style="margin-top:16px">Solicitudes de organizadores</h3><div id="adminLista" class="list"></div></div>
 <div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
 </section>
@@ -458,6 +457,12 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <label class="chk"><input type="checkbox" id="ov-acepto"> Me hago cargo de los cobros, devoluciones, permisos, seguros e impuestos de mis planes. AppVentureLife solo facilita el contacto entre personas.</label>
 <p class="meta" id="ov-msg"></p>
 <div class="row" style="margin-top:14px"><button class="sec" id="ov-cancel" type="button">Cancelar</button><button id="ov-ok" type="button">Enviar solicitud</button></div>
+</section>
+<section id="admin" class="sheet" aria-label="Panel del dueño">
+<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
+<h2>Panel del dueño</h2>
+<p class="meta">Solo lo ves tú.</p>
+<div id="adminLista" class="list"></div>
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -587,7 +592,7 @@ async function claveDe(cod,salt){const base=await crypto.subtle.importKey("raw",
 async function cifra(obj,cod){const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12)),k=await claveDe(cod,salt),ct=new Uint8Array(await crypto.subtle.encrypt({name:"AES-GCM",iv},k,_enc.encode(JSON.stringify(obj)))),out=new Uint8Array(28+ct.length);out.set(salt,0);out.set(iv,16);out.set(ct,28);return bufB64(out)}
 async function descifra(txt,cod){const u=b64Buf(txt),k=await claveDe(cod,u.slice(0,16)),pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:u.slice(16,28)},k,u.slice(28));return JSON.parse(_dec.decode(pt))}
 const enlacePriv=async a=>location.origin+location.pathname+"#pv="+await cifra(datosComp(a),a.codigo);
-function textoCompartir(a){if(a.priv)return "🔒 Plan privado en AppVentureLife. Abre el enlace y escribe el código que te darán:";return `${a.emoji||"🌊"} ${a.titulo}${a.fecha?" · "+fmtF(a.fecha):""}${a.precio>0?" · "+precioTxt(a.precio):""}${a.ini?"\n📍 Inicio de la ruta: https://www.google.com/maps?q="+(+a.ini.lat).toFixed(5)+","+(+a.ini.lng).toFixed(5):""}\nÚnete en AppVentureLife:`}
+function textoCompartir(a){if(a.priv)return "🔒 Plan privado en AppVentureLife. Abre el enlace y escribe el código que te darán:";return `${a.emoji||"🌊"} ${a.titulo}${a.fecha?" · "+fmtF(a.fecha):""}${a.precio>0?" · "+precioTxt(a.precio):""}${a.ini?"\n📍 Punto de salida: https://www.google.com/maps?q="+(+a.ini.lat).toFixed(5)+","+(+a.ini.lng).toFixed(5):""}\nÚnete en AppVentureLife:`}
 function compartir(a){window.open("https://wa.me/?text="+encodeURIComponent(textoCompartir(a)+" "+enlaceDe(a)),"_blank")}
 async function copiar(a){const u=enlaceDe(a);try{await navigator.clipboard.writeText(u);if($("copiar"))$("copiar").textContent="¡Enlace copiado!"}catch(e){prompt("Copia este enlace:",u)}}
 function abreImportado(a){compartido=true;setTimeout(()=>{if(a.lat||a.lng)map.setView([a.lat,a.lng],14);elegir(a.id)},300)}
@@ -638,7 +643,7 @@ async function guardaNombre(n){
   pintaYo();
 }
 let cbNombre=null;
-function pedirNombre(cb){cbNombre=cb||null;if(sb){cuPinta();pintaOrg();pintaAdmin()}$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
+function pedirNombre(cb){cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
 $("yo").onclick=()=>pedirNombre();
 $("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);$("perfil").classList.remove("open");const c=cbNombre;cbNombre=null;if(c)c()};
 $("p-cancel").onclick=()=>{$("perfil").classList.remove("open");cbNombre=null};
@@ -663,7 +668,7 @@ const PORTADA=["portada1.jpg","portada2.jpg","portada3.jpg","portada4.jpg","port
   PORTADA.forEach(src=>{const im=new Image();im.onload=()=>{const d=document.createElement("div");d.className="fo";d.style.backgroundImage=`url("${src}")`;box.appendChild(d);n++;if(n===1){d.classList.add("on");$("bienvenida").classList.add("con-fotos")}};im.src=src});
   setInterval(()=>{const f=box.querySelectorAll(".fo");if(!f||f.length<2)return;f[cur].classList.remove("on");cur=(cur+1)%f.length;f[cur].classList.add("on")},5500);
 })();
-const VER_TERM="1";
+const VER_TERM="2";
 const aceptado=()=>{try{return localStorage.getItem("avl_acepta")===VER_TERM}catch(e){return false}};
 function cierraPortada(){$("bienvenida").classList.add("out");setTimeout(()=>$("bienvenida").hidden=true,420);map.invalidateSize()}
 $("entrar").onclick=()=>{if(!aceptado()){$("acepta").hidden=false;return}cierraPortada()};
@@ -912,7 +917,7 @@ function sugerirPunto(forzar){
   if(forzar||!v||v===puntoAuto||v===lugarSug){f.value=iniNombre.slice(0,80);puntoAuto=f.value}
 }
 function tipoActual(){const c=String(($("f-tipo")||{}).value||"").trim();return c?norm(c):tipoSel}
-function esTipoRuta(){const t=tipoActual();return t==="ruta"||t==="bici"}
+function esTipoRuta(){return true}
 function pintaIni(){
   const caja=$("iniBox");caja.hidden=!esTipoRuta();
   if(caja.hidden){$("lblPunto").textContent="Punto de encuentro";return}
@@ -920,7 +925,7 @@ function pintaIni(){
   $("iniMarcar").textContent=iniPend?"Cambiar el inicio":"Marcar el inicio";
   $("iniQuitar").hidden=!iniPend;
   $("iniNombreBtn").hidden=!iniPend;
-  $("lblPunto").textContent="Dónde quedáis (punto de encuentro = inicio de la ruta)";
+  $("lblPunto").textContent="Dónde quedáis (punto de encuentro = punto de salida)";
 }
 const LOGO_MINI='<svg width="18" height="18" viewBox="0 0 100 100" style="vertical-align:-3px" aria-hidden="true"><use href="#avl-tile"/></svg>';
 function iconoInicio(){return L.divIcon({className:"",html:`<div class="pin" style="background:#0A2A5E"><svg width="24" height="30" viewBox="0 0 407.35 510.12" aria-hidden="true"><use href="#avl-logo"/></svg></div>`,iconSize:[44,44],iconAnchor:[22,22]})}
@@ -956,11 +961,19 @@ async function terminaIni(ok){
     sugerirPunto(false);
   }
 }
-const modoTramo=a=>a.tipo==="bici"?"bici":"pie";
+const ICONO_TRAMO={pie:"🥾",bici:"🚲",coche:"🚗",recta:"🧭"};
+function modoTramo(a){
+  const t=String(a.tipo||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+  if(t==="bici"||/bici|ciclis|btt|mtb/.test(t))return "bici";
+  if(t==="ruta"||/sender|trekking|caminata|a pie|paseo/.test(t))return "pie";
+  if(/coche|auto|furgo|carretera|autocar/.test(t))return "coche";
+  return "recta";
+}
 async function cargaTramo(a){
   if(!a||!a.ini)return;
   const k=a.id+"|"+a.ini.lat+","+a.ini.lng+"|"+a.lat+","+a.lng;
   if(tramos[a.id]&&tramos[a.id].k===k)return;
+  if(modoTramo(a)==="recta"){tramos[a.id]={k,estado:"recta"};return}
   tramos[a.id]={k,estado:"calculando"};
   try{
     const u=`https://routing.openstreetmap.de/${PERFIL[modoTramo(a)][0]}/route/v1/driving/${(+a.ini.lng).toFixed(5)},${(+a.ini.lat).toFixed(5)};${(+a.lng).toFixed(5)},${(+a.lat).toFixed(5)}?overview=full&geometries=geojson`;
@@ -974,10 +987,11 @@ function tramoHTML(a){
   if(!a.ini)return "";
   const t=tramos[a.id],recta=haversine(a.ini,a),m=modoTramo(a);
   let txt;
-  if(!t||t.estado==="calculando")txt=`<p class="meta" style="margin:6px 0">En línea recta: <b style="color:var(--ink)">${km(recta)}</b>. Calculando el camino…</p>`;
+  if(m==="recta")txt=`<p class="meta" style="margin:6px 0">Del inicio al destino hay <b style="color:var(--ink)">${km(recta)}</b> en línea recta. Está dibujado en el mapa.</p>`;
+  else if(!t||t.estado==="calculando")txt=`<p class="meta" style="margin:6px 0">En línea recta: <b style="color:var(--ink)">${km(recta)}</b>. Calculando el camino…</p>`;
   else if(t.estado==="ok")txt=`<p style="margin:6px 0 2px"><b>${km(t.dist)}</b> · ${durTxt(t.dur)} ${PERFIL[m][1]} del inicio al destino</p><p class="meta" style="margin:0">En línea recta: ${km(recta)}. El tramo está dibujado en el mapa (línea naranja y el símbolo de AppVentureLife en el inicio).</p>`;
   else txt=`<p class="meta" style="margin:6px 0">Del inicio al destino hay <b style="color:var(--ink)">${km(recta)}</b> en línea recta. No pude calcular el camino aquí.</p>`;
-  return `<div class="ruta"><b>🥾 La ruta</b><p class="meta" style="margin:4px 0">${LOGO_MINI} Quedamos en el <b>inicio</b>${a.punto?`: <b style="color:var(--ink)">${esc(a.punto)}</b>`:""}. Desde ahí vamos ${m==="bici"?"en bici":"a pie"} hasta el destino.</p>${txt}<div class="mini" style="margin:6px 0 0"><button id="verTramo" class="sec" type="button">Ver el tramo en el mapa</button></div></div>`;
+  return `<div class="ruta"><b>${ICONO_TRAMO[m]} ${m==="pie"?"La ruta":"El recorrido"}</b><p class="meta" style="margin:4px 0">${LOGO_MINI} Quedamos en el <b>inicio</b>${a.punto?`: <b style="color:var(--ink)">${esc(a.punto)}</b>`:""}. Desde ahí vamos ${m==="recta"?"":PERFIL[m][1]+" "}hasta el destino.</p>${txt}<div class="mini" style="margin:6px 0 0"><button id="verTramo" class="sec" type="button">Ver el tramo en el mapa</button></div></div>`;
 }
 function sincronizaTramo(){
   const a=sel?data.find(x=>x.id===sel):null;
@@ -1142,7 +1156,7 @@ async function recarga(){
     if(pr.error&&/buscable/i.test(pr.error.message||""))pr=await sb.from("profiles").select("id,nombre");
     const er=res.find((x,i)=>i!==2&&x.error)||(pr.error?pr:null);if(er)throw er.error;
     const [pl,pa,,aq,co,ms,dr,am,bl,sl,il,ve,og,ad]=res;
-    adminApp=!!(ad&&ad.data===true);
+    adminApp=!!(ad&&ad.data===true);$("mAdmin").hidden=!adminApp;
     verifSet=new Set((ve.data||[]).map(r=>r.user_id));if(adminApp)verifSet.add(uid);miOrg=(og.data&&og.data[0])||null;
     bloqueados=new Set(bl.data.map(r=>r.bloqueado_id));
     solRec=sl.data.filter(r=>r.para===uid&&!bloqueados.has(r.de)).map(r=>r.de);
@@ -1723,6 +1737,7 @@ $("f-emoji").addEventListener("input",pintaPrev);
 $("emojis").addEventListener("click",()=>setTimeout(pintaPrev,0));
 $("f-tipo").addEventListener("input",pintaPrev);
 $("f-tipo").addEventListener("input",pintaIni);
+try{document.querySelectorAll("a.corr").forEach(a=>{const m=a.dataset.u+"@"+a.dataset.d;a.href="mailto:"+m;a.textContent=m})}catch(e){}
 function pintaPrecioAviso(){
   const p=+$("f-precio").value||0,box=$("precioAviso");
   if(p<=0){box.hidden=true;return}
@@ -1734,7 +1749,7 @@ $("f-precio").addEventListener("input",pintaPrecioAviso);
 function pintaOrg(){
   const e=$("org-estado"),b=$("org-abrir");
   if(!e)return;
-  if(adminApp){e.innerHTML="✓ Eres el <b>administrador</b> de la app: puedes poner precio a tus planes sin pedir verificación.";b.hidden=true;return}
+  if(adminApp){e.innerHTML="✓ Eres el <b>administrador</b> de la app: puedes poner precio a tus planes sin pedir verificación.";b.textContent="👑 Abrir el panel del dueño";b.hidden=false;return}
   if(verifSet.has(uid)){e.innerHTML="✓ Eres <b>organizador verificado</b>. Puedes poner precio a tus planes.";b.hidden=true;return}
   const o=miOrg;
   if(!o){e.textContent="Si quieres cobrar por tus planes (viajes, excursiones...), tienes que ser organizador verificado. Es gratis.";b.textContent="Quiero ser organizador verificado";b.hidden=false;return}
@@ -1764,19 +1779,34 @@ async function enviarVerif(){
   }catch(e){msg((e&&e.message)||"No se pudo enviar. Inténtalo otra vez.")}
   finally{b.disabled=false}
 }
-async function pintaAdmin(){
-  const box=$("adminBox");if(!box||!sb)return;
-  try{
-    const a=await sb.rpc("soy_admin");
-    if(a.error||!a.data){box.hidden=true;return}
-    const r=await sb.rpc("admin_solicitudes");if(r.error)throw r.error;
-    const filas=r.data||[];
-    $("adminLista").innerHTML=filas.length?filas.map(f=>`<div class="item" style="display:block;cursor:default"><b>${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")} ${f.contacto_publico?" · "+esc(f.contacto_publico):""}</small><small><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`).join(""):'<p class="meta">No hay solicitudes.</p>';
-    box.hidden=false;
-  }catch(e){box.hidden=true}
+async function abrirAdmin(){
+  $("perfil").classList.remove("open");$("admin").classList.add("open");
+  await pintaAdmin();
 }
-$("org-abrir").onclick=abrirVerif;$("ov-ok").onclick=enviarVerif;$("ov-cancel").onclick=()=>$("orgver").classList.remove("open");
+function filaSolicitud(f){
+  return `<div class="item" style="display:block;cursor:default"><b>${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")}${f.contacto_publico?" · "+esc(f.contacto_publico):""}</small><small><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`;
+}
+async function pintaAdmin(){
+  const box=$("adminLista");if(!box||!sb)return;
+  box.innerHTML='<p class="meta">Cargando...</p>';
+  try{
+    const [s1,e1]=await Promise.all([sb.rpc("admin_solicitudes"),sb.rpc("admin_entradas")]);
+    if(s1.error)throw s1.error;
+    const sol=s1.data||[],ent=(e1&&e1.data)||[];
+    const pend=sol.filter(f=>f.estado==="pendiente"),otras=sol.filter(f=>f.estado!=="pendiente");
+    const pagos=data.filter(a=>a.kind!=="aqui"&&a.precio>0);
+    box.innerHTML=
+      `<h3 class="who-h">Solicitudes pendientes (${pend.length})</h3>`+(pend.length?pend.map(filaSolicitud).join(""):'<p class="meta">No hay solicitudes pendientes.</p>')+
+      `<h3 class="who-h" style="margin-top:14px">Organizadores (${otras.length})</h3>`+(otras.length?otras.map(filaSolicitud).join(""):'<p class="meta">Todavía no hay organizadores.</p>')+
+      `<h3 class="who-h" style="margin-top:14px">Planes de pago (${pagos.length})</h3>`+(pagos.length?pagos.map(a=>`<div class="item" data-plan="${a.id}"><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(a.org)} · ${precioTxt(a.precio)} · ${a.asist.length}/${a.max} personas · cobrado ${npag(a)}</small></div></div>`).join(""):'<p class="meta">Todavía no hay planes de pago.</p>')+
+      `<h3 class="who-h" style="margin-top:14px">Últimas entradas enviadas (${ent.length})</h3>`+(ent.length?ent.map(x=>`<div class="item" style="cursor:default"><div style="flex:1;min-width:0"><b>${esc(x.codigo)}</b><small>${esc(x.persona||"")} · ${esc(x.titulo||"")} · ${esc(String(x.enviada||"").slice(0,16).replace("T"," "))}</small></div></div>`).join(""):'<p class="meta">Todavía no se ha enviado ninguna entrada.</p>');
+  }catch(er){box.innerHTML='<p class="meta">No se pudo cargar el panel. '+esc((er&&er.message)||"")+'</p>'}
+}
+$("org-abrir").onclick=()=>adminApp?abrirAdmin():abrirVerif();
+$("mAdmin").onclick=()=>{plusMenu(false);abrirAdmin()};$("ov-ok").onclick=enviarVerif;$("ov-cancel").onclick=()=>$("orgver").classList.remove("open");
 $("adminLista").addEventListener("click",async e=>{
+  const it=e.target.closest("[data-plan]");
+  if(it){$("admin").classList.remove("open");elegir(+it.dataset.plan);return}
   const ap=e.target.closest("[data-ap]"),re=e.target.closest("[data-re]");
   if(!ap&&!re)return;
   const u=(ap||re).dataset[ap?"ap":"re"];
