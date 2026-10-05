@@ -252,7 +252,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 46 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
+<div class="wlegal">AppVentureLife · versión 47 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a></div>
 </div>
 
 <main>
@@ -270,7 +270,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <svg id="centro" class="crosshair" viewBox="0 0 24 24" hidden aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="#FFD66B" stroke="#0A2A5E" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" fill="#0A2A5E"/></svg>
 <div id="colocar" class="placebar" hidden><span id="colocarTxt">Toca el mapa para marcar el lugar</span><button id="colocarNo" class="sec" type="button" aria-label="Cancelar">✕</button><button id="colocarOk" type="button" disabled>Crear plan aquí</button></div>
 <div id="bannerSol" class="bannersol" hidden></div>
-<div class="attr">&copy; OpenStreetMap · rutas OSRM · búsqueda Photon</div>
+<div class="attr">&copy; OpenStreetMap contributors &copy; CARTO · rutas OSRM · búsqueda Photon</div>
 </div>
 <p class="hint" style="margin:8px 2px 0">Busca un sitio arriba, o toca el mapa para crear un plan en ese punto. Toca una chincheta para ver un plan.</p>
 <div id="filtros"></div>
@@ -288,7 +288,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 46 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 47 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a><br>Contacto: <a href="mailto:contacto@appventurelife.com">contacto@appventurelife.com</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -775,7 +775,8 @@ document.addEventListener("touchmove",e=>{if(!sw)return;sw.dy=Math.max(0,e.touch
 document.addEventListener("touchend",()=>{if(!sw)return;const sh=sw.sh,dy=sw.dy;sw=null;sh.style.transition="";if(dy>90)cerrarSheet(sh);else sh.style.transform=""});
 /* mapa */
 const map=L.map("map",{zoomControl:false,attributionControl:false}).setView([40.4168,-3.7038],6);
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19}).addTo(map);
+const CARTO_KEY="cb1_4a0g_1_c9a08985d607c5ad800cb989";
+L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20}).addTo(map);
 const capa=L.layerGroup().addTo(map);
 function irAMiUbicacion(){
   if(!navigator.geolocation){alert("Tu navegador no permite usar la ubicación.");return}
