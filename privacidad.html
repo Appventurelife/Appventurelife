@@ -26,6 +26,7 @@ small{color:#58705E}
 <li>Tu <b>ubicación</b>, solo si usas "Estoy aquí" (y, si lo marcas, mientras te mueves con la app abierta) o si pides distancia y ruta.</li>
 <li>Tu <b>lista de amigos</b> (personas con las que conectas mediante solicitudes de amistad dentro de la aplicación).</li>
 <li>Las <b>personas que bloqueas</b> y las <b>denuncias</b> que envías (motivo y descripción).</li>
+<li>Los <b>correos</b> que nos envías a contacto@appventurelife.com (tu dirección y el texto del mensaje).</li>
 <li>La <b>fecha y versión</b> de los términos que aceptaste.</li>
 </ul>
 <h2>2. Para qué y con qué base</h2>
@@ -38,9 +39,11 @@ small{color:#58705E}
 <p>Para funcionar usamos servicios de terceros, que reciben los datos necesarios (por ejemplo, tu dirección IP):</p>
 <ul>
 <li>Supabase: base de datos, autenticación y almacenamiento de las fotos de portada.</li>
-<li>Resend: envío del correo con el código de acceso.</li>
+<li>Resend: envío del correo con el código de acceso y de las respuestas que enviamos desde contacto@appventurelife.com.</li>
+<li>Google (Gmail): recepción y gestión del correo de contacto.</li>
+<li>Anthropic: asistente de inteligencia artificial que ayuda a redactar las respuestas al correo de contacto. El texto del correo que nos envías se envía a este servicio. Las respuestas automáticas lo indican, y los temas delicados los revisa una persona.</li>
 <li>GitHub (Microsoft): alojamiento de la página web.</li>
-<li>OpenStreetMap: mapas. Open-Meteo: tiempo. OSRM / FOSSGIS: cálculo de rutas. Photon (komoot): buscador de lugares; al buscar, el texto que escribes y la zona del mapa que estás viendo se envían a este servicio.</li>
+<li>OpenStreetMap y CARTO: mapas (tu navegador pide las imágenes del mapa a CARTO, que recibe tu dirección IP). Open-Meteo: tiempo. OSRM / FOSSGIS: cálculo de rutas. Photon (komoot): buscador de lugares; al buscar, el texto que escribes y la zona del mapa que estás viendo se envían a este servicio.</li>
 <li>jsDelivr y cdnjs: librerías de la página. Google Fonts: tipografías.</li>
 <li>WhatsApp, Apple Maps o Google Maps, solo si tú los usas desde la app.</li>
 </ul>
