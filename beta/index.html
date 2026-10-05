@@ -152,6 +152,11 @@ main{padding-bottom:120px}
 .inibox{border:2px dashed #B8C4B5;border-radius:14px;padding:10px 12px;margin:10px 0}
 .capasbox{position:absolute;right:12px;top:68px;z-index:700}
 .capasbox>button.round{font-size:22px}
+#ayuda{z-index:1200}
+.ayb{padding:10px 12px;border-radius:14px;margin:6px 0;max-width:92%;white-space:pre-wrap;line-height:1.4}
+.ayb.yo{background:var(--cta);color:var(--ctat);margin-left:auto}
+.ayb.app{background:rgba(127,127,127,.16)}
+#ay-chat{max-height:38vh;overflow:auto;margin:8px 0}
 #capasMenu{position:absolute;right:0;top:56px;min-width:176px;background:var(--card);color:var(--ink);border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.35);overflow:hidden}
 #capasMenu button{display:block;width:100%;text-align:left;padding:13px 16px;border:0;border-radius:0;background:none;color:var(--ink);font-size:16px;border-bottom:1px solid rgba(0,0,0,.08)}
 #capasMenu button:last-child{border-bottom:0}
@@ -263,7 +268,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 58 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 59 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -300,12 +305,12 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 58 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 59 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
 
-<div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mAdmin" type="button" hidden>👑 Panel del dueño</button><button id="mPlan" type="button">Nuevo plan</button></div>
+<div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mAdmin" type="button" hidden>👑 Panel del dueño</button><button id="mOrg" type="button" hidden>📋 Panel de organizador</button><button id="mAyuda" type="button">💬 Ayuda</button><button id="mPlan" type="button">Nuevo plan</button></div>
 
 <section id="aqui" class="sheet" aria-label="Estoy aquí">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -382,6 +387,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <section id="nueva" class="sheet" aria-label="Nuevo plan">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2 id="np-t">Nuevo plan</h2>
+<button id="ay-form" class="sec" type="button" style="padding:6px 12px;font-size:14px;margin:0 0 6px">💬 ¿Dudas? Pregunta aquí</button>
 <button id="f-mover" class="sec" type="button" hidden style="margin:0 0 6px">📍 Cambiar ubicación en el mapa</button>
 <label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
 <label>Tipo</label><div class="chips" id="f-tipos"></div>
@@ -463,6 +469,33 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <h2>Panel del dueño</h2>
 <p class="meta">Solo lo ves tú.</p>
 <div id="adminLista" class="list"></div>
+</section>
+<section id="panelorg" class="sheet" aria-label="Panel del organizador">
+<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
+<h2>Panel del organizador</h2>
+<p class="meta">Tus planes de pago, quién ha pagado y las entradas.</p>
+<h3 class="who-h">Cómo cobras</h3>
+<p class="meta">Se rellena solo cuando pongas precio a un plan nuevo.</p>
+<label for="po-bizum">Bizum u otra forma de pago</label><input id="po-bizum" maxlength="120" placeholder="Ej. Bizum al 600 000 000">
+<label for="po-enlace">Enlace de pago con tarjeta (Stripe, opcional)</label><input id="po-enlace" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
+<div class="row" style="margin-top:8px"><button class="sec" id="po-probar" type="button">Probar mi enlace</button><button id="po-guardar" type="button">Guardar</button></div>
+<p class="meta" id="po-msg"></p>
+<details class="mas"><summary>¿Cómo consigo un enlace de Stripe?</summary>
+<p class="meta">1. Crea una cuenta gratis en stripe.com (con el modo de prueba puedes probar sin cobrar de verdad).<br>2. Para cobrar de verdad, Stripe te pedirá verificar tu identidad y tu cuenta bancaria; puede tardar de unos minutos a unos días.<br>3. En el panel de Stripe entra en «Payment Links» (Enlaces de pago) y pulsa crear.<br>4. Pon el nombre del viaje y el precio, y copia el enlace que empieza por https://buy.stripe.com/.<br>5. Pégalo aquí. Si el enlace es de prueba, solo aceptará tarjetas de mentira.</p>
+<p class="meta">Si prefieres no registrarte en Stripe, puedes cobrar solo por Bizum o transferencia: pon tu forma de pago arriba y marca «pagado» tú mismo cuando te llegue.</p></details>
+<h3 class="who-h" style="margin-top:14px">Mis planes de pago</h3><div id="po-planes" class="list"></div>
+<h3 class="who-h" style="margin-top:14px">Comprobar una entrada</h3>
+<div class="row"><input id="po-cod" maxlength="14" placeholder="AVL-AB12-CD34" autocapitalize="characters" autocomplete="off"><button class="sec" id="po-comprobar" type="button">Comprobar</button></div>
+<p class="meta" id="po-res"></p>
+<h3 class="who-h" style="margin-top:14px">Entradas enviadas</h3><div id="po-entradas" class="list"></div>
+</section>
+<section id="ayuda" class="sheet" aria-label="Ayuda">
+<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
+<h2>Ayuda</h2>
+<p class="meta" id="ay-nota"></p>
+<div id="ay-chat"></div>
+<div id="ay-chips" class="chips"></div>
+<div class="row" style="margin-top:10px"><input id="ay-txt" maxlength="200" placeholder="Escribe tu duda..." enterkeyhint="send" autocomplete="off"><button id="ay-send" type="button">Enviar</button></div>
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -848,7 +881,7 @@ function irAMiUbicacion(){
 $("loc").onclick=()=>{compartido=false;irAMiUbicacion()};
 irAMiUbicacion();
 
-let colocando=false,tipoSel="otro",ruta=null,capaRuta=null,burbuja=null,solVista=new Set(),solInit=false,invitadoA=new Map(),invVista=new Set(),invInit=false,invPlan=null,perfiles=[],miBuscable=true,iniPend=null,iniMarker=null,modoIni=false,iniTmp=null,tramos={},capaTramo=null,tramoId=null,iniNombre="",iniTmpNombre="",puntoAuto="",verifSet=new Set(),miOrg=null,adminApp=false;
+let colocando=false,tipoSel="otro",ruta=null,capaRuta=null,burbuja=null,solVista=new Set(),solInit=false,invitadoA=new Map(),invVista=new Set(),invInit=false,invPlan=null,perfiles=[],miBuscable=true,iniPend=null,iniMarker=null,modoIni=false,iniTmp=null,tramos={},capaTramo=null,tramoId=null,iniNombre="",iniTmpNombre="",puntoAuto="",verifSet=new Set(),miOrg=null,adminApp=false,miCobros=null,prefillCobros=false,iaCuota=null;
 const km=m=>m<1000?(Math.round(m/10)*10)+" m":(m/1000).toLocaleString("es",{maximumFractionDigits:1})+" km";
 const durTxt=sg=>{const m=Math.max(1,Math.round(sg/60));return m<60?m+" min":Math.floor(m/60)+" h "+(m%60)+" min"};
 function haversine(a,b){const R=6371000,r=x=>x*Math.PI/180,dLa=r(b.lat-a.lat),dLo=r(b.lng-a.lng),h=Math.sin(dLa/2)**2+Math.cos(r(a.lat))*Math.cos(r(b.lat))*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
@@ -1150,14 +1183,16 @@ async function recarga(){
       sb.from("plan_invitaciones").select("plan_id,user_id,de"),
       sb.from("verificados").select("user_id"),
       sb.from("organizadores").select("*").eq("user_id",uid),
-      sb.rpc("soy_admin")
+      sb.rpc("soy_admin"),
+      sb.from("cobros_organizador").select("*").eq("user_id",uid)
     ]);
     let pr=res[2];
     if(pr.error&&/buscable/i.test(pr.error.message||""))pr=await sb.from("profiles").select("id,nombre");
     const er=res.find((x,i)=>i!==2&&x.error)||(pr.error?pr:null);if(er)throw er.error;
-    const [pl,pa,,aq,co,ms,dr,am,bl,sl,il,ve,og,ad]=res;
+    const [pl,pa,,aq,co,ms,dr,am,bl,sl,il,ve,og,ad,cb]=res;
     adminApp=!!(ad&&ad.data===true);$("mAdmin").hidden=!adminApp;
     verifSet=new Set((ve.data||[]).map(r=>r.user_id));if(adminApp)verifSet.add(uid);miOrg=(og.data&&og.data[0])||null;
+    miCobros=(cb&&cb.data&&cb.data[0])||null;$("mOrg").hidden=!verifSet.has(uid);
     bloqueados=new Set(bl.data.map(r=>r.bloqueado_id));
     solRec=sl.data.filter(r=>r.para===uid&&!bloqueados.has(r.de)).map(r=>r.de);
     solEnv=sl.data.filter(r=>r.de===uid&&!bloqueados.has(r.para)).map(r=>r.para);
@@ -1365,7 +1400,7 @@ ${seguridad(a)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";pintaTipos();pintaPrecioAviso();
+  $("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";prefillCobros=false;pintaTipos();pintaPrecioAviso();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
@@ -1742,6 +1777,11 @@ function pintaPrecioAviso(){
   const p=+$("f-precio").value||0,box=$("precioAviso");
   if(p<=0){box.hidden=true;return}
   box.hidden=false;
+  if(verifSet.has(uid)&&!editId&&miCobros&&!prefillCobros){
+    if(!$("f-pago").value&&miCobros.bizum)$("f-pago").value=miCobros.bizum;
+    if(!$("f-link").value&&miCobros.enlace)$("f-link").value=miCobros.enlace;
+    prefillCobros=true;
+  }
   box.innerHTML=verifSet.has(uid)?"✓ Eres organizador verificado: puedes cobrar por este plan.":"Para cobrar por un plan tienes que ser <b>organizador verificado</b>. <button id=\"precioVerif\" class=\"sec\" type=\"button\" style=\"margin-top:6px\">Solicitar verificación</button>";
   const b=$("precioVerif");if(b)b.onclick=abrirVerif;
 }
@@ -1750,7 +1790,7 @@ function pintaOrg(){
   const e=$("org-estado"),b=$("org-abrir");
   if(!e)return;
   if(adminApp){e.innerHTML="✓ Eres el <b>administrador</b> de la app: puedes poner precio a tus planes sin pedir verificación.";b.textContent="👑 Abrir el panel del dueño";b.hidden=false;return}
-  if(verifSet.has(uid)){e.innerHTML="✓ Eres <b>organizador verificado</b>. Puedes poner precio a tus planes.";b.hidden=true;return}
+  if(verifSet.has(uid)){e.innerHTML="✓ Eres <b>organizador verificado</b>. Puedes poner precio a tus planes.";b.textContent="📋 Abrir mi panel de organizador";b.hidden=false;return}
   const o=miOrg;
   if(!o){e.textContent="Si quieres cobrar por tus planes (viajes, excursiones...), tienes que ser organizador verificado. Es gratis.";b.textContent="Quiero ser organizador verificado";b.hidden=false;return}
   if(o.estado==="pendiente"){e.textContent="Solicitud enviada ✓. La revisaremos pronto; aquí verás el resultado.";b.hidden=true;return}
@@ -1763,11 +1803,25 @@ async function abrirVerif(){
   $("ov-acepto").checked=false;$("ov-msg").textContent="";
   $("perfil").classList.remove("open");$("orgver").classList.add("open");
 }
+function nifTipo(v){
+  const n=String(v||"").toUpperCase().replace(/[^A-Z0-9]/g,""),L="TRWAGMYFPDXBNJZSQVHLCKE",C="JABCDEFGHI";
+  if(/^[0-9]{8}[A-Z]$/.test(n))return L[+n.slice(0,8)%23]===n[8]?"DNI":null;
+  if(/^[XYZ][0-9]{7}[A-Z]$/.test(n)){const x=+("XYZ".indexOf(n[0])+n.slice(1,8));return L[x%23]===n[8]?"NIE":null}
+  if(/^[KLM][0-9]{7}[A-Z]$/.test(n))return "NIF";
+  if(/^[ABCDEFGHJNPQRSUVW][0-9]{7}[0-9A-J]$/.test(n)){
+    let s=0;for(let i=1;i<=7;i++){let d=+n[i];if(i%2===1){d*=2;d=Math.floor(d/10)+d%10}s+=d}
+    const c=(10-s%10)%10,p=n[0],u=n[8],okL=u===C[c],okN=u===String(c);
+    if("PQRSNW".includes(p))return okL?"CIF":null;
+    if("ABEH".includes(p))return okN?"CIF":null;
+    return (okL||okN)?"CIF":null;
+  }
+  return null;
+}
 async function enviarVerif(){
   const nombre=$("ov-nombre").value.trim(),nif=$("ov-nif").value.trim().toUpperCase(),web=$("ov-web").value.trim();
   const msg=t=>{$("ov-msg").textContent=t};
   if(nombre.length<2){msg("Escribe tu nombre completo o la razón social.");return}
-  if(!/^[A-Z0-9][A-Z0-9\-\. ]{4,19}$/.test(nif)){msg("Revisa el NIF o CIF.");return}
+  if(!nifTipo(nif)){msg("El NIF o CIF no es válido. Revisa los números y la letra.");return}
   if(!$("ov-acepto").checked){msg("Tienes que aceptar las condiciones para organizar.");return}
   const b=$("ov-ok");b.disabled=true;msg("");
   try{
@@ -1776,15 +1830,20 @@ async function enviarVerif(){
     const r=await sb.from("organizadores").upsert(fila);if(r.error)throw r.error;
     $("orgver").classList.remove("open");await recarga();pintaOrg();
     alert("Solicitud enviada. La revisaremos pronto.");
-  }catch(e){msg((e&&e.message)||"No se pudo enviar. Inténtalo otra vez.")}
+  }catch(e){const t=(e&&e.message)||"";msg(/organizadores_nif_unico|duplicate key/i.test(t)?"Ese NIF ya está en otra solicitud. Si es un error, escribe al correo de contacto.":(t||"No se pudo enviar. Inténtalo otra vez."))}
   finally{b.disabled=false}
 }
 async function abrirAdmin(){
   $("perfil").classList.remove("open");$("admin").classList.add("open");
   await pintaAdmin();
 }
+const PUNTO={verde:"🟢",amarillo:"🟡",rojo:"🔴"};
 function filaSolicitud(f){
-  return `<div class="item" style="display:block;cursor:default"><b>${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")}${f.contacto_publico?" · "+esc(f.contacto_publico):""}</small><small><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`;
+  const mot=(f.motivos||[]).map(m=>`<small style="display:block">${esc(m)}</small>`).join("");
+  const web=String(f.contacto_publico||"").trim();
+  const esUrl=/^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/.*)?$/i.test(web);
+  const enlace=esUrl?`<a class="payb sec2" href="${esc(/^https?:/i.test(web)?web:"https://"+web)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:6px">Abrir su web</a>`:(web?`<small style="display:block">${esc(web)}</small>`:"");
+  return `<div class="item" style="display:block;cursor:default"><b>${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")}</small>${mot}${enlace}<small style="display:block;margin-top:4px"><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" data-sem="${esc(f.semaforo||"")}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`;
 }
 async function pintaAdmin(){
   const box=$("adminLista");if(!box||!sb)return;
@@ -1802,13 +1861,141 @@ async function pintaAdmin(){
       `<h3 class="who-h" style="margin-top:14px">Últimas entradas enviadas (${ent.length})</h3>`+(ent.length?ent.map(x=>`<div class="item" style="cursor:default"><div style="flex:1;min-width:0"><b>${esc(x.codigo)}</b><small>${esc(x.persona||"")} · ${esc(x.titulo||"")} · ${esc(String(x.enviada||"").slice(0,16).replace("T"," "))}</small></div></div>`).join(""):'<p class="meta">Todavía no se ha enviado ninguna entrada.</p>');
   }catch(er){box.innerHTML='<p class="meta">No se pudo cargar el panel. '+esc((er&&er.message)||"")+'</p>'}
 }
-$("org-abrir").onclick=()=>adminApp?abrirAdmin():abrirVerif();
+async function abrirPanelOrg(){
+  $("perfil").classList.remove("open");$("panelorg").classList.add("open");
+  $("po-bizum").value=(miCobros&&miCobros.bizum)||"";$("po-enlace").value=(miCobros&&miCobros.enlace)||"";
+  $("po-msg").textContent="";$("po-res").textContent="";
+  await pintaPanelOrg();
+}
+async function pintaPanelOrg(){
+  const mios=data.filter(a=>a.kind!=="aqui"&&a.orgId===uid&&a.precio>0);
+  $("po-planes").innerHTML=mios.length?mios.map(a=>{
+    const gente=(a.asistIds||[]).filter(u=>u!==uid),pg=a.pagosIds||[],cob=gente.filter(u=>pg.includes(u)).length;
+    return `<div class="item" style="display:block;cursor:default"><b>${esc(a.titulo)}</b><small>${esc(a.cuando)} · ${precioTxt(a.precio)} por persona</small><small>Apuntados: ${gente.length} · Han pagado: ${cob} · Cobrado: ${precioTxt(cob*a.precio)}</small>${gente.length?`<div style="margin-top:6px">${gente.map(u=>`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}" style="margin:2px 6px 2px 0">${pg.includes(u)?"✓":"○"} ${esc(nombres[u]||"Alguien")}</button>`).join("")}</div><small style="display:block">Toca un nombre para marcar o desmarcar su pago.</small>`:"<small>Todavía no se ha apuntado nadie.</small>"}<button class="sec" type="button" data-abrir="${a.id}" style="margin-top:6px">Abrir el plan</button></div>`;
+  }).join(""):'<p class="meta">Todavía no tienes planes de pago. Al crear un plan, ponle un precio y saldrá aquí.</p>';
+  let ent=[];
+  if(mios.length&&sb){try{const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").in("plan_id",mios.map(a=>a.id)).order("enviada",{ascending:false}).limit(30);if(!r.error)ent=r.data||[]}catch(e){}}
+  $("po-entradas").innerHTML=ent.length?ent.map(x=>{const a=data.find(p=>p.id===x.plan_id)||{};return `<div class="item" style="cursor:default"><div style="flex:1;min-width:0"><b>${esc(x.codigo)}</b><small>${esc(nombres[x.user_id]||"Alguien")} · ${esc(a.titulo||"")}</small></div></div>`}).join(""):'<p class="meta">Todavía no se ha enviado ninguna entrada.</p>';
+}
+async function guardarCobros(){
+  const m=$("po-msg"),biz=$("po-bizum").value.trim(),enl=$("po-enlace").value.trim();
+  if(enl&&!okLink(enl)){m.textContent="El enlace no es válido: tiene que empezar por https://";return}
+  try{
+    const fila={user_id:uid,bizum:biz||null,enlace:enl||null,actualizado:new Date().toISOString()};
+    const r=await sb.from("cobros_organizador").upsert(fila);if(r.error)throw r.error;
+    miCobros=fila;prefillCobros=false;m.textContent="Guardado ✓. Se usará en tus próximos planes de pago."+(enl&&/\/test_/.test(enl)?" Ojo: ese enlace es de prueba y solo acepta tarjetas de mentira.":"");
+  }catch(e){m.textContent=(e&&e.message)||"No se pudo guardar. Inténtalo otra vez."}
+}
+function probarEnlace(){
+  const enl=$("po-enlace").value.trim(),m=$("po-msg");
+  if(!enl||!okLink(enl)){m.textContent="Pega primero un enlace válido, que empiece por https://";return}
+  m.textContent=/\/test_/.test(enl)?"Es un enlace de prueba: solo acepta tarjetas de mentira (4242 4242 4242 4242).":"Abriendo tu enlace en otra pestaña...";
+  window.open(enl,"_blank","noopener");
+}
+async function comprobarEntrada(){
+  const c=$("po-cod").value.trim().toUpperCase().replace(/\s/g,""),out=$("po-res");
+  if(!/^AVL-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(c)){out.textContent="Escribe el código completo, como AVL-AB12-CD34.";return}
+  try{
+    const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").eq("codigo",c).maybeSingle();
+    if(r.error||!r.data){out.textContent="✗ No encuentro esa entrada en tus planes.";return}
+    const a=data.find(p=>p.id===r.data.plan_id)||{};
+    out.textContent="✓ Entrada válida: "+(nombres[r.data.user_id]||"Alguien")+" · "+(a.titulo||"plan");
+  }catch(e){out.textContent="No se pudo comprobar ahora. Inténtalo otra vez."}
+}
+$("po-guardar").onclick=guardarCobros;$("po-probar").onclick=probarEnlace;$("po-comprobar").onclick=comprobarEntrada;
+$("po-planes").addEventListener("click",async e=>{
+  const ab=e.target.closest("[data-abrir]");
+  if(ab){$("panelorg").classList.remove("open");elegir(+ab.dataset.abrir);return}
+  const pp=e.target.closest("[data-pp]");if(!pp)return;
+  const [pid,u]=pp.dataset.pp.split("|"),a=data.find(x=>x.id===+pid);if(!a)return;
+  const ya=(a.pagosIds||[]).includes(u);
+  try{const r=await sb.from("participantes").update({pagado:!ya}).eq("plan_id",a.id).eq("user_id",u);if(r.error)throw r.error;await recarga();await pintaPanelOrg()}catch(er){fallo(er)}
+});
+/* ===== Ayuda (fase A: respuestas fijas, sin coste; la IA se enchufa aquí después) ===== */
+const FAQ=[
+ {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Escribe el nombre, elige el tipo, la fecha (Hoy, Mañana, Este sábado...) y las plazas.\n5. En «Añadir más detalles» puedes poner punto de encuentro, descripción, equipo y precio.\n6. Pulsa «Publicar»."},
+ {q:"¿Cómo me apunto a un plan?",p:["plan","mapa"],k:["apuntar","apuntarme","apuntarse","unir","unirme","participar","inscribir","plan"],a:"Toca una chincheta del mapa (o un plan de la lista de debajo). Vuelve a tocar la chincheta para abrir el plan y pulsa «Apuntarme». Para salir, abre el plan y pulsa «Salir del plan»."},
+ {q:"¿Cómo salgo de un plan?",p:["plan"],k:["salir","salgo","quitarme","desapuntar","abandonar","borrarme"],a:"Abre el plan y pulsa «Salir del plan»."},
+ {q:"¿Cómo marco el punto de salida?",p:["crear","editar"],k:["salida","inicio","punto","quedamos","quedar","empezar","ruta","recorrido","encuentro"],a:"Al crear o editar un plan, en el recuadro «Punto de salida (opcional)» pulsa «Marcar el inicio», toca el mapa o busca el sitio y pulsa «Usar este inicio». También puedes pulsar «Poner el nombre de este sitio como punto de encuentro»."},
+ {q:"¿Cómo edito o borro mi plan?",p:["plan","editar"],k:["editar","cambiar","modificar","borrar","eliminar","cancelar","plan"],a:"Abre tu plan: «✏️ Editar» sirve para cambiar nombre, fecha, lugar o detalles (luego «Guardar cambios»), y «Eliminar plan» para borrarlo. Si cambias el nombre, la fecha o el lugar, se avisa en el chat del plan."},
+ {q:"¿Qué es «Estoy aquí»?",p:["mapa"],k:["aqui","ubicacion","compartir","chincheta","mover","mientras","vean"],a:"Sirve para que otras personas te vean en el mapa un rato. Toca + y elige «Estoy aquí», escribe dónde estás (opcional), elige cuánto tiempo y pulsa «Compartir mi ubicación». Con «Mover mi chincheta mientras me muevo» se actualiza con la app abierta; al bloquear el móvil se para. Para quitarla, abre tu chincheta y pulsa «Dejar de compartir»."},
+ {q:"¿Cómo cambio mi nombre?",p:["perfil"],k:["nombre","perfil","llamo","apodo","cambiar"],a:"Toca tu nombre arriba a la derecha. Ahí cambias el nombre y eliges si apareces cuando otras personas buscan por nombre."},
+ {q:"¿Cómo guardo mi cuenta para no perderla?",p:["perfil"],k:["cuenta","correo","email","guardar","perder","entrar","dispositivo","movil","sesion","codigo"],a:"Toca tu nombre arriba a la derecha, busca «Tu cuenta», escribe tu correo y pulsa «Guardar mi cuenta»; te llegará un código que escribes en la app. Para entrar en otro móvil con una cuenta que ya tienes, usa «Ya tengo cuenta» con el mismo correo."},
+ {q:"¿Cómo busco personas y les escribo?",p:["mapa"],k:["amigo","amigos","buscar","persona","personas","mensaje","mensajes","escribir","seguir"],a:"Toca + y elige «🔍 Buscar personas», escribe su nombre y envía la solicitud de amistad. En la pestaña «Mensajes» están tus chats y los de tus planes. Solo puedes escribir directamente a quien comparte su ubicación con «Estoy aquí» o a quien ya te ha escrito."},
+ {q:"¿Cómo hablo con el grupo de un plan?",p:["plan"],k:["chat","grupo","hablar","comentar","comentario","preguntar"],a:"Abre el plan y pulsa «Chat». Los chats de tus planes también salen en la pestaña «Mensajes»."},
+ {q:"¿Cómo hago un plan privado?",p:["crear","editar"],k:["privado","codigo","secreto","invitar","visibilidad","amigos"],a:"Al crear el plan, en «¿Quién puede verlo?» elige «🔒 Solo con código (privado)» o «👥 Solo mis amigos». Comparte el código con quien quieras, o usa «👥 Invitar» dentro del plan. Para entrar a uno privado: toca + y elige «🔒 Tengo un código»."},
+ {q:"¿Cómo llego al sitio?",p:["plan"],k:["llegar","ruta","camino","coche","bici","pie","direccion","navegar","indicaciones"],a:"Abre el plan: en la tarjeta «Cómo llegar» elige coche, bici o a pie para ver la ruta en el mapa, o abre Apple Maps o Google Maps. Si el plan tiene punto de salida, te lleva hasta allí."},
+ {q:"¿Cómo cambio el mapa?",p:["mapa"],k:["mapa","satelite","calles","montana","vista","capas"],a:"Toca el botón 🗺️ (arriba a la derecha, debajo del de tu ubicación) y elige Calles, Claro, Montaña o Satélite. Montaña y Satélite solo cubren España."},
+ {q:"¿Cómo pago un plan de pago?",p:["plan"],k:["pagar","pago","precio","bizum","stripe","tarjeta","entrada"],a:"Para apuntarte a un plan de pago hace falta tener la cuenta guardada con tu correo. Paga con el enlace del plan («Pagar con Stripe») o con la otra forma de pago que indique quien organiza, como Bizum. Cuando esa persona marque que has pagado, te llega la entrada por correo."},
+ {q:"¿Cómo cobro por mis planes?",p:["crear","organizador","perfil"],k:["cobrar","verificado","verificacion","organizador","vender","viajes","cobro"],a:"Para poner precio hay que ser organizador verificado: toca tu nombre, pulsa «Quiero ser organizador verificado», rellena nombre o razón social, NIF o CIF y tu web o Instagram, y acepta las condiciones. Se revisa a mano. Después tendrás el «📋 Panel de organizador» (en el menú +) para gestionar cobros, quién ha pagado y las entradas."},
+ {q:"¿Cómo denuncio o bloqueo a alguien?",p:["plan","perfil"],k:["denunciar","bloquear","acoso","molesta","abuso","reportar"],a:"En el plan o en el perfil de la persona, pulsa «Denunciar» o «Bloquear». Si bloqueas, no verás sus planes, mensajes ni ubicación y no podrá escribirte."},
+ {q:"¿Cómo comparto un plan o lo añado al calendario?",p:["plan"],k:["compartir","whatsapp","calendario","enlace","copiar","agenda"],a:"Abre el plan: «WhatsApp» lo comparte, «Copiar enlace» copia el enlace y «Calendario» lo añade a tu calendario."},
+ {q:"¿Cómo borro mis datos?",p:["perfil"],k:["borrar","datos","eliminar","privacidad","olvidar"],a:"Toca tu nombre arriba a la derecha y pulsa «Borrar todos mis datos». Se elimina todo lo tuyo de la aplicación."},
+ {q:"No encuentro lo que busco",p:[],k:["contacto","ayuda","problema","error","fallo","humano","hablar"],a:"Escríbenos al correo de contacto que sale al final de la pantalla de Explorar y te contestamos."}
+];
+const sinAc=t=>String(t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+function buscaFaq(texto){
+  const pal=sinAc(texto).split(/[^a-z0-9]+/).filter(w=>w.length>2);
+  let mejor=null,punt=0;
+  FAQ.forEach(f=>{let s=0;f.k.forEach(k=>{if(pal.some(w=>w===k||(w.length>=4&&(w.startsWith(k)||k.startsWith(w)))||(w.length>=5&&k.length>=5&&w.slice(0,5)===k.slice(0,5))))s++});if(s>punt){punt=s;mejor=f}});
+  return punt>=1?mejor:null;
+}
+function pantallaActual(){
+  const ab=id=>$(id).classList.contains("open");
+  if(ab("nueva"))return editId?"editar":"crear";
+  if(ab("detalle"))return "plan";
+  if(ab("perfil"))return "perfil";
+  if(ab("panelorg")||ab("admin"))return "organizador";
+  return "mapa";
+}
+function ayudaMsg(t,quien){
+  const d=document.createElement("div");d.className="ayb "+quien;d.textContent=t;
+  $("ay-chat").appendChild(d);$("ay-chat").scrollTop=$("ay-chat").scrollHeight;
+}
+function ayudaChips(ctx,todas){
+  const ord=[...FAQ].sort((x,y)=>(y.p.includes(ctx)?1:0)-(x.p.includes(ctx)?1:0));
+  const lista=todas?ord:ord.slice(0,6);
+  $("ay-chips").innerHTML=lista.map(f=>`<button type="button" class="fchip" data-q="${FAQ.indexOf(f)}">${esc(f.q)}</button>`).join("")+(todas?"":`<button type="button" class="fchip" data-mas="1">Ver todas...</button>`);
+}
+async function abrirAyuda(ctx){
+  ctx=ctx||pantallaActual();
+  plusMenu(false);$("ayuda").classList.add("open");
+  $("ay-chat").innerHTML="";
+  const sal={crear:"Veo que estás creando un plan. ¿Te ayudo con algo?",editar:"Veo que estás editando un plan. ¿Te ayudo con algo?",plan:"Veo que estás mirando un plan. ¿Te ayudo con algo?",perfil:"Estás en tu perfil. ¿Te ayudo con algo?",organizador:"Estás en el panel de organizador. ¿Te ayudo con algo?"};
+  ayudaMsg("Hola 👋 Soy la ayuda de AppVentureLife. "+(sal[ctx]||"¿En qué te ayudo?"),"app");
+  ayudaChips(ctx,false);
+  $("ay-nota").textContent="Respuestas automáticas de AppVentureLife.";
+  try{
+    const r=sb?await sb.rpc("ia_cuota"):null;iaCuota=r&&!r.error?r.data:null;
+    if(iaCuota&&iaCuota.activa&&!iaCuota.descansando)$("ay-nota").textContent="Te quedan "+iaCuota.restantes+" preguntas con IA hoy. Las respuestas con IA pueden equivocarse.";
+    else if(iaCuota&&iaCuota.activa&&iaCuota.descansando)$("ay-nota").textContent="Hoy la IA descansa; sigo contestando las dudas más comunes.";
+    else $("ay-nota").textContent="Contesto al momento las dudas más comunes. Pronto podrás preguntar lo que quieras con IA.";
+  }catch(e){}
+}
+function responderAyuda(texto){
+  const t=String(texto||"").trim();if(!t)return;
+  ayudaMsg(t,"yo");
+  const f=buscaFaq(t);
+  ayudaMsg(f?f.a:"No tengo una respuesta para eso todavía. Elige una de las preguntas de abajo o escribe al correo de contacto que sale al final de la pantalla de Explorar.","app");
+}
+$("ay-chips").addEventListener("click",e=>{
+  const mas=e.target.closest("[data-mas]");if(mas){ayudaChips(pantallaActual(),true);return}
+  const q=e.target.closest("[data-q]");if(!q)return;
+  const f=FAQ[+q.dataset.q];ayudaMsg(f.q,"yo");ayudaMsg(f.a,"app");
+});
+$("ay-send").onclick=()=>{const v=$("ay-txt").value;$("ay-txt").value="";responderAyuda(v)};
+$("ay-txt").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("ay-send").click()}});
+$("mAyuda").onclick=()=>abrirAyuda("mapa");
+$("ay-form").onclick=()=>abrirAyuda(editId?"editar":"crear");
+$("org-abrir").onclick=()=>adminApp?abrirAdmin():verifSet.has(uid)?abrirPanelOrg():abrirVerif();
+$("mOrg").onclick=()=>{plusMenu(false);abrirPanelOrg()};
 $("mAdmin").onclick=()=>{plusMenu(false);abrirAdmin()};$("ov-ok").onclick=enviarVerif;$("ov-cancel").onclick=()=>$("orgver").classList.remove("open");
 $("adminLista").addEventListener("click",async e=>{
   const it=e.target.closest("[data-plan]");
   if(it){$("admin").classList.remove("open");elegir(+it.dataset.plan);return}
   const ap=e.target.closest("[data-ap]"),re=e.target.closest("[data-re]");
   if(!ap&&!re)return;
+  if(ap&&ap.dataset.sem==="rojo"&&!confirm("Esta solicitud tiene avisos en rojo. ¿Aprobarla igualmente?"))return;
   const u=(ap||re).dataset[ap?"ap":"re"];
   const motivo=re?(prompt("Motivo (opcional, lo verá la persona):")||null):null;
   try{const r=await sb.rpc("admin_resolver",{p_user:u,p_estado:ap?"aprobado":"rechazado",p_motivo:motivo});if(r.error)throw r.error;await recarga();await pintaAdmin()}catch(er){fallo(er)}
