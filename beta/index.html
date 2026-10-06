@@ -277,9 +277,9 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 .junta{display:none;position:relative;width:180px;height:225px}
 .welcome.splash .junta{display:block}
 .junta .pz{position:absolute;inset:0;width:100%;height:100%;opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.6)}
-.junta.go .pz{animation:pzj .95s cubic-bezier(.2,.9,.25,1.12) var(--d) forwards}
+.junta.go .pz{animation:pzj 1.8s cubic-bezier(.2,.9,.25,1.08) var(--d) forwards}
 @keyframes pzj{to{opacity:1;transform:none}}
-.junta.go{animation:jpulso .55s ease 1.2s both}
+.junta.go{animation:jpulso .9s ease 2.65s both}
 @keyframes jpulso{0%{transform:scale(1)}45%{transform:scale(1.14);filter:drop-shadow(0 0 28px rgba(58,160,255,.85))}100%{transform:scale(1);filter:none}}
 /* v62: mapa a pantalla completa y paneles laterales */
 main{padding:0!important;max-width:none!important}
@@ -323,7 +323,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 71 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 72 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -365,7 +365,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 71 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 72 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -781,11 +781,11 @@ const aceptado=()=>{try{return localStorage.getItem("avl_acepta")===VER_TERM}cat
 function cierraPortada(){$("bienvenida").classList.add("out");setTimeout(()=>$("bienvenida").hidden=true,420);map.invalidateSize()}
 (()=>{const P=[[0,0],[55,0],[100,0],[100,45],[100,100],[40,100],[0,100],[0,55]],C=[50,52];
   const S=[[-150,-170,-40],[20,-240,30],[190,-160,60],[240,30,-30],[170,210,45],[-10,250,-50],[-200,180,35],[-250,-20,-60]];
-  $("logoJunta").innerHTML=P.map((p,i)=>{const q=P[(i+1)%P.length],[x,y,r]=S[i];return `<svg class="pz" viewBox="0 0 407.35 510.12" style="clip-path:polygon(${C[0]}% ${C[1]}%,${p[0]}% ${p[1]}%,${q[0]}% ${q[1]}%);--x:${x}px;--y:${y}px;--r:${r}deg;--d:${i*45}ms"><use href="#avl-logo"/></svg>`}).join("")})();
+  $("logoJunta").innerHTML=P.map((p,i)=>{const q=P[(i+1)%P.length],[x,y,r]=S[i];return `<svg class="pz" viewBox="0 0 407.35 510.12" style="clip-path:polygon(${C[0]}% ${C[1]}%,${p[0]}% ${p[1]}%,${q[0]}% ${q[1]}%);--x:${x}px;--y:${y}px;--r:${r}deg;--d:${i*110}ms"><use href="#avl-logo"/></svg>`}).join("")})();
 function entraAnim(){
   const b=$("bienvenida"),j=$("logoJunta");
   b.classList.add("splash");j.classList.remove("go");void j.offsetWidth;j.classList.add("go");
-  setTimeout(()=>{if(!b.hidden)cierraPortada()},1900);
+  setTimeout(()=>{if(!b.hidden)cierraPortada()},3900);
 }
 $("entrar").onclick=()=>{if(!aceptado()){$("acepta").hidden=false;return}entraAnim()};
 const chkAcepta=()=>{$("ac-ok").disabled=!($("ac-edad").checked&&$("ac-term").checked)};
