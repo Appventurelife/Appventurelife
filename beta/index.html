@@ -233,6 +233,24 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .betanota{font-size:13px;opacity:.92;margin:-6px 0 18px!important}
 .pin{position:relative}
 .lock{position:absolute;right:-7px;top:-9px;font-size:15px;line-height:1}
+/* v81: chinchetas */
+.pin.pago{border-color:#F2B632}
+.eur{position:absolute;right:-7px;top:-8px;width:20px;height:20px;border-radius:50%;background:#F2B632;color:#17301F;font:800 12px/20px system-ui,sans-serif;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.pin.pago .lock{top:auto;bottom:-9px}
+.pin.lleno{filter:grayscale(1);opacity:.7}
+.pin.grupo{background:#0A2A5E;font:800 18px system-ui,sans-serif;color:#fff;cursor:pointer}
+.pin.grupo.conpago{border-color:#F2B632}
+.pin.aqui{animation:none}
+.pin.aqui::before,.pin.aqui::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid rgba(30,123,255,.75);animation:onda 2s ease-out infinite;pointer-events:none}
+.pin.aqui::after{animation-delay:1s}
+@keyframes onda{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.3);opacity:0}}
+@media (prefers-reduced-motion:reduce){.pin.aqui::before,.pin.aqui::after{animation:none;display:none}}
+.glista{max-height:240px;overflow:auto;min-width:210px;margin:-6px -10px}
+.glista button{display:flex!important;align-items:center;gap:8px;width:100%!important;text-align:left;background:none!important;border:0!important;border-bottom:1px solid #E3E9E1!important;border-radius:0!important;box-shadow:none!important;padding:8px!important;margin:0!important;color:#17301F!important;font:600 14px system-ui,sans-serif!important;cursor:pointer}
+.glista button:last-child{border-bottom:0!important}
+.glista .gi{width:32px;height:32px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff}
+.glista small{display:block;color:#58705E;font-weight:400;font-size:12px}
+.glista .lleno{opacity:.55}
 label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--ink);margin:14px 0 4px}
 input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 #cod-in,#f-cod{letter-spacing:2px;text-transform:uppercase}
@@ -376,7 +394,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 80 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 81 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -418,7 +436,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 80 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 81 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -1573,6 +1591,37 @@ async function arranca(){
   try{await iniciaSesion();registraAceptacion();await recarga();suscribir();importaEnlace()}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
+let capaPins=null,ultPins=[];
+function pinUno(a){
+  const pg=a.kind!=="aqui"&&a.precio>0,lleno=a.kind!=="aqui"&&a.asist.length>=a.max;
+    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}${pg?" pago":""}${lleno&&a.id!==burbuja?" lleno":""}" style="background:${col(a)}">${sym(a,22)}${pg?`<span class="eur">€</span>`:""}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+    L.marker([a.lat,a.lng],{icon:ic,zIndexOffset:a.id===burbuja?1000:0}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capaPins);
+}
+function pinGrupo(l){
+  const la=l.reduce((s,a)=>s+ +a.lat,0)/l.length,ln=l.reduce((s,a)=>s+ +a.lng,0)/l.length,pg=l.some(a=>a.precio>0);
+  const ic=L.divIcon({className:"",html:`<div class="pin grupo${pg?" conpago":""}">${l.length}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+  L.marker([la,ln],{icon:ic,zIndexOffset:400}).on("click",()=>{
+    const box=document.createElement("div");box.className="glista";
+    box.innerHTML=l.map(a=>{const lib=Math.max(0,a.max-a.asist.length);return `<button type="button" data-g="${esc(String(a.id))}"${lib?"":` class="lleno"`}><span class="gi" style="background:${col(a)}">${sym(a,18)}</span><span style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(textoCuando(a))} · ${lib?lib+(lib===1?" plaza libre":" plazas libres"):"Completo"} · ${a.precio>0?precioTxt(a.precio):"Gratis"}</small></span></button>`}).join("");
+    box.querySelectorAll("[data-g]").forEach(b=>{b.onclick=()=>{const p=l.find(a=>String(a.id)===b.dataset.g);map.closePopup();if(p)elegir(p.id)}});
+    L.popup({maxWidth:290,autoPanPaddingTopLeft:[10,90],autoPanPaddingBottomRight:[10,90]}).setLatLng([la,ln]).setContent(box).openOn(map);
+  }).addTo(capaPins);
+}
+function pintaPins(l){
+  if(l)ultPins=l;
+  if(!capaPins)capaPins=L.layerGroup().addTo(map);
+  capaPins.clearLayers();
+  const solos=[],gr=[];
+  ultPins.forEach(a=>{
+    if(a.kind==="aqui"||a.id===sel||a.id===burbuja){solos.push(a);return}
+    let p;try{p=map.latLngToLayerPoint([a.lat,a.lng])}catch(e){solos.push(a);return}
+    const g=gr.find(g=>Math.abs(g.p.x-p.x)<38&&Math.abs(g.p.y-p.y)<38);
+    if(g)g.l.push(a);else gr.push({p,l:[a]});
+  });
+  gr.forEach(g=>{if(g.l.length>1)pinGrupo(g.l);else solos.push(g.l[0])});
+  solos.forEach(a=>{try{pinUno(a)}catch(e){}});
+}
+map.on("zoomend",()=>pintaPins());
 function render(){
   capa.clearLayers();
   const advAll=vivos().filter(a=>a.kind!=="aqui"),aq=vivos().filter(a=>a.kind==="aqui");
@@ -1582,10 +1631,7 @@ function render(){
   $("filtros").innerHTML=`<button class="fchip${!filtro&&!fFecha?" on":""}" data-r="1">Todo</button><button class="fchip${fFecha==="hoy"?" on":""}" data-d="hoy">Hoy</button><button class="fchip${fFecha==="finde"?" on":""}" data-d="finde">Este finde</button>`+chipsT;
   const adv=advAll.filter(a=>(!filtro||a.tipo===filtro)&&cumpleFecha(a)).sort(orden);
   const lst=adv.filter(enLista);
-  adv.concat(aq).forEach(a=>{
-    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}" style="background:${col(a)}">${sym(a,22)}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
-    L.marker([a.lat,a.lng],{icon:ic,zIndexOffset:a.id===burbuja?1000:0}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
-  });
+  pintaPins(adv.concat(aq));
   adv.filter(a=>a.ini&&a.id!==sel).forEach(a=>{
     cargaTramo(a);
     const t=tramos[a.id];
