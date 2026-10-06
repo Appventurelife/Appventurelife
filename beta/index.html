@@ -472,7 +472,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra y crea planes de aventura cerca de ti</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 93 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 94 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -514,7 +514,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 93 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 94 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -676,7 +676,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 93 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 94 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2511,7 +2511,7 @@ function ayudaChips(ctx,todas){
 async function abrirAyuda(ctx){
   ctx=ctx||pantallaActual();
   plusMenu(false);$("ayuda").classList.add("open");
-  $("ay-chat").innerHTML="";
+  $("ay-chat").innerHTML="";ayHist=[];
   const sal={crear:"Veo que estás creando un plan. ¿Te ayudo con algo?",editar:"Veo que estás editando un plan. ¿Te ayudo con algo?",plan:"Veo que estás mirando un plan. ¿Te ayudo con algo?",perfil:"Estás en tu perfil. ¿Te ayudo con algo?",organizador:"Estás en el panel de organizador. ¿Te ayudo con algo?"};
   ayudaMsg("Hola 👋 Soy la ayuda de AppVentureLife. "+(sal[ctx]||"¿En qué te ayudo?"),"app");
   ayudaChips(ctx,false);
@@ -2523,11 +2523,35 @@ async function abrirAyuda(ctx){
     else $("ay-nota").textContent="Contesto al momento las dudas más comunes. Pronto podrás preguntar lo que quieras con IA.";
   }catch(e){}
 }
-function responderAyuda(texto){
-  const t=String(texto||"").trim();if(!t)return;
+let ayHist=[],ayOcupado=false;
+function ayNotaIA(){
+  if(!iaCuota||!iaCuota.activa)return;
+  if(iaCuota.descansando)$("ay-nota").textContent="Hoy la IA descansa; sigo contestando las dudas más comunes.";
+  else if(iaCuota.restantes>0)$("ay-nota").textContent="Te quedan "+iaCuota.restantes+" preguntas con IA hoy. Las respuestas con IA pueden equivocarse.";
+  else $("ay-nota").textContent=iaCuota.anonimo?"Ya has usado tus preguntas con IA de hoy. Guarda tu cuenta en Perfil para tener más.":"Ya has usado tus preguntas con IA de hoy. Mañana tendrás más.";
+}
+async function responderAyuda(texto){
+  const t=String(texto||"").trim();if(!t||ayOcupado)return;
   ayudaMsg(t,"yo");
   const f=buscaFaq(t);
-  ayudaMsg(f?f.a:"No tengo una respuesta para eso todavía. Elige una de las preguntas de abajo o escribe al correo de contacto que sale al final de la pantalla de Explorar.","app");
+  const fija=f?f.a:"No tengo una respuesta para eso todavía. Elige una de las preguntas de abajo o escribe al correo de contacto que sale al final de la pantalla de Explorar.";
+  if(!(sb&&iaCuota&&iaCuota.activa&&!iaCuota.descansando&&iaCuota.restantes>0)){ayudaMsg(fija,"app");return}
+  ayOcupado=true;$("ay-send").disabled=true;
+  const d=document.createElement("div");d.className="ayb app";d.textContent="Pensando…";
+  $("ay-chat").appendChild(d);$("ay-chat").scrollTop=$("ay-chat").scrollHeight;
+  let r=null;
+  try{const x=await sb.functions.invoke("asistente-app",{body:{q:t,ctx:pantallaActual(),hist:ayHist.slice(-6)}});r=x&&x.data?x.data:null;if(typeof r==="string"){try{r=JSON.parse(r)}catch(e){r=null}}}catch(e){r=null}
+  ayOcupado=false;$("ay-send").disabled=false;
+  if(r&&r.ok&&r.a){
+    d.textContent=r.a;ayHist.push({yo:true,t:t},{yo:false,t:r.a});
+    if(typeof r.restantes==="number")iaCuota.restantes=r.restantes;
+  }else{
+    d.textContent=fija;
+    if(r&&r.motivo==="descansa")iaCuota.descansando=true;
+    else if(r&&r.motivo==="limite")iaCuota.restantes=0;
+  }
+  ayNotaIA();
+  $("ay-chat").scrollTop=$("ay-chat").scrollHeight;
 }
 $("ay-chips").addEventListener("click",e=>{
   const mas=e.target.closest("[data-mas]");if(mas){ayudaChips(pantallaActual(),true);return}
