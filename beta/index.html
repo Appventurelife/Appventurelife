@@ -731,8 +731,8 @@ function abreImportado(a){compartido=true;setTimeout(()=>{if(a.lat||a.lng)map.se
 function abrirCodigo(){$("cod-err").textContent="";$("cod-in").value="";$("codigo").classList.add("open")}
 function importaEnlace(){
   const h=location.hash;let m=h.match(/^#p=(\d+)/);
-  const me=h.match(/^#entrada=(AVL-[A-Z0-9]{4}-[A-Z0-9]{4})/i);
-  if(me){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;verEntrada(me[1].toUpperCase());return}
+  const mEnt=h.match(/^#entrada=(AVL-[A-Z0-9]{4}-[A-Z0-9]{4})/i);
+  if(mEnt){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;verEntrada(mEnt[1].toUpperCase());return}
   if(m){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;const a=data.find(x=>x.id===+m[1]);if(a)abreImportado(a);else alert("No encontré ese plan. Puede que sea privado o que ya no exista.");return}
   if(/^#codigo/.test(h)){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;abrirCodigo()}
 }
