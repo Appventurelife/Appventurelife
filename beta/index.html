@@ -252,6 +252,21 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .glista small{display:block;color:#58705E;font-weight:400;font-size:12px}
 .glista .lleno{opacity:.55}
 /* v82: mensajería */
+/* v84: barra inferior */
+.bar.bar5{justify-content:space-between;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+.bar.bar5>button:not(.plus){flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 2px;font-size:11px;font-weight:700;position:relative;min-width:0;border-radius:12px;background:transparent}
+.bar5 .bi{font-size:22px;line-height:1;transition:transform .15s}
+.bar5 .bt{white-space:nowrap}
+.bar.bar5>button.on{background:transparent;color:var(--ink)}
+.bar.bar5>button.on .bi{transform:scale(1.1)}
+.bar.bar5>button:not(.on):not(.plus) .bi{opacity:.6}
+.bar5 .plus{flex:none;margin:-26px 6px 0}
+.bnum{position:absolute;top:0;left:calc(50% + 6px);background:#C4472F;color:#fff;border-radius:99px;font-size:11px;font-weight:800;min-width:18px;height:18px;line-height:18px;padding:0 5px;text-align:center}
+#yo{display:none!important}
+#panelExp[data-modo] #listaSum{display:none}
+#panelExp[data-modo] #listaDet{border:0;padding:0;margin-top:8px!important}
+#panelExp[data-modo="exp"] #lista{display:none}
+#panelExp[data-modo="planes"] #ahoraBox,#panelExp[data-modo="planes"] .hint,#panelExp[data-modo="planes"] #filtros{display:none!important}
 /* v83: portada sobre el mapa */
 #bienvenida.hero2{background:rgba(6,20,40,.45)!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);align-items:center!important;justify-content:center!important;text-align:center!important;padding:24px 20px calc(110px + env(safe-area-inset-bottom,0px))!important}
 #bienvenida.hero2::after{display:none!important}
@@ -437,7 +452,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra y crea planes de aventura cerca de ti</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 83 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 84 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -458,8 +473,8 @@ main{padding:0!important;max-width:none!important}
 <div id="bannerSol" class="bannersol" hidden></div>
 <div class="attr">&copy; OpenStreetMap contributors &copy; CARTO · rutas OSRM · búsqueda Photon</div>
 </div>
-<div id="panelExp" class="panel izq" hidden>
-<div class="phead"><h2>Explorar</h2><button id="pxExp" type="button" aria-label="Cerrar">✕</button></div>
+<div id="panelExp" class="panel izq" data-modo="exp" hidden>
+<div class="phead"><h2 id="pxTit">Explorar</h2><button id="pxExp" type="button" aria-label="Cerrar">✕</button></div>
 <p class="hint" style="margin:0 2px 0">Busca un sitio arriba, o toca el mapa para crear un plan en ese punto. Toca una chincheta para ver un plan.</p>
 <div id="filtros"></div>
 <details id="listaDet" class="mas" style="margin-top:12px" open><summary id="listaSum">📋 Mis planes e invitaciones</summary>
@@ -479,10 +494,10 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 83 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 84 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
-<nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
+<nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
 
 <div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mAdmin" type="button" hidden>👑 Panel del dueño</button><button id="mOrg" type="button" hidden>📋 Panel de organizador</button><button id="mAyuda" type="button">💬 Ayuda</button><button id="mPlan" type="button">Nuevo plan</button></div>
 
@@ -1196,8 +1211,8 @@ function rutaHTML(a){
 function irA(v){
   plusMenu(false);
   vista=v;$("vMios").hidden=v!=="mios";$("panelExp").hidden=true;
-  if(v==="explorar"){$("bExp").classList.remove("on");$("bMios").classList.remove("on");setTimeout(()=>map.invalidateSize(),60)}
-  else{$("bMios").classList.add("on");$("bExp").classList.remove("on");salirColocar()}
+  marcaBar();
+  if(v==="explorar")setTimeout(()=>map.invalidateSize(),60);else salirColocar();
   window.scrollTo(0,0);render();
 }
 function salirColocar(){lugarSug="";colocando=false;$("centro").hidden=true;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}}
@@ -1714,7 +1729,7 @@ function render(){
   else bs.hidden=true;
   const mios=advAll.filter(mia).sort(orden);
   const tot=totalSinLeer()+solRec.length;
-  $("bMios").textContent="Mensajes"+(tot?" · "+tot+" 💬":"");
+  {const bn=$("bNum");if(bn){bn.textContent=tot>9?"9+":String(tot);bn.hidden=!tot}}
   try{document.title=(tot?"("+tot+") ":"")+"AppVentureLife"}catch(e){}
   const sol=[...solRec.map(u=>({u,t:"r"})),...solEnv.map(u=>({u,t:"e"}))];
   $("solBox").hidden=!sol.length;
@@ -1891,7 +1906,11 @@ $("resMapa").addEventListener("click",e=>{
   if(r.dataset.plan){const a=data.find(x=>x.id===+r.dataset.plan);$("resMapa").hidden=true;if(a){map.setView([a.lat,a.lng],15);elegir(a.id)}return}
   const l=resultadosMapa[+r.dataset.i];if(l)elegirLugar(l);
 });
-$("bExp").onclick=()=>{const ab=vista==="explorar"&&!$("panelExp").hidden;irA("explorar");if(!ab){$("panelExp").hidden=false;$("bExp").classList.add("on")}};
+function marcaBar(){const pe=$("panelExp"),m=vista==="mios"?"m":(!pe.hidden&&pe.dataset.modo==="planes")?"p":"e";$("bExp").classList.toggle("on",m==="e");$("bMios").classList.toggle("on",m==="m");$("bPlanes").classList.toggle("on",m==="p")}
+function abrePanelExp(modo){const pe=$("panelExp");pe.dataset.modo=modo;$("pxTit").textContent=modo==="planes"?"Mis planes":"Explorar";$("listaDet").open=true;pe.hidden=false;marcaBar()}
+$("bExp").onclick=()=>{const enMapa=vista==="explorar"&&$("panelExp").hidden;irA("explorar");if(enMapa)abrePanelExp("exp")};
+$("bPlanes").onclick=()=>{const pe=$("panelExp"),ab=vista==="explorar"&&!pe.hidden&&pe.dataset.modo==="planes";irA("explorar");if(!ab)abrePanelExp("planes")};
+$("bPerfil").onclick=()=>{plusMenu(false);pedirNombre()};
 $("pxExp").onclick=()=>irA("explorar");$("pxMios").onclick=()=>irA("explorar");
 {const pie=document.querySelector("main>p.meta");if(pie)$("pieExp").appendChild(pie)}
 $("bMios").onclick=()=>{if(vista==="mios"){irA("explorar");return}if(!exigeAcepta(()=>irA("mios")))return;irA("mios")};
