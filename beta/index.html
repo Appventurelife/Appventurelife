@@ -150,6 +150,8 @@ main{padding-bottom:120px}
 #map{height:66vh;min-height:360px}
 .locbtn{position:absolute;right:12px;top:12px;z-index:500}
 .inibox{border:2px dashed #B8C4B5;border-radius:14px;padding:10px 12px;margin:10px 0}
+.inimini{height:150px;border-radius:12px;overflow:hidden;margin:8px 0;border:1px solid var(--line);cursor:pointer;z-index:0}
+.inimini .leaflet-tooltip{font-weight:700;font-size:12px;padding:2px 6px}
 .capasbox{position:absolute;right:12px;top:68px;z-index:700}
 .capasbox>button.round{font-size:22px}
 #ayuda{z-index:1200}
@@ -296,7 +298,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 65 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 66 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -338,7 +340,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 65 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 66 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -428,8 +430,8 @@ main{padding:0!important;max-width:none!important}
 <label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
 <label>Tipo</label><div class="chips" id="f-tipos"></div>
 <div id="iniBox" class="inibox" hidden>
-<b><svg width="18" height="18" viewBox="0 0 100 100" style="vertical-align:-3px" aria-hidden="true"><use href="#avl-tile"/></svg> Punto de salida (opcional)</b>
-<p class="meta" style="margin:4px 0 8px">La chincheta del mapa es el <b>destino</b>. Si quedáis en otro sitio para salir (el parking, el puerto, el aeropuerto...), márcalo aquí.</p>
+<b>¿Salís desde otro sitio? <span style="font-weight:400;color:var(--mut)">(opcional)</span></b>
+<div id="iniMini" class="inimini" role="button" aria-label="Cambiar la salida" hidden></div>
 <p id="iniTxt" class="meta" style="margin:0 0 8px"></p>
 <div class="row"><button class="sec" id="iniMarcar" type="button">Marcar el inicio</button><button class="sec" id="iniQuitar" type="button" hidden>Quitar</button></div>
 <button class="sec" id="iniNombreBtn" type="button" hidden style="margin-top:8px;width:100%">📍 Poner el nombre de este sitio como punto de encuentro</button>
@@ -1039,12 +1041,44 @@ function esTipoRuta(){return true}
 function pintaIni(){
   const caja=$("iniBox");caja.hidden=!esTipoRuta();
   if(caja.hidden){$("lblPunto").textContent="Punto de encuentro";return}
-  $("iniTxt").textContent=iniPend?"Inicio marcado ✓"+(pend?" · a "+km(haversine(iniPend,pend))+" del destino (en línea recta)":""):"Todavía no has marcado el inicio. Es opcional, pero ayuda a que todos sepan dónde quedáis.";
-  $("iniMarcar").textContent=iniPend?"Cambiar el inicio":"Marcar el inicio";
+  $("iniTxt").textContent=iniPend?"Salida: "+(iniNombre||"punto marcado")+(pend?" · a "+km(haversine(iniPend,pend))+" del destino":""):"";
+  $("iniTxt").hidden=!iniPend;
+  $("iniMarcar").textContent=iniPend?"Cambiar salida":"Marcar salida";
   $("iniQuitar").hidden=!iniPend;
-  $("iniNombreBtn").hidden=!iniPend;
+  $("iniNombreBtn").hidden=true;
+  if(iniPend&&!iniNombre){const t=iniPend;nombreDeLugar(t).then(n=>{if(iniPend===t&&n&&!iniNombre){iniNombre=n;pintaIni()}}).catch(()=>{})}
+  pintaMini();
   $("lblPunto").textContent="Dónde quedáis (punto de encuentro = punto de salida)";
 }
+let miniMap=null,miniCapa=null,ajIniT=null;
+function pintaMini(){
+  const box=$("iniMini");box.hidden=!(iniPend&&pend);
+  if(box.hidden)return;
+  setTimeout(()=>{try{
+    if(!iniPend||!pend)return;
+    if(!miniMap){
+      miniMap=L.map(box,{zoomControl:false,attributionControl:false,dragging:false,touchZoom:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,tap:false});
+      L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20}).addTo(miniMap);
+      miniCapa=L.layerGroup().addTo(miniMap);box.onclick=()=>empezarIni();
+    }
+    miniMap.invalidateSize();miniCapa.clearLayers();
+    const a=[iniPend.lat,iniPend.lng],b=[pend.lat,pend.lng];
+    L.polyline([a,b],{color:"#1C6FD1",weight:3,dashArray:"6 6",interactive:false}).addTo(miniCapa);
+    L.circleMarker(a,{radius:8,color:"#fff",weight:3,fillColor:"#0A2A5E",fillOpacity:1,interactive:false}).bindTooltip("Salida",{permanent:true,direction:"top",offset:[0,-8]}).addTo(miniCapa);
+    L.circleMarker(b,{radius:8,color:"#fff",weight:3,fillColor:"#C4472F",fillOpacity:1,interactive:false}).bindTooltip("Destino",{permanent:true,direction:"top",offset:[0,-8]}).addTo(miniCapa);
+    miniMap.fitBounds([a,b],{padding:[34,34],maxZoom:15});
+  }catch(_e){}},350);
+}
+function ajustaIniCentro(){
+  if(!modoIni)return;
+  const c=map.getCenter();
+  if(iniTmp&&Math.abs(c.lat-iniTmp.lat)<1e-6&&Math.abs(c.lng-iniTmp.lng)<1e-6)return;
+  iniTmp={lat:c.lat,lng:c.lng};iniTmpNombre="";
+  $("colocarTxt").textContent=pend?"Salida a "+km(haversine(iniTmp,pend))+" del destino":"Salida aquí";
+  clearTimeout(ajIniT);
+  ajIniT=setTimeout(()=>{const t=iniTmp;nombreDeLugar(t).then(n=>{if(iniTmp===t&&modoIni){iniTmpNombre=n||"";if(n)$("colocarTxt").textContent=n.slice(0,40)+(pend?" · "+km(haversine(t,pend)):"")}}).catch(()=>{})},500);
+}
+map.on("moveend",ajustaIniCentro);
 const LOGO_MINI='<svg width="18" height="18" viewBox="0 0 100 100" style="vertical-align:-3px" aria-hidden="true"><use href="#avl-tile"/></svg>';
 function iconoInicio(){return L.divIcon({className:"",html:`<div class="pin" style="background:#0A2A5E"><svg width="24" height="30" viewBox="0 0 407.35 510.12" aria-hidden="true"><use href="#avl-logo"/></svg></div>`,iconSize:[44,44],iconAnchor:[22,22]})}
 function ponIniMarker(ll){
@@ -1057,26 +1091,28 @@ function empezarIni(){
   $("nueva").classList.remove("open");
   if(iniPend)ponIniMarker(iniPend);
   $("colocar").hidden=false;
-  $("colocarTxt").textContent=iniPend?"Toca otro punto para mover el inicio":"Toca el mapa donde empieza la ruta (donde quedáis)";
-  $("colocarOk").textContent="Usar este inicio";$("colocarOk").disabled=!iniPend;
-  $("map").scrollIntoView({behavior:"smooth",block:"center"});
+  $("colocarTxt").textContent="Mueve el mapa hasta la salida";
+  $("colocarOk").textContent="Salir desde aquí";$("colocarOk").disabled=false;
+  quitaIniMarker();$("centro").hidden=false;iniTmp=null;
+  try{const p=iniPend||pend;if(p)map.setView([p.lat,p.lng],Math.min(Math.max(map.getZoom(),13),16))}catch(_e){}
+  setTimeout(ajustaIniCentro,450);
 }
 function fijaIniTmp(ll,nombre){
-  iniTmp={lat:ll.lat,lng:ll.lng};ponIniMarker(iniTmp);
+  iniTmp={lat:ll.lat,lng:ll.lng};
   iniTmpNombre=nombre||"";
   if(!nombre){const t=iniTmp;nombreDeLugar(t).then(n=>{if(iniTmp===t)iniTmpNombre=n})}
   $("colocarOk").disabled=false;
   $("colocarTxt").textContent="Inicio aquí"+(pend?" · a "+km(haversine(iniTmp,pend))+" del destino":"");
 }
 async function terminaIni(ok){
-  modoIni=false;$("colocar").hidden=true;$("colocarOk").textContent="Crear plan aquí";
+  modoIni=false;$("centro").hidden=true;$("colocar").hidden=true;$("colocarOk").textContent="Crear plan aquí";
   const nuevo=ok&&iniTmp;
   if(nuevo){iniPend={lat:iniTmp.lat,lng:iniTmp.lng};iniNombre=iniTmpNombre}
   if(iniPend)ponIniMarker(iniPend);else quitaIniMarker();
   const t=iniTmp;iniTmp=null;pintaIni();$("nueva").classList.add("open");
   if(nuevo){
     if(!iniNombre){iniNombre=await nombreDeLugar(iniPend)}
-    sugerirPunto(false);
+    sugerirPunto(false);pintaIni();
   }
 }
 const ICONO_TRAMO={pie:"🥾",bici:"🚲",coche:"🚗",recta:"🧭"};
@@ -1537,12 +1573,12 @@ async function guardaEdicion(id,campos,priv,cod){
     if(cambios.length){try{await sb.from("mensajes").insert({plan_id:id,texto:"✏️ El organizador ha cambiado "+cambios.join(", ")+"."})}catch(e){}}
   }
 }
-function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;iniNombre="";iniTmpNombre="";puntoAuto="";quitaIniMarker();$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
+function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;iniNombre="";iniTmpNombre="";puntoAuto="";quitaIniMarker();$("centro").hidden=true;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
 function elegir(id){burbuja=null;tab="info";delId=null;segAbierta=false;cerrarForm();sel=id;const pa=data.find(x=>x.id===id);if(pa&&pa.ini){cargaTramo(pa);try{map.fitBounds([[pa.ini.lat,pa.ini.lng],[pa.lat,pa.lng]],{padding:[60,60]})}catch(e){}}render()}
 
 map.on("click",e=>{
   plusMenu(false);$("resMapa").hidden=true;$("capasMenu").hidden=true;
-  if(modoIni){fijaIniTmp(e.latlng);return}
+  if(modoIni){map.panTo(e.latlng);return}
   if($("nueva").classList.contains("open")){marcaPunto(e.latlng);return}
   if(burbuja!=null){burbuja=null;render();return}
   if(sel){sel=null;render();return}
