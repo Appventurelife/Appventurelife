@@ -320,7 +320,7 @@ main{padding:0!important;max-width:none!important}
 .phead{display:flex;align-items:center;gap:8px;margin:0 0 8px}
 .phead h2{flex:1;margin:0;font-size:26px;line-height:1.1}
 .phead button{width:38px;height:38px;padding:0;border-radius:50%;background:var(--card);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.2);flex:none}
-</style>
+.visbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:4px 0 10px}.visop{display:flex;gap:8px;margin-top:8px}.visop button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-size:22px;line-height:1.1}.visop button span{font-size:13px;font-weight:600}.visop button.on{border-color:var(--cta);background:var(--cta);color:var(--ctat)}</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -343,7 +343,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 75 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 78 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -385,7 +385,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 75 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 78 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -470,6 +470,11 @@ main{padding:0!important;max-width:none!important}
 <section id="nueva" class="sheet" aria-label="Nuevo plan">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2 id="np-t">Nuevo plan</h2>
+<div class="visbox"><b>¿Quién puede verlo?</b><div class="visop" id="f-visop"><button type="button" data-v="todos" class="on">🌍<span>Todos</span></button><button type="button" data-v="amigos">👥<span>Solo amigos</span></button><button type="button" data-v="codigo">🔒<span>Con código</span></button></div><p class="meta" id="f-vis-txt" style="margin:6px 0 0">Lo ve cualquiera en el mapa.</p><select id="f-vis" hidden><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
+<div id="privBox" hidden><label for="f-cod">Código de acceso</label>
+<div class="row"><input id="f-cod" maxlength="20" autocapitalize="characters" autocomplete="off"><button id="f-cod-gen" class="sec" type="button" style="flex:none;padding:10px 14px">Otro</button></div>
+<p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
+</div>
 <button id="ay-form" class="sec" type="button" style="padding:6px 12px;font-size:14px;margin:0 0 6px">💬 ¿Dudas? Pregunta aquí</button>
 <button id="f-mover" class="sec" type="button" hidden style="margin:0 0 6px">📍 Cambiar ubicación en el mapa</button>
 <label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
@@ -488,11 +493,6 @@ main{padding:0!important;max-width:none!important}
 <div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
 <div class="row"><div><label for="f-dia">Día</label><input id="f-dia" type="date"></div><div><label for="f-hora">Hora</label><input id="f-hora" type="time"></div></div>
 <label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6">
-<label for="f-vis">¿Quién puede verlo?</label>
-<select id="f-vis"><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
-<div id="privBox" hidden><label for="f-cod">Código de acceso</label>
-<div class="row"><input id="f-cod" maxlength="20" autocapitalize="characters" autocomplete="off"><button id="f-cod-gen" class="sec" type="button" style="flex:none;padding:10px 14px">Otro</button></div>
-<p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
 <details class="mas"><summary>Añadir más detalles</summary>
 <label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
 <label for="f-punto" id="lblPunto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
@@ -1547,7 +1547,7 @@ function render(){
     const fi=L.divIcon({className:"",html:`<div class="pin" style="background:#0A2A5E;transform:scale(.72)"><svg width="24" height="30" viewBox="0 0 407.35 510.12" aria-hidden="true"><use href="#avl-logo"/></svg></div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.ini.lat,a.ini.lng],{icon:fi,zIndexOffset:500}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
   });
-  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
+  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Van amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
   $("lista").innerHTML=lst.length?lst.map(card).join(""):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
   $("ahoraBox").hidden=!aq.length;
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
@@ -1610,8 +1610,8 @@ function render(){
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
-<button id="unir" class="big" ${lleno?"disabled":""}>${yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button>
-<div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
+<button id="unir" class="big" ${lleno||(yo&&soyOrg(a))?"disabled":""}>${yo&&soyOrg(a)?"Organizas este plan":yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button>
+<div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${soyOrg(a)?`<button id="panGo" class="sec" type="button">📊 Panel organizador</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
 ${tramoHTML(a)}
 ${(yo||soyOrg(a))?rutaHTML(a):""}
 ${a.punto?`<p class="meta">Punto de encuentro: <b style="color:var(--ink)">${esc(a.punto)}</b></p>`:""}
@@ -1619,9 +1619,9 @@ ${a.equipo?`<p class="meta">Equipo: <b style="color:var(--ink)">${esc(a.equipo)}
 ${a.emerg?`<p class="meta">Contacto de emergencia: <b style="color:var(--ink)">${esc(a.emerg)}</b></p>`:""}
 ${a.desc?`<p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
 ${tiempoHTML(a)}
-${a.precio>0?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&a.efectivo?`<p class="meta" style="margin:6px 0 0">💶 También se puede pagar en efectivo el día del plan.</p>`:""}${a.precio>0&&!soyOrg(a)?`<p class="meta aviso-pago">AppVentureLife no comprueba la identidad de quien organiza. Paga en efectivo, por Bizum o con tarjeta, como indique quien organiza.</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza: <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" · <b style='color:#1F7A4D'>✓ Organizador verificado</b>":""}. AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}</div>`:""}
+${a.precio>0?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&a.efectivo?`<p class="meta" style="margin:6px 0 0">💶 También se puede pagar en efectivo el día del plan.</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" <b style='color:#1F7A4D'>✓ verificado</b>":""}</p>`:""}</div>`:""}
 ${quien(a)}
-${seguridad(a)}
+<details class="mas"><summary>Detalles</summary>${a.precio>0&&!soyOrg(a)?`<p class="meta aviso-pago">AppVentureLife no comprueba la identidad de quien organiza. Paga en efectivo, por Bizum o con tarjeta, como indique quien organiza.</p>`:""}${a.precio>0?`<p class="meta">AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}${seguridad(a)}</details>
 <div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>`;
   }
   d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>${tab==="info"?cover:""}${body}`;
@@ -1647,7 +1647,7 @@ ${seguridad(a)}
       await recarga();
     }catch(e){fallo(e)}
   });
-  on("del",async()=>{if(delId!==a.id){delId=a.id;$("del").textContent="¿Seguro? Toca otra vez";return}try{const r=await sb.from("planes").delete().eq("id",a.id);if(r.error)throw r.error;if(ruta&&ruta.id===a.id)quitaRuta();sel=null;delId=null;await recarga()}catch(e){fallo(e)}});
+  on("panGo",()=>{$("detalle").classList.remove("open");abrirPanelOrg()});on("del",async()=>{if(delId!==a.id){delId=a.id;$("del").textContent="¿Seguro? Toca otra vez";return}try{const r=await sb.from("planes").delete().eq("id",a.id);if(r.error)throw r.error;if(ruta&&ruta.id===a.id)quitaRuta();sel=null;delId=null;await recarga()}catch(e){fallo(e)}});
   d.querySelectorAll("[data-u]").forEach(el=>{el.onclick=ev=>{if(ev.target.closest("[data-p]"))return;abrePersona(el.dataset.u)}});
   d.querySelectorAll("[data-p]").forEach(el=>{el.onclick=async ev=>{ev.stopPropagation();const u=el.dataset.p,ya=(a.pagosIds||[]).includes(u);try{const r=await sb.from("participantes").update({pagado:!ya}).eq("plan_id",a.id).eq("user_id",u);if(r.error)throw r.error;await recarga()}catch(e){fallo(e)}}});
   if(tab==="fotos"){d.querySelectorAll(".tile").forEach(el=>{el.onclick=()=>abrirFoto(el.dataset.f)});if($("m-file"))$("m-file").onchange=subirFotos(a)}
@@ -1662,7 +1662,7 @@ ${seguridad(a)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";prefillCobros=false;pintaTipos();pintaPrecioAviso();
+  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";prefillCobros=false;pintaTipos();pintaPrecioAviso();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
@@ -1673,7 +1673,7 @@ function abrirEdicion(a){
   $("f-punto").value=a.punto||"";$("f-desc").value=a.desc||"";$("f-equipo").value=a.equipo||"";$("f-emerg").value=a.emerg||"";
   $("f-precio").value=a.precio||"";pintaPrecioAviso();$("f-link").value=a.link||"";$("f-pago").value=a.pago||"";$("f-efectivo").checked=!!a.efectivo;
   $("f-vis").value=a.priv?"codigo":a.soloAmigos?"amigos":"todos";
-  $("privBox").hidden=!a.priv;$("f-cod").value=a.priv?fmtCod(a.codigo):"";
+  $("privBox").hidden=!a.priv;pintaVis();$("f-cod").value=a.priv?fmtCod(a.codigo):"";
   $("np-t").textContent="Editar plan";$("f-ok").textContent="Guardar cambios";$("f-mover").hidden=false;
   foto="";quitarFoto=false;if(a.foto){$("prev").src=a.foto;$("prev").hidden=false;$("f-foto-quitar").hidden=false}else{$("prev").hidden=true;$("f-foto-quitar").hidden=true}
   pintaTipos();
@@ -1962,7 +1962,9 @@ $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){
 $("colocarNo").onclick=()=>{if(modoIni){terminaIni(false);return}salirColocar();if(editId){const a=data.find(x=>x.id===editId);if(a)pend={lat:a.lat,lng:a.lng};$("nueva").classList.add("open")}else pend=null};
 $("f-mover").onclick=()=>{$("nueva").classList.remove("open");colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el nuevo lugar del plan";$("colocarOk").disabled=true;$("colocarOk").textContent="Usar este lugar";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
 $("colocarOk").onclick=()=>{if(modoIni){terminaIni(true);return}if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);$("nueva").classList.add("open")};
-$("f-vis").addEventListener("change",()=>{const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
+function pintaVis(){const v=$("f-vis").value;document.querySelectorAll("#f-visop button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));$("f-vis-txt").textContent={todos:"Lo ve cualquiera en el mapa.",amigos:"Solo lo ven tus amigos.",codigo:"Solo lo ve quien tenga el código. Te damos uno abajo."}[v]||""}
+document.querySelectorAll("#f-visop button").forEach(b=>{b.onclick=()=>{$("f-vis").value=b.dataset.v;$("f-vis").dispatchEvent(new Event("change"))}});
+$("f-vis").addEventListener("change",()=>{pintaVis();const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
 $("f-cod-gen").onclick=()=>{$("f-cod").value=fmtCod(genCod())};
 $("cod-no").onclick=()=>$("codigo").classList.remove("open");
 $("cod-ok").onclick=async()=>{
