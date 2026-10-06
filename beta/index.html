@@ -287,7 +287,23 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 .valora b{display:block;margin-bottom:4px;font-size:15px}
 .valora button{background:none!important;border:0!important;padding:2px 4px!important;font-size:32px!important;line-height:1!important;color:#C9CFC8!important;box-shadow:none!important}
 .valora button.on{color:#F2B632!important}
-.aviso-pago{background:rgba(242,182,50,.16);border-radius:10px;padding:8px 10px;margin:10px 0 0!important;color:var(--ink)!important}
+.aviso-pago{background:rgba(0,0,0,.05);border-radius:10px;padding:8px 10px;margin:10px 0 0!important;color:var(--ink)!important}
+/* v74: entradas con QR */
+.escbtn{width:100%;margin:8px 0 10px}
+.mientrada{margin:10px 0 12px;padding:14px;border:2px dashed #0A2A5E;border-radius:14px;text-align:center;background:var(--card)}
+.mientrada b{display:block;margin-bottom:8px}
+.mientrada .qr{display:inline-block;padding:8px;background:#fff;border-radius:10px}
+.mientrada .qr img,.mientrada .qr canvas{display:block}
+.mientrada .cod{font-weight:800;letter-spacing:2px;font-size:20px;margin:8px 0 2px;color:var(--ink)}
+.mientrada small{color:var(--mut)}
+.escaner,.entchk{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:20px}
+.esc-in,.ec-in{background:var(--card);color:var(--ink);border-radius:20px;padding:18px;width:100%;max-width:380px;text-align:center}
+#escVista{width:100%;min-height:260px;margin:12px 0;border-radius:12px;overflow:hidden;background:#000}
+.entchk.ok .ec-in{border:4px solid #1F7A4D}.entchk.no .ec-in{border:4px solid #C4472F}
+.entchk .ic{font-size:64px;font-weight:800;line-height:1}
+.entchk.ok .ic{color:#1F7A4D}.entchk.no .ic{color:#C4472F}
+.entchk b{display:block;font-size:24px;margin:6px 0}
+.entchk .cod{letter-spacing:2px;color:var(--mut)}
 /* v62: mapa a pantalla completa y paneles laterales */
 main{padding:0!important;max-width:none!important}
 .mapwrap{position:fixed!important;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:calc(56px + env(safe-area-inset-bottom,0px));margin:0!important;z-index:1}
@@ -330,7 +346,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 73 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 74 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -372,7 +388,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 73 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 74 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -489,7 +505,8 @@ main{padding:0!important;max-width:none!important}
 <label for="f-precio">Precio por persona en € (vacío = gratis)</label><input id="f-precio" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej. 35">
 <p id="precioAviso" class="meta" hidden></p>
 <div id="pagoBox" hidden><label for="f-link">Enlace de pago de Stripe</label><input id="f-link" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
-<label for="f-pago">Otras formas de pago</label><input id="f-pago" maxlength="80" placeholder="Ej. Bizum al 600 000 000"></div>
+<label for="f-pago">Otras formas de pago</label><input id="f-pago" maxlength="80" placeholder="Ej. Bizum al 600 000 000">
+<label class="chk" style="margin-top:8px"><input type="checkbox" id="f-efectivo"> 💶 También se puede pagar en efectivo el día del plan</label></div>
 <div style="margin-top:10px"><label class="subir" for="f-foto" style="color:var(--ink);font-size:16px;margin:0">Añadir foto de portada</label><input id="f-foto" type="file" accept="image/*" hidden><img id="prev" alt="Vista previa" hidden><button id="f-foto-quitar" class="sec" type="button" hidden style="margin-top:6px;font-size:14px;padding:6px 12px">Quitar foto</button></div>
 </details>
 <div class="row" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button id="f-ok" type="button">Publicar</button></div>
@@ -555,7 +572,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta">Si prefieres no registrarte en Stripe, puedes cobrar solo por Bizum o transferencia: pon tu forma de pago arriba y marca «pagado» tú mismo cuando te llegue.</p></details>
 <h3 class="who-h" style="margin-top:14px">Mis planes de pago</h3><div id="po-planes" class="list"></div>
 <h3 class="who-h" style="margin-top:14px">Comprobar una entrada</h3>
-<div class="row"><input id="po-cod" maxlength="14" placeholder="AVL-AB12-CD34" autocapitalize="characters" autocomplete="off"><button class="sec" id="po-comprobar" type="button">Comprobar</button></div>
+<div class="row"><input id="po-cod" maxlength="14" placeholder="AVL-AB12-CD34" autocapitalize="characters" autocomplete="off"><button class="sec" id="po-comprobar" type="button">Comprobar</button></div><button class="sec" type="button" data-escanear="1" style="margin-top:8px;width:100%">📷 Escanear con la cámara</button>
 <p class="meta" id="po-res"></p>
 <h3 class="who-h" style="margin-top:14px">Entradas enviadas</h3><div id="po-entradas" class="list"></div>
 </section>
@@ -596,7 +613,7 @@ function valoraHtml(a){
   const v=misVotos[a.id]||0;
   return `<div class="valora" data-plan="${a.id}"><b>${v?"Tu valoración":"¿Qué tal fue? Valora a quien organizó"}</b>${[1,2,3,4,5].map(i=>`<button type="button" data-e="${i}" class="${i<=v?"on":""}" aria-label="${i} estrellas">★</button>`).join("")}</div>`;
 }
-const quien=a=>`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>${valoraHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
+const quien=a=>`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>${valoraHtml(a)}${entradaHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
 const migra=a=>{if(!Array.isArray(a.asist)){a.asist=[];for(let i=0;i<(a.n||0);i++)a.asist.push(i===0&&a.yo&&me?me:"Participante")}if(!a.org)a.org=a.asist[0]||"Anónimo"};
 const vivos=()=>data.filter(a=>!a.hasta||a.hasta>Date.now());
 const hace=t=>{const m=Math.round((Date.now()-t)/60000);return m<1?"ahora mismo":m<60?"hace "+m+" min":"hace "+Math.floor(m/60)+" h"};
@@ -714,6 +731,8 @@ function abreImportado(a){compartido=true;setTimeout(()=>{if(a.lat||a.lng)map.se
 function abrirCodigo(){$("cod-err").textContent="";$("cod-in").value="";$("codigo").classList.add("open")}
 function importaEnlace(){
   const h=location.hash;let m=h.match(/^#p=(\d+)/);
+  const me=h.match(/^#entrada=(AVL-[A-Z0-9]{4}-[A-Z0-9]{4})/i);
+  if(me){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;verEntrada(me[1].toUpperCase());return}
   if(m){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;const a=data.find(x=>x.id===+m[1]);if(a)abreImportado(a);else alert("No encontré ese plan. Puede que sea privado o que ya no exista.");return}
   if(/^#codigo/.test(h)){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;abrirCodigo()}
 }
@@ -1349,12 +1368,50 @@ async function iniciaSesion(){
   else if(me){await perfilListo()}
   pintaYo();
 }
-let repu={},misVotos={};
+let repu={},misVotos={},misEntradas={};
+const cargaJs=u=>new Promise((ok,ko)=>{const s=document.createElement("script");s.src=u;s.onload=ok;s.onerror=ko;document.head.appendChild(s)});
+const URL_ENTRADA="https://appventurelife.com/#entrada=";
+function entradaHtml(a){
+  if(a.kind==="aqui"||!uid)return "";
+  if(soyOrg(a))return `<button type="button" class="sec escbtn" data-escanear="1">📷 Escanear entradas</button>`;
+  const c=misEntradas[a.id];if(!c||pasada(a))return "";
+  return `<div class="mientrada"><b>🎟️ Tu entrada</b><div class="qr" data-qr="${URL_ENTRADA+c}"></div><div class="cod">${esc(c)}</div><small>Enséñala a quien organiza al llegar</small></div>`;
+}
+new MutationObserver(()=>{
+  const els=[...document.querySelectorAll(".qr[data-qr]:not([data-ok])")];if(!els.length)return;
+  els.forEach(e=>e.setAttribute("data-ok","1"));
+  (window.QRCode?Promise.resolve():cargaJs("https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js")).then(()=>els.forEach(e=>{e.innerHTML="";new QRCode(e,{text:e.dataset.qr,width:180,height:180,colorDark:"#0A2A5E",colorLight:"#ffffff"})})).catch(()=>{});
+}).observe(document.body,{childList:true,subtree:true});
+async function verEntrada(c){
+  let ok=false,txt="";
+  try{
+    const r=await sb.from("entradas").select("plan_id,user_id").eq("codigo",c).maybeSingle();
+    if(r.data){const a=data.find(p=>p.id===r.data.plan_id)||{};ok=true;txt=esc(nombres[r.data.user_id]||"Alguien")+"<br><small>"+esc(a.titulo||"Plan")+"</small>"}
+    else txt="No encuentro esta entrada en tus planes.<br><small>Solo la puede comprobar quien organiza el plan, desde su cuenta.</small>";
+  }catch(e){txt="No se pudo comprobar ahora. Inténtalo otra vez."}
+  const d=document.createElement("div");d.className="entchk "+(ok?"ok":"no");
+  d.innerHTML=`<div class="ec-in"><div class="ic">${ok?"✓":"✗"}</div><b>${ok?"Entrada válida":"Entrada no válida"}</b><p>${txt}</p><p class="cod">${esc(c)}</p><button type="button">Cerrar</button></div>`;
+  d.querySelector("button").onclick=()=>d.remove();document.body.appendChild(d);
+}
+async function escanear(){
+  const d=document.createElement("div");d.className="escaner";
+  d.innerHTML=`<div class="esc-in"><b>Apunta al código QR de la entrada</b><div id="escVista"></div><button type="button" class="sec">Cerrar</button></div>`;
+  document.body.appendChild(d);
+  let qr=null,hecho=false;const cerrar=async()=>{try{if(qr)await qr.stop()}catch(_e){}d.remove()};
+  d.querySelector("button").onclick=cerrar;
+  try{
+    if(!window.Html5Qrcode)await cargaJs("https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js");
+    qr=new Html5Qrcode("escVista");
+    await qr.start({facingMode:"environment"},{fps:10,qrbox:220},t=>{if(hecho)return;const m=String(t).toUpperCase().match(/AVL-[A-Z0-9]{4}-[A-Z0-9]{4}/);if(!m)return;hecho=true;cerrar();verEntrada(m[0])},()=>{});
+  }catch(e){d.querySelector("b").textContent="No puedo abrir la cámara. Dale permiso de cámara a la app, o escribe el código a mano en tu panel."}
+}
+document.addEventListener("click",e=>{if(e.target.closest("[data-escanear]")){e.preventDefault();escanear()}});
 async function cargaRepu(){
   try{
     const [rp,mv]=await Promise.all([sb.from("org_reputacion").select("*"),uid?sb.from("valoraciones").select("plan_id,estrellas").eq("autor",uid):Promise.resolve({data:[]})]);
     const r={};(rp.data||[]).forEach(x=>{r[x.org]=x});repu=r;
     const m={};(mv.data||[]).forEach(x=>{m[x.plan_id]=x.estrellas});misVotos=m;
+    if(uid){const en=await sb.from("entradas").select("plan_id,codigo").eq("user_id",uid);const q={};(en.data||[]).forEach(x=>{q[x.plan_id]=x.codigo});misEntradas=q}
   }catch(_e){}
 }
 document.addEventListener("click",async e=>{
@@ -1415,7 +1472,7 @@ async function recarga(){
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});
     const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
@@ -1565,7 +1622,7 @@ ${a.equipo?`<p class="meta">Equipo: <b style="color:var(--ink)">${esc(a.equipo)}
 ${a.emerg?`<p class="meta">Contacto de emergencia: <b style="color:var(--ink)">${esc(a.emerg)}</b></p>`:""}
 ${a.desc?`<p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
 ${tiempoHTML(a)}
-${a.precio>0?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&!soyOrg(a)?`<p class="meta aviso-pago">⚠️ AppVentureLife no comprueba la identidad de quien organiza. Mejor paga con tarjeta: si algo sale mal, tu banco puede devolverte el dinero. Con Bizum casi nunca se recupera.</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza: <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" · <b style='color:#1F7A4D'>✓ Organizador verificado</b>":""}. AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}</div>`:""}
+${a.precio>0?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&a.efectivo?`<p class="meta" style="margin:6px 0 0">💶 También se puede pagar en efectivo el día del plan.</p>`:""}${a.precio>0&&!soyOrg(a)?`<p class="meta aviso-pago">AppVentureLife no comprueba la identidad de quien organiza. Paga en efectivo, por Bizum o con tarjeta, como indique quien organiza.</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza: <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" · <b style='color:#1F7A4D'>✓ Organizador verificado</b>":""}. AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}</div>`:""}
 ${quien(a)}
 ${seguridad(a)}
 <div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>`;
@@ -1608,7 +1665,7 @@ ${seguridad(a)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";prefillCobros=false;pintaTipos();pintaPrecioAviso();
+  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";prefillCobros=false;pintaTipos();pintaPrecioAviso();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
@@ -1617,7 +1674,7 @@ function abrirEdicion(a){
   $("f-dia").value=a.fecha?a.fecha.slice(0,10):"";$("f-hora").value=a.fecha?a.fecha.slice(11,16):"";
   $("f-plazas").value=a.max;
   $("f-punto").value=a.punto||"";$("f-desc").value=a.desc||"";$("f-equipo").value=a.equipo||"";$("f-emerg").value=a.emerg||"";
-  $("f-precio").value=a.precio||"";pintaPrecioAviso();$("f-link").value=a.link||"";$("f-pago").value=a.pago||"";
+  $("f-precio").value=a.precio||"";pintaPrecioAviso();$("f-link").value=a.link||"";$("f-pago").value=a.pago||"";$("f-efectivo").checked=!!a.efectivo;
   $("f-vis").value=a.priv?"codigo":a.soloAmigos?"amigos":"todos";
   $("privBox").hidden=!a.priv;$("f-cod").value=a.priv?fmtCod(a.codigo):"";
   $("np-t").textContent="Editar plan";$("f-ok").textContent="Guardar cambios";$("f-mover").hidden=false;
@@ -1970,7 +2027,7 @@ $("f-ok").onclick=async()=>{
     const custom=$("f-tipo").value.trim(),tipo=custom?norm(custom):tipoSel,t=$("f-titulo").value.trim()||(TIPOS[tipo]||tipo);
     const max=Math.max(2,Math.min(50,+$("f-plazas").value||6)),dia=$("f-dia").value,fch=dia?dia+"T"+($("f-hora").value||"10:00"):"",lat=pend.lat,lng=pend.lng;
     const iniCampos=(esTipoRuta()||(editId&&(data.find(x=>x.id===editId)||{}).ini))?{ini_lat:iniPend?iniPend.lat:null,ini_lng:iniPend?iniPend.lng:null}:{};
-    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:((+$("f-precio").value||0)>0&&okLink($("f-link").value))||null,pago:(+$("f-precio").value||0)>0?$("f-pago").value.trim():"",equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA,...iniCampos};
+    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:((+$("f-precio").value||0)>0&&okLink($("f-link").value))||null,pago:(+$("f-precio").value||0)>0?$("f-pago").value.trim():"",efectivo:(+$("f-precio").value||0)>0&&$("f-efectivo").checked,equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA,...iniCampos};
     if(editId){
       const id=editId;
       const aPrev=data.find(x=>x.id===id);
