@@ -269,10 +269,18 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 .wc button{display:block;width:100%;font-size:19px!important;padding:17px!important;border-radius:18px!important;background:#fff!important;color:#0A2A5E!important;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 .wlegal{bottom:calc(16px + env(safe-area-inset-bottom,0px))!important;font-size:11px!important;line-height:1.5!important;opacity:.8}
 .welcome.splash{align-items:center!important;justify-content:center!important;padding:0!important;background:#0A2A5E!important}
-.welcome.splash>*:not(.wlogo){display:none!important}
+.welcome.splash>*:not(.junta){display:none!important}
 .welcome.splash::after{display:none!important}
 .welcome.splash .wlogo{position:static!important;width:112px!important;height:112px!important;animation:latido 1.2s ease both!important}
 @keyframes latido{0%{transform:scale(.5);opacity:0}45%{transform:scale(1.1);opacity:1}70%{transform:scale(.95)}100%{transform:scale(1);opacity:1}}
+/* v71: logo que se junta */
+.junta{display:none;position:relative;width:180px;height:225px}
+.welcome.splash .junta{display:block}
+.junta .pz{position:absolute;inset:0;width:100%;height:100%;opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.6)}
+.junta.go .pz{animation:pzj .95s cubic-bezier(.2,.9,.25,1.12) var(--d) forwards}
+@keyframes pzj{to{opacity:1;transform:none}}
+.junta.go{animation:jpulso .55s ease 1.2s both}
+@keyframes jpulso{0%{transform:scale(1)}45%{transform:scale(1.14);filter:drop-shadow(0 0 28px rgba(58,160,255,.85))}100%{transform:scale(1);filter:none}}
 /* v62: mapa a pantalla completa y paneles laterales */
 main{padding:0!important;max-width:none!important}
 .mapwrap{position:fixed!important;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:calc(56px + env(safe-area-inset-bottom,0px));margin:0!important;z-index:1}
@@ -306,6 +314,7 @@ main{padding:0!important;max-width:none!important}
 <svg class="bg" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 200V100l55-55 45 45 55-70 70 80 45-40 130 90v50z" fill="#4A90E2" opacity=".5"/><path d="M0 200v-70l80-45 65 50 85-65 80 65 90-30v95z" fill="#0D3470"/></svg>
 <div class="waves"><svg viewBox="0 0 800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28q50-30 100 0t100 0t100 0t100 0t100 0t100 0t100 0t100 0V60H0z" fill="#5BC0EB" opacity=".9"/></svg></div>
 <svg class="wlogo" width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"><use href="#avl-tile"/></svg>
+<div id="logoJunta" class="junta" aria-hidden="true"></div>
 <div class="wc">
 <div class="beta">🧪 Versión de prueba</div>
 <div class="wmarca">AppVentureLife</div>
@@ -314,7 +323,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 70 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 71 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -356,7 +365,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 70 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 71 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -742,7 +751,6 @@ $("wicons").innerHTML=["moto","ruta","bici","surf","escalada"].map(k=>`<span>${i
 /* vídeo de portada: sube portada.mp4 al repositorio y sale solo (sin sonido, en bucle) */
 (()=>{
   if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  try{if(localStorage.getItem("avl_acepta")&&!/portada/.test(location.search))return}catch(_e){}
   const v=document.createElement("video");
   v.muted=true;v.loop=true;v.autoplay=true;v.playsInline=true;
   v.setAttribute("muted","");v.setAttribute("playsinline","");v.setAttribute("loop","");v.setAttribute("aria-hidden","true");
@@ -771,11 +779,18 @@ const PORTADA=["portada1.jpg","portada2.jpg","portada3.jpg","portada4.jpg","port
 const VER_TERM="2";
 const aceptado=()=>{try{return localStorage.getItem("avl_acepta")===VER_TERM}catch(e){return false}};
 function cierraPortada(){$("bienvenida").classList.add("out");setTimeout(()=>$("bienvenida").hidden=true,420);map.invalidateSize()}
-$("entrar").onclick=()=>{if(!aceptado()){$("acepta").hidden=false;return}cierraPortada()};
-if(aceptado()&&!/portada/.test(location.search)&&!$("bienvenida").hidden){$("bienvenida").classList.add("splash");setTimeout(()=>{if(!$("bienvenida").hidden)cierraPortada()},1400)}
+(()=>{const P=[[0,0],[55,0],[100,0],[100,45],[100,100],[40,100],[0,100],[0,55]],C=[50,52];
+  const S=[[-150,-170,-40],[20,-240,30],[190,-160,60],[240,30,-30],[170,210,45],[-10,250,-50],[-200,180,35],[-250,-20,-60]];
+  $("logoJunta").innerHTML=P.map((p,i)=>{const q=P[(i+1)%P.length],[x,y,r]=S[i];return `<svg class="pz" viewBox="0 0 407.35 510.12" style="clip-path:polygon(${C[0]}% ${C[1]}%,${p[0]}% ${p[1]}%,${q[0]}% ${q[1]}%);--x:${x}px;--y:${y}px;--r:${r}deg;--d:${i*45}ms"><use href="#avl-logo"/></svg>`}).join("")})();
+function entraAnim(){
+  const b=$("bienvenida"),j=$("logoJunta");
+  b.classList.add("splash");j.classList.remove("go");void j.offsetWidth;j.classList.add("go");
+  setTimeout(()=>{if(!b.hidden)cierraPortada()},1900);
+}
+$("entrar").onclick=()=>{if(!aceptado()){$("acepta").hidden=false;return}entraAnim()};
 const chkAcepta=()=>{$("ac-ok").disabled=!($("ac-edad").checked&&$("ac-term").checked)};
 $("ac-edad").addEventListener("change",chkAcepta);$("ac-term").addEventListener("change",chkAcepta);
-$("ac-ok").onclick=()=>{try{localStorage.setItem("avl_acepta",VER_TERM)}catch(e){}$("acepta").hidden=true;cierraPortada();arranca()};
+$("ac-ok").onclick=()=>{try{localStorage.setItem("avl_acepta",VER_TERM)}catch(e){}$("acepta").hidden=true;entraAnim();arranca()};
 async function registraAceptacion(){try{await sb.from("aceptaciones").upsert({user_id:uid,version:VER_TERM},{onConflict:"user_id,version",ignoreDuplicates:true})}catch(e){}}
 /* cuenta con correo: para ser la misma persona en Safari, en la app de la pantalla de inicio y en otros móviles */
 let cuModo="",cuEmail="",sb2=null;
