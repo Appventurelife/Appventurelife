@@ -297,6 +297,35 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 .mientrada .qr img,.mientrada .qr canvas{display:block}
 .mientrada .cod{font-weight:800;letter-spacing:2px;font-size:20px;margin:8px 0 2px;color:var(--ink)}
 .mientrada small{color:var(--mut)}
+/* v80: ficha del plan */
+.hero{position:relative;margin-bottom:10px}
+.hero .cover{margin:0;height:190px}
+.hero .cover.ph{height:150px}
+.hemo{position:absolute;left:14px;bottom:-20px;width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#fff;border:3px solid var(--card);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.ftipo{display:block;margin-top:24px;font-size:12px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+.ftit{font:800 30px/1.1 "Barlow Condensed",system-ui,sans-serif;margin:2px 0 6px;color:var(--ink)}
+.forg{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 10px;font-size:15px;color:var(--mut)}
+.forg .ver{color:#1F7A4D;font-weight:700}
+.forg .rep{font-size:13px}
+.cajas{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 12px}
+.caja{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--card);min-width:0}
+.caja.ancha{grid-column:1/-1}
+.caja .ci{font-size:20px;line-height:1;display:block;margin-bottom:4px}
+.caja small{display:block;color:var(--mut);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.caja>b{display:block;color:var(--ink);font-size:16px;margin-top:2px;overflow-wrap:anywhere}
+.caja>b.gratis{color:#1F7A4D;font-size:20px}
+.irmapa{margin-top:8px}
+.irmapa summary{display:inline-block;list-style:none;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;padding:5px 12px;border:1px solid var(--line);border-radius:999px}
+.irmapa summary::-webkit-details-marker{display:none}
+.irmapa a{display:inline-block;margin:8px 6px 0 0;font-size:14px;font-weight:700;padding:8px 12px;border-radius:10px;background:var(--bg);color:var(--ink);text-decoration:none}
+.formas{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.formas span{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--bg);color:var(--ink)}
+.fsec{font:800 19px "Barlow Condensed",system-ui,sans-serif;margin:14px 0 4px;color:var(--ink)}
+.equipo{margin:0 0 10px;padding-left:22px;color:var(--ink)}
+.equipo li{margin:3px 0}
+.emerg{border:1.5px solid #C4472F;border-radius:12px;padding:10px 12px;margin:10px 0}
+.fbar{position:-webkit-sticky;position:sticky;bottom:0;z-index:5;margin:14px -16px 0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:1px solid var(--line)}
+.fbar button.big{margin:0}
 .escaner,.entchk{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:20px}
 .esc-in,.ec-in{background:var(--card);color:var(--ink);border-radius:20px;padding:18px;width:100%;max-width:380px;text-align:center}
 #escVista{width:100%;min-height:260px;margin:12px 0;border-radius:12px;overflow:hidden;background:#000}
@@ -347,7 +376,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 79 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 80 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -389,7 +418,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 79 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 80 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -627,7 +656,7 @@ function valoraHtml(a){
   const v=misVotos[a.id]||0;
   return `<div class="valora" data-plan="${a.id}"><b>${v?"Tu valoración":"¿Qué tal fue? Valora a quien organizó"}</b>${[1,2,3,4,5].map(i=>`<button type="button" data-e="${i}" class="${i<=v?"on":""}" aria-label="${i} estrellas">★</button>`).join("")}</div>`;
 }
-const quien=a=>`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>${valoraHtml(a)}${entradaHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
+const quien=(a,sinOrg)=>`${sinOrg?"":`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>`}${valoraHtml(a)}${entradaHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
 const migra=a=>{if(!Array.isArray(a.asist)){a.asist=[];for(let i=0;i<(a.n||0);i++)a.asist.push(i===0&&a.yo&&me?me:"Participante")}if(!a.org)a.org=a.asist[0]||"Anónimo"};
 const vivos=()=>data.filter(a=>!a.hasta||a.hasta>Date.now());
 const hace=t=>{const m=Math.round((Date.now()-t)/60000);return m<1?"ahora mismo":m<60?"hace "+m+" min":"hace "+Math.floor(m/60)+" h"};
@@ -721,7 +750,7 @@ async function pideTiempo(a,key){
 const b64=t=>btoa(unescape(encodeURIComponent(t))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
 const unb64=t=>decodeURIComponent(escape(atob(t.replace(/-/g,"+").replace(/_/g,"/"))));
 const datosComp=a=>{
-  const o={id:a.id,tipo:a.tipo,t:a.titulo,f:a.fecha||"",c:a.fecha?"":a.cuando,m:a.max,la:+(+a.lat).toFixed(5),ln:+(+a.lng).toFixed(5),p:a.punto,d:a.desc,pr:a.precio,l:a.link,pg:a.pago,e:a.emoji,o:a.org,q:a.equipo,em:a.emerg};
+  const o={id:a.id,tipo:a.tipo,t:a.titulo,f:a.fecha||"",c:a.fecha?"":a.cuando,m:a.max,la:+(+a.lat).toFixed(5),ln:+(+a.lng).toFixed(5),p:a.punto,d:a.desc,pr:a.precio,l:a.link,pg:a.pago,e:a.emoji,o:a.org,q:a.equipo};
   Object.keys(o).forEach(k=>{if(o[k]===""||o[k]==null||o[k]===0)delete o[k]});
   return o;
 };
@@ -1458,12 +1487,13 @@ async function recarga(){
       sb.rpc("soy_admin"),
       sb.from("cobros_organizador").select("*").eq("user_id",uid),
       sb.from("plan_fotos").select("id,plan_id,user_id,ruta,creado").order("creado",{ascending:false}).limit(500),
-      sb.from("aqui_codigo").select("codigo").eq("user_id",uid)
+      sb.from("aqui_codigo").select("codigo").eq("user_id",uid),
+      sb.from("plan_emerg").select("plan_id,texto")
     ]);
     let pr=res[2];
     if(pr.error&&/buscable/i.test(pr.error.message||""))pr=await sb.from("profiles").select("id,nombre");
     const er=res.find((x,i)=>i!==2&&x.error)||(pr.error?pr:null);if(er)throw er.error;
-    const [pl,pa,,aq,co,ms,dr,am,bl,sl,il,ve,og,ad,cb,fo,ac]=res;
+    const [pl,pa,,aq,co,ms,dr,am,bl,sl,il,ve,og,ad,cb,fo,ac,emq]=res;
     await cargaRepu();
     adminApp=!!(ad&&ad.data===true);$("mAdmin").hidden=!adminApp;
     verifSet=new Set((ve.data||[]).map(r=>r.user_id));if(adminApp)verifSet.add(uid);miOrg=(og.data&&og.data[0])||null;
@@ -1483,10 +1513,10 @@ async function recarga(){
     chats={};ms.data.filter(m=>!bloqueados.has(m.user_id)).forEach(m=>{(chats[m.plan_id]=chats[m.plan_id]||[]).push({id:m.id,uid:m.user_id,n:nom(m.user_id),t:Date.parse(m.creado),txt:m.texto})});
     dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)})});
     amigosSet=new Set(am.data.map(r=>r.amigo_id).filter(u=>!bloqueados.has(u)));
-    const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});
+    const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});const emMap={};((emq&&emq.data)||[]).forEach(x=>{emMap[x.plan_id]=x.texto});
     const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:emMap[r.id]||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
@@ -1614,7 +1644,7 @@ function render(){
   const puede=yo||soyOrg(a);a.chat=a.chat||[];
   const keep=$("c-txt")?$("c-txt").value:"";
   const ms=fotosAll.filter(f=>f.plan_id===a.id).sort((x,y)=>y.t-x.t),nf=ms.length;
-  const cover=a.foto?`<img class="cover" src="${a.foto}" alt="">`:`<div class="cover ph" style="background:${col(a)};height:110px">${sym(a,48)}</div>`;
+  const cover=a.foto?`<div class="hero"><img class="cover" src="${a.foto}" alt=""><div class="hemo" style="background:${col(a)}">${sym(a,32)}</div></div>`:`<div class="hero"><div class="cover ph" style="background:${col(a)}">${sym(a,76)}</div></div>`;
   if(tab==="chat"&&puede&&a.chat.length){const ult=ultimoId(a.chat);if((visto["p"+a.id]||0)<ult){visto["p"+a.id]=ult;guardaVisto()}}
   let body;
   if(tab==="chat"){
@@ -1622,26 +1652,36 @@ function render(){
   }else if(tab==="fotos"){
     body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Fotos del plan</h3>${puede?`<label class="subir" for="m-file" style="margin-bottom:6px">Añadir fotos</label><input id="m-file" type="file" accept="image/*" multiple hidden><p class="meta" id="m-estado"></p>`:`<p class="meta">Solo quien va al plan puede subir fotos.</p>`}<div class="gal">${ms.length?ms.map(f=>`<div class="tile" data-f="${esc(f.id)}"><img src="${esc(urlFoto(f))}" alt="" loading="lazy"></div>`).join(""):`<p class="meta" style="grid-column:1/-1;text-align:center">Aún no hay fotos. ¡Sube la primera!</p>`}</div><p class="meta" style="font-size:12px">Las fotos las ve quien puede ver el plan. Sube solo fotos tuyas o de personas que estén de acuerdo. Quien organiza puede borrar cualquier foto de su plan.</p>`;
   }else{
-    body=`<h2>${esc(a.titulo)}</h2>
-<p class="meta">${esc(TIPOS[a.tipo]||a.tipo)} · ${esc(textoCuando(a))}${a.precio>0?" · "+precioTxt(a.precio)+" por persona":""}</p>
+    const libres=Math.max(0,a.max-a.asist.length),pe=a.ini||{lat:+a.lat,lng:+a.lng};
+    const eqL=(a.equipo||"").split(",").map(s=>s.trim()).filter(Boolean);
+    const formas=[a.link?"Tarjeta (Stripe)":"",/bizum/i.test(a.pago||"")?"Bizum":"",a.efectivo?"Efectivo":""].filter(Boolean);
+    body=`<span class="ftipo">${esc(TIPOS[a.tipo]||a.tipo)}</span>
+<h2 class="ftit">${esc(a.titulo)}</h2>
+<div class="forg"><span>Organiza <b class="lnk" data-u="${esc(a.orgId)}" style="color:var(--ink)">${esc(a.org)}</b></span>${a.verificado?`<span class="ver">✓ Verificado</span>`:""}${repTxt(a.orgId).replace(" · ✓ verificado","")}</div>
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
-<button id="unir" class="big" ${lleno||(yo&&soyOrg(a))?"disabled":""}>${yo&&soyOrg(a)?"Organizas este plan":yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button>
 <div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${soyOrg(a)?`<button id="panGo" class="sec" type="button">📊 Panel organizador</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
+<div class="cajas">
+<div class="caja ancha"><span class="ci">📅</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
+<div class="caja ancha"><span class="ci">📍</span><small>Punto de encuentro</small><b>${esc(a.punto||"Marcado en el mapa")}</b><details class="irmapa" data-k="mapa"><summary>🧭 Cómo llegar</summary><a href="https://maps.apple.com/?daddr=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Apple Maps</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Google Maps</a></details></div>
+<div class="caja"><span class="ci">👥</span><small>Plazas</small><b>${libres?`${libres} de ${a.max} plazas libres`:`Completo (${a.max} de ${a.max})`}</b></div>
+${a.precio>0?`<div class="caja ancha"><span class="ci">💶</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${!soyOrg(a)?`<p class="meta aviso-pago">AppVentureLife no comprueba la identidad de quien organiza. Paga en efectivo, por Bizum o con tarjeta, como indique quien organiza.</p>`:""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}</div>`:`<div class="caja"><span class="ci">💶</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
+</div>
+${tiempoHTML(a)}
 ${tramoHTML(a)}
 ${(yo||soyOrg(a))?rutaHTML(a):""}
-${a.punto?`<p class="meta">Punto de encuentro: <b style="color:var(--ink)">${esc(a.punto)}</b></p>`:""}
-${a.equipo?`<p class="meta">Equipo: <b style="color:var(--ink)">${esc(a.equipo)}</b></p>`:""}
-${a.emerg?`<p class="meta">Contacto de emergencia: <b style="color:var(--ink)">${esc(a.emerg)}</b></p>`:""}
-${a.desc?`<p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
-${tiempoHTML(a)}
-${a.precio>0?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&a.efectivo?`<p class="meta" style="margin:6px 0 0">💶 También se puede pagar en efectivo el día del plan.</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" <b style='color:#1F7A4D'>✓ verificado</b>":""}</p>`:""}</div>`:""}
-${quien(a)}
-<details class="mas"><summary>Detalles</summary>${a.precio>0&&!soyOrg(a)?`<p class="meta aviso-pago">AppVentureLife no comprueba la identidad de quien organiza. Paga en efectivo, por Bizum o con tarjeta, como indique quien organiza.</p>`:""}${a.precio>0?`<p class="meta">AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}${seguridad(a)}</details>
-<div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>`;
+${a.desc?`<h3 class="fsec">Descripción</h3><p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
+${eqL.length?`<h3 class="fsec">Equipo necesario</h3><ul class="equipo">${eqL.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+${a.emerg&&(yo||soyOrg(a))?`<div class="emerg"><small class="meta" style="display:block;margin:0 0 2px">🆘 Contacto de emergencia</small><b style="color:var(--ink)">${esc(a.emerg)}</b>${soyOrg(a)?`<p class="meta" style="margin:4px 0 0;font-size:12px">Solo lo ves tú y quien se apunta.</p>`:""}</div>`:""}
+${quien(a,true)}
+<details class="mas" data-k="mas"><summary>Detalles</summary>${a.precio>0?`<p class="meta">AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}${seguridad(a)}</details>
+<div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>
+<div class="fbar"><button id="unir" class="big" ${lleno||(yo&&soyOrg(a))?"disabled":""}>${yo&&soyOrg(a)?"Organizas este plan":yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button></div>`;
   }
+  const mismo=d.dataset.pid===String(a.id)&&d.dataset.tab===tab&&d.classList.contains("open"),abiertos=mismo?[...d.querySelectorAll("details[data-k]")].filter(x=>x.open).map(x=>x.dataset.k):[],st=mismo?d.scrollTop:0;
   d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>${tab==="info"?cover:""}${body}`;
+  d.dataset.pid=String(a.id);d.dataset.tab=tab;abiertos.forEach(k=>{const x=d.querySelector(`details[data-k="${k}"]`);if(x)x.open=true});if(mismo&&tab!=="chat")d.scrollTop=st;
   d.classList.add("open","full");d.classList.toggle("chatmode",tab==="chat");
   const on=(id,fn)=>{if($(id))$(id).onclick=fn};
   on("volver",()=>{tab="info";render()});
