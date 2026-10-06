@@ -468,7 +468,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra y crea planes de aventura cerca de ti</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 88 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 90 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -510,7 +510,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 88 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 90 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -526,8 +526,9 @@ main{padding:0!important;max-width:none!important}
 <label for="a-dur">Durante</label>
 <select id="a-dur"><option value="1">1 hora</option><option value="3" selected>3 horas</option><option value="8">8 horas</option><option value="0">Hasta que lo quite</option></select>
 <label for="a-vis">¿Quién puede verlo?</label>
-<select id="a-vis"><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
+<select id="a-vis"><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option><option value="elegidos">✅ Elegir amigos</option></select>
 <p class="meta" id="a-vis-n" style="margin:2px 0 8px"></p>
+<div id="a-eleg" hidden></div>
 <label class="chk"><input type="checkbox" id="a-live" checked> Mover mi chincheta mientras me muevo</label>
 <p class="meta" style="margin:2px 0 0">Solo se actualiza con la app abierta; al bloquear el móvil se para.</p>
 <div class="row" style="margin-top:14px"><button class="sec" id="a-cancel" type="button">Cancelar</button><button id="a-ok" type="button">Compartir mi ubicación</button></div>
@@ -1517,7 +1518,7 @@ const cargaJs=u=>new Promise((ok,ko)=>{const s=document.createElement("script");
 const URL_ENTRADA="https://appventurelife.com/#entrada=";
 function entradaHtml(a){
   if(a.kind==="aqui"||!uid)return "";
-  if(soyOrg(a))return `<button type="button" class="sec escbtn" data-escanear="1">📷 Escanear entradas</button>`;
+  if(soyOrg(a))return a.precio>0?`<button type="button" class="sec escbtn" data-escanear="1">📷 Escanear entradas</button>`:"";
   const c=misEntradas[a.id];if(!c||pasada(a))return "";
   return `<div class="mientrada"><b>🎟️ Tu entrada</b><div class="qr" data-qr="${URL_ENTRADA+c}"></div><div class="cod">${esc(c)}</div><small>Enséñala a quien organiza al llegar</small></div>`;
 }
@@ -1768,7 +1769,7 @@ function render(){
   const a=vivos().find(x=>x.id===sel),d=$("detalle");
   if(!a){d.classList.remove("open");return}
   if(a.kind==="aqui"){
-    d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="cover ph" style="background:#1E7BFF;height:110px"><span class="em" style="font-size:56px">${esc(a.emoji||"📍")}</span></div><h2>${esc(a.org)}</h2><p style="margin:0 0 4px;font-size:18px">${esc(a.titulo||"Está por aquí")}</p><p class="meta">${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):" · hasta que lo quite"}</p>${soyOrg(a)&&a.vis==="amigos"?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}${soyOrg(a)&&a.vis==="codigo"?`<p class="meta">🔒 Privado · Código: <b style="color:var(--ink);letter-spacing:1px">${esc(fmtCod(miAquiCod))}</b> <button id="copAqui" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button></p>`:""}${soyOrg(a)&&watchId!=null?`<p class="meta">📡 Siguiendo tu movimiento (con la app abierta)</p>`:""}${soyOrg(a)?`<div class="acts"><button id="del" type="button">Dejar de compartir</button></div>`:`<button id="dmGo" class="big" type="button">💬 Escribir mensaje</button><div class="mini"><button id="perGo" class="sec" type="button">👥 Amigo</button><button id="bloqGo" class="sec" type="button">Bloquear</button><button id="denGo" class="sec" type="button">Denunciar</button></div>`}`;
+    d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="cover ph" style="background:#1E7BFF;height:110px"><span class="em" style="font-size:56px">${esc(a.emoji||"📍")}</span></div><h2>${esc(a.org)}</h2><p style="margin:0 0 4px;font-size:18px">${esc(a.titulo||"Está por aquí")}</p><p class="meta">${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):" · hasta que lo quite"}</p>${soyOrg(a)&&a.vis==="amigos"?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}${soyOrg(a)&&a.vis==="elegidos"?`<p class="meta">✅ Solo lo ven los amigos que elegiste</p>`:""}${soyOrg(a)&&a.vis==="codigo"?`<p class="meta">🔒 Privado · Código: <b style="color:var(--ink);letter-spacing:1px">${esc(fmtCod(miAquiCod))}</b> <button id="copAqui" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button></p>`:""}${soyOrg(a)&&watchId!=null?`<p class="meta">📡 Siguiendo tu movimiento (con la app abierta)</p>`:""}${soyOrg(a)?`<div class="acts"><button id="del" type="button">Dejar de compartir</button></div>`:`<button id="dmGo" class="big" type="button">💬 Escribir mensaje</button><div class="mini"><button id="perGo" class="sec" type="button">👥 Amigo</button><button id="bloqGo" class="sec" type="button">Bloquear</button><button id="denGo" class="sec" type="button">Denunciar</button></div>`}`;
     d.classList.remove("full","chatmode");d.classList.add("open");
     if(!soyOrg(a)){const bg=$("bloqGo"),dg=$("denGo"),pg=$("perGo");if(pg)pg.onclick=()=>abrePersona(a.uid);if(bg)bg.onclick=()=>bloquear(a.uid);if(dg)dg.onclick=()=>abreDenuncia(a.uid,null)}
     if(!soyOrg(a)&&$("dmGo"))$("dmGo").onclick=()=>{if(!me){pedirNombre(()=>$("dmGo").click());return}abreDM(a.uid)};
@@ -2111,7 +2112,7 @@ const enviaDM=async()=>{
 $("dm-ok").onclick=enviaDM;
 $("dm-txt").addEventListener("keydown",e=>{if(e.key==="Enter")enviaDM()});
 $("mCod").onclick=()=>{plusMenu(false);abrirCodigo()};
-$("mAqui").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mAqui").click()))return;irA("explorar");sel=null;cerrarForm();render();$("aqui").classList.add("open")};
+$("mAqui").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mAqui").click()))return;irA("explorar");sel=null;cerrarForm();render();pintaVisAqui();$("aqui").classList.add("open")};
 $("a-emojis").innerHTML=["📍","🏋️","🏠","☕","🏃","🍕","🏖️","🥾","🚴","🎉","💼","📚"].map(e=>`<button type="button" aria-label="Usar ${e}">${e}</button>`).join("");
 $("a-emojis").onclick=e=>{const b=e.target.closest("button");if(b)$("a-emoji").value=b.textContent};
 $("a-emoji").addEventListener("input",e=>{e.target.value=ultimo(e.target.value)});
@@ -2136,7 +2137,8 @@ function sincronizaSeguimiento(){
   let live=false;try{live=localStorage.getItem("avl_live")==="1"}catch(e){}
   if(mi&&live&&(!mi.hasta||mi.hasta>Date.now()))iniciarSeguimiento();else if(!mi)pararSeguimiento();
 }
-function pintaVisAqui(){const v=$("a-vis").value;$("a-vis-n").textContent=v==="amigos"?"Solo lo verán las personas que son tus amigas en la app.":v==="codigo"?"Se creará un código. Solo lo verá quien lo escriba en «🔒 Tengo un código». Te lo mostraré al compartir.":""}
+function pintaEleg(v){const b=$("a-eleg");if(!b)return;if(v!=="elegidos"){b.hidden=true;return}let sel=[];try{sel=JSON.parse(localStorage.getItem("avl_aqui_eleg")||"[]")}catch(_e){}const am=[...amigosSet].filter(u=>!bloqueados.has(u)).sort((x,y)=>String(nombres[x]||"").localeCompare(String(nombres[y]||"")));b.hidden=false;b.innerHTML=am.length?`<p class="meta" style="margin:2px 0 6px">Solo lo verán los amigos que marques:</p>`+am.map(u=>`<label class="chk"><input type="checkbox" class="a-el" value="${esc(u)}"${sel.includes(u)?" checked":""}> ${esc(nombres[u]||"Amigo")}</label>`).join(""):`<p class="meta" style="margin:2px 0 8px">Aún no tienes amigos en la app. Añádelos con + → 🔍 Buscar personas.</p>`}
+function pintaVisAqui(){const v=$("a-vis").value;pintaEleg(v);$("a-vis-n").textContent=v==="amigos"?"Solo lo verán las personas que son tus amigas en la app.":v==="codigo"?"Se creará un código. Solo lo verá quien lo escriba en «🔒 Tengo un código». Te lo mostraré al compartir.":""}
 try{$("a-vis").value=localStorage.getItem("avl_aqui_vis")||"todos"}catch(_e){}
 if(!$("a-vis").value)$("a-vis").value="todos";
 $("a-vis").addEventListener("change",pintaVisAqui);pintaVisAqui();
@@ -2148,10 +2150,12 @@ $("a-ok").onclick=()=>{
     try{
       if(!await perfilListo())throw new Error("Pon tu nombre primero");
       const h=+$("a-dur").value,vis=$("a-vis").value;
+      let eleg=[];if(vis==="elegidos"){eleg=[...document.querySelectorAll(".a-el:checked")].map(x=>x.value);if(!eleg.length)throw new Error("Marca al menos un amigo");try{localStorage.setItem("avl_aqui_eleg",JSON.stringify(eleg))}catch(_e){}}
       try{localStorage.setItem("avl_aqui_vis",vis)}catch(_e){}
       let cod="";
       if(vis==="codigo"){cod=genCod();const rc=await sb.from("aqui_codigo").upsert({user_id:uid,codigo:cod});if(rc.error)throw rc.error;miAquiCod=normCod(cod)}
       else{try{await sb.from("aqui_codigo").delete().eq("user_id",uid)}catch(_e){}miAquiCod=""}
+      {const rd=await sb.from("aqui_elegidos").delete().eq("dueno",uid);if(vis==="elegidos"){const ri=await sb.from("aqui_elegidos").insert(eleg.map(v=>({dueno:uid,viewer:v})));if(ri.error)throw ri.error}}
       const r=await sb.from("aqui").upsert({user_id:uid,titulo:$("a-txt").value.trim(),emoji:ultimo($("a-emoji").value)||"📍",lat:p.coords.latitude,lng:p.coords.longitude,hasta:h?new Date(Date.now()+h*3600000).toISOString():null,visibilidad:vis});
       if(r.error)throw r.error;
       ultimoEnvio={t:Date.now(),lat:p.coords.latitude,lng:p.coords.longitude};
