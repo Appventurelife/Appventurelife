@@ -298,7 +298,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 67 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 68 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -340,7 +340,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 67 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 68 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -1078,7 +1078,6 @@ function ajustaIniCentro(){
   clearTimeout(ajIniT);
   ajIniT=setTimeout(()=>{const t=iniTmp;nombreDeLugar(t).then(n=>{if(iniTmp===t&&modoIni){iniTmpNombre=n||"";if(n)$("colocarTxt").textContent=n.slice(0,40)+(pend?" · "+km(haversine(t,pend)):"")}}).catch(()=>{})},500);
 }
-map.on("moveend",ajustaIniCentro);
 const LOGO_MINI='<svg width="18" height="18" viewBox="0 0 100 100" style="vertical-align:-3px" aria-hidden="true"><use href="#avl-tile"/></svg>';
 function iconoInicio(){return L.divIcon({className:"",html:`<div class="pin" style="background:#0A2A5E"><svg width="24" height="30" viewBox="0 0 407.35 510.12" aria-hidden="true"><use href="#avl-logo"/></svg></div>`,iconSize:[44,44],iconAnchor:[22,22]})}
 function ponIniMarker(ll){
@@ -1091,18 +1090,16 @@ function empezarIni(){
   $("nueva").classList.remove("open");
   if(iniPend)ponIniMarker(iniPend);
   $("colocar").hidden=false;
-  $("colocarTxt").textContent="Mueve el mapa hasta la salida";
-  $("colocarOk").textContent="Salir desde aquí";$("colocarOk").disabled=false;
-  quitaIniMarker();$("centro").hidden=false;iniTmp=null;
+  $("colocarTxt").textContent=iniPend?"Toca otro punto para cambiar la salida":"Toca el mapa donde salís";
+  $("colocarOk").textContent="Salir desde aquí";$("colocarOk").disabled=!iniPend;
   try{const p=iniPend||pend;if(p)map.setView([p.lat,p.lng],Math.min(Math.max(map.getZoom(),13),16))}catch(_e){}
-  setTimeout(ajustaIniCentro,450);
 }
 function fijaIniTmp(ll,nombre){
-  iniTmp={lat:ll.lat,lng:ll.lng};
+  iniTmp={lat:ll.lat,lng:ll.lng};ponIniMarker(iniTmp);
   iniTmpNombre=nombre||"";
   if(!nombre){const t=iniTmp;nombreDeLugar(t).then(n=>{if(iniTmp===t)iniTmpNombre=n})}
   $("colocarOk").disabled=false;
-  $("colocarTxt").textContent="Inicio aquí"+(pend?" · a "+km(haversine(iniTmp,pend))+" del destino":"");
+  $("colocarTxt").textContent="Salida aquí"+(pend?" · a "+km(haversine(iniTmp,pend))+" del destino":"");
 }
 async function terminaIni(ok){
   modoIni=false;$("centro").hidden=true;$("colocar").hidden=true;$("colocarOk").textContent="Crear plan aquí";
@@ -1578,7 +1575,7 @@ function elegir(id){burbuja=null;tab="info";delId=null;segAbierta=false;cerrarFo
 
 map.on("click",e=>{
   plusMenu(false);$("resMapa").hidden=true;$("capasMenu").hidden=true;
-  if(modoIni){map.panTo(e.latlng);return}
+  if(modoIni){fijaIniTmp(e.latlng);return}
   if($("nueva").classList.contains("open")){marcaPunto(e.latlng);return}
   if(burbuja!=null){burbuja=null;render();return}
   if(sel){sel=null;render();return}
