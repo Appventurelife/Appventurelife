@@ -256,6 +256,24 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 @media (max-height:700px){.welcome{padding-bottom:24px}.wlegal{bottom:66px!important;font-size:12px!important;line-height:1.45!important}}
 .wlegal{position:absolute;left:0;right:0;bottom:72px;z-index:3;text-align:center;font-size:13px;line-height:1.6;color:#fff;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.45)}
 .wlegal a{color:#fff;text-decoration:underline}
+/* v62: mapa a pantalla completa y paneles laterales */
+main{padding:0!important;max-width:none!important}
+.mapwrap{position:fixed!important;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:calc(56px + env(safe-area-inset-bottom,0px));margin:0!important;z-index:1}
+#map{height:100%!important;min-height:0!important;border-radius:0!important;border:0!important;box-shadow:none!important}
+.top{position:fixed!important;right:12px;top:calc(124px + env(safe-area-inset-top,0px));z-index:700;margin:0!important;padding:0!important;background:none!important}
+.top .brand{margin:0}
+.top .brand>svg,.top .brand h1,.top .sub,.top .topwave{display:none!important}
+#yo{width:48px;height:48px;padding:0!important;margin:0!important;border-radius:50%;border:0!important;background:var(--card)!important;color:var(--ink)!important;box-shadow:0 3px 10px rgba(0,0,0,.3);font-size:0!important;display:flex;align-items:center;justify-content:center}
+#yo::before{content:"👤";font-size:22px}
+.panel{position:fixed;top:env(safe-area-inset-top,0px);bottom:calc(56px + env(safe-area-inset-bottom,0px));width:min(88vw,400px);z-index:850;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:24px 14px 20px;box-shadow:0 0 28px rgba(0,0,0,.35)}
+.panel[hidden]{display:none!important}
+.panel.izq{left:0;border-radius:0 20px 20px 0;animation:pIzq .25s ease}
+.panel.der{right:0;border-radius:20px 0 0 20px;animation:pDer .25s ease}
+@keyframes pIzq{from{transform:translateX(-100%)}}
+@keyframes pDer{from{transform:translateX(100%)}}
+.phead{display:flex;align-items:center;gap:8px;margin:0 0 8px}
+.phead h2{flex:1;margin:0;font-size:26px;line-height:1.1}
+.phead button{width:38px;height:38px;padding:0;border-radius:50%;background:var(--card);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.2);flex:none}
 </style>
 </head>
 <body>
@@ -278,7 +296,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 61 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 62 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -299,14 +317,19 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <div id="bannerSol" class="bannersol" hidden></div>
 <div class="attr">&copy; OpenStreetMap contributors &copy; CARTO · rutas OSRM · búsqueda Photon</div>
 </div>
-<p class="hint" style="margin:8px 2px 0">Busca un sitio arriba, o toca el mapa para crear un plan en ese punto. Toca una chincheta para ver un plan.</p>
+<div id="panelExp" class="panel izq" hidden>
+<div class="phead"><h2>Explorar</h2><button id="pxExp" type="button" aria-label="Cerrar">✕</button></div>
+<p class="hint" style="margin:0 2px 0">Busca un sitio arriba, o toca el mapa para crear un plan en ese punto. Toca una chincheta para ver un plan.</p>
 <div id="filtros"></div>
 <details id="listaDet" class="mas" style="margin-top:12px" open><summary id="listaSum">📋 Mis planes e invitaciones</summary>
 <div id="ahoraBox" hidden><h2 class="sec-h">Ahora mismo</h2><div id="ahora" class="list"></div></div>
 <div id="lista" class="list"></div>
 </details>
+<div id="pieExp"></div>
+</div>
 </section>
-<section id="vMios" hidden>
+<section id="vMios" class="panel der" hidden>
+<div class="phead"><h2>Mensajes</h2><button id="pxMios" type="button" aria-label="Cerrar">✕</button></div>
 <div id="dmBox"><h2 class="sec-h">Mensajes</h2><div id="listaDM" class="list"></div></div>
 <div id="amigosBox"><h2 class="sec-h">Amigos</h2>
 <div id="solBox" hidden><h3 class="who-h">Solicitudes</h3><div id="listaSol" class="list"></div></div>
@@ -315,7 +338,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 61 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 62 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -431,8 +454,8 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 <label for="f-emerg">Contacto de emergencia del organizador</label><input id="f-emerg" maxlength="60" placeholder="Ej. Ana · 600 000 000">
 <label for="f-precio">Precio por persona en € (vacío = gratis)</label><input id="f-precio" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej. 35">
 <p id="precioAviso" class="meta" hidden></p>
-<label for="f-link">Enlace de pago de Stripe</label><input id="f-link" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
-<label for="f-pago">Otras formas de pago</label><input id="f-pago" maxlength="80" placeholder="Ej. Bizum al 600 000 000">
+<div id="pagoBox" hidden><label for="f-link">Enlace de pago de Stripe</label><input id="f-link" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
+<label for="f-pago">Otras formas de pago</label><input id="f-pago" maxlength="80" placeholder="Ej. Bizum al 600 000 000"></div>
 <div style="margin-top:10px"><label class="subir" for="f-foto" style="color:var(--ink);font-size:16px;margin:0">Añadir foto de portada</label><input id="f-foto" type="file" accept="image/*" hidden><img id="prev" alt="Vista previa" hidden><button id="f-foto-quitar" class="sec" type="button" hidden style="margin-top:6px;font-size:14px;padding:6px 12px">Quitar foto</button></div>
 </details>
 <div class="row" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button id="f-ok" type="button">Publicar</button></div>
@@ -972,8 +995,8 @@ function rutaHTML(a){
 }
 function irA(v){
   plusMenu(false);
-  vista=v;$("vExplorar").hidden=v!=="explorar";$("vMios").hidden=v!=="mios";
-  if(v==="explorar"){$("bExp").classList.add("on");$("bMios").classList.remove("on");setTimeout(()=>map.invalidateSize(),60)}
+  vista=v;$("vMios").hidden=v!=="mios";$("panelExp").hidden=true;
+  if(v==="explorar"){$("bExp").classList.remove("on");$("bMios").classList.remove("on");setTimeout(()=>map.invalidateSize(),60)}
   else{$("bMios").classList.add("on");$("bExp").classList.remove("on");salirColocar()}
   window.scrollTo(0,0);render();
 }
@@ -1413,7 +1436,7 @@ ${a.equipo?`<p class="meta">Equipo: <b style="color:var(--ink)">${esc(a.equipo)}
 ${a.emerg?`<p class="meta">Contacto de emergencia: <b style="color:var(--ink)">${esc(a.emerg)}</b></p>`:""}
 ${a.desc?`<p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
 ${tiempoHTML(a)}
-${(a.precio>0||a.pago||a.link)?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza: <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" · <b style='color:#1F7A4D'>✓ Organizador verificado</b>":""}. AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}</div>`:""}
+${a.precio>0?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza: <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" · <b style='color:#1F7A4D'>✓ Organizador verificado</b>":""}. AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}</div>`:""}
 ${quien(a)}
 ${seguridad(a)}
 <div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>`;
@@ -1526,8 +1549,10 @@ $("resMapa").addEventListener("click",e=>{
   if(r.dataset.plan){const a=data.find(x=>x.id===+r.dataset.plan);$("resMapa").hidden=true;if(a){map.setView([a.lat,a.lng],15);elegir(a.id)}return}
   const l=resultadosMapa[+r.dataset.i];if(l)elegirLugar(l);
 });
-$("bExp").onclick=()=>irA("explorar");
-$("bMios").onclick=()=>irA("mios");
+$("bExp").onclick=()=>{const ab=vista==="explorar"&&!$("panelExp").hidden;irA("explorar");if(!ab){$("panelExp").hidden=false;$("bExp").classList.add("on")}};
+$("pxExp").onclick=()=>irA("explorar");$("pxMios").onclick=()=>irA("explorar");
+{const pie=document.querySelector("main>p.meta");if(pie)$("pieExp").appendChild(pie)}
+$("bMios").onclick=()=>vista==="mios"?irA("explorar"):irA("mios");
 function plusMenu(v){$("plusMenu").hidden=!v;if(v)$("crearBtn").classList.add("open");else $("crearBtn").classList.remove("open")}
 $("crearBtn").onclick=()=>plusMenu($("plusMenu").hidden);
 $("mPlan").onclick=()=>{plusMenu(false);irA("explorar");sel=null;cerrarForm();render();colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el mapa para marcar el lugar";$("colocarOk").disabled=true;$("colocarOk").textContent="Crear plan aquí";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
@@ -1802,7 +1827,7 @@ $("f-foto").onchange=e=>{
   r.readAsDataURL(file);
 };
 $("f-ok").onclick=async()=>{
-  const lk=$("f-link").value.trim();
+  const lk=(+$("f-precio").value||0)>0?$("f-link").value.trim():"";
   if(lk&&!okLink(lk)){alert("El enlace de pago debe empezar por https://");$("f-link").focus();return}
   const vis=$("f-vis").value,priv=vis==="codigo",soloA=vis==="amigos",cod=normCod($("f-cod").value);
   if(priv&&cod.length<6){alert("El código debe tener al menos 6 caracteres.");$("f-cod").focus();return}
@@ -1816,7 +1841,7 @@ $("f-ok").onclick=async()=>{
     const custom=$("f-tipo").value.trim(),tipo=custom?norm(custom):tipoSel,t=$("f-titulo").value.trim()||(TIPOS[tipo]||tipo);
     const max=Math.max(2,Math.min(50,+$("f-plazas").value||6)),dia=$("f-dia").value,fch=dia?dia+"T"+($("f-hora").value||"10:00"):"",lat=pend.lat,lng=pend.lng;
     const iniCampos=(esTipoRuta()||(editId&&(data.find(x=>x.id===editId)||{}).ini))?{ini_lat:iniPend?iniPend.lat:null,ini_lng:iniPend?iniPend.lng:null}:{};
-    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:okLink($("f-link").value)||null,pago:$("f-pago").value.trim(),equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA,...iniCampos};
+    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:((+$("f-precio").value||0)>0&&okLink($("f-link").value))||null,pago:(+$("f-precio").value||0)>0?$("f-pago").value.trim():"",equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA,...iniCampos};
     if(editId){
       const id=editId;
       const aPrev=data.find(x=>x.id===id);
@@ -1847,6 +1872,7 @@ $("f-tipo").addEventListener("input",pintaIni);
 try{document.querySelectorAll("a.corr").forEach(a=>{const m=a.dataset.u+"@"+a.dataset.d;a.href="mailto:"+m;a.textContent=m})}catch(e){}
 function pintaPrecioAviso(){
   const p=+$("f-precio").value||0,box=$("precioAviso");
+  $("pagoBox").hidden=p<=0;
   if(p<=0){box.hidden=true;return}
   box.hidden=false;
   if(verifSet.has(uid)&&!editId&&miCobros&&!prefillCobros){
