@@ -265,10 +265,10 @@ main{padding:0!important;max-width:none!important}
 .top .brand>svg,.top .brand h1,.top .sub,.top .topwave{display:none!important}
 #yo{width:48px;height:48px;padding:0!important;margin:0!important;border-radius:50%;border:0!important;background:var(--card)!important;color:var(--ink)!important;box-shadow:0 3px 10px rgba(0,0,0,.3);font-size:0!important;display:flex;align-items:center;justify-content:center}
 #yo::before{content:"👤";font-size:22px}
-.panel{position:fixed;top:env(safe-area-inset-top,0px);bottom:calc(56px + env(safe-area-inset-bottom,0px));width:min(88vw,400px);z-index:850;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:24px 14px 20px;box-shadow:0 0 28px rgba(0,0,0,.35)}
+.panel{position:fixed;top:env(safe-area-inset-top,0px);bottom:calc(56px + env(safe-area-inset-bottom,0px));left:0;right:0;width:auto;z-index:850;background:var(--bg);overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:24px 14px 20px;box-shadow:0 0 28px rgba(0,0,0,.35)}
 .panel[hidden]{display:none!important}
-.panel.izq{left:0;border-radius:0 20px 20px 0;animation:pIzq .25s ease}
-.panel.der{right:0;border-radius:20px 0 0 20px;animation:pDer .25s ease}
+.panel.izq{border-radius:0;animation:pIzq .25s ease}
+.panel.der{border-radius:0;animation:pDer .25s ease}
 @keyframes pIzq{from{transform:translateX(-100%)}}
 @keyframes pDer{from{transform:translateX(100%)}}
 .phead{display:flex;align-items:center;gap:8px;margin:0 0 8px}
@@ -296,7 +296,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Ver planes</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 62 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 63 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -338,7 +338,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 62 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 63 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
