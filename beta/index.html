@@ -197,6 +197,7 @@ button.big{width:100%;padding:14px;font-size:18px;margin:6px 0 10px}
 .mini{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.mini button{padding:8px 12px;font-size:14px}
 details.mas{border:1px solid var(--line);border-radius:12px;padding:6px 12px;margin:8px 0 12px}
 details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
+.pasosbar{display:flex;align-items:center;gap:10px;margin:0 0 10px}.pdots{display:flex;gap:6px}.pdots i{display:block;width:12px;height:12px;border-radius:50%;background:var(--line)}.pdots i.on{background:var(--cta)}.pasostab{display:flex;gap:6px;margin:0 0 10px}.pasostab button{flex:1;padding:8px 4px;font-size:14px;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:10px;font-weight:600}.pasostab button.on{border-color:var(--cta);background:var(--cta);color:var(--ctat)}.perr{color:#C4472F;font-weight:700;margin:10px 0 0}#nueva #p-atras{flex:0 0 auto;padding-left:14px;padding-right:14px}#pagoSel{margin:8px 0 10px}
 .sheet .fchip{background:var(--bg);box-shadow:none;border:1px solid var(--line)}
 .sheet .fchip.on{background:var(--cta);color:var(--ctat);border-color:var(--cta)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 4px}
@@ -346,7 +347,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 78 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 79 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -388,7 +389,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 78 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 79 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -473,6 +474,8 @@ main{padding:0!important;max-width:none!important}
 <section id="nueva" class="sheet" aria-label="Nuevo plan">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2 id="np-t">Nuevo plan</h2>
+<div id="pasosBar" class="pasosbar"></div>
+<div class="paso" data-p="1">
 <div class="visbox"><b>¿Quién puede verlo?</b><div class="visop" id="f-visop"><button type="button" data-v="todos" class="on">🌍<span>Todos</span></button><button type="button" data-v="amigos">👥<span>Solo amigos</span></button><button type="button" data-v="codigo">🔒<span>Con código</span></button></div><p class="meta" id="f-vis-txt" style="margin:6px 0 0">Lo ve cualquiera en el mapa.</p><select id="f-vis" hidden><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
 <div id="privBox" hidden><label for="f-cod">Código de acceso</label>
 <div class="row"><input id="f-cod" maxlength="20" autocapitalize="characters" autocomplete="off"><button id="f-cod-gen" class="sec" type="button" style="flex:none;padding:10px 14px">Otro</button></div>
@@ -482,6 +485,7 @@ main{padding:0!important;max-width:none!important}
 <button id="f-mover" class="sec" type="button" hidden style="margin:0 0 6px">📍 Cambiar ubicación en el mapa</button>
 <label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
 <label>Tipo</label><div class="chips" id="f-tipos"></div>
+<label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
 <div id="iniBox" class="inibox" hidden>
 <b>¿Salís desde otro sitio? <span style="font-weight:400;color:var(--mut)">(opcional)</span></b>
 <div id="iniMini" class="inimini" role="button" aria-label="Cambiar la salida" hidden></div>
@@ -492,24 +496,34 @@ main{padding:0!important;max-width:none!important}
 <label for="f-emoji">Emoji para la redondita del mapa</label>
 <input id="f-emoji" placeholder="Escribe uno o elige abajo" style="font-size:22px"><div class="cats" id="cats"></div><div class="emojis" id="emojis"></div>
 <div class="prevrow"><div id="pinprev"></div><span class="meta">Así se verá tu chincheta en el mapa</span></div>
+</div>
+<div class="paso" data-p="2" hidden>
 <label>Fecha y hora</label>
 <div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
 <div class="row"><div><label for="f-dia">Día</label><input id="f-dia" type="date"></div><div><label for="f-hora">Hora</label><input id="f-hora" type="time"></div></div>
 <label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6">
-<details class="mas"><summary>Añadir más detalles</summary>
-<label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
-<label for="f-punto" id="lblPunto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
+</div>
+<div class="paso" data-p="3" hidden>
+<p class="meta" style="margin:0 0 4px">Todo esto es opcional. Puedes publicar sin rellenarlo.</p>
 <label for="f-desc">Descripción</label><textarea id="f-desc" rows="3" placeholder="Qué vais a hacer, qué hay que llevar..."></textarea>
 <label for="f-equipo">Equipo necesario</label><input id="f-equipo" maxlength="120" placeholder="Ej. Chaleco, crema solar, agua">
+<label for="f-punto" id="lblPunto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
 <label for="f-emerg">Contacto de emergencia del organizador</label><input id="f-emerg" maxlength="60" placeholder="Ej. Ana · 600 000 000">
-<label for="f-precio">Precio por persona en € (vacío = gratis)</label><input id="f-precio" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej. 35">
+<div style="margin-top:10px"><label class="subir" for="f-foto" style="color:var(--ink);font-size:16px;margin:0">Añadir foto de portada</label><input id="f-foto" type="file" accept="image/*" hidden><img id="prev" alt="Vista previa" hidden><button id="f-foto-quitar" class="sec" type="button" hidden style="margin-top:6px;font-size:14px;padding:6px 12px">Quitar foto</button></div>
+<div id="cobrarHint" class="visbox" style="margin-top:12px" hidden><p class="meta" style="margin:0">¿Quieres cobrar por tus planes? Antes hay que ser <b>organizador verificado</b>.</p><button id="cobrarHintBtn" class="sec" type="button" style="margin-top:6px">Solicitar verificación</button></div>
+</div>
+<div class="paso" data-p="4" hidden>
+<b>¿Cuánto cuesta?</b><div class="visop" id="pagoSel"><button type="button" id="pg-gratis" class="on">🆓<span>Gratis</span></button><button type="button" id="pg-pago">💶<span>De pago</span></button></div>
+<div id="precioBox" hidden>
+<label for="f-precio">Precio por persona en €</label><input id="f-precio" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej. 35">
 <p id="precioAviso" class="meta" hidden></p>
 <div id="pagoBox" hidden><label for="f-link">Enlace de pago de Stripe</label><input id="f-link" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
 <label for="f-pago">Otras formas de pago</label><input id="f-pago" maxlength="80" placeholder="Ej. Bizum al 600 000 000">
 <label class="chk" style="margin-top:8px"><input type="checkbox" id="f-efectivo"> 💶 También se puede pagar en efectivo el día del plan</label></div>
-<div style="margin-top:10px"><label class="subir" for="f-foto" style="color:var(--ink);font-size:16px;margin:0">Añadir foto de portada</label><input id="f-foto" type="file" accept="image/*" hidden><img id="prev" alt="Vista previa" hidden><button id="f-foto-quitar" class="sec" type="button" hidden style="margin-top:6px;font-size:14px;padding:6px 12px">Quitar foto</button></div>
-</details>
-<div class="row" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button id="f-ok" type="button">Publicar</button></div>
+</div>
+</div>
+<p id="pasoErr" class="perr" role="alert" hidden></p>
+<div class="row" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button class="sec" id="p-atras" type="button" hidden>Atrás</button><button class="sec" id="p-mas" type="button" hidden>Añadir más</button><button id="p-sig" type="button">Siguiente</button><button id="f-ok" type="button" hidden>Publicar</button></div>
 </section>
 
 <div id="visor" class="visor" hidden><button class="x2" id="v-x" type="button" aria-label="Cerrar">✕</button><div id="v-c"></div><button id="v-del" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Eliminar</button><button id="v-den" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Denunciar</button></div>
@@ -1665,7 +1679,7 @@ ${quien(a)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";prefillCobros=false;pintaTipos();pintaPrecioAviso();
+  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";prefillCobros=false;pagoOn=false;pintaTipos();pintaPrecioAviso();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
@@ -1680,7 +1694,7 @@ function abrirEdicion(a){
   $("np-t").textContent="Editar plan";$("f-ok").textContent="Guardar cambios";$("f-mover").hidden=false;
   foto="";quitarFoto=false;if(a.foto){$("prev").src=a.foto;$("prev").hidden=false;$("f-foto-quitar").hidden=false}else{$("prev").hidden=true;$("f-foto-quitar").hidden=true}
   pintaTipos();
-  const det=$("nueva").querySelector("details");if(det)det.open=true;
+  pagoOn=(+a.precio||0)>0;paso=1;pasoErr("");pintaPasos();
   sel=null;render();
   $("nueva").classList.add("open");
 }
@@ -1711,7 +1725,7 @@ async function guardaEdicion(id,campos,priv,cod){
     if(cambios.length){try{await sb.from("mensajes").insert({plan_id:id,texto:"✏️ El organizador ha cambiado "+cambios.join(", ")+"."})}catch(e){}}
   }
 }
-function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;iniNombre="";iniTmpNombre="";puntoAuto="";quitaIniMarker();$("centro").hidden=true;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
+function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;iniNombre="";iniTmpNombre="";puntoAuto="";quitaIniMarker();$("centro").hidden=true;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";paso=1;pasoErr("");pintaPasos();$("nueva").classList.remove("open")}
 function elegir(id){burbuja=null;tab="info";delId=null;segAbierta=false;cerrarForm();sel=id;const pa=data.find(x=>x.id===id);if(pa&&pa.ini){cargaTramo(pa);try{map.fitBounds([[pa.ini.lat,pa.ini.lng],[pa.lat,pa.lng]],{padding:[60,60]})}catch(e){}}render()}
 
 map.on("click",e=>{
@@ -1964,7 +1978,7 @@ $("a-ok").onclick=()=>{
 $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],15);elegir(+i.dataset.id)}});
 $("colocarNo").onclick=()=>{if(modoIni){terminaIni(false);return}salirColocar();if(editId){const a=data.find(x=>x.id===editId);if(a)pend={lat:a.lat,lng:a.lng};$("nueva").classList.add("open")}else pend=null};
 $("f-mover").onclick=()=>{$("nueva").classList.remove("open");colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el nuevo lugar del plan";$("colocarOk").disabled=true;$("colocarOk").textContent="Usar este lugar";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
-$("colocarOk").onclick=()=>{if(modoIni){terminaIni(true);return}if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);$("nueva").classList.add("open")};
+$("colocarOk").onclick=()=>{if(modoIni){terminaIni(true);return}if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);if(!editId)paso=1;pasoErr("");pintaPasos();$("nueva").classList.add("open")};
 function pintaVis(){const v=$("f-vis").value;document.querySelectorAll("#f-visop button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));$("f-vis-txt").textContent={todos:"Lo ve cualquiera en el mapa.",amigos:"Solo lo ven tus amigos.",codigo:"Solo lo ve quien tenga el código. Te damos uno abajo."}[v]||""}
 document.querySelectorAll("#f-visop button").forEach(b=>{b.onclick=()=>{$("f-vis").value=b.dataset.v;$("f-vis").dispatchEvent(new Event("change"))}});
 $("f-vis").addEventListener("change",()=>{pintaVis();const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
@@ -2014,7 +2028,7 @@ $("f-foto").onchange=e=>{
     foto=c.toDataURL("image/jpeg",.7);$("prev").src=foto;$("prev").hidden=false};im.src=r.result};
   r.readAsDataURL(file);
 };
-$("f-ok").onclick=async()=>{
+$("f-ok").onclick=async()=>{if(!validaPasos())return;
   const lk=(+$("f-precio").value||0)>0?$("f-link").value.trim():"";
   if(lk&&!okLink(lk)){alert("El enlace de pago debe empezar por https://");$("f-link").focus();return}
   const vis=$("f-vis").value,priv=vis==="codigo",soloA=vis==="amigos",cod=normCod($("f-cod").value);
@@ -2072,6 +2086,44 @@ function pintaPrecioAviso(){
   const b=$("precioVerif");if(b)b.onclick=abrirVerif;
 }
 $("f-precio").addEventListener("input",pintaPrecioAviso);
+var paso=1,pagoOn=false;
+function puedeCobrar(){try{return !!(uid&&verifSet&&verifSet.has(uid))}catch(e){return false}}
+function nPasos(){return (puedeCobrar()||(editId&&pagoOn))?4:3}
+function pasoErr(t){const e=$("pasoErr");if(!e)return;e.textContent=t||"";e.hidden=!t}
+function pintaPasos(){
+  const ed=!!editId,n=nPasos();if(paso>n)paso=n;if(paso<1)paso=1;
+  document.querySelectorAll("#nueva .paso").forEach(d=>{d.hidden=+d.dataset.p!==paso});
+  const bar=$("pasosBar");
+  if(ed){bar.className="pasostab";bar.innerHTML=["Qué","Cuándo","Detalles","Precio"].slice(0,n).map((t,i)=>'<button type="button" data-p="'+(i+1)+'"'+(i+1===paso?' class="on"':'')+'>'+t+'</button>').join("")}
+  else{let d="";for(let i=1;i<=n;i++)d+='<i'+(i<=paso?' class="on"':'')+'></i>';bar.className="pasosbar";bar.innerHTML='<span class="pdots">'+d+'</span><span class="meta">Paso '+paso+' de '+n+(paso===3?' · opcional':'')+'</span>'}
+  $("f-cancel").hidden=!ed&&paso>1;
+  $("p-atras").hidden=ed||paso===1;
+  $("p-mas").hidden=ed||paso!==2;
+  const sig=$("p-sig");sig.hidden=ed||paso===2||paso>=n;sig.classList.toggle("sec",paso!==1);sig.textContent=paso===3?"Precio →":"Siguiente";
+  const ok=$("f-ok");ok.hidden=!ed&&paso===1;ok.textContent=ed?"Guardar cambios":(paso>=n?"Publicar":"Publicar ya");
+  $("cobrarHint").hidden=ed||puedeCobrar();
+  $("pg-gratis").classList.toggle("on",!pagoOn);$("pg-pago").classList.toggle("on",pagoOn);$("precioBox").hidden=!pagoOn;
+}
+function validaPaso(p){
+  if(p===1){if($("f-vis").value==="codigo"&&normCod($("f-cod").value).length<6)return "El código debe tener al menos 6 caracteres.";if(!$("f-titulo").value.trim())return "Escribe qué plan es.";}
+  if(p===2){if(!editId&&!$("f-dia").value)return "Elige el día del plan.";const n=+$("f-plazas").value;if(!(n>=2&&n<=50))return "Las plazas tienen que ir de 2 a 50.";}
+  if(p===4&&pagoOn){if(!((+$("f-precio").value||0)>0))return "Pon el precio por persona, o elige «Gratis».";const lk=$("f-link").value.trim();if(lk&&!okLink(lk))return "El enlace de Stripe debe empezar por https://";}
+  return "";
+}
+function irPaso(p){paso=p;pasoErr("");pintaPasos();try{$("nueva").scrollTop=0}catch(e){}}
+function validaPasos(){
+  if(!pagoOn&&$("f-precio").value){$("f-precio").value="";pintaPrecioAviso()}
+  const n=nPasos();for(let p=1;p<=n;p++){const e=validaPaso(p);if(e){irPaso(p);pasoErr(e);return false}}
+  pasoErr("");return true;
+}
+function sigPaso(){const e=validaPaso(paso);if(e){pasoErr(e);return}irPaso(paso+1)}
+$("p-sig").onclick=sigPaso;$("p-mas").onclick=sigPaso;
+$("p-atras").onclick=()=>irPaso(paso-1);
+$("pasosBar").onclick=e=>{const b=e.target.closest("button[data-p]");if(b)irPaso(+b.dataset.p)};
+$("pg-gratis").onclick=()=>{pagoOn=false;$("f-precio").value="";pintaPrecioAviso();pintaPasos();pasoErr("")};
+$("pg-pago").onclick=()=>{pagoOn=true;pintaPasos();pintaPrecioAviso();setTimeout(()=>{try{$("f-precio").focus()}catch(e){}},60)};
+$("cobrarHintBtn").onclick=()=>abrirVerif();
+pintaPasos();
 function pintaOrg(){
   const e=$("org-estado"),b=$("org-abrir");
   if(!e)return;
@@ -2199,7 +2251,7 @@ $("po-planes").addEventListener("click",async e=>{
 });
 /* ===== Ayuda (fase A: respuestas fijas, sin coste; la IA se enchufa aquí después) ===== */
 const FAQ=[
- {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Escribe el nombre, elige el tipo, la fecha (Hoy, Mañana, Este sábado...) y las plazas.\n5. En «Añadir más detalles» puedes poner punto de encuentro, descripción, equipo y precio.\n6. Pulsa «Publicar»."},
+ {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Paso 1: quién puede verlo, el nombre, el tipo y el emoji.\n5. Paso 2: el día, la hora y las plazas. Pulsa «Publicar ya» o «Añadir más».\n6. En «Añadir más» puedes poner descripción, equipo, punto de encuentro, contacto de emergencia y foto. Si eres organizador verificado, en el último paso eliges si es gratis o de pago."},
  {q:"¿Cómo me apunto a un plan?",p:["plan","mapa"],k:["apuntar","apuntarme","apuntarse","unir","unirme","participar","inscribir","plan"],a:"Toca una chincheta del mapa (o un plan de la lista de debajo). Vuelve a tocar la chincheta para abrir el plan y pulsa «Apuntarme». Para salir, abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo salgo de un plan?",p:["plan"],k:["salir","salgo","quitarme","desapuntar","abandonar","borrarme"],a:"Abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo marco el punto de salida?",p:["crear","editar"],k:["salida","inicio","punto","quedamos","quedar","empezar","ruta","recorrido","encuentro"],a:"Al crear o editar un plan, en el recuadro «Punto de salida (opcional)» pulsa «Marcar el inicio», toca el mapa o busca el sitio y pulsa «Usar este inicio». También puedes pulsar «Poner el nombre de este sitio como punto de encuentro»."},
