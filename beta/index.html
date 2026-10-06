@@ -311,6 +311,15 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .conv .cder{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
 .conv .cder small{color:var(--mut);font-size:12px}
 .conv.nuevo .cder small{color:#1E7BFF;font-weight:700}
+.conv{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.conv.mudo .cnum{background:#9AA3AD}
+.conv.mudo.nuevo .cder small{color:var(--mut);font-weight:400}
+#accmenu{position:fixed;inset:0;z-index:3000}
+#accmenu[hidden]{display:none}
+#accmenu .accbg{position:absolute;inset:0;background:rgba(0,0,0,.4)}
+#accmenu .acccard{position:absolute;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:480px;margin:0 auto;background:var(--card);color:var(--ink);border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:8px;animation:up .2s both}
+#accmenu .acccard p{margin:4px 0 6px;text-align:center;font-weight:700;color:var(--mut)}
+#accmenu .acccard button{width:100%;padding:14px;font-size:17px}
 .cnum{background:#1E7BFF;color:#fff;border-radius:99px;font-size:12px;font-weight:800;min-width:20px;height:20px;padding:0 6px;display:flex;align-items:center;justify-content:center}
 #dm.chatv{top:0;bottom:0;max-height:none;height:100%;border-radius:0;padding:0;display:flex;flex-direction:column;overflow:hidden}
 #detalle.full.chatmode{padding:0}
@@ -480,7 +489,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra y crea planes de aventura cerca de ti</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 100 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 101 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -522,7 +531,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 100 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 101 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -684,7 +693,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 100 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 101 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1506,7 +1515,27 @@ function avisa(txt,fn){
 }
 const sinLeerPlan=a=>(a.chat||[]).filter(m=>m.uid!==uid&&m.id>(visto["p"+a.id]||0)).length;
 const sinLeerDM=u=>(dms[u]||[]).filter(m=>m.de!==uid&&m.id>(visto["d"+u]||0)).length;
-const totalSinLeer=()=>data.filter(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))).reduce((n,a)=>n+sinLeerPlan(a),0)+Object.keys(dms).reduce((n,u)=>n+sinLeerDM(u),0);
+let mudos=new Set();try{mudos=new Set(JSON.parse(localStorage.getItem("avl_mudos")||"[]"))}catch(e){}
+const esMudo=k=>mudos.has(k);
+function ponMudo(k,on){if(on)mudos.add(k);else mudos.delete(k);try{localStorage.setItem("avl_mudos",JSON.stringify([...mudos]))}catch(e){}}
+const totalSinLeer=()=>data.filter(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&!esMudo("p"+a.id)).reduce((n,a)=>n+sinLeerPlan(a),0)+Object.keys(dms).filter(u=>!esMudo("d"+u)).reduce((n,u)=>n+sinLeerDM(u),0);
+let lpHecho=false,lpTmr=null;
+function menuConv(el){
+  const k=el.dataset.dm?"d"+el.dataset.dm:"p"+el.dataset.planchat;
+  const nom=((el.querySelector(".ctx b")||{}).textContent||"Chat").replace(" 🔕","");
+  const m=esMudo(k);
+  let box=$("accmenu");if(!box){box=document.createElement("div");box.id="accmenu";document.body.appendChild(box)}
+  box.innerHTML=`<div class="accbg"></div><div class="acccard"><p>${esc(nom)}</p><button type="button" data-acc="mudo">${m?"🔔 Quitar silencio":"🔕 Silenciar"}</button><button type="button" data-acc="leido">✓ Marcar como leído</button><button type="button" data-acc="no" class="sec">Cancelar</button></div>`;
+  box.hidden=false;
+  box.onclick=e=>{
+    const b=e.target.closest("[data-acc]");
+    if(!b&&!e.target.classList.contains("accbg"))return;
+    box.hidden=true;if(!b)return;
+    if(b.dataset.acc==="mudo"){ponMudo(k,!m);avisa(m?"🔔 Avisos activados en este chat":"🔕 Chat silenciado")}
+    else if(b.dataset.acc==="leido"){const l=k[0]==="d"?dms[k.slice(1)]:((data.find(x=>x.id===+k.slice(1))||{}).chat);visto[k]=ultimoId(l);guardaVisto()}
+    pintaBandeja();
+  };
+}
 function planComun(u){return data.find(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&(a.orgId===u||(a.asistIds||[]).includes(u)))}
 function avPersona(u,n){n=n||"?";return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
 function pintaDM(){
@@ -1706,14 +1735,14 @@ var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
 function avion(){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>'}
 function hCorta(t){const d=new Date(t);return d.toDateString()===new Date().toDateString()?hora(t):d.toLocaleDateString("es",{day:"numeric",month:"short"})}
 function pintaBandeja(){
-  const nP=bandeja.p.reduce((n,c)=>n+sinLeerPlan(c.a),0),nD=bandeja.d.reduce((n,c)=>n+sinLeerDM(c.u),0);
+  const nP=bandeja.p.reduce((n,c)=>n+(esMudo("p"+c.a.id)?0:sinLeerPlan(c.a)),0),nD=bandeja.d.reduce((n,c)=>n+(esMudo("d"+c.u)?0:sinLeerDM(c.u)),0);
   if(!msgTab)msgTab=(nD&&!nP)||(!bandeja.p.length&&bandeja.d.length)?"d":"p";
   const l=bandeja[msgTab]||[];
   $("listaDM").innerHTML=`<div class="mtabs"><button type="button" data-mt="p" class="${msgTab==="p"?"on":""}">Planes grupales${nP?`<i>${nP}</i>`:""}</button><button type="button" data-mt="d" class="${msgTab==="d"?"on":""}">Privados${nD?`<i>${nD}</i>`:""}</button></div>`+(l.length?`<div class="lista-conv">`+l.map(c=>{
-    if(c.tipo==="d"){const ult=c.l[c.l.length-1],n=sinLeerDM(c.u),nom=nombres[c.u]||"Alguien";return `<div class="conv${n?" nuevo":""}" data-dm="${esc(c.u)}">${avPersona(c.u,nom)}<div class="ctx"><b>${esc(nom)}</b><small>${ult.de===uid?"Tú: ":""}${esc(ult.txt.slice(0,60))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`}
+    if(c.tipo==="d"){const ult=c.l[c.l.length-1],n=sinLeerDM(c.u),nom=nombres[c.u]||"Alguien";return `<div class="conv${n?" nuevo":""}${esMudo("d"+c.u)?" mudo":""}" data-dm="${esc(c.u)}">${avPersona(c.u,nom)}<div class="ctx"><b>${esc(nom)}${esMudo("d"+c.u)?" 🔕":""}</b><small>${ult.de===uid?"Tú: ":""}${esc(ult.txt.slice(0,60))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`}
     const a=c.a,ult=a.chat[a.chat.length-1],n=sinLeerPlan(a);
-    return `<div class="conv${n?" nuevo":""}" data-planchat="${a.id}"><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,24)}</div><div class="ctx"><b>${esc(a.titulo)}</b><small>${esc(ult.uid===uid?"Tú":ult.n)}: ${esc(ult.txt.slice(0,50))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`;
-  }).join("")+`</div>`:`<p class="meta">${msgTab==="p"?"Aún no hay chats de planes. Apúntate a un plan para hablar con el grupo.":"Aún no tienes mensajes privados. Toca el nombre de un amigo, o de alguien en un plan, para escribirle."}</p>`);
+    return `<div class="conv${n?" nuevo":""}${esMudo("p"+a.id)?" mudo":""}" data-planchat="${a.id}"><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,24)}</div><div class="ctx"><b>${esc(a.titulo)}${esMudo("p"+a.id)?" 🔕":""}</b><small>${esc(ult.uid===uid?"Tú":ult.n)}: ${esc(ult.txt.slice(0,50))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`;
+  }).join("")+`</div><p class="meta" style="text-align:center;font-size:12px;margin:8px 0 0">Mantén pulsado un chat para silenciarlo.</p>`:`<p class="meta">${msgTab==="p"?"Aún no hay chats de planes. Apúntate a un plan para hablar con el grupo.":"Aún no tienes mensajes privados. Toca el nombre de un amigo, o de alguien en un plan, para escribirle."}</p>`);
 }
 function pinUno(a){
   const pg=a.kind!=="aqui"&&a.precio>0,lleno=a.kind!=="aqui"&&a.asist.length>=a.max;
@@ -2118,7 +2147,10 @@ $("listaBloq").addEventListener("click",async e=>{
   const b=e.target.closest("[data-desb]");if(!b)return;
   try{const r=await sb.from("bloqueos").delete().eq("user_id",uid).eq("bloqueado_id",b.dataset.desb);if(r.error)throw r.error;await recarga()}catch(x){fallo(x)}
 });
-$("listaDM").addEventListener("click",e=>{
+$("listaDM").addEventListener("touchstart",e=>{lpHecho=false;const c=e.target.closest(".conv");if(!c)return;clearTimeout(lpTmr);lpTmr=setTimeout(()=>{lpHecho=true;menuConv(c)},500)},{passive:true});
+["touchend","touchmove","touchcancel"].forEach(ev=>$("listaDM").addEventListener(ev,()=>clearTimeout(lpTmr),{passive:true}));
+$("listaDM").addEventListener("contextmenu",e=>{const c=e.target.closest(".conv");if(!c)return;e.preventDefault();menuConv(c)});
+$("listaDM").addEventListener("click",e=>{if(lpHecho){lpHecho=false;return}
   const t=e.target.closest("[data-mt]");if(t){msgTab=t.dataset.mt;pintaBandeja();return}
   const i=e.target.closest(".item,.conv");if(!i)return;
   if(i.dataset.planchat){const pl=data.find(x=>x.id===+i.dataset.planchat);if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id);tab="chat";chatDesde="bandeja";render()}}
