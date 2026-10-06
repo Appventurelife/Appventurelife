@@ -468,7 +468,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra y crea planes de aventura cerca de ti</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 86 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 87 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -502,7 +502,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 </section>
 <section id="vMios" class="panel der" hidden>
-<div class="phead"><h2>Mensajes</h2><button id="pxMios" type="button" aria-label="Cerrar">✕</button></div>
+<div class="phead"><h2>Mensajes</h2><button id="msgMudo" type="button" aria-label="Silenciar avisos de mensajes">🔔</button><button id="pxMios" type="button" aria-label="Cerrar">✕</button></div>
 <div id="dmBox"><h2 class="sec-h">Mensajes</h2><div id="listaDM" class="list"></div></div>
 <div id="amigosBox"><h2 class="sec-h">Amigos</h2>
 <div id="solBox" hidden><h3 class="who-h">Solicitudes</h3><div id="listaSol" class="list"></div></div>
@@ -511,7 +511,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 86 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 87 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -1467,7 +1467,11 @@ const enLista=a=>mia(a)||invitadoA.has(a.id);
 const conAmigos=a=>a.kind==="aqui"?esAmigo(a.uid):(esAmigo(a.orgId)||(a.asistIds||[]).some(esAmigo));
 const voy=a=>!!uid&&(a.asistIds||[]).includes(uid);
 const soyOrg=a=>!!uid&&a.orgId===uid;
+function msgMudo(){try{return localStorage.getItem("avl_mudo")==="1"}catch(e){return false}}
+function pintaMudo(){const b=$("msgMudo");if(!b)return;const m=msgMudo();b.textContent=m?"🔕":"🔔";b.setAttribute("aria-label",m?"Activar avisos de mensajes":"Silenciar avisos de mensajes")}
+function avisoEntrada(){try{if(msgMudo())return;const n=totalSinLeer();if(n>0)avisa("💬 Tienes "+n+(n===1?" mensaje sin leer":" mensajes sin leer"),()=>{if(!exigeAcepta(()=>irA("mios")))return;irA("mios")})}catch(e){}}
 function avisa(txt,fn){
+  if(String(txt).startsWith("💬")&&msgMudo())return;
   const el=$("aviso");el.textContent=txt;el.hidden=false;
   el.onclick=()=>{el.hidden=true;if(fn)fn()};
   clearTimeout(toastTmr);toastTmr=setTimeout(()=>{el.hidden=true},7000);
@@ -1668,7 +1672,7 @@ function suscribir(){
 }
 async function arranca(){
   if(!sb){cargando=false;render();return}
-  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();importaEnlace()}
+  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();importaEnlace();avisoEntrada()}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
 var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
@@ -1929,7 +1933,7 @@ function abrePanelExp(modo){const pe=$("panelExp");pe.dataset.modo=modo;$("pxTit
 $("bExp").onclick=()=>{const enMapa=vista==="explorar"&&$("panelExp").hidden;irA("explorar");if(enMapa)abrePanelExp("exp")};
 $("bPlanes").onclick=()=>{const pe=$("panelExp"),ab=vista==="explorar"&&!pe.hidden&&pe.dataset.modo==="planes";irA("explorar");if(!ab)abrePanelExp("planes")};
 $("bPerfil").onclick=()=>{plusMenu(false);pedirNombre()};
-$("pxExp").onclick=()=>irA("explorar");$("pxMios").onclick=()=>irA("explorar");
+$("pxExp").onclick=()=>irA("explorar");$("pxMios").onclick=()=>irA("explorar");$("msgMudo").onclick=()=>{const m=!msgMudo();try{localStorage.setItem("avl_mudo",m?"1":"0")}catch(e){}pintaMudo();avisa(m?"🔕 Avisos de mensajes silenciados":"🔔 Avisos de mensajes activados")};pintaMudo();
 {const pie=document.querySelector("main>p.meta");if(pie)$("pieExp").appendChild(pie)}
 $("bMios").onclick=()=>{if(vista==="mios"){irA("explorar");return}if(!exigeAcepta(()=>irA("mios")))return;irA("mios")};
 function plusMenu(v){$("plusMenu").hidden=!v;if(v)$("crearBtn").classList.add("open");else $("crearBtn").classList.remove("open")}
