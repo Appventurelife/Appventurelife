@@ -195,6 +195,7 @@ button.big{width:100%;padding:14px;font-size:18px;margin:6px 0 10px}
 .mini{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.mini button{padding:8px 12px;font-size:14px}
 details.mas{border:1px solid var(--line);border-radius:12px;padding:6px 12px;margin:8px 0 12px}
 details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
+.pasosbar{display:flex;align-items:center;gap:10px;margin:0 0 10px}.pdots{display:flex;gap:6px}.pdots i{display:block;width:12px;height:12px;border-radius:50%;background:var(--line)}.pdots i.on{background:var(--cta)}.pasostab{display:flex;gap:6px;margin:0 0 10px}.pasostab button{flex:1;padding:8px 4px;font-size:14px;background:var(--card);color:var(--ink);border:2px solid var(--line);border-radius:10px;font-weight:600}.pasostab button.on{border-color:var(--cta);background:var(--cta);color:var(--ctat)}.perr{color:#C4472F;font-weight:700;margin:10px 0 0}#nueva #p-atras{flex:0 0 auto;padding-left:14px;padding-right:14px}#pagoSel{margin:8px 0 10px}
 .sheet .fchip{background:var(--bg);box-shadow:none;border:1px solid var(--line)}
 .sheet .fchip.on{background:var(--cta);color:var(--ctat);border-color:var(--cta)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 4px}
@@ -230,6 +231,95 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .betanota{font-size:13px;opacity:.92;margin:-6px 0 18px!important}
 .pin{position:relative}
 .lock{position:absolute;right:-7px;top:-9px;font-size:15px;line-height:1}
+/* v81: chinchetas */
+.pin.pago{border-color:#F2B632}
+.eur{position:absolute;right:-7px;top:-8px;width:20px;height:20px;border-radius:50%;background:#F2B632;color:#17301F;font:800 12px/20px system-ui,sans-serif;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.pin.pago .lock{top:auto;bottom:-9px}
+.pin.lleno{filter:grayscale(1);opacity:.7}
+.pin.grupo{background:#0A2A5E;font:800 18px system-ui,sans-serif;color:#fff;cursor:pointer}
+.pin.grupo.conpago{border-color:#F2B632}
+.pin.aqui{animation:none}
+.pin.aqui::before,.pin.aqui::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid rgba(30,123,255,.75);animation:onda 2s ease-out infinite;pointer-events:none}
+.pin.aqui::after{animation-delay:1s}
+@keyframes onda{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.3);opacity:0}}
+@media (prefers-reduced-motion:reduce){.pin.aqui::before,.pin.aqui::after{animation:none;display:none}}
+.glista{max-height:240px;overflow:auto;min-width:210px;margin:-6px -10px}
+.glista button{display:flex!important;align-items:center;gap:8px;width:100%!important;text-align:left;background:none!important;border:0!important;border-bottom:1px solid #E3E9E1!important;border-radius:0!important;box-shadow:none!important;padding:8px!important;margin:0!important;color:#17301F!important;font:600 14px system-ui,sans-serif!important;cursor:pointer}
+.glista button:last-child{border-bottom:0!important}
+.glista .gi{width:32px;height:32px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff}
+.glista small{display:block;color:#58705E;font-weight:400;font-size:12px}
+.glista .lleno{opacity:.55}
+/* v82: mensajería */
+/* v85: logo en el mapa */
+.marca{position:absolute;left:12px;top:12px;z-index:700;display:flex;align-items:center;gap:8px;background:var(--card);color:var(--ink);border-radius:99px;padding:5px 14px 5px 5px;box-shadow:0 3px 10px rgba(0,0,0,.3);pointer-events:none}
+.marca svg{display:block;border-radius:9px;animation:flota 3.2s ease-in-out infinite}
+.marca b{font:800 19px/1 "Barlow Condensed",system-ui,sans-serif;letter-spacing:.2px}
+.marca b span{color:#1C6FD1}
+@keyframes flota{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2px) rotate(-5deg)}}
+@media (prefers-reduced-motion:reduce){.marca svg{animation:none}}
+.buscamapa{top:62px!important}
+/* v84: barra inferior */
+.bar.bar5{justify-content:space-between;padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+.bar.bar5>button:not(.plus){flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 2px;font-size:11px;font-weight:700;position:relative;min-width:0;border-radius:12px;background:transparent}
+.bar5 .bi{font-size:22px;line-height:1;transition:transform .15s}
+.bar5 .bt{white-space:nowrap}
+.bar.bar5>button.on{background:transparent;color:var(--ink)}
+.bar.bar5>button.on .bi{transform:scale(1.1)}
+.bar.bar5>button:not(.on):not(.plus) .bi{opacity:.6}
+.bar5 .plus{flex:none;margin:-26px 6px 0}
+.bnum{position:absolute;top:0;left:calc(50% + 6px);background:#C4472F;color:#fff;border-radius:99px;font-size:11px;font-weight:800;min-width:18px;height:18px;line-height:18px;padding:0 5px;text-align:center}
+#yo{display:none!important}
+#panelExp[data-modo] #listaSum{display:none}
+#panelExp[data-modo] #listaDet{border:0;padding:0;margin-top:8px!important}
+#panelExp[data-modo="exp"] #lista{display:none}
+#panelExp[data-modo="planes"] #ahoraBox,#panelExp[data-modo="planes"] .hint,#panelExp[data-modo="planes"] #filtros{display:none!important}
+/* v83: portada sobre el mapa */
+#bienvenida.hero2{background:rgba(6,20,40,.45)!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);align-items:center!important;justify-content:center!important;text-align:center!important;padding:24px 20px calc(110px + env(safe-area-inset-bottom,0px))!important}
+#bienvenida.hero2::after{display:none!important}
+#bienvenida.hero2>:not(.h2card):not(.wlegal){display:none!important}
+.h2card{position:relative;z-index:3;width:100%;max-width:380px;background:rgba(255,255,255,.96);color:#0A2A5E;border-radius:24px;padding:28px 22px 22px;box-shadow:0 20px 50px rgba(0,0,0,.35);animation:up .5s both}
+.h2card .h2logo{display:block;margin:0 auto;border-radius:18px;box-shadow:0 6px 16px rgba(10,42,94,.35)}
+.h2card h1{font:800 34px/1.05 "Barlow Condensed",system-ui,sans-serif!important;margin:12px 0 6px!important;color:#0A2A5E}
+.h2card p{margin:0 0 20px;font-size:17px;line-height:1.35;color:#2B4A6F}
+#bienvenida.hero2 .h2card button{display:block;width:100%;font-size:19px!important;padding:16px!important;border-radius:16px!important;background:#0A2A5E!important;color:#fff!important;box-shadow:0 8px 20px rgba(10,42,94,.35)!important}
+.mtabs{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;margin:0 0 10px}
+.mtabs button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:transparent;color:var(--mut);padding:9px 6px;border-radius:9px;font-size:15px;font-weight:700;box-shadow:none}
+.mtabs button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.mtabs i{font-style:normal;background:#1E7BFF;color:#fff;border-radius:99px;font-size:11px;padding:1px 7px}
+.lista-conv{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 10px}
+.conv{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+.conv:last-child{border-bottom:0}
+.cav{width:50px;height:50px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;overflow:hidden;font:800 20px system-ui,sans-serif}
+.cav img{width:100%;height:100%;object-fit:cover}
+.conv .ctx{flex:1;min-width:0}
+.conv .ctx b{display:block;color:var(--ink);font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv .ctx small{display:block;color:var(--mut);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv.nuevo .ctx small{color:var(--ink);font-weight:700}
+.conv .cder{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+.conv .cder small{color:var(--mut);font-size:12px}
+.conv.nuevo .cder small{color:#1E7BFF;font-weight:700}
+.cnum{background:#1E7BFF;color:#fff;border-radius:99px;font-size:12px;font-weight:800;min-width:20px;height:20px;padding:0 6px;display:flex;align-items:center;justify-content:center}
+#dm.chatv{top:0;bottom:0;max-height:none;height:100%;border-radius:0;padding:0;display:flex;flex-direction:column;overflow:hidden}
+#detalle.full.chatmode{padding:0}
+#detalle.chatmode>.grab,#detalle.chatmode>.x{display:none}
+.chead{flex:none;display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top,0px)) 10px 8px;border-bottom:1px solid var(--line);background:var(--card);position:relative;z-index:3}
+.chead .cav{width:40px;height:40px;font-size:17px}
+.chead .cnom{flex:1;min-width:0}
+.chead .cnom b{display:block;font-size:17px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chead .cnom small{display:block;font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chead #volver{align-self:center}
+.cico{width:38px;height:38px;padding:0!important;border-radius:50%!important;background:transparent!important;color:var(--ink)!important;font-size:28px!important;line-height:1;flex:none;box-shadow:none!important;border:0!important}
+.cplan{flex:none;padding:6px 12px!important;font-size:13px!important;border-radius:99px!important;background:var(--bg)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important;margin:0!important}
+.cmenu{position:relative;flex:none}
+.cmenu-l{position:absolute;right:0;top:44px;min-width:210px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);overflow:hidden;z-index:10}
+.cmenu-l button{display:block;width:100%;text-align:left;padding:13px 16px!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;background:none!important;color:var(--ink)!important;font-size:16px!important;box-shadow:none!important;margin:0!important}
+.cmenu-l button[hidden]{display:none!important}
+.cmenu-l button:last-child{border-bottom:0!important}
+.cmenu-l button.rojo{color:#C4472F!important}
+#dm.chatv .chat,#detalle.chatmode .chat{flex:1 1 auto;min-height:0;max-height:none;margin:0;padding:12px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.cbar{flex:none;display:flex;align-items:center;gap:8px;margin:0!important;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--card)}
+.cbar input{flex:1;margin:0;border-radius:99px;padding:11px 16px}
+.cenv{width:44px;height:44px;padding:0!important;border-radius:50%!important;flex:none;display:flex;align-items:center;justify-content:center}
 label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--ink);margin:14px 0 4px}
 input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 #cod-in,#f-cod{letter-spacing:2px;text-transform:uppercase}
@@ -294,6 +384,35 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 .mientrada .qr img,.mientrada .qr canvas{display:block}
 .mientrada .cod{font-weight:800;letter-spacing:2px;font-size:20px;margin:8px 0 2px;color:var(--ink)}
 .mientrada small{color:var(--mut)}
+/* v80: ficha del plan */
+.hero{position:relative;margin-bottom:10px}
+.hero .cover{margin:0;height:190px}
+.hero .cover.ph{height:150px}
+.hemo{position:absolute;left:14px;bottom:-20px;width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#fff;border:3px solid var(--card);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.ftipo{display:block;margin-top:24px;font-size:12px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
+.ftit{font:800 30px/1.1 "Barlow Condensed",system-ui,sans-serif;margin:2px 0 6px;color:var(--ink)}
+.forg{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin:0 0 10px;font-size:15px;color:var(--mut)}
+.forg .ver{color:#1F7A4D;font-weight:700}
+.forg .rep{font-size:13px}
+.cajas{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 12px}
+.caja{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--card);min-width:0}
+.caja.ancha{grid-column:1/-1}
+.caja .ci{font-size:20px;line-height:1;display:block;margin-bottom:4px}
+.caja small{display:block;color:var(--mut);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.caja>b{display:block;color:var(--ink);font-size:16px;margin-top:2px;overflow-wrap:anywhere}
+.caja>b.gratis{color:#1F7A4D;font-size:20px}
+.irmapa{margin-top:8px}
+.irmapa summary{display:inline-block;list-style:none;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;padding:5px 12px;border:1px solid var(--line);border-radius:999px}
+.irmapa summary::-webkit-details-marker{display:none}
+.irmapa a{display:inline-block;margin:8px 6px 0 0;font-size:14px;font-weight:700;padding:8px 12px;border-radius:10px;background:var(--bg);color:var(--ink);text-decoration:none}
+.formas{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.formas span{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--bg);color:var(--ink)}
+.fsec{font:800 19px "Barlow Condensed",system-ui,sans-serif;margin:14px 0 4px;color:var(--ink)}
+.equipo{margin:0 0 10px;padding-left:22px;color:var(--ink)}
+.equipo li{margin:3px 0}
+.emerg{border:1.5px solid #C4472F;border-radius:12px;padding:10px 12px;margin:10px 0}
+.fbar{position:-webkit-sticky;position:sticky;bottom:0;z-index:5;margin:14px -16px 0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--card);border-top:1px solid var(--line)}
+.fbar button.big{margin:0}
 .escaner,.entchk{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:20px}
 .esc-in,.ec-in{background:var(--card);color:var(--ink);border-radius:20px;padding:18px;width:100%;max-width:380px;text-align:center}
 #escVista{width:100%;min-height:260px;margin:12px 0;border-radius:12px;overflow:hidden;background:#000}
@@ -328,22 +447,17 @@ main{padding:0!important;max-width:none!important}
 <symbol id="avl-tile" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#0A2A5E"/><use href="#avl-logo" x="23.65" y="17" width="52.70" height="66.00"/></symbol>
 </defs></svg>
 
-<div id="bienvenida" class="welcome">
+<div id="bienvenida" class="welcome hero2 out" hidden>
 <div class="fotos" id="fotos" aria-hidden="true"></div>
-<div class="sun"></div>
-<svg class="bg" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 200V100l55-55 45 45 55-70 70 80 45-40 130 90v50z" fill="#4A90E2" opacity=".5"/><path d="M0 200v-70l80-45 65 50 85-65 80 65 90-30v95z" fill="#0D3470"/></svg>
-<div class="waves"><svg viewBox="0 0 800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28q50-30 100 0t100 0t100 0t100 0t100 0t100 0t100 0t100 0V60H0z" fill="#5BC0EB" opacity=".9"/></svg></div>
-<svg class="wlogo" width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"><use href="#avl-tile"/></svg>
 <div id="logoJunta" class="junta" aria-hidden="true"></div>
-<div class="wc">
-<div class="beta">🧪 Versión de prueba</div>
-<div class="wmarca">AppVentureLife</div>
-<h1>Planes de aventura cerca de ti</h1>
-<p>Moto de agua, rutas, viajes, fiestas… Únete a un plan o crea el tuyo.</p>
-<div class="wicons" id="wicons"></div>
-<button id="entrar" type="button">Empezar</button>
+<div class="wicons" id="wicons" hidden></div>
+<div class="h2card">
+<svg class="h2logo" width="72" height="72" viewBox="0 0 100 100" aria-hidden="true"><use href="#avl-tile"/></svg>
+<h1>AppVentureLife</h1>
+<p>Encuentra y crea planes de aventura cerca de ti</p>
+<button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 78 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 85 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -355,6 +469,7 @@ main{padding:0!important;max-width:none!important}
 <section id="vExplorar">
 <div class="mapwrap">
 <div id="map" role="application" aria-label="Mapa de planes"></div>
+<div class="marca" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 100 100"><use href="#avl-tile"/></svg><b>App<span>Venture</span>Life</b></div>
 <div class="buscamapa"><input id="buscaMapa" type="search" placeholder="🔍 Buscar sitio, restaurante o pueblo" autocomplete="off" autocapitalize="off" enterkeyhint="search"><button id="buscaX" type="button" aria-label="Borrar" hidden>✕</button><div id="resMapa" class="resmapa" hidden></div></div>
 <div class="capasbox"><button id="capasBtn" type="button" class="round" aria-label="Cambiar el mapa">🗺️</button><div id="capasMenu" hidden></div></div>
 <button id="loc" type="button" class="round locbtn" aria-label="Mi ubicación"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></button>
@@ -364,8 +479,8 @@ main{padding:0!important;max-width:none!important}
 <div id="bannerSol" class="bannersol" hidden></div>
 <div class="attr">&copy; OpenStreetMap contributors &copy; CARTO · rutas OSRM · búsqueda Photon</div>
 </div>
-<div id="panelExp" class="panel izq" hidden>
-<div class="phead"><h2>Explorar</h2><button id="pxExp" type="button" aria-label="Cerrar">✕</button></div>
+<div id="panelExp" class="panel izq" data-modo="exp" hidden>
+<div class="phead"><h2 id="pxTit">Explorar</h2><button id="pxExp" type="button" aria-label="Cerrar">✕</button></div>
 <p class="hint" style="margin:0 2px 0">Busca un sitio arriba, o toca el mapa para crear un plan en ese punto. Toca una chincheta para ver un plan.</p>
 <div id="filtros"></div>
 <details id="listaDet" class="mas" style="margin-top:12px" open><summary id="listaSum">📋 Mis planes e invitaciones</summary>
@@ -385,10 +500,10 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 78 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 85 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
-<nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
+<nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
 
 <div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mAdmin" type="button" hidden>👑 Panel del dueño</button><button id="mOrg" type="button" hidden>📋 Panel de organizador</button><button id="mAyuda" type="button">💬 Ayuda</button><button id="mPlan" type="button">Nuevo plan</button></div>
 
@@ -419,25 +534,22 @@ main{padding:0!important;max-width:none!important}
 
 <div id="acepta" class="acepta" hidden>
 <div class="acbox">
-<h2>Antes de entrar</h2>
+<h2>Antes de seguir</h2>
 <label class="chk"><input type="checkbox" id="ac-edad"> Tengo 18 años o más</label>
 <label class="chk"><input type="checkbox" id="ac-term"> <span>He leído y acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos de uso</a> y la <a href="privacidad.html" target="_blank" rel="noopener">Política de privacidad</a> (<a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> y <a href="cookies.html" target="_blank" rel="noopener">Cookies</a>)</span></label>
 <p class="meta" style="margin:10px 0 0">Las actividades al aire libre y acuáticas tienen riesgos. Cada persona es responsable de su seguridad.</p>
 <p class="meta" style="margin:8px 0 0">Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
-<button id="ac-ok" type="button" disabled>Aceptar y entrar</button>
+<button id="ac-ok" type="button" disabled>Aceptar y continuar</button>
+<button id="ac-no" class="sec" type="button" style="width:100%;margin-top:8px">Ahora no</button>
 </div>
 </div>
 
 <div id="aviso" class="aviso" hidden role="alert"></div>
 
-<section id="dm" class="sheet" aria-label="Mensajes">
-<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<h2 id="dm-t">Mensajes</h2>
+<section id="dm" class="sheet chatv" aria-label="Mensajes">
+<div class="chead"><button id="dm-back" class="cico" type="button" aria-label="Volver">‹</button><div id="dm-av"></div><div class="cnom"><b id="dm-t">Mensajes</b><small id="dm-sub"></small></div><button id="dm-plan" class="cplan" type="button" hidden>Ver plan</button><div class="cmenu"><button id="dm-mas" class="cico" type="button" aria-label="Opciones">⋯</button><div id="dm-menu" class="cmenu-l" hidden><button id="dm-add" type="button" hidden>Añadir a amigos</button><button id="dm-quitar" type="button" hidden>Quitar de amigos</button><button id="dm-bloq" type="button">Bloquear</button><button id="dm-den" type="button" class="rojo">Denunciar</button></div></div></div>
 <div class="chat" id="dm-msgs"></div>
-<button id="dm-add" class="sec" type="button" hidden style="margin-bottom:10px;font-size:14px;padding:6px 12px">Añadir a amigos</button>
-<button id="dm-quitar" class="sec" type="button" hidden style="margin-bottom:10px;font-size:14px;padding:6px 12px">Quitar de amigos</button>
-<div class="mini"><button id="dm-bloq" class="sec" type="button">Bloquear</button><button id="dm-den" class="sec" type="button">Denunciar</button></div>
-<div class="send"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="dm-ok" type="button">Enviar</button></div>
+<div class="send cbar"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="dm-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
 </section>
 
 <section id="invitar" class="sheet" aria-label="Invitar amigos">
@@ -470,6 +582,8 @@ main{padding:0!important;max-width:none!important}
 <section id="nueva" class="sheet" aria-label="Nuevo plan">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2 id="np-t">Nuevo plan</h2>
+<div id="pasosBar" class="pasosbar"></div>
+<div class="paso" data-p="1">
 <div class="visbox"><b>¿Quién puede verlo?</b><div class="visop" id="f-visop"><button type="button" data-v="todos" class="on">🌍<span>Todos</span></button><button type="button" data-v="amigos">👥<span>Solo amigos</span></button><button type="button" data-v="codigo">🔒<span>Con código</span></button></div><p class="meta" id="f-vis-txt" style="margin:6px 0 0">Lo ve cualquiera en el mapa.</p><select id="f-vis" hidden><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
 <div id="privBox" hidden><label for="f-cod">Código de acceso</label>
 <div class="row"><input id="f-cod" maxlength="20" autocapitalize="characters" autocomplete="off"><button id="f-cod-gen" class="sec" type="button" style="flex:none;padding:10px 14px">Otro</button></div>
@@ -479,6 +593,7 @@ main{padding:0!important;max-width:none!important}
 <button id="f-mover" class="sec" type="button" hidden style="margin:0 0 6px">📍 Cambiar ubicación en el mapa</button>
 <label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
 <label>Tipo</label><div class="chips" id="f-tipos"></div>
+<label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
 <div id="iniBox" class="inibox" hidden>
 <b>¿Salís desde otro sitio? <span style="font-weight:400;color:var(--mut)">(opcional)</span></b>
 <div id="iniMini" class="inimini" role="button" aria-label="Cambiar la salida" hidden></div>
@@ -489,24 +604,34 @@ main{padding:0!important;max-width:none!important}
 <label for="f-emoji">Emoji para la redondita del mapa</label>
 <input id="f-emoji" placeholder="Escribe uno o elige abajo" style="font-size:22px"><div class="cats" id="cats"></div><div class="emojis" id="emojis"></div>
 <div class="prevrow"><div id="pinprev"></div><span class="meta">Así se verá tu chincheta en el mapa</span></div>
+</div>
+<div class="paso" data-p="2" hidden>
 <label>Fecha y hora</label>
 <div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
 <div class="row"><div><label for="f-dia">Día</label><input id="f-dia" type="date"></div><div><label for="f-hora">Hora</label><input id="f-hora" type="time"></div></div>
 <label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6">
-<details class="mas"><summary>Añadir más detalles</summary>
-<label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
-<label for="f-punto" id="lblPunto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
+</div>
+<div class="paso" data-p="3" hidden>
+<p class="meta" style="margin:0 0 4px">Todo esto es opcional. Puedes publicar sin rellenarlo.</p>
 <label for="f-desc">Descripción</label><textarea id="f-desc" rows="3" placeholder="Qué vais a hacer, qué hay que llevar..."></textarea>
 <label for="f-equipo">Equipo necesario</label><input id="f-equipo" maxlength="120" placeholder="Ej. Chaleco, crema solar, agua">
+<label for="f-punto" id="lblPunto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
 <label for="f-emerg">Contacto de emergencia del organizador</label><input id="f-emerg" maxlength="60" placeholder="Ej. Ana · 600 000 000">
-<label for="f-precio">Precio por persona en € (vacío = gratis)</label><input id="f-precio" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej. 35">
+<div style="margin-top:10px"><label class="subir" for="f-foto" style="color:var(--ink);font-size:16px;margin:0">Añadir foto de portada</label><input id="f-foto" type="file" accept="image/*" hidden><img id="prev" alt="Vista previa" hidden><button id="f-foto-quitar" class="sec" type="button" hidden style="margin-top:6px;font-size:14px;padding:6px 12px">Quitar foto</button></div>
+<div id="cobrarHint" class="visbox" style="margin-top:12px" hidden><p class="meta" style="margin:0">¿Quieres cobrar por tus planes? Antes hay que ser <b>organizador verificado</b>.</p><button id="cobrarHintBtn" class="sec" type="button" style="margin-top:6px">Solicitar verificación</button></div>
+</div>
+<div class="paso" data-p="4" hidden>
+<b>¿Cuánto cuesta?</b><div class="visop" id="pagoSel"><button type="button" id="pg-gratis" class="on">🆓<span>Gratis</span></button><button type="button" id="pg-pago">💶<span>De pago</span></button></div>
+<div id="precioBox" hidden>
+<label for="f-precio">Precio por persona en €</label><input id="f-precio" type="number" min="0" step="0.5" inputmode="decimal" placeholder="Ej. 35">
 <p id="precioAviso" class="meta" hidden></p>
 <div id="pagoBox" hidden><label for="f-link">Enlace de pago de Stripe</label><input id="f-link" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
 <label for="f-pago">Otras formas de pago</label><input id="f-pago" maxlength="80" placeholder="Ej. Bizum al 600 000 000">
 <label class="chk" style="margin-top:8px"><input type="checkbox" id="f-efectivo"> 💶 También se puede pagar en efectivo el día del plan</label></div>
-<div style="margin-top:10px"><label class="subir" for="f-foto" style="color:var(--ink);font-size:16px;margin:0">Añadir foto de portada</label><input id="f-foto" type="file" accept="image/*" hidden><img id="prev" alt="Vista previa" hidden><button id="f-foto-quitar" class="sec" type="button" hidden style="margin-top:6px;font-size:14px;padding:6px 12px">Quitar foto</button></div>
-</details>
-<div class="row" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button id="f-ok" type="button">Publicar</button></div>
+</div>
+</div>
+<p id="pasoErr" class="perr" role="alert" hidden></p>
+<div class="row" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button class="sec" id="p-atras" type="button" hidden>Atrás</button><button class="sec" id="p-mas" type="button" hidden>Añadir más</button><button id="p-sig" type="button">Siguiente</button><button id="f-ok" type="button" hidden>Publicar</button></div>
 </section>
 
 <div id="visor" class="visor" hidden><button class="x2" id="v-x" type="button" aria-label="Cerrar">✕</button><div id="v-c"></div><button id="v-del" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Eliminar</button><button id="v-den" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Denunciar</button></div>
@@ -610,7 +735,7 @@ function valoraHtml(a){
   const v=misVotos[a.id]||0;
   return `<div class="valora" data-plan="${a.id}"><b>${v?"Tu valoración":"¿Qué tal fue? Valora a quien organizó"}</b>${[1,2,3,4,5].map(i=>`<button type="button" data-e="${i}" class="${i<=v?"on":""}" aria-label="${i} estrellas">★</button>`).join("")}</div>`;
 }
-const quien=a=>`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>${valoraHtml(a)}${entradaHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
+const quien=(a,sinOrg)=>`${sinOrg?"":`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>`}${valoraHtml(a)}${entradaHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
 const migra=a=>{if(!Array.isArray(a.asist)){a.asist=[];for(let i=0;i<(a.n||0);i++)a.asist.push(i===0&&a.yo&&me?me:"Participante")}if(!a.org)a.org=a.asist[0]||"Anónimo"};
 const vivos=()=>data.filter(a=>!a.hasta||a.hasta>Date.now());
 const hace=t=>{const m=Math.round((Date.now()-t)/60000);return m<1?"ahora mismo":m<60?"hace "+m+" min":"hace "+Math.floor(m/60)+" h"};
@@ -704,7 +829,7 @@ async function pideTiempo(a,key){
 const b64=t=>btoa(unescape(encodeURIComponent(t))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
 const unb64=t=>decodeURIComponent(escape(atob(t.replace(/-/g,"+").replace(/_/g,"/"))));
 const datosComp=a=>{
-  const o={id:a.id,tipo:a.tipo,t:a.titulo,f:a.fecha||"",c:a.fecha?"":a.cuando,m:a.max,la:+(+a.lat).toFixed(5),ln:+(+a.lng).toFixed(5),p:a.punto,d:a.desc,pr:a.precio,l:a.link,pg:a.pago,e:a.emoji,o:a.org,q:a.equipo,em:a.emerg};
+  const o={id:a.id,tipo:a.tipo,t:a.titulo,f:a.fecha||"",c:a.fecha?"":a.cuando,m:a.max,la:+(+a.lat).toFixed(5),ln:+(+a.lng).toFixed(5),p:a.punto,d:a.desc,pr:a.precio,l:a.link,pg:a.pago,e:a.emoji,o:a.org,q:a.equipo};
   Object.keys(o).forEach(k=>{if(o[k]===""||o[k]==null||o[k]===0)delete o[k]});
   return o;
 };
@@ -776,7 +901,7 @@ async function guardaNombre(n){
   pintaYo();
 }
 let cbNombre=null;
-function pedirNombre(cb){cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
+function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
 $("yo").onclick=()=>pedirNombre();
 $("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);$("perfil").classList.remove("open");const c=cbNombre;cbNombre=null;if(c)c()};
 $("p-cancel").onclick=()=>{$("perfil").classList.remove("open");cbNombre=null};
@@ -785,7 +910,7 @@ $("wicons").innerHTML=["moto","ruta","bici","surf","escalada"].map(k=>`<span>${i
 /* fotos reales de portada: sube portada1.jpg, portada2.jpg... al repositorio y salen solas */
 /* vídeo de portada: sube portada.mp4 al repositorio y sale solo (sin sonido, en bucle) */
 (()=>{
-  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  return;
   const v=document.createElement("video");
   v.muted=true;v.loop=true;v.autoplay=true;v.playsInline=true;
   v.setAttribute("muted","");v.setAttribute("playsinline","");v.setAttribute("loop","");v.setAttribute("aria-hidden","true");
@@ -807,12 +932,13 @@ $("wicons").innerHTML=["moto","ruta","bici","surf","escalada"].map(k=>`<span>${i
 })();
 const PORTADA=["portada1.jpg","portada2.jpg","portada3.jpg","portada4.jpg","portada5.jpg"];
 (()=>{
-  const box=$("fotos");let n=0,cur=0;
+  return;const box=$("fotos");let n=0,cur=0;
   PORTADA.forEach(src=>{const im=new Image();im.onload=()=>{const d=document.createElement("div");d.className="fo";d.style.backgroundImage=`url("${src}")`;box.appendChild(d);n++;if(n===1){d.classList.add("on");$("bienvenida").classList.add("con-fotos")}};im.src=src});
   setInterval(()=>{const f=box.querySelectorAll(".fo");if(!f||f.length<2)return;f[cur].classList.remove("on");cur=(cur+1)%f.length;f[cur].classList.add("on")},5500);
 })();
 const VER_TERM="2";
 const aceptado=()=>{try{return localStorage.getItem("avl_acepta")===VER_TERM}catch(e){return false}};
+var accCb=null;function exigeAcepta(cb){if(aceptado())return true;accCb=cb||null;$("acepta").hidden=false;return false}
 function cierraPortada(){$("bienvenida").classList.add("out");setTimeout(()=>$("bienvenida").hidden=true,420);map.invalidateSize()}
 (()=>{const P=[[0,0],[55,0],[100,0],[100,45],[100,100],[40,100],[0,100],[0,55]],C=[50,52];
   const S=[[-150,-170,-40],[20,-240,30],[190,-160,60],[240,30,-30],[170,210,45],[-10,250,-50],[-200,180,35],[-250,-20,-60]];
@@ -822,10 +948,11 @@ function entraAnim(){
   b.classList.add("splash");j.classList.remove("go");void j.offsetWidth;j.classList.add("go");
   setTimeout(()=>{if(!b.hidden)cierraPortada()},3900);
 }
-$("entrar").onclick=()=>{if(!aceptado()){$("acepta").hidden=false;return}entraAnim()};
+$("entrar").onclick=()=>cierraPortada();
 const chkAcepta=()=>{$("ac-ok").disabled=!($("ac-edad").checked&&$("ac-term").checked)};
 $("ac-edad").addEventListener("change",chkAcepta);$("ac-term").addEventListener("change",chkAcepta);
-$("ac-ok").onclick=()=>{try{localStorage.setItem("avl_acepta",VER_TERM)}catch(e){}$("acepta").hidden=true;entraAnim();arranca()};
+$("ac-ok").onclick=()=>{try{localStorage.setItem("avl_acepta",VER_TERM)}catch(e){}$("acepta").hidden=true;if(uid&&sb)registraAceptacion();const f=accCb;accCb=null;if(f)setTimeout(f,60)};
+$("ac-no").onclick=()=>{$("acepta").hidden=true;accCb=null};
 async function registraAceptacion(){try{await sb.from("aceptaciones").upsert({user_id:uid,version:VER_TERM},{onConflict:"user_id,version",ignoreDuplicates:true})}catch(e){}}
 /* cuenta con correo: para ser la misma persona en Safari, en la app de la pantalla de inicio y en otros móviles */
 let cuModo="",cuEmail="",sb2=null;
@@ -1090,8 +1217,8 @@ function rutaHTML(a){
 function irA(v){
   plusMenu(false);
   vista=v;$("vMios").hidden=v!=="mios";$("panelExp").hidden=true;
-  if(v==="explorar"){$("bExp").classList.remove("on");$("bMios").classList.remove("on");setTimeout(()=>map.invalidateSize(),60)}
-  else{$("bMios").classList.add("on");$("bExp").classList.remove("on");salirColocar()}
+  marcaBar();
+  if(v==="explorar")setTimeout(()=>map.invalidateSize(),60);else salirColocar();
   window.scrollTo(0,0);render();
 }
 function salirColocar(){lugarSug="";colocando=false;$("centro").hidden=true;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}}
@@ -1337,17 +1464,22 @@ function avisa(txt,fn){
 const sinLeerPlan=a=>(a.chat||[]).filter(m=>m.uid!==uid&&m.id>(visto["p"+a.id]||0)).length;
 const sinLeerDM=u=>(dms[u]||[]).filter(m=>m.de!==uid&&m.id>(visto["d"+u]||0)).length;
 const totalSinLeer=()=>data.filter(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))).reduce((n,a)=>n+sinLeerPlan(a),0)+Object.keys(dms).reduce((n,u)=>n+sinLeerDM(u),0);
+function planComun(u){return data.find(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&(a.orgId===u||(a.asistIds||[]).includes(u)))}
+function avPersona(u,n){n=n||"?";return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
 function pintaDM(){
-  const l=dms[dmCon]||[];
+  const l=dms[dmCon]||[],nom=nombres[dmCon]||"Alguien",pc=planComun(dmCon);
   $("dm-quitar").hidden=!esAmigo(dmCon);
   $("dm-add").hidden=esAmigo(dmCon)||solEnv.includes(dmCon);
   $("dm-add").textContent=solRec.includes(dmCon)?"Aceptar solicitud de amistad":"Añadir a amigos";
-  $("dm-t").textContent="💬 "+(nombres[dmCon]||"Mensajes");
+  $("dm-t").textContent=nom;
+  $("dm-sub").textContent=esAmigo(dmCon)?"👥 Amigo":solEnv.includes(dmCon)?"Solicitud de amistad enviada":pc?"Va a «"+pc.titulo+"»":"";
+  $("dm-av").innerHTML=avPersona(dmCon,nom);
+  $("dm-plan").hidden=!pc;
   $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
   const c=$("dm-msgs");c.scrollTop=c.scrollHeight;
 }
 function marcaDM(){if(!dmCon)return;visto["d"+dmCon]=ultimoId(dms[dmCon]);guardaVisto();render()}
-function abreDM(u){dmCon=u;pintaDM();$("dm").classList.add("open");marcaDM()}
+function abreDM(u){if(!exigeAcepta(()=>abreDM(u)))return;dmCon=u;$("dm-menu").hidden=true;pintaDM();$("dm").classList.add("open");marcaDM()}
 function fallo(e){alert((e&&e.message)||"Algo ha fallado. Inténtalo de nuevo.")}
 async function perfilListo(){
   if(perfilOk)return true;
@@ -1441,12 +1573,13 @@ async function recarga(){
       sb.rpc("soy_admin"),
       sb.from("cobros_organizador").select("*").eq("user_id",uid),
       sb.from("plan_fotos").select("id,plan_id,user_id,ruta,creado").order("creado",{ascending:false}).limit(500),
-      sb.from("aqui_codigo").select("codigo").eq("user_id",uid)
+      sb.from("aqui_codigo").select("codigo").eq("user_id",uid),
+      sb.from("plan_emerg").select("plan_id,texto")
     ]);
     let pr=res[2];
     if(pr.error&&/buscable/i.test(pr.error.message||""))pr=await sb.from("profiles").select("id,nombre");
     const er=res.find((x,i)=>i!==2&&x.error)||(pr.error?pr:null);if(er)throw er.error;
-    const [pl,pa,,aq,co,ms,dr,am,bl,sl,il,ve,og,ad,cb,fo,ac]=res;
+    const [pl,pa,,aq,co,ms,dr,am,bl,sl,il,ve,og,ad,cb,fo,ac,emq]=res;
     await cargaRepu();
     adminApp=!!(ad&&ad.data===true);$("mAdmin").hidden=!adminApp;
     verifSet=new Set((ve.data||[]).map(r=>r.user_id));if(adminApp)verifSet.add(uid);miOrg=(og.data&&og.data[0])||null;
@@ -1466,10 +1599,10 @@ async function recarga(){
     chats={};ms.data.filter(m=>!bloqueados.has(m.user_id)).forEach(m=>{(chats[m.plan_id]=chats[m.plan_id]||[]).push({id:m.id,uid:m.user_id,n:nom(m.user_id),t:Date.parse(m.creado),txt:m.texto})});
     dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)})});
     amigosSet=new Set(am.data.map(r=>r.amigo_id).filter(u=>!bloqueados.has(u)));
-    const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});
+    const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});const emMap={};((emq&&emq.data)||[]).forEach(x=>{emMap[x.plan_id]=x.texto});
     const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:r.emerg||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:emMap[r.id]||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
@@ -1523,9 +1656,52 @@ function suscribir(){
 }
 async function arranca(){
   if(!sb){cargando=false;render();return}
-  try{await iniciaSesion();registraAceptacion();await recarga();suscribir();importaEnlace()}
+  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();importaEnlace()}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
+var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
+function avion(){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>'}
+function hCorta(t){const d=new Date(t);return d.toDateString()===new Date().toDateString()?hora(t):d.toLocaleDateString("es",{day:"numeric",month:"short"})}
+function pintaBandeja(){
+  const nP=bandeja.p.reduce((n,c)=>n+sinLeerPlan(c.a),0),nD=bandeja.d.reduce((n,c)=>n+sinLeerDM(c.u),0);
+  if(!msgTab)msgTab=(nD&&!nP)||(!bandeja.p.length&&bandeja.d.length)?"d":"p";
+  const l=bandeja[msgTab]||[];
+  $("listaDM").innerHTML=`<div class="mtabs"><button type="button" data-mt="p" class="${msgTab==="p"?"on":""}">Planes grupales${nP?`<i>${nP}</i>`:""}</button><button type="button" data-mt="d" class="${msgTab==="d"?"on":""}">Privados${nD?`<i>${nD}</i>`:""}</button></div>`+(l.length?`<div class="lista-conv">`+l.map(c=>{
+    if(c.tipo==="d"){const ult=c.l[c.l.length-1],n=sinLeerDM(c.u),nom=nombres[c.u]||"Alguien";return `<div class="conv${n?" nuevo":""}" data-dm="${esc(c.u)}">${avPersona(c.u,nom)}<div class="ctx"><b>${esc(nom)}</b><small>${ult.de===uid?"Tú: ":""}${esc(ult.txt.slice(0,60))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`}
+    const a=c.a,ult=a.chat[a.chat.length-1],n=sinLeerPlan(a);
+    return `<div class="conv${n?" nuevo":""}" data-planchat="${a.id}"><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,24)}</div><div class="ctx"><b>${esc(a.titulo)}</b><small>${esc(ult.uid===uid?"Tú":ult.n)}: ${esc(ult.txt.slice(0,50))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`;
+  }).join("")+`</div>`:`<p class="meta">${msgTab==="p"?"Aún no hay chats de planes. Apúntate a un plan para hablar con el grupo.":"Aún no tienes mensajes privados. Toca el nombre de un amigo, o de alguien en un plan, para escribirle."}</p>`);
+}
+function pinUno(a){
+  const pg=a.kind!=="aqui"&&a.precio>0,lleno=a.kind!=="aqui"&&a.asist.length>=a.max;
+    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}${pg?" pago":""}${lleno&&a.id!==burbuja?" lleno":""}" style="background:${col(a)}">${sym(a,22)}${pg?`<span class="eur">€</span>`:""}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+    L.marker([a.lat,a.lng],{icon:ic,zIndexOffset:a.id===burbuja?1000:0}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capaPins);
+}
+function pinGrupo(l){
+  const la=l.reduce((s,a)=>s+ +a.lat,0)/l.length,ln=l.reduce((s,a)=>s+ +a.lng,0)/l.length,pg=l.some(a=>a.precio>0);
+  const ic=L.divIcon({className:"",html:`<div class="pin grupo${pg?" conpago":""}">${l.length}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+  L.marker([la,ln],{icon:ic,zIndexOffset:400}).on("click",()=>{
+    const box=document.createElement("div");box.className="glista";
+    box.innerHTML=l.map(a=>{const lib=Math.max(0,a.max-a.asist.length);return `<button type="button" data-g="${esc(String(a.id))}"${lib?"":` class="lleno"`}><span class="gi" style="background:${col(a)}">${sym(a,18)}</span><span style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(textoCuando(a))} · ${lib?lib+(lib===1?" plaza libre":" plazas libres"):"Completo"} · ${a.precio>0?precioTxt(a.precio):"Gratis"}</small></span></button>`}).join("");
+    box.querySelectorAll("[data-g]").forEach(b=>{b.onclick=()=>{const p=l.find(a=>String(a.id)===b.dataset.g);map.closePopup();if(p)elegir(p.id)}});
+    L.popup({maxWidth:290,autoPanPaddingTopLeft:[10,90],autoPanPaddingBottomRight:[10,90]}).setLatLng([la,ln]).setContent(box).openOn(map);
+  }).addTo(capaPins);
+}
+function pintaPins(l){
+  if(l)ultPins=l;
+  if(!capaPins)capaPins=L.layerGroup().addTo(map);
+  capaPins.clearLayers();
+  const solos=[],gr=[];
+  ultPins.forEach(a=>{
+    if(a.kind==="aqui"||a.id===sel||a.id===burbuja){solos.push(a);return}
+    let p;try{p=map.latLngToLayerPoint([a.lat,a.lng])}catch(e){solos.push(a);return}
+    const g=gr.find(g=>Math.abs(g.p.x-p.x)<38&&Math.abs(g.p.y-p.y)<38);
+    if(g)g.l.push(a);else gr.push({p,l:[a]});
+  });
+  gr.forEach(g=>{if(g.l.length>1)pinGrupo(g.l);else solos.push(g.l[0])});
+  solos.forEach(a=>{try{pinUno(a)}catch(e){}});
+}
+map.on("zoomend",()=>pintaPins());
 function render(){
   capa.clearLayers();
   const advAll=vivos().filter(a=>a.kind!=="aqui"),aq=vivos().filter(a=>a.kind==="aqui");
@@ -1535,10 +1711,7 @@ function render(){
   $("filtros").innerHTML=`<button class="fchip${!filtro&&!fFecha?" on":""}" data-r="1">Todo</button><button class="fchip${fFecha==="hoy"?" on":""}" data-d="hoy">Hoy</button><button class="fchip${fFecha==="finde"?" on":""}" data-d="finde">Este finde</button>`+chipsT;
   const adv=advAll.filter(a=>(!filtro||a.tipo===filtro)&&cumpleFecha(a)).sort(orden);
   const lst=adv.filter(enLista);
-  adv.concat(aq).forEach(a=>{
-    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}" style="background:${col(a)}">${sym(a,22)}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
-    L.marker([a.lat,a.lng],{icon:ic,zIndexOffset:a.id===burbuja?1000:0}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
-  });
+  pintaPins(adv.concat(aq));
   adv.filter(a=>a.ini&&a.id!==sel).forEach(a=>{
     cargaTramo(a);
     const t=tramos[a.id];
@@ -1562,7 +1735,7 @@ function render(){
   else bs.hidden=true;
   const mios=advAll.filter(mia).sort(orden);
   const tot=totalSinLeer()+solRec.length;
-  $("bMios").textContent="Mensajes"+(tot?" · "+tot+" 💬":"");
+  {const bn=$("bNum");if(bn){bn.textContent=tot>9?"9+":String(tot);bn.hidden=!tot}}
   try{document.title=(tot?"("+tot+") ":"")+"AppVentureLife"}catch(e){}
   const sol=[...solRec.map(u=>({u,t:"r"})),...solEnv.map(u=>({u,t:"e"}))];
   $("solBox").hidden=!sol.length;
@@ -1573,12 +1746,7 @@ function render(){
   $("listaBloq").innerHTML=[...bloqueados].map(u=>`<div class="item"><div style="flex:1;min-width:0"><b>${esc(nombres[u]||"Alguien")}</b></div><button type="button" class="sec" data-desb="${esc(u)}" style="padding:6px 12px;font-size:14px">Desbloquear</button></div>`).join("");
   const convDM=Object.keys(dms).map(u=>({tipo:"d",u,l:dms[u]})).filter(c=>c.l.length).map(c=>({...c,t:c.l[c.l.length-1].t}));
   const convPl=advAll.filter(a=>(voy(a)||soyOrg(a))&&a.chat&&a.chat.length).map(a=>({tipo:"p",a,t:a.chat[a.chat.length-1].t}));
-  const convs=[...convDM,...convPl].sort((x,y)=>y.t-x.t);
-  $("listaDM").innerHTML=convs.length?convs.map(c=>{
-    if(c.tipo==="d"){const ult=c.l[c.l.length-1],n=sinLeerDM(c.u);return `<div class="item" data-dm="${esc(c.u)}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:26px">💬</span></div><div style="flex:1;min-width:0"><b>${esc(nombres[c.u]||"Alguien")}</b><small>${esc(ult.txt.slice(0,50))}</small></div>${n?`<span class="tag" style="background:#C4472F">${n}</span>`:""}</div>`}
-    const a=c.a,ult=a.chat[a.chat.length-1],n=sinLeerPlan(a);
-    return `<div class="item" data-planchat="${a.id}"><div class="th" style="background:${col(a)}">${sym(a,26)}</div><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(ult.uid===uid?"Tú":ult.n)}: ${esc(ult.txt.slice(0,40))}</small></div>${n?`<span class="tag" style="background:#C4472F">${n}</span>`:""}</div>`;
-  }).join(""):`<p class="meta">Aún no tienes mensajes. Toca el nombre de un amigo, o de alguien en un plan, para escribirle.</p>`;
+  bandeja={d:convDM.sort((x,y)=>y.t-x.t),p:convPl.sort((x,y)=>y.t-x.t)};pintaBandeja();
   const sv=$("srv");if(sv)sv.textContent=!sb?"Servidor: no cargó":errCon?"Servidor: ERROR · "+errCon:cargando?"Servidor: conectando…":"Servidor: conectado · "+advAll.length+" planes visibles · tu id "+String(uid).slice(0,4);
 
   sincronizaTramo();
@@ -1597,38 +1765,49 @@ function render(){
   const puede=yo||soyOrg(a);a.chat=a.chat||[];
   const keep=$("c-txt")?$("c-txt").value:"";
   const ms=fotosAll.filter(f=>f.plan_id===a.id).sort((x,y)=>y.t-x.t),nf=ms.length;
-  const cover=a.foto?`<img class="cover" src="${a.foto}" alt="">`:`<div class="cover ph" style="background:${col(a)};height:110px">${sym(a,48)}</div>`;
+  const cover=a.foto?`<div class="hero"><img class="cover" src="${a.foto}" alt=""><div class="hemo" style="background:${col(a)}">${sym(a,32)}</div></div>`:`<div class="hero"><div class="cover ph" style="background:${col(a)}">${sym(a,76)}</div></div>`;
   if(tab==="chat"&&puede&&a.chat.length){const ult=ultimoId(a.chat);if((visto["p"+a.id]||0)<ult){visto["p"+a.id]=ult;guardaVisto()}}
   let body;
   if(tab==="chat"){
-    body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Chat del grupo</h3>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" type="button">Enviar</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
+    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
   }else if(tab==="fotos"){
     body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Fotos del plan</h3>${puede?`<label class="subir" for="m-file" style="margin-bottom:6px">Añadir fotos</label><input id="m-file" type="file" accept="image/*" multiple hidden><p class="meta" id="m-estado"></p>`:`<p class="meta">Solo quien va al plan puede subir fotos.</p>`}<div class="gal">${ms.length?ms.map(f=>`<div class="tile" data-f="${esc(f.id)}"><img src="${esc(urlFoto(f))}" alt="" loading="lazy"></div>`).join(""):`<p class="meta" style="grid-column:1/-1;text-align:center">Aún no hay fotos. ¡Sube la primera!</p>`}</div><p class="meta" style="font-size:12px">Las fotos las ve quien puede ver el plan. Sube solo fotos tuyas o de personas que estén de acuerdo. Quien organiza puede borrar cualquier foto de su plan.</p>`;
   }else{
-    body=`<h2>${esc(a.titulo)}</h2>
-<p class="meta">${esc(TIPOS[a.tipo]||a.tipo)} · ${esc(textoCuando(a))}${a.precio>0?" · "+precioTxt(a.precio)+" por persona":""}</p>
+    const libres=Math.max(0,a.max-a.asist.length),pe=a.ini||{lat:+a.lat,lng:+a.lng};
+    const eqL=(a.equipo||"").split(",").map(s=>s.trim()).filter(Boolean);
+    const formas=[a.link?"Tarjeta (Stripe)":"",/bizum/i.test(a.pago||"")?"Bizum":"",a.efectivo?"Efectivo":""].filter(Boolean);
+    body=`<span class="ftipo">${esc(TIPOS[a.tipo]||a.tipo)}</span>
+<h2 class="ftit">${esc(a.titulo)}</h2>
+<div class="forg"><span>Organiza <b class="lnk" data-u="${esc(a.orgId)}" style="color:var(--ink)">${esc(a.org)}</b></span>${a.verificado?`<span class="ver">✓ Verificado</span>`:""}${repTxt(a.orgId).replace(" · ✓ verificado","")}</div>
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
-<button id="unir" class="big" ${lleno||(yo&&soyOrg(a))?"disabled":""}>${yo&&soyOrg(a)?"Organizas este plan":yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button>
 <div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${soyOrg(a)?`<button id="panGo" class="sec" type="button">📊 Panel organizador</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
+<div class="cajas">
+<div class="caja ancha"><span class="ci">📅</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
+<div class="caja ancha"><span class="ci">📍</span><small>Punto de encuentro</small><b>${esc(a.punto||"Marcado en el mapa")}</b><details class="irmapa" data-k="mapa"><summary>🧭 Cómo llegar</summary><a href="https://maps.apple.com/?daddr=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Apple Maps</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Google Maps</a></details></div>
+<div class="caja"><span class="ci">👥</span><small>Plazas</small><b>${libres?`${libres} de ${a.max} plazas libres`:`Completo (${a.max} de ${a.max})`}</b></div>
+${a.precio>0?`<div class="caja ancha"><span class="ci">💶</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${!soyOrg(a)?`<p class="meta aviso-pago">AppVentureLife no comprueba la identidad de quien organiza. Paga en efectivo, por Bizum o con tarjeta, como indique quien organiza.</p>`:""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}</div>`:`<div class="caja"><span class="ci">💶</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
+</div>
+${tiempoHTML(a)}
 ${tramoHTML(a)}
 ${(yo||soyOrg(a))?rutaHTML(a):""}
-${a.punto?`<p class="meta">Punto de encuentro: <b style="color:var(--ink)">${esc(a.punto)}</b></p>`:""}
-${a.equipo?`<p class="meta">Equipo: <b style="color:var(--ink)">${esc(a.equipo)}</b></p>`:""}
-${a.emerg?`<p class="meta">Contacto de emergencia: <b style="color:var(--ink)">${esc(a.emerg)}</b></p>`:""}
-${a.desc?`<p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
-${tiempoHTML(a)}
-${a.precio>0?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&a.efectivo?`<p class="meta" style="margin:6px 0 0">💶 También se puede pagar en efectivo el día del plan.</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" <b style='color:#1F7A4D'>✓ verificado</b>":""}</p>`:""}</div>`:""}
-${quien(a)}
-<details class="mas"><summary>Detalles</summary>${a.precio>0&&!soyOrg(a)?`<p class="meta aviso-pago">AppVentureLife no comprueba la identidad de quien organiza. Paga en efectivo, por Bizum o con tarjeta, como indique quien organiza.</p>`:""}${a.precio>0?`<p class="meta">AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}${seguridad(a)}</details>
-<div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>`;
+${a.desc?`<h3 class="fsec">Descripción</h3><p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
+${eqL.length?`<h3 class="fsec">Equipo necesario</h3><ul class="equipo">${eqL.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+${a.emerg&&(yo||soyOrg(a))?`<div class="emerg"><small class="meta" style="display:block;margin:0 0 2px">🆘 Contacto de emergencia</small><b style="color:var(--ink)">${esc(a.emerg)}</b>${soyOrg(a)?`<p class="meta" style="margin:4px 0 0;font-size:12px">Solo lo ves tú y quien se apunta.</p>`:""}</div>`:""}
+${quien(a,true)}
+<details class="mas" data-k="mas"><summary>Detalles</summary>${a.precio>0?`<p class="meta">AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}${seguridad(a)}</details>
+<div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>
+<div class="fbar"><button id="unir" class="big" ${lleno||(yo&&soyOrg(a))?"disabled":""}>${yo&&soyOrg(a)?"Organizas este plan":yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button></div>`;
   }
+  const mismo=d.dataset.pid===String(a.id)&&d.dataset.tab===tab&&d.classList.contains("open"),abiertos=mismo?[...d.querySelectorAll("details[data-k]")].filter(x=>x.open).map(x=>x.dataset.k):[],st=mismo?d.scrollTop:0;
   d.innerHTML=`<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>${tab==="info"?cover:""}${body}`;
+  d.dataset.pid=String(a.id);d.dataset.tab=tab;abiertos.forEach(k=>{const x=d.querySelector(`details[data-k="${k}"]`);if(x)x.open=true});if(mismo&&tab!=="chat")d.scrollTop=st;
   d.classList.add("open","full");d.classList.toggle("chatmode",tab==="chat");
   const on=(id,fn)=>{if($(id))$(id).onclick=fn};
-  on("volver",()=>{tab="info";render()});
-  on("gochat",()=>{tab="chat";render()});
+  on("volver",()=>{if(tab==="chat"&&chatDesde==="bandeja"){chatDesde="";tab="info";sel=null;render();irA("mios");return}tab="info";render()});
+  on("verPlanC",()=>{chatDesde="";tab="info";render()});
+  on("gochat",()=>{chatDesde="";tab="chat";render()});
   on("gofotos",()=>{tab="fotos";render()});
   on("editGo",()=>abrirEdicion(a));on("invGo",()=>abreInvitar(a.id));on("rechInv",()=>rechazarInvitacion(a.id));
   on("denPlan",()=>abreDenuncia(a.orgId,a.id));on("bloqOrg",()=>bloquear(a.orgId));
@@ -1638,6 +1817,7 @@ ${quien(a)}
   on("wa",()=>compartir(a));on("copiar",()=>copiar(a));
   on("yapague",async()=>{try{const r=await sb.from("mensajes").insert({plan_id:a.id,texto:"💶 Ya he pagado, ¿puedes confirmarlo?"});if(r.error)throw r.error;tab="chat";await recarga()}catch(e){fallo(e)}});
   on("unir",async()=>{
+    if(!exigeAcepta(()=>{const b=$("unir");if(b)b.click()}))return;
     if(!me){pedirNombre(()=>$("unir").click());return}
     try{
       if(!await perfilListo())return;
@@ -1662,7 +1842,7 @@ ${quien(a)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";prefillCobros=false;pintaTipos();pintaPrecioAviso();
+  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";prefillCobros=false;pagoOn=false;pintaTipos();pintaPrecioAviso();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
@@ -1677,7 +1857,7 @@ function abrirEdicion(a){
   $("np-t").textContent="Editar plan";$("f-ok").textContent="Guardar cambios";$("f-mover").hidden=false;
   foto="";quitarFoto=false;if(a.foto){$("prev").src=a.foto;$("prev").hidden=false;$("f-foto-quitar").hidden=false}else{$("prev").hidden=true;$("f-foto-quitar").hidden=true}
   pintaTipos();
-  const det=$("nueva").querySelector("details");if(det)det.open=true;
+  pagoOn=(+a.precio||0)>0;paso=1;pasoErr("");pintaPasos();
   sel=null;render();
   $("nueva").classList.add("open");
 }
@@ -1708,7 +1888,7 @@ async function guardaEdicion(id,campos,priv,cod){
     if(cambios.length){try{await sb.from("mensajes").insert({plan_id:id,texto:"✏️ El organizador ha cambiado "+cambios.join(", ")+"."})}catch(e){}}
   }
 }
-function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;iniNombre="";iniTmpNombre="";puntoAuto="";quitaIniMarker();$("centro").hidden=true;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";$("nueva").classList.remove("open")}
+function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;iniNombre="";iniTmpNombre="";puntoAuto="";quitaIniMarker();$("centro").hidden=true;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";paso=1;pasoErr("");pintaPasos();$("nueva").classList.remove("open")}
 function elegir(id){burbuja=null;tab="info";delId=null;segAbierta=false;cerrarForm();sel=id;const pa=data.find(x=>x.id===id);if(pa&&pa.ini){cargaTramo(pa);try{map.fitBounds([[pa.ini.lat,pa.ini.lng],[pa.lat,pa.lng]],{padding:[60,60]})}catch(e){}}render()}
 
 map.on("click",e=>{
@@ -1732,13 +1912,17 @@ $("resMapa").addEventListener("click",e=>{
   if(r.dataset.plan){const a=data.find(x=>x.id===+r.dataset.plan);$("resMapa").hidden=true;if(a){map.setView([a.lat,a.lng],15);elegir(a.id)}return}
   const l=resultadosMapa[+r.dataset.i];if(l)elegirLugar(l);
 });
-$("bExp").onclick=()=>{const ab=vista==="explorar"&&!$("panelExp").hidden;irA("explorar");if(!ab){$("panelExp").hidden=false;$("bExp").classList.add("on")}};
+function marcaBar(){const pe=$("panelExp"),m=vista==="mios"?"m":(!pe.hidden&&pe.dataset.modo==="planes")?"p":"e";$("bExp").classList.toggle("on",m==="e");$("bMios").classList.toggle("on",m==="m");$("bPlanes").classList.toggle("on",m==="p")}
+function abrePanelExp(modo){const pe=$("panelExp");pe.dataset.modo=modo;$("pxTit").textContent=modo==="planes"?"Mis planes":"Explorar";$("listaDet").open=true;pe.hidden=false;marcaBar()}
+$("bExp").onclick=()=>{const enMapa=vista==="explorar"&&$("panelExp").hidden;irA("explorar");if(enMapa)abrePanelExp("exp")};
+$("bPlanes").onclick=()=>{const pe=$("panelExp"),ab=vista==="explorar"&&!pe.hidden&&pe.dataset.modo==="planes";irA("explorar");if(!ab)abrePanelExp("planes")};
+$("bPerfil").onclick=()=>{plusMenu(false);pedirNombre()};
 $("pxExp").onclick=()=>irA("explorar");$("pxMios").onclick=()=>irA("explorar");
 {const pie=document.querySelector("main>p.meta");if(pie)$("pieExp").appendChild(pie)}
-$("bMios").onclick=()=>vista==="mios"?irA("explorar"):irA("mios");
+$("bMios").onclick=()=>{if(vista==="mios"){irA("explorar");return}if(!exigeAcepta(()=>irA("mios")))return;irA("mios")};
 function plusMenu(v){$("plusMenu").hidden=!v;if(v)$("crearBtn").classList.add("open");else $("crearBtn").classList.remove("open")}
 $("crearBtn").onclick=()=>plusMenu($("plusMenu").hidden);
-$("mPlan").onclick=()=>{plusMenu(false);irA("explorar");sel=null;cerrarForm();render();colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el mapa para marcar el lugar";$("colocarOk").disabled=true;$("colocarOk").textContent="Crear plan aquí";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
+$("mPlan").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mPlan").click()))return;irA("explorar");sel=null;cerrarForm();render();colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el mapa para marcar el lugar";$("colocarOk").disabled=true;$("colocarOk").textContent="Crear plan aquí";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
 $("listaAmigos").addEventListener("click",e=>{
   const v=e.target.closest("[data-ver]");
   if(v){const a=data.find(x=>x.kind==="aqui"&&x.uid===v.dataset.ver);if(a){irA("explorar");map.setView([a.lat,a.lng],15);elegir(a.id)}return}
@@ -1789,7 +1973,7 @@ $("resBusca").addEventListener("click",e=>{
   if(c){responderSolicitud(c.dataset.bacc2,true);return}
   const i=e.target.closest(".item");if(i)abrePersona(i.dataset.per);
 });
-$("mBus").onclick=()=>{plusMenu(false);irA("mios");setTimeout(()=>{const b=$("busca");b.scrollIntoView({behavior:"smooth",block:"center"});b.focus()},150)};
+$("mBus").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mBus").click()))return;irA("mios");setTimeout(()=>{const b=$("busca");b.scrollIntoView({behavior:"smooth",block:"center"});b.focus()},150)};
 $("p-buscable").addEventListener("change",async()=>{
   if(!sb||!uid)return;
   const v=$("p-buscable").checked;
@@ -1881,14 +2065,20 @@ $("den-ok").onclick=async()=>{
   }catch(e){fallo(e)}
 };
 $("dm-bloq").onclick=()=>bloquear(dmCon);
+$("dm-back").onclick=()=>{$("dm-menu").hidden=true;cerrarSheet($("dm"))};
+$("dm-mas").onclick=e=>{e.stopPropagation();$("dm-menu").hidden=!$("dm-menu").hidden};
+$("dm-menu").addEventListener("click",e=>{if(!(e.target.id==="dm-quitar"&&quitarOk))$("dm-menu").hidden=true});
+document.addEventListener("click",e=>{if(!e.target.closest(".cmenu"))$("dm-menu").hidden=true});
+$("dm-plan").onclick=()=>{const pc=planComun(dmCon);if(!pc)return;$("dm-menu").hidden=true;cerrarSheet($("dm"));irA("explorar");map.setView([pc.lat,pc.lng],14);elegir(pc.id)};
 $("dm-den").onclick=()=>abreDenuncia(dmCon,null);
 $("listaBloq").addEventListener("click",async e=>{
   const b=e.target.closest("[data-desb]");if(!b)return;
   try{const r=await sb.from("bloqueos").delete().eq("user_id",uid).eq("bloqueado_id",b.dataset.desb);if(r.error)throw r.error;await recarga()}catch(x){fallo(x)}
 });
 $("listaDM").addEventListener("click",e=>{
-  const i=e.target.closest(".item");if(!i)return;
-  if(i.dataset.planchat){const pl=data.find(x=>x.id===+i.dataset.planchat);if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id);tab="chat";render()}}
+  const t=e.target.closest("[data-mt]");if(t){msgTab=t.dataset.mt;pintaBandeja();return}
+  const i=e.target.closest(".item,.conv");if(!i)return;
+  if(i.dataset.planchat){const pl=data.find(x=>x.id===+i.dataset.planchat);if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id);tab="chat";chatDesde="bandeja";render()}}
   else abreDM(i.dataset.dm);
 });
 const enviaDM=async()=>{
@@ -1906,7 +2096,7 @@ const enviaDM=async()=>{
 $("dm-ok").onclick=enviaDM;
 $("dm-txt").addEventListener("keydown",e=>{if(e.key==="Enter")enviaDM()});
 $("mCod").onclick=()=>{plusMenu(false);abrirCodigo()};
-$("mAqui").onclick=()=>{plusMenu(false);irA("explorar");sel=null;cerrarForm();render();$("aqui").classList.add("open")};
+$("mAqui").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mAqui").click()))return;irA("explorar");sel=null;cerrarForm();render();$("aqui").classList.add("open")};
 $("a-emojis").innerHTML=["📍","🏋️","🏠","☕","🏃","🍕","🏖️","🥾","🚴","🎉","💼","📚"].map(e=>`<button type="button" aria-label="Usar ${e}">${e}</button>`).join("");
 $("a-emojis").onclick=e=>{const b=e.target.closest("button");if(b)$("a-emoji").value=b.textContent};
 $("a-emoji").addEventListener("input",e=>{e.target.value=ultimo(e.target.value)});
@@ -1961,7 +2151,7 @@ $("a-ok").onclick=()=>{
 $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],15);elegir(+i.dataset.id)}});
 $("colocarNo").onclick=()=>{if(modoIni){terminaIni(false);return}salirColocar();if(editId){const a=data.find(x=>x.id===editId);if(a)pend={lat:a.lat,lng:a.lng};$("nueva").classList.add("open")}else pend=null};
 $("f-mover").onclick=()=>{$("nueva").classList.remove("open");colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el nuevo lugar del plan";$("colocarOk").disabled=true;$("colocarOk").textContent="Usar este lugar";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
-$("colocarOk").onclick=()=>{if(modoIni){terminaIni(true);return}if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);$("nueva").classList.add("open")};
+$("colocarOk").onclick=()=>{if(modoIni){terminaIni(true);return}if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);if(!editId)paso=1;pasoErr("");pintaPasos();$("nueva").classList.add("open")};
 function pintaVis(){const v=$("f-vis").value;document.querySelectorAll("#f-visop button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));$("f-vis-txt").textContent={todos:"Lo ve cualquiera en el mapa.",amigos:"Solo lo ven tus amigos.",codigo:"Solo lo ve quien tenga el código. Te damos uno abajo."}[v]||""}
 document.querySelectorAll("#f-visop button").forEach(b=>{b.onclick=()=>{$("f-vis").value=b.dataset.v;$("f-vis").dispatchEvent(new Event("change"))}});
 $("f-vis").addEventListener("change",()=>{pintaVis();const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
@@ -2011,7 +2201,7 @@ $("f-foto").onchange=e=>{
     foto=c.toDataURL("image/jpeg",.7);$("prev").src=foto;$("prev").hidden=false};im.src=r.result};
   r.readAsDataURL(file);
 };
-$("f-ok").onclick=async()=>{
+$("f-ok").onclick=async()=>{if(!validaPasos())return;
   const lk=(+$("f-precio").value||0)>0?$("f-link").value.trim():"";
   if(lk&&!okLink(lk)){alert("El enlace de pago debe empezar por https://");$("f-link").focus();return}
   const vis=$("f-vis").value,priv=vis==="codigo",soloA=vis==="amigos",cod=normCod($("f-cod").value);
@@ -2069,6 +2259,44 @@ function pintaPrecioAviso(){
   const b=$("precioVerif");if(b)b.onclick=abrirVerif;
 }
 $("f-precio").addEventListener("input",pintaPrecioAviso);
+var paso=1,pagoOn=false;
+function puedeCobrar(){try{return !!(uid&&verifSet&&verifSet.has(uid))}catch(e){return false}}
+function nPasos(){return (puedeCobrar()||(editId&&pagoOn))?4:3}
+function pasoErr(t){const e=$("pasoErr");if(!e)return;e.textContent=t||"";e.hidden=!t}
+function pintaPasos(){
+  const ed=!!editId,n=nPasos();if(paso>n)paso=n;if(paso<1)paso=1;
+  document.querySelectorAll("#nueva .paso").forEach(d=>{d.hidden=+d.dataset.p!==paso});
+  const bar=$("pasosBar");
+  if(ed){bar.className="pasostab";bar.innerHTML=["Qué","Cuándo","Detalles","Precio"].slice(0,n).map((t,i)=>'<button type="button" data-p="'+(i+1)+'"'+(i+1===paso?' class="on"':'')+'>'+t+'</button>').join("")}
+  else{let d="";for(let i=1;i<=n;i++)d+='<i'+(i<=paso?' class="on"':'')+'></i>';bar.className="pasosbar";bar.innerHTML='<span class="pdots">'+d+'</span><span class="meta">Paso '+paso+' de '+n+(paso===3?' · opcional':'')+'</span>'}
+  $("f-cancel").hidden=!ed&&paso>1;
+  $("p-atras").hidden=ed||paso===1;
+  $("p-mas").hidden=ed||paso!==2;
+  const sig=$("p-sig");sig.hidden=ed||paso===2||paso>=n;sig.classList.toggle("sec",paso!==1);sig.textContent=paso===3?"Precio →":"Siguiente";
+  const ok=$("f-ok");ok.hidden=!ed&&paso===1;ok.textContent=ed?"Guardar cambios":(paso>=n?"Publicar":"Publicar ya");
+  $("cobrarHint").hidden=ed||puedeCobrar();
+  $("pg-gratis").classList.toggle("on",!pagoOn);$("pg-pago").classList.toggle("on",pagoOn);$("precioBox").hidden=!pagoOn;
+}
+function validaPaso(p){
+  if(p===1){if($("f-vis").value==="codigo"&&normCod($("f-cod").value).length<6)return "El código debe tener al menos 6 caracteres.";if(!$("f-titulo").value.trim())return "Escribe qué plan es.";}
+  if(p===2){if(!editId&&!$("f-dia").value)return "Elige el día del plan.";const n=+$("f-plazas").value;if(!(n>=2&&n<=50))return "Las plazas tienen que ir de 2 a 50.";}
+  if(p===4&&pagoOn){if(!((+$("f-precio").value||0)>0))return "Pon el precio por persona, o elige «Gratis».";const lk=$("f-link").value.trim();if(lk&&!okLink(lk))return "El enlace de Stripe debe empezar por https://";}
+  return "";
+}
+function irPaso(p){paso=p;pasoErr("");pintaPasos();try{$("nueva").scrollTop=0}catch(e){}}
+function validaPasos(){
+  if(!pagoOn&&$("f-precio").value){$("f-precio").value="";pintaPrecioAviso()}
+  const n=nPasos();for(let p=1;p<=n;p++){const e=validaPaso(p);if(e){irPaso(p);pasoErr(e);return false}}
+  pasoErr("");return true;
+}
+function sigPaso(){const e=validaPaso(paso);if(e){pasoErr(e);return}irPaso(paso+1)}
+$("p-sig").onclick=sigPaso;$("p-mas").onclick=sigPaso;
+$("p-atras").onclick=()=>irPaso(paso-1);
+$("pasosBar").onclick=e=>{const b=e.target.closest("button[data-p]");if(b)irPaso(+b.dataset.p)};
+$("pg-gratis").onclick=()=>{pagoOn=false;$("f-precio").value="";pintaPrecioAviso();pintaPasos();pasoErr("")};
+$("pg-pago").onclick=()=>{pagoOn=true;pintaPasos();pintaPrecioAviso();setTimeout(()=>{try{$("f-precio").focus()}catch(e){}},60)};
+$("cobrarHintBtn").onclick=()=>abrirVerif();
+pintaPasos();
 function pintaOrg(){
   const e=$("org-estado"),b=$("org-abrir");
   if(!e)return;
@@ -2196,7 +2424,7 @@ $("po-planes").addEventListener("click",async e=>{
 });
 /* ===== Ayuda (fase A: respuestas fijas, sin coste; la IA se enchufa aquí después) ===== */
 const FAQ=[
- {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Escribe el nombre, elige el tipo, la fecha (Hoy, Mañana, Este sábado...) y las plazas.\n5. En «Añadir más detalles» puedes poner punto de encuentro, descripción, equipo y precio.\n6. Pulsa «Publicar»."},
+ {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Paso 1: quién puede verlo, el nombre, el tipo y el emoji.\n5. Paso 2: el día, la hora y las plazas. Pulsa «Publicar ya» o «Añadir más».\n6. En «Añadir más» puedes poner descripción, equipo, punto de encuentro, contacto de emergencia y foto. Si eres organizador verificado, en el último paso eliges si es gratis o de pago."},
  {q:"¿Cómo me apunto a un plan?",p:["plan","mapa"],k:["apuntar","apuntarme","apuntarse","unir","unirme","participar","inscribir","plan"],a:"Toca una chincheta del mapa (o un plan de la lista de debajo). Vuelve a tocar la chincheta para abrir el plan y pulsa «Apuntarme». Para salir, abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo salgo de un plan?",p:["plan"],k:["salir","salgo","quitarme","desapuntar","abandonar","borrarme"],a:"Abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo marco el punto de salida?",p:["crear","editar"],k:["salida","inicio","punto","quedamos","quedar","empezar","ruta","recorrido","encuentro"],a:"Al crear o editar un plan, en el recuadro «Punto de salida (opcional)» pulsa «Marcar el inicio», toca el mapa o busca el sitio y pulsa «Usar este inicio». También puedes pulsar «Poner el nombre de este sitio como punto de encuentro»."},
@@ -2298,10 +2526,10 @@ async function poneNombreInicio(){
 $("iniNombreBtn").onclick=poneNombreInicio;
 dbp.then(()=>mediaAll()).then(m=>{media=m;render()}).catch(()=>{});
 render();
-if(aceptado())arranca();
+arranca();
 setInterval(render,60000);
-setInterval(()=>{if(!document.hidden&&uid&&sb&&aceptado())recarga()},25000);
-document.addEventListener("visibilitychange",()=>{if(!document.hidden&&uid&&sb&&aceptado())recarga()});
+setInterval(()=>{if(!document.hidden&&uid&&sb)recarga()},25000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&uid&&sb)recarga()});
 </script>
 </body>
 </html>
