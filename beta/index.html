@@ -322,7 +322,7 @@ main{padding:0!important;max-width:none!important}
 .phead{display:flex;align-items:center;gap:8px;margin:0 0 8px}
 .phead h2{flex:1;margin:0;font-size:26px;line-height:1.1}
 .phead button{width:38px;height:38px;padding:0;border-radius:50%;background:var(--card);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.2);flex:none}
-</style>
+.visbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:4px 0 10px}.visop{display:flex;gap:8px;margin-top:8px}.visop button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-size:22px;line-height:1.1}.visop button span{font-size:13px;font-weight:600}.visop button.on{border-color:var(--cta);background:var(--cta);color:var(--ctat)}</style>
 </head>
 <body>
 <div style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#C4472F;color:#fff;text-align:center;font:700 12px/18px sans-serif;pointer-events:none">BETA · versión de prueba antes de publicar</div>
@@ -346,7 +346,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 76 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 77 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -388,7 +388,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 76 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 77 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -473,6 +473,11 @@ main{padding:0!important;max-width:none!important}
 <section id="nueva" class="sheet" aria-label="Nuevo plan">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2 id="np-t">Nuevo plan</h2>
+<div class="visbox"><b>¿Quién puede verlo?</b><div class="visop" id="f-visop"><button type="button" data-v="todos" class="on">🌍<span>Todos</span></button><button type="button" data-v="amigos">👥<span>Solo amigos</span></button><button type="button" data-v="codigo">🔒<span>Con código</span></button></div><p class="meta" id="f-vis-txt" style="margin:6px 0 0">Lo ve cualquiera en el mapa.</p><select id="f-vis" hidden><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
+<div id="privBox" hidden><label for="f-cod">Código de acceso</label>
+<div class="row"><input id="f-cod" maxlength="20" autocapitalize="characters" autocomplete="off"><button id="f-cod-gen" class="sec" type="button" style="flex:none;padding:10px 14px">Otro</button></div>
+<p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
+</div>
 <button id="ay-form" class="sec" type="button" style="padding:6px 12px;font-size:14px;margin:0 0 6px">💬 ¿Dudas? Pregunta aquí</button>
 <button id="f-mover" class="sec" type="button" hidden style="margin:0 0 6px">📍 Cambiar ubicación en el mapa</button>
 <label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
@@ -491,11 +496,6 @@ main{padding:0!important;max-width:none!important}
 <div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
 <div class="row"><div><label for="f-dia">Día</label><input id="f-dia" type="date"></div><div><label for="f-hora">Hora</label><input id="f-hora" type="time"></div></div>
 <label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6">
-<label for="f-vis">¿Quién puede verlo?</label>
-<select id="f-vis"><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
-<div id="privBox" hidden><label for="f-cod">Código de acceso</label>
-<div class="row"><input id="f-cod" maxlength="20" autocapitalize="characters" autocomplete="off"><button id="f-cod-gen" class="sec" type="button" style="flex:none;padding:10px 14px">Otro</button></div>
-<p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
 <details class="mas"><summary>Añadir más detalles</summary>
 <label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
 <label for="f-punto" id="lblPunto">Punto de encuentro</label><input id="f-punto" placeholder="Ej. Aparcamiento del puerto">
@@ -1665,7 +1665,7 @@ ${seguridad(a)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;$("f-cod").value="";tipoSel="otro";prefillCobros=false;pintaTipos();pintaPrecioAviso();
+  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";prefillCobros=false;pintaTipos();pintaPrecioAviso();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
@@ -1676,7 +1676,7 @@ function abrirEdicion(a){
   $("f-punto").value=a.punto||"";$("f-desc").value=a.desc||"";$("f-equipo").value=a.equipo||"";$("f-emerg").value=a.emerg||"";
   $("f-precio").value=a.precio||"";pintaPrecioAviso();$("f-link").value=a.link||"";$("f-pago").value=a.pago||"";$("f-efectivo").checked=!!a.efectivo;
   $("f-vis").value=a.priv?"codigo":a.soloAmigos?"amigos":"todos";
-  $("privBox").hidden=!a.priv;$("f-cod").value=a.priv?fmtCod(a.codigo):"";
+  $("privBox").hidden=!a.priv;pintaVis();$("f-cod").value=a.priv?fmtCod(a.codigo):"";
   $("np-t").textContent="Editar plan";$("f-ok").textContent="Guardar cambios";$("f-mover").hidden=false;
   foto="";quitarFoto=false;if(a.foto){$("prev").src=a.foto;$("prev").hidden=false;$("f-foto-quitar").hidden=false}else{$("prev").hidden=true;$("f-foto-quitar").hidden=true}
   pintaTipos();
@@ -1965,7 +1965,9 @@ $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){
 $("colocarNo").onclick=()=>{if(modoIni){terminaIni(false);return}salirColocar();if(editId){const a=data.find(x=>x.id===editId);if(a)pend={lat:a.lat,lng:a.lng};$("nueva").classList.add("open")}else pend=null};
 $("f-mover").onclick=()=>{$("nueva").classList.remove("open");colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el nuevo lugar del plan";$("colocarOk").disabled=true;$("colocarOk").textContent="Usar este lugar";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
 $("colocarOk").onclick=()=>{if(modoIni){terminaIni(true);return}if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);$("nueva").classList.add("open")};
-$("f-vis").addEventListener("change",()=>{const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
+function pintaVis(){const v=$("f-vis").value;document.querySelectorAll("#f-visop button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));$("f-vis-txt").textContent={todos:"Lo ve cualquiera en el mapa.",amigos:"Solo lo ven tus amigos.",codigo:"Solo lo ve quien tenga el código. Te damos uno abajo."}[v]||""}
+document.querySelectorAll("#f-visop button").forEach(b=>{b.onclick=()=>{$("f-vis").value=b.dataset.v;$("f-vis").dispatchEvent(new Event("change"))}});
+$("f-vis").addEventListener("change",()=>{pintaVis();const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
 $("f-cod-gen").onclick=()=>{$("f-cod").value=fmtCod(genCod())};
 $("cod-no").onclick=()=>$("codigo").classList.remove("open");
 $("cod-ok").onclick=async()=>{
