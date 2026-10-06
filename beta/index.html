@@ -251,6 +251,45 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .glista .gi{width:32px;height:32px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff}
 .glista small{display:block;color:#58705E;font-weight:400;font-size:12px}
 .glista .lleno{opacity:.55}
+/* v82: mensajería */
+.mtabs{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;margin:0 0 10px}
+.mtabs button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:transparent;color:var(--mut);padding:9px 6px;border-radius:9px;font-size:15px;font-weight:700;box-shadow:none}
+.mtabs button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.mtabs i{font-style:normal;background:#1E7BFF;color:#fff;border-radius:99px;font-size:11px;padding:1px 7px}
+.lista-conv{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 10px}
+.conv{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid var(--line);cursor:pointer}
+.conv:last-child{border-bottom:0}
+.cav{width:50px;height:50px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;overflow:hidden;font:800 20px system-ui,sans-serif}
+.cav img{width:100%;height:100%;object-fit:cover}
+.conv .ctx{flex:1;min-width:0}
+.conv .ctx b{display:block;color:var(--ink);font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv .ctx small{display:block;color:var(--mut);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv.nuevo .ctx small{color:var(--ink);font-weight:700}
+.conv .cder{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+.conv .cder small{color:var(--mut);font-size:12px}
+.conv.nuevo .cder small{color:#1E7BFF;font-weight:700}
+.cnum{background:#1E7BFF;color:#fff;border-radius:99px;font-size:12px;font-weight:800;min-width:20px;height:20px;padding:0 6px;display:flex;align-items:center;justify-content:center}
+#dm.chatv{top:0;bottom:0;max-height:none;height:100%;border-radius:0;padding:0;display:flex;flex-direction:column;overflow:hidden}
+#detalle.full.chatmode{padding:0}
+#detalle.chatmode>.grab,#detalle.chatmode>.x{display:none}
+.chead{flex:none;display:flex;align-items:center;gap:10px;padding:calc(8px + env(safe-area-inset-top,0px)) 10px 8px;border-bottom:1px solid var(--line);background:var(--card);position:relative;z-index:3}
+.chead .cav{width:40px;height:40px;font-size:17px}
+.chead .cnom{flex:1;min-width:0}
+.chead .cnom b{display:block;font-size:17px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chead .cnom small{display:block;font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chead #volver{align-self:center}
+.cico{width:38px;height:38px;padding:0!important;border-radius:50%!important;background:transparent!important;color:var(--ink)!important;font-size:28px!important;line-height:1;flex:none;box-shadow:none!important;border:0!important}
+.cplan{flex:none;padding:6px 12px!important;font-size:13px!important;border-radius:99px!important;background:var(--bg)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important;margin:0!important}
+.cmenu{position:relative;flex:none}
+.cmenu-l{position:absolute;right:0;top:44px;min-width:210px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);overflow:hidden;z-index:10}
+.cmenu-l button{display:block;width:100%;text-align:left;padding:13px 16px!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;background:none!important;color:var(--ink)!important;font-size:16px!important;box-shadow:none!important;margin:0!important}
+.cmenu-l button[hidden]{display:none!important}
+.cmenu-l button:last-child{border-bottom:0!important}
+.cmenu-l button.rojo{color:#C4472F!important}
+#dm.chatv .chat,#detalle.chatmode .chat{flex:1 1 auto;min-height:0;max-height:none;margin:0;padding:12px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.cbar{flex:none;display:flex;align-items:center;gap:8px;margin:0!important;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--card)}
+.cbar input{flex:1;margin:0;border-radius:99px;padding:11px 16px}
+.cenv{width:44px;height:44px;padding:0!important;border-radius:50%!important;flex:none;display:flex;align-items:center;justify-content:center}
 label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--ink);margin:14px 0 4px}
 input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 #cod-in,#f-cod{letter-spacing:2px;text-transform:uppercase}
@@ -394,7 +433,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 81 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 82 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -436,7 +475,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 81 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 82 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -481,14 +520,10 @@ main{padding:0!important;max-width:none!important}
 
 <div id="aviso" class="aviso" hidden role="alert"></div>
 
-<section id="dm" class="sheet" aria-label="Mensajes">
-<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<h2 id="dm-t">Mensajes</h2>
+<section id="dm" class="sheet chatv" aria-label="Mensajes">
+<div class="chead"><button id="dm-back" class="cico" type="button" aria-label="Volver">‹</button><div id="dm-av"></div><div class="cnom"><b id="dm-t">Mensajes</b><small id="dm-sub"></small></div><button id="dm-plan" class="cplan" type="button" hidden>Ver plan</button><div class="cmenu"><button id="dm-mas" class="cico" type="button" aria-label="Opciones">⋯</button><div id="dm-menu" class="cmenu-l" hidden><button id="dm-add" type="button" hidden>Añadir a amigos</button><button id="dm-quitar" type="button" hidden>Quitar de amigos</button><button id="dm-bloq" type="button">Bloquear</button><button id="dm-den" type="button" class="rojo">Denunciar</button></div></div></div>
 <div class="chat" id="dm-msgs"></div>
-<button id="dm-add" class="sec" type="button" hidden style="margin-bottom:10px;font-size:14px;padding:6px 12px">Añadir a amigos</button>
-<button id="dm-quitar" class="sec" type="button" hidden style="margin-bottom:10px;font-size:14px;padding:6px 12px">Quitar de amigos</button>
-<div class="mini"><button id="dm-bloq" class="sec" type="button">Bloquear</button><button id="dm-den" class="sec" type="button">Denunciar</button></div>
-<div class="send"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="dm-ok" type="button">Enviar</button></div>
+<div class="send cbar"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="dm-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
 </section>
 
 <section id="invitar" class="sheet" aria-label="Invitar amigos">
@@ -1401,17 +1436,22 @@ function avisa(txt,fn){
 const sinLeerPlan=a=>(a.chat||[]).filter(m=>m.uid!==uid&&m.id>(visto["p"+a.id]||0)).length;
 const sinLeerDM=u=>(dms[u]||[]).filter(m=>m.de!==uid&&m.id>(visto["d"+u]||0)).length;
 const totalSinLeer=()=>data.filter(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))).reduce((n,a)=>n+sinLeerPlan(a),0)+Object.keys(dms).reduce((n,u)=>n+sinLeerDM(u),0);
+function planComun(u){return data.find(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&(a.orgId===u||(a.asistIds||[]).includes(u)))}
+function avPersona(u,n){n=n||"?";return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
 function pintaDM(){
-  const l=dms[dmCon]||[];
+  const l=dms[dmCon]||[],nom=nombres[dmCon]||"Alguien",pc=planComun(dmCon);
   $("dm-quitar").hidden=!esAmigo(dmCon);
   $("dm-add").hidden=esAmigo(dmCon)||solEnv.includes(dmCon);
   $("dm-add").textContent=solRec.includes(dmCon)?"Aceptar solicitud de amistad":"Añadir a amigos";
-  $("dm-t").textContent="💬 "+(nombres[dmCon]||"Mensajes");
+  $("dm-t").textContent=nom;
+  $("dm-sub").textContent=esAmigo(dmCon)?"👥 Amigo":solEnv.includes(dmCon)?"Solicitud de amistad enviada":pc?"Va a «"+pc.titulo+"»":"";
+  $("dm-av").innerHTML=avPersona(dmCon,nom);
+  $("dm-plan").hidden=!pc;
   $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
   const c=$("dm-msgs");c.scrollTop=c.scrollHeight;
 }
 function marcaDM(){if(!dmCon)return;visto["d"+dmCon]=ultimoId(dms[dmCon]);guardaVisto();render()}
-function abreDM(u){dmCon=u;pintaDM();$("dm").classList.add("open");marcaDM()}
+function abreDM(u){dmCon=u;$("dm-menu").hidden=true;pintaDM();$("dm").classList.add("open");marcaDM()}
 function fallo(e){alert((e&&e.message)||"Algo ha fallado. Inténtalo de nuevo.")}
 async function perfilListo(){
   if(perfilOk)return true;
@@ -1591,7 +1631,19 @@ async function arranca(){
   try{await iniciaSesion();registraAceptacion();await recarga();suscribir();importaEnlace()}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
-let capaPins=null,ultPins=[];
+var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
+function avion(){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>'}
+function hCorta(t){const d=new Date(t);return d.toDateString()===new Date().toDateString()?hora(t):d.toLocaleDateString("es",{day:"numeric",month:"short"})}
+function pintaBandeja(){
+  const nP=bandeja.p.reduce((n,c)=>n+sinLeerPlan(c.a),0),nD=bandeja.d.reduce((n,c)=>n+sinLeerDM(c.u),0);
+  if(!msgTab)msgTab=(nD&&!nP)||(!bandeja.p.length&&bandeja.d.length)?"d":"p";
+  const l=bandeja[msgTab]||[];
+  $("listaDM").innerHTML=`<div class="mtabs"><button type="button" data-mt="p" class="${msgTab==="p"?"on":""}">Planes grupales${nP?`<i>${nP}</i>`:""}</button><button type="button" data-mt="d" class="${msgTab==="d"?"on":""}">Privados${nD?`<i>${nD}</i>`:""}</button></div>`+(l.length?`<div class="lista-conv">`+l.map(c=>{
+    if(c.tipo==="d"){const ult=c.l[c.l.length-1],n=sinLeerDM(c.u),nom=nombres[c.u]||"Alguien";return `<div class="conv${n?" nuevo":""}" data-dm="${esc(c.u)}">${avPersona(c.u,nom)}<div class="ctx"><b>${esc(nom)}</b><small>${ult.de===uid?"Tú: ":""}${esc(ult.txt.slice(0,60))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`}
+    const a=c.a,ult=a.chat[a.chat.length-1],n=sinLeerPlan(a);
+    return `<div class="conv${n?" nuevo":""}" data-planchat="${a.id}"><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,24)}</div><div class="ctx"><b>${esc(a.titulo)}</b><small>${esc(ult.uid===uid?"Tú":ult.n)}: ${esc(ult.txt.slice(0,50))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`;
+  }).join("")+`</div>`:`<p class="meta">${msgTab==="p"?"Aún no hay chats de planes. Apúntate a un plan para hablar con el grupo.":"Aún no tienes mensajes privados. Toca el nombre de un amigo, o de alguien en un plan, para escribirle."}</p>`);
+}
 function pinUno(a){
   const pg=a.kind!=="aqui"&&a.precio>0,lleno=a.kind!=="aqui"&&a.asist.length>=a.max;
     const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}${pg?" pago":""}${lleno&&a.id!==burbuja?" lleno":""}" style="background:${col(a)}">${sym(a,22)}${pg?`<span class="eur">€</span>`:""}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
@@ -1666,12 +1718,7 @@ function render(){
   $("listaBloq").innerHTML=[...bloqueados].map(u=>`<div class="item"><div style="flex:1;min-width:0"><b>${esc(nombres[u]||"Alguien")}</b></div><button type="button" class="sec" data-desb="${esc(u)}" style="padding:6px 12px;font-size:14px">Desbloquear</button></div>`).join("");
   const convDM=Object.keys(dms).map(u=>({tipo:"d",u,l:dms[u]})).filter(c=>c.l.length).map(c=>({...c,t:c.l[c.l.length-1].t}));
   const convPl=advAll.filter(a=>(voy(a)||soyOrg(a))&&a.chat&&a.chat.length).map(a=>({tipo:"p",a,t:a.chat[a.chat.length-1].t}));
-  const convs=[...convDM,...convPl].sort((x,y)=>y.t-x.t);
-  $("listaDM").innerHTML=convs.length?convs.map(c=>{
-    if(c.tipo==="d"){const ult=c.l[c.l.length-1],n=sinLeerDM(c.u);return `<div class="item" data-dm="${esc(c.u)}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:26px">💬</span></div><div style="flex:1;min-width:0"><b>${esc(nombres[c.u]||"Alguien")}</b><small>${esc(ult.txt.slice(0,50))}</small></div>${n?`<span class="tag" style="background:#C4472F">${n}</span>`:""}</div>`}
-    const a=c.a,ult=a.chat[a.chat.length-1],n=sinLeerPlan(a);
-    return `<div class="item" data-planchat="${a.id}"><div class="th" style="background:${col(a)}">${sym(a,26)}</div><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(ult.uid===uid?"Tú":ult.n)}: ${esc(ult.txt.slice(0,40))}</small></div>${n?`<span class="tag" style="background:#C4472F">${n}</span>`:""}</div>`;
-  }).join(""):`<p class="meta">Aún no tienes mensajes. Toca el nombre de un amigo, o de alguien en un plan, para escribirle.</p>`;
+  bandeja={d:convDM.sort((x,y)=>y.t-x.t),p:convPl.sort((x,y)=>y.t-x.t)};pintaBandeja();
   const sv=$("srv");if(sv)sv.textContent=!sb?"Servidor: no cargó":errCon?"Servidor: ERROR · "+errCon:cargando?"Servidor: conectando…":"Servidor: conectado · "+advAll.length+" planes visibles · tu id "+String(uid).slice(0,4);
 
   sincronizaTramo();
@@ -1694,7 +1741,7 @@ function render(){
   if(tab==="chat"&&puede&&a.chat.length){const ult=ultimoId(a.chat);if((visto["p"+a.id]||0)<ult){visto["p"+a.id]=ult;guardaVisto()}}
   let body;
   if(tab==="chat"){
-    body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Chat del grupo</h3>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" type="button">Enviar</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
+    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
   }else if(tab==="fotos"){
     body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Fotos del plan</h3>${puede?`<label class="subir" for="m-file" style="margin-bottom:6px">Añadir fotos</label><input id="m-file" type="file" accept="image/*" multiple hidden><p class="meta" id="m-estado"></p>`:`<p class="meta">Solo quien va al plan puede subir fotos.</p>`}<div class="gal">${ms.length?ms.map(f=>`<div class="tile" data-f="${esc(f.id)}"><img src="${esc(urlFoto(f))}" alt="" loading="lazy"></div>`).join(""):`<p class="meta" style="grid-column:1/-1;text-align:center">Aún no hay fotos. ¡Sube la primera!</p>`}</div><p class="meta" style="font-size:12px">Las fotos las ve quien puede ver el plan. Sube solo fotos tuyas o de personas que estén de acuerdo. Quien organiza puede borrar cualquier foto de su plan.</p>`;
   }else{
@@ -1730,8 +1777,9 @@ ${quien(a,true)}
   d.dataset.pid=String(a.id);d.dataset.tab=tab;abiertos.forEach(k=>{const x=d.querySelector(`details[data-k="${k}"]`);if(x)x.open=true});if(mismo&&tab!=="chat")d.scrollTop=st;
   d.classList.add("open","full");d.classList.toggle("chatmode",tab==="chat");
   const on=(id,fn)=>{if($(id))$(id).onclick=fn};
-  on("volver",()=>{tab="info";render()});
-  on("gochat",()=>{tab="chat";render()});
+  on("volver",()=>{if(tab==="chat"&&chatDesde==="bandeja"){chatDesde="";tab="info";sel=null;render();irA("mios");return}tab="info";render()});
+  on("verPlanC",()=>{chatDesde="";tab="info";render()});
+  on("gochat",()=>{chatDesde="";tab="chat";render()});
   on("gofotos",()=>{tab="fotos";render()});
   on("editGo",()=>abrirEdicion(a));on("invGo",()=>abreInvitar(a.id));on("rechInv",()=>rechazarInvitacion(a.id));
   on("denPlan",()=>abreDenuncia(a.orgId,a.id));on("bloqOrg",()=>bloquear(a.orgId));
@@ -1984,14 +2032,20 @@ $("den-ok").onclick=async()=>{
   }catch(e){fallo(e)}
 };
 $("dm-bloq").onclick=()=>bloquear(dmCon);
+$("dm-back").onclick=()=>{$("dm-menu").hidden=true;cerrarSheet($("dm"))};
+$("dm-mas").onclick=e=>{e.stopPropagation();$("dm-menu").hidden=!$("dm-menu").hidden};
+$("dm-menu").addEventListener("click",e=>{if(!(e.target.id==="dm-quitar"&&quitarOk))$("dm-menu").hidden=true});
+document.addEventListener("click",e=>{if(!e.target.closest(".cmenu"))$("dm-menu").hidden=true});
+$("dm-plan").onclick=()=>{const pc=planComun(dmCon);if(!pc)return;$("dm-menu").hidden=true;cerrarSheet($("dm"));irA("explorar");map.setView([pc.lat,pc.lng],14);elegir(pc.id)};
 $("dm-den").onclick=()=>abreDenuncia(dmCon,null);
 $("listaBloq").addEventListener("click",async e=>{
   const b=e.target.closest("[data-desb]");if(!b)return;
   try{const r=await sb.from("bloqueos").delete().eq("user_id",uid).eq("bloqueado_id",b.dataset.desb);if(r.error)throw r.error;await recarga()}catch(x){fallo(x)}
 });
 $("listaDM").addEventListener("click",e=>{
-  const i=e.target.closest(".item");if(!i)return;
-  if(i.dataset.planchat){const pl=data.find(x=>x.id===+i.dataset.planchat);if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id);tab="chat";render()}}
+  const t=e.target.closest("[data-mt]");if(t){msgTab=t.dataset.mt;pintaBandeja();return}
+  const i=e.target.closest(".item,.conv");if(!i)return;
+  if(i.dataset.planchat){const pl=data.find(x=>x.id===+i.dataset.planchat);if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id);tab="chat";chatDesde="bandeja";render()}}
   else abreDM(i.dataset.dm);
 });
 const enviaDM=async()=>{
