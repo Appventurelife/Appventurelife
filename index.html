@@ -343,7 +343,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 74 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 75 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -385,7 +385,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 74 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 75 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -1085,7 +1085,7 @@ function rutaHTML(a){
   else if(r.estado==="sinruta")txt=`<p class="meta" style="margin:6px 0">En línea recta: <b style="color:var(--ink)">${km(r.recta)}</b>. No pude calcular la ruta aquí; usa tu app de mapas.</p>`;
   else txt=`<p class="meta" style="margin:6px 0">No pude obtener tu ubicación. Activa el permiso de ubicación para este sitio en los ajustes de Safari.</p>`;
   const dest=`${(+(a.ini||a).lat).toFixed(6)},${(+(a.ini||a).lng).toFixed(6)}`;
-  return `<div class="ruta"><b>${a.ini?"Cómo llegar al punto de salida":"Cómo llegar"}</b><div class="chips" style="margin:6px 0">${modos}</div>${txt}<div class="mini" style="margin:6px 0 0"><a class="payb sec2" href="https://maps.apple.com/?daddr=${dest}&dirflg=${PERFIL[m][3]}" target="_blank" rel="noopener">Apple Maps</a><a class="payb sec2" href="https://www.google.com/maps/dir/?api=1&destination=${dest}&travelmode=${PERFIL[m][2]}" target="_blank" rel="noopener noreferrer">Google Maps</a>${r&&r.estado==="ok"?`<button id="rutaQuita" class="sec" type="button">Quitar ruta</button>`:""}</div></div>`;
+  return `<div class="ruta"><b>${a.ini?"Cómo llegar al punto de salida":"Cómo llegar"}</b><div class="chips" style="margin:6px 0">${modos}</div>${txt}<div class="mini" style="margin:6px 0 0"><a class="payb sec2" href="https://maps.apple.com/?daddr=${dest}&dirflg=${PERFIL[m][3]}" target="_blank" rel="noopener">Apple Maps</a><a class="payb sec2" href="https://www.google.com/maps/dir/?api=1&destination=${dest}&travelmode=${PERFIL[m][2]}" target="_blank" rel="noopener noreferrer">Google Maps</a><a class="payb sec2" href="https://waze.com/ul?ll=${dest}&navigate=yes" target="_blank" rel="noopener noreferrer">Waze</a>${r&&r.estado==="ok"?`<button id="rutaQuita" class="sec" type="button">Quitar ruta</button>`:""}</div></div>`;
 }
 function irA(v){
   plusMenu(false);
