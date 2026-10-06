@@ -252,6 +252,15 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .glista small{display:block;color:#58705E;font-weight:400;font-size:12px}
 .glista .lleno{opacity:.55}
 /* v82: mensajería */
+/* v83: portada sobre el mapa */
+#bienvenida.hero2{background:rgba(6,20,40,.45)!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);align-items:center!important;justify-content:center!important;text-align:center!important;padding:24px 20px calc(110px + env(safe-area-inset-bottom,0px))!important}
+#bienvenida.hero2::after{display:none!important}
+#bienvenida.hero2>:not(.h2card):not(.wlegal){display:none!important}
+.h2card{position:relative;z-index:3;width:100%;max-width:380px;background:rgba(255,255,255,.96);color:#0A2A5E;border-radius:24px;padding:28px 22px 22px;box-shadow:0 20px 50px rgba(0,0,0,.35);animation:up .5s both}
+.h2card .h2logo{display:block;margin:0 auto;border-radius:18px;box-shadow:0 6px 16px rgba(10,42,94,.35)}
+.h2card h1{font:800 34px/1.05 "Barlow Condensed",system-ui,sans-serif!important;margin:12px 0 6px!important;color:#0A2A5E}
+.h2card p{margin:0 0 20px;font-size:17px;line-height:1.35;color:#2B4A6F}
+#bienvenida.hero2 .h2card button{display:block;width:100%;font-size:19px!important;padding:16px!important;border-radius:16px!important;background:#0A2A5E!important;color:#fff!important;box-shadow:0 8px 20px rgba(10,42,94,.35)!important}
 .mtabs{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;margin:0 0 10px}
 .mtabs button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:transparent;color:var(--mut);padding:9px 6px;border-radius:9px;font-size:15px;font-weight:700;box-shadow:none}
 .mtabs button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
@@ -418,22 +427,17 @@ main{padding:0!important;max-width:none!important}
 <symbol id="avl-tile" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#0A2A5E"/><use href="#avl-logo" x="23.65" y="17" width="52.70" height="66.00"/></symbol>
 </defs></svg>
 
-<div id="bienvenida" class="welcome">
+<div id="bienvenida" class="welcome hero2">
 <div class="fotos" id="fotos" aria-hidden="true"></div>
-<div class="sun"></div>
-<svg class="bg" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true"><path d="M0 200V100l55-55 45 45 55-70 70 80 45-40 130 90v50z" fill="#4A90E2" opacity=".5"/><path d="M0 200v-70l80-45 65 50 85-65 80 65 90-30v95z" fill="#0D3470"/></svg>
-<div class="waves"><svg viewBox="0 0 800 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28q50-30 100 0t100 0t100 0t100 0t100 0t100 0t100 0t100 0V60H0z" fill="#5BC0EB" opacity=".9"/></svg></div>
-<svg class="wlogo" width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"><use href="#avl-tile"/></svg>
 <div id="logoJunta" class="junta" aria-hidden="true"></div>
-<div class="wc">
-<div class="beta">🧪 Versión de prueba</div>
-<div class="wmarca">AppVentureLife</div>
-<h1>Planes de aventura cerca de ti</h1>
-<p>Moto de agua, rutas, viajes, fiestas… Únete a un plan o crea el tuyo.</p>
-<div class="wicons" id="wicons"></div>
-<button id="entrar" type="button">Empezar</button>
+<div class="wicons" id="wicons" hidden></div>
+<div class="h2card">
+<svg class="h2logo" width="72" height="72" viewBox="0 0 100 100" aria-hidden="true"><use href="#avl-tile"/></svg>
+<h1>AppVentureLife</h1>
+<p>Encuentra y crea planes de aventura cerca de ti</p>
+<button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 82 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 83 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -475,7 +479,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 82 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 83 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -509,12 +513,13 @@ main{padding:0!important;max-width:none!important}
 
 <div id="acepta" class="acepta" hidden>
 <div class="acbox">
-<h2>Antes de entrar</h2>
+<h2>Antes de seguir</h2>
 <label class="chk"><input type="checkbox" id="ac-edad"> Tengo 18 años o más</label>
 <label class="chk"><input type="checkbox" id="ac-term"> <span>He leído y acepto los <a href="beta/terminos.html" target="_blank" rel="noopener">Términos de uso</a> y la <a href="beta/privacidad.html" target="_blank" rel="noopener">Política de privacidad</a> (<a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> y <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a>)</span></label>
 <p class="meta" style="margin:10px 0 0">Las actividades al aire libre y acuáticas tienen riesgos. Cada persona es responsable de su seguridad.</p>
 <p class="meta" style="margin:8px 0 0">Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
-<button id="ac-ok" type="button" disabled>Aceptar y entrar</button>
+<button id="ac-ok" type="button" disabled>Aceptar y continuar</button>
+<button id="ac-no" class="sec" type="button" style="width:100%;margin-top:8px">Ahora no</button>
 </div>
 </div>
 
@@ -875,7 +880,7 @@ async function guardaNombre(n){
   pintaYo();
 }
 let cbNombre=null;
-function pedirNombre(cb){cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
+function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
 $("yo").onclick=()=>pedirNombre();
 $("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);$("perfil").classList.remove("open");const c=cbNombre;cbNombre=null;if(c)c()};
 $("p-cancel").onclick=()=>{$("perfil").classList.remove("open");cbNombre=null};
@@ -884,7 +889,7 @@ $("wicons").innerHTML=["moto","ruta","bici","surf","escalada"].map(k=>`<span>${i
 /* fotos reales de portada: sube portada1.jpg, portada2.jpg... al repositorio y salen solas */
 /* vídeo de portada: sube portada.mp4 al repositorio y sale solo (sin sonido, en bucle) */
 (()=>{
-  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  return;
   const v=document.createElement("video");
   v.muted=true;v.loop=true;v.autoplay=true;v.playsInline=true;
   v.setAttribute("muted","");v.setAttribute("playsinline","");v.setAttribute("loop","");v.setAttribute("aria-hidden","true");
@@ -906,12 +911,13 @@ $("wicons").innerHTML=["moto","ruta","bici","surf","escalada"].map(k=>`<span>${i
 })();
 const PORTADA=["portada1.jpg","portada2.jpg","portada3.jpg","portada4.jpg","portada5.jpg"];
 (()=>{
-  const box=$("fotos");let n=0,cur=0;
+  return;const box=$("fotos");let n=0,cur=0;
   PORTADA.forEach(src=>{const im=new Image();im.onload=()=>{const d=document.createElement("div");d.className="fo";d.style.backgroundImage=`url("${src}")`;box.appendChild(d);n++;if(n===1){d.classList.add("on");$("bienvenida").classList.add("con-fotos")}};im.src=src});
   setInterval(()=>{const f=box.querySelectorAll(".fo");if(!f||f.length<2)return;f[cur].classList.remove("on");cur=(cur+1)%f.length;f[cur].classList.add("on")},5500);
 })();
 const VER_TERM="2";
 const aceptado=()=>{try{return localStorage.getItem("avl_acepta")===VER_TERM}catch(e){return false}};
+var accCb=null;function exigeAcepta(cb){if(aceptado())return true;accCb=cb||null;$("acepta").hidden=false;return false}
 function cierraPortada(){$("bienvenida").classList.add("out");setTimeout(()=>$("bienvenida").hidden=true,420);map.invalidateSize()}
 (()=>{const P=[[0,0],[55,0],[100,0],[100,45],[100,100],[40,100],[0,100],[0,55]],C=[50,52];
   const S=[[-150,-170,-40],[20,-240,30],[190,-160,60],[240,30,-30],[170,210,45],[-10,250,-50],[-200,180,35],[-250,-20,-60]];
@@ -921,10 +927,11 @@ function entraAnim(){
   b.classList.add("splash");j.classList.remove("go");void j.offsetWidth;j.classList.add("go");
   setTimeout(()=>{if(!b.hidden)cierraPortada()},3900);
 }
-$("entrar").onclick=()=>{if(!aceptado()){$("acepta").hidden=false;return}entraAnim()};
+$("entrar").onclick=()=>cierraPortada();
 const chkAcepta=()=>{$("ac-ok").disabled=!($("ac-edad").checked&&$("ac-term").checked)};
 $("ac-edad").addEventListener("change",chkAcepta);$("ac-term").addEventListener("change",chkAcepta);
-$("ac-ok").onclick=()=>{try{localStorage.setItem("avl_acepta",VER_TERM)}catch(e){}$("acepta").hidden=true;entraAnim();arranca()};
+$("ac-ok").onclick=()=>{try{localStorage.setItem("avl_acepta",VER_TERM)}catch(e){}$("acepta").hidden=true;if(uid&&sb)registraAceptacion();const f=accCb;accCb=null;if(f)setTimeout(f,60)};
+$("ac-no").onclick=()=>{$("acepta").hidden=true;accCb=null};
 async function registraAceptacion(){try{await sb.from("aceptaciones").upsert({user_id:uid,version:VER_TERM},{onConflict:"user_id,version",ignoreDuplicates:true})}catch(e){}}
 /* cuenta con correo: para ser la misma persona en Safari, en la app de la pantalla de inicio y en otros móviles */
 let cuModo="",cuEmail="",sb2=null;
@@ -1451,7 +1458,7 @@ function pintaDM(){
   const c=$("dm-msgs");c.scrollTop=c.scrollHeight;
 }
 function marcaDM(){if(!dmCon)return;visto["d"+dmCon]=ultimoId(dms[dmCon]);guardaVisto();render()}
-function abreDM(u){dmCon=u;$("dm-menu").hidden=true;pintaDM();$("dm").classList.add("open");marcaDM()}
+function abreDM(u){if(!exigeAcepta(()=>abreDM(u)))return;dmCon=u;$("dm-menu").hidden=true;pintaDM();$("dm").classList.add("open");marcaDM()}
 function fallo(e){alert((e&&e.message)||"Algo ha fallado. Inténtalo de nuevo.")}
 async function perfilListo(){
   if(perfilOk)return true;
@@ -1628,7 +1635,7 @@ function suscribir(){
 }
 async function arranca(){
   if(!sb){cargando=false;render();return}
-  try{await iniciaSesion();registraAceptacion();await recarga();suscribir();importaEnlace()}
+  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();importaEnlace()}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
 var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
@@ -1789,6 +1796,7 @@ ${quien(a,true)}
   on("wa",()=>compartir(a));on("copiar",()=>copiar(a));
   on("yapague",async()=>{try{const r=await sb.from("mensajes").insert({plan_id:a.id,texto:"💶 Ya he pagado, ¿puedes confirmarlo?"});if(r.error)throw r.error;tab="chat";await recarga()}catch(e){fallo(e)}});
   on("unir",async()=>{
+    if(!exigeAcepta(()=>{const b=$("unir");if(b)b.click()}))return;
     if(!me){pedirNombre(()=>$("unir").click());return}
     try{
       if(!await perfilListo())return;
@@ -1886,10 +1894,10 @@ $("resMapa").addEventListener("click",e=>{
 $("bExp").onclick=()=>{const ab=vista==="explorar"&&!$("panelExp").hidden;irA("explorar");if(!ab){$("panelExp").hidden=false;$("bExp").classList.add("on")}};
 $("pxExp").onclick=()=>irA("explorar");$("pxMios").onclick=()=>irA("explorar");
 {const pie=document.querySelector("main>p.meta");if(pie)$("pieExp").appendChild(pie)}
-$("bMios").onclick=()=>vista==="mios"?irA("explorar"):irA("mios");
+$("bMios").onclick=()=>{if(vista==="mios"){irA("explorar");return}if(!exigeAcepta(()=>irA("mios")))return;irA("mios")};
 function plusMenu(v){$("plusMenu").hidden=!v;if(v)$("crearBtn").classList.add("open");else $("crearBtn").classList.remove("open")}
 $("crearBtn").onclick=()=>plusMenu($("plusMenu").hidden);
-$("mPlan").onclick=()=>{plusMenu(false);irA("explorar");sel=null;cerrarForm();render();colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el mapa para marcar el lugar";$("colocarOk").disabled=true;$("colocarOk").textContent="Crear plan aquí";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
+$("mPlan").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mPlan").click()))return;irA("explorar");sel=null;cerrarForm();render();colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el mapa para marcar el lugar";$("colocarOk").disabled=true;$("colocarOk").textContent="Crear plan aquí";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
 $("listaAmigos").addEventListener("click",e=>{
   const v=e.target.closest("[data-ver]");
   if(v){const a=data.find(x=>x.kind==="aqui"&&x.uid===v.dataset.ver);if(a){irA("explorar");map.setView([a.lat,a.lng],15);elegir(a.id)}return}
@@ -1940,7 +1948,7 @@ $("resBusca").addEventListener("click",e=>{
   if(c){responderSolicitud(c.dataset.bacc2,true);return}
   const i=e.target.closest(".item");if(i)abrePersona(i.dataset.per);
 });
-$("mBus").onclick=()=>{plusMenu(false);irA("mios");setTimeout(()=>{const b=$("busca");b.scrollIntoView({behavior:"smooth",block:"center"});b.focus()},150)};
+$("mBus").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mBus").click()))return;irA("mios");setTimeout(()=>{const b=$("busca");b.scrollIntoView({behavior:"smooth",block:"center"});b.focus()},150)};
 $("p-buscable").addEventListener("change",async()=>{
   if(!sb||!uid)return;
   const v=$("p-buscable").checked;
@@ -2063,7 +2071,7 @@ const enviaDM=async()=>{
 $("dm-ok").onclick=enviaDM;
 $("dm-txt").addEventListener("keydown",e=>{if(e.key==="Enter")enviaDM()});
 $("mCod").onclick=()=>{plusMenu(false);abrirCodigo()};
-$("mAqui").onclick=()=>{plusMenu(false);irA("explorar");sel=null;cerrarForm();render();$("aqui").classList.add("open")};
+$("mAqui").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mAqui").click()))return;irA("explorar");sel=null;cerrarForm();render();$("aqui").classList.add("open")};
 $("a-emojis").innerHTML=["📍","🏋️","🏠","☕","🏃","🍕","🏖️","🥾","🚴","🎉","💼","📚"].map(e=>`<button type="button" aria-label="Usar ${e}">${e}</button>`).join("");
 $("a-emojis").onclick=e=>{const b=e.target.closest("button");if(b)$("a-emoji").value=b.textContent};
 $("a-emoji").addEventListener("input",e=>{e.target.value=ultimo(e.target.value)});
@@ -2493,10 +2501,10 @@ async function poneNombreInicio(){
 $("iniNombreBtn").onclick=poneNombreInicio;
 dbp.then(()=>mediaAll()).then(m=>{media=m;render()}).catch(()=>{});
 render();
-if(aceptado())arranca();
+arranca();
 setInterval(render,60000);
-setInterval(()=>{if(!document.hidden&&uid&&sb&&aceptado())recarga()},25000);
-document.addEventListener("visibilitychange",()=>{if(!document.hidden&&uid&&sb&&aceptado())recarga()});
+setInterval(()=>{if(!document.hidden&&uid&&sb)recarga()},25000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&uid&&sb)recarga()});
 </script>
 </body>
 </html>
