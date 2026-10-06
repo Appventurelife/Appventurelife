@@ -281,6 +281,13 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 @keyframes pzj{to{opacity:1;transform:none}}
 .junta.go{animation:jpulso .9s ease 2.65s both}
 @keyframes jpulso{0%{transform:scale(1)}45%{transform:scale(1.14);filter:drop-shadow(0 0 28px rgba(58,160,255,.85))}100%{transform:scale(1);filter:none}}
+/* v73: valoraciones */
+.rep{color:var(--mut);font-weight:400}
+.valora{margin:10px 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.valora b{display:block;margin-bottom:4px;font-size:15px}
+.valora button{background:none!important;border:0!important;padding:2px 4px!important;font-size:32px!important;line-height:1!important;color:#C9CFC8!important;box-shadow:none!important}
+.valora button.on{color:#F2B632!important}
+.aviso-pago{background:rgba(242,182,50,.16);border-radius:10px;padding:8px 10px;margin:10px 0 0!important;color:var(--ink)!important}
 /* v62: mapa a pantalla completa y paneles laterales */
 main{padding:0!important;max-width:none!important}
 .mapwrap{position:fixed!important;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:calc(56px + env(safe-area-inset-bottom,0px));margin:0!important;z-index:1}
@@ -323,7 +330,7 @@ main{padding:0!important;max-width:none!important}
 <div class="wicons" id="wicons"></div>
 <button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 72 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 73 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -365,7 +372,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 72 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 73 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -577,7 +584,19 @@ const sym=(a,s)=>a.emoji?`<span class="em" style="font-size:${s}px">${esc(a.emoj
 const norm=v=>{v=v.trim();if(!v)return"otro";const k=Object.keys(TIPOS).find(k=>TIPOS[k].toLowerCase()===v.toLowerCase());return k||v};
 const hash=t=>{let h=0;for(const c of t)h=(h*31+c.charCodeAt(0))>>>0;return h};
 const col=a=>a.kind==="aqui"?"#1E7BFF":TIPOS[a.tipo]?`var(--t-${a.tipo})`:`hsl(${hash(String(a.tipo).toLowerCase())%360} 50% 38%)`;
-const quien=a=>`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b></p><h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
+function repTxt(u){
+  const r=repu[u],p=[];
+  if(r&&+r.num>0)p.push("⭐ "+String(r.media).replace(".",",")+" ("+r.num+")");
+  if(r&&+r.hechos>0)p.push(r.hechos+(+r.hechos===1?" plan hecho":" planes hechos"));
+  if(verifSet.has(u))p.push("✓ verificado");
+  return `<span class="rep"> · ${p.length?p.join(" · "):"Nuevo, sin valoraciones"}</span>`;
+}
+function valoraHtml(a){
+  if(a.kind==="aqui"||!uid||a.orgId===uid||!pasada(a)||!(a.asistIds||[]).includes(uid))return "";
+  const v=misVotos[a.id]||0;
+  return `<div class="valora" data-plan="${a.id}"><b>${v?"Tu valoración":"¿Qué tal fue? Valora a quien organizó"}</b>${[1,2,3,4,5].map(i=>`<button type="button" data-e="${i}" class="${i<=v?"on":""}" aria-label="${i} estrellas">★</button>`).join("")}</div>`;
+}
+const quien=a=>`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>${valoraHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
 const migra=a=>{if(!Array.isArray(a.asist)){a.asist=[];for(let i=0;i<(a.n||0);i++)a.asist.push(i===0&&a.yo&&me?me:"Participante")}if(!a.org)a.org=a.asist[0]||"Anónimo"};
 const vivos=()=>data.filter(a=>!a.hasta||a.hasta>Date.now());
 const hace=t=>{const m=Math.round((Date.now()-t)/60000);return m<1?"ahora mismo":m<60?"hace "+m+" min":"hace "+Math.floor(m/60)+" h"};
@@ -1330,6 +1349,25 @@ async function iniciaSesion(){
   else if(me){await perfilListo()}
   pintaYo();
 }
+let repu={},misVotos={};
+async function cargaRepu(){
+  try{
+    const [rp,mv]=await Promise.all([sb.from("org_reputacion").select("*"),uid?sb.from("valoraciones").select("plan_id,estrellas").eq("autor",uid):Promise.resolve({data:[]})]);
+    const r={};(rp.data||[]).forEach(x=>{r[x.org]=x});repu=r;
+    const m={};(mv.data||[]).forEach(x=>{m[x.plan_id]=x.estrellas});misVotos=m;
+  }catch(_e){}
+}
+document.addEventListener("click",async e=>{
+  const s=e.target.closest(".valora [data-e]");if(!s)return;
+  e.preventDefault();e.stopPropagation();
+  const box=s.closest(".valora"),pid=+box.dataset.plan,a=data.find(x=>x.id===pid);if(!a)return;
+  const n=+s.dataset.e;
+  try{
+    const r=await sb.from("valoraciones").upsert({plan_id:pid,autor:uid,org:a.orgId,estrellas:n},{onConflict:"plan_id,autor"});
+    if(r.error)throw r.error;
+    misVotos[pid]=n;await cargaRepu();render();
+  }catch(err){fallo(err)}
+});
 async function recarga(){
   try{
     const res=await Promise.all([
@@ -1355,6 +1393,7 @@ async function recarga(){
     if(pr.error&&/buscable/i.test(pr.error.message||""))pr=await sb.from("profiles").select("id,nombre");
     const er=res.find((x,i)=>i!==2&&x.error)||(pr.error?pr:null);if(er)throw er.error;
     const [pl,pa,,aq,co,ms,dr,am,bl,sl,il,ve,og,ad,cb,fo,ac]=res;
+    await cargaRepu();
     adminApp=!!(ad&&ad.data===true);$("mAdmin").hidden=!adminApp;
     verifSet=new Set((ve.data||[]).map(r=>r.user_id));if(adminApp)verifSet.add(uid);miOrg=(og.data&&og.data[0])||null;
     miCobros=(cb&&cb.data&&cb.data[0])||null;$("mOrg").hidden=!verifSet.has(uid);
@@ -1526,7 +1565,7 @@ ${a.equipo?`<p class="meta">Equipo: <b style="color:var(--ink)">${esc(a.equipo)}
 ${a.emerg?`<p class="meta">Contacto de emergencia: <b style="color:var(--ink)">${esc(a.emerg)}</b></p>`:""}
 ${a.desc?`<p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
 ${tiempoHTML(a)}
-${a.precio>0?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza: <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" · <b style='color:#1F7A4D'>✓ Organizador verificado</b>":""}. AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}</div>`:""}
+${a.precio>0?`<div class="pay">${a.precio>0?`<b>${precioTxt(a.precio)} por persona</b>`:`<b>Pagos</b>`}${a.link?`<br><a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">${a.precio>0?"Otras formas de pago":"Forma de pago"}: ${esc(a.pago)}</p>`:""}${a.precio>0&&!soyOrg(a)?`<p class="meta aviso-pago">⚠️ AppVentureLife no comprueba la identidad de quien organiza. Mejor paga con tarjeta: si algo sale mal, tu banco puede devolverte el dinero. Con Bizum casi nunca se recupera.</p>`:""}${a.precio>0&&yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${a.precio>0&&soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}${a.precio>0?`<p class="meta" style="margin:8px 0 0">Organiza: <b style="color:var(--ink)">${esc(a.org)}</b>${a.verificado?" · <b style='color:#1F7A4D'>✓ Organizador verificado</b>":""}. AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}</div>`:""}
 ${quien(a)}
 ${seguridad(a)}
 <div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>`;
