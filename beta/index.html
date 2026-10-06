@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#E9EFE7;--ink:#17301F;--mut:#58705E;--card:#fff;--line:#C6D3C4;--cta:#1F5A3A;--ctat:#fff;--pin:#F2B632;
---t-moto:#1B7F8C;--t-ruta:#5E8C3A;--t-bici:#C8892B;--t-surf:#2D6CC0;--t-escalada:#7A5A3A;--t-otro:#7B8A80;
+--t-moto:#1B7F8C;--t-ruta:#5E8C3A;--t-bici:#C8892B;--t-surf:#2D6CC0;--t-escalada:#7A5A3A;--t-otro:#7B8A80;--t-viaje:#7B4FB0;--t-ocio:#D04A7B;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15}}
 :root[data-theme="dark"]{--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15}
@@ -258,6 +258,21 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 @media (max-height:700px){.welcome{padding-bottom:24px}.wlegal{bottom:66px!important;font-size:12px!important;line-height:1.45!important}}
 .wlegal{position:absolute;left:0;right:0;bottom:72px;z-index:3;text-align:center;font-size:13px;line-height:1.6;color:#fff;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.45)}
 .wlegal a{color:#fff;text-decoration:underline}
+/* v69: portada nueva */
+.welcome{align-items:flex-end!important;justify-content:flex-start!important;text-align:left!important;padding:24px 24px calc(92px + env(safe-area-inset-bottom,0px))!important;background:#0A2A5E!important}
+.welcome .sun,.welcome .bg,.welcome .waves,.welcome .wicons,.welcome .wc .beta{display:none!important}
+.welcome.con-fotos::after{background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.18) 40%,rgba(0,0,0,.85) 100%)!important}
+.wc{max-width:520px!important;width:100%}
+.wmarca{font-weight:800;font-size:15px;letter-spacing:.3px;opacity:.9;margin:0 0 8px}
+.wc h1{font-size:44px!important;line-height:1.02!important;margin:0 0 12px!important}
+.wc p{font-size:17px!important;opacity:.9!important;margin:0 0 24px!important}
+.wc button{display:block;width:100%;font-size:19px!important;padding:17px!important;border-radius:18px!important;background:#fff!important;color:#0A2A5E!important;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.wlegal{bottom:calc(16px + env(safe-area-inset-bottom,0px))!important;font-size:11px!important;line-height:1.5!important;opacity:.8}
+.welcome.splash{align-items:center!important;justify-content:center!important;padding:0!important;background:#0A2A5E!important}
+.welcome.splash>*:not(.wlogo){display:none!important}
+.welcome.splash::after{display:none!important}
+.welcome.splash .wlogo{position:static!important;width:112px!important;height:112px!important;animation:latido 1.2s ease both!important}
+@keyframes latido{0%{transform:scale(.5);opacity:0}45%{transform:scale(1.1);opacity:1}70%{transform:scale(.95)}100%{transform:scale(1);opacity:1}}
 /* v62: mapa a pantalla completa y paneles laterales */
 main{padding:0!important;max-width:none!important}
 .mapwrap{position:fixed!important;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:calc(56px + env(safe-area-inset-bottom,0px));margin:0!important;z-index:1}
@@ -293,12 +308,13 @@ main{padding:0!important;max-width:none!important}
 <svg class="wlogo" width="60" height="60" viewBox="0 0 100 100" aria-hidden="true"><use href="#avl-tile"/></svg>
 <div class="wc">
 <div class="beta">🧪 Versión de prueba</div>
-<h1>AppVentureLife</h1>
-<p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
+<div class="wmarca">AppVentureLife</div>
+<h1>Planes de aventura cerca de ti</h1>
+<p>Moto de agua, rutas, viajes, fiestas… Únete a un plan o crea el tuyo.</p>
 <div class="wicons" id="wicons"></div>
-<button id="entrar" type="button">Ver planes</button>
+<button id="entrar" type="button">Empezar</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 68 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 69 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -340,7 +356,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 68 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 69 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar"><button id="bExp" type="button" class="on">Explorar</button><button id="crearBtn" type="button" class="plus" aria-label="Crear plan">+</button><button id="bMios" type="button">Mensajes</button></nav>
@@ -539,7 +555,7 @@ main{padding:0!important;max-width:none!important}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const TIPOS={moto:"Moto de agua",ruta:"Ruta a pie",bici:"Bici",surf:"Surf",escalada:"Escalada",otro:"Otra"};
+const TIPOS={moto:"Moto de agua",ruta:"Ruta a pie",bici:"Bici",surf:"Surf",escalada:"Escalada",viaje:"Viajes",ocio:"Ocio",otro:"Otra"};
 const IC={
 moto:'<path d="M3 14h12l3-4h3"/><path d="M8 14l2-5h4"/><path d="M2 19c2-2 4 2 6 0s4 2 6 0 4 2 6 0"/>',
 ruta:'<path d="M2 20l6-11 4 6 3-4 7 9z"/><path d="M8 9V4l4 1.5L8 7"/>',
@@ -694,6 +710,8 @@ const EMOC={"Agua":["🚤","🏄","🤿","🛶","🚣","🏊","🎣","🐬","�
 "Aire":["🪂","🪁","🎈","🛩️","🚁","🦜","☁️","🌬️"],
 "Camping":["🏕️","🔥","⛺","🌌","🌅","🎒","🧭","🔦","🍳","🌙","🪵","🦌"],
 "Deporte":["⚽","🏀","🎾","🏐","🏓","🥏","🎯","🏹","🥊","🧘","🏋️","⛳","🤸","🏃","🏇","🤾"],
+"Viajes":["✈️","🧳","🗺️","🚆","🚌","🚢","🛫","🏨","🏰","🗽","🌍","📍","🏝️","🚐"],
+"Ocio":["🍽️","🍔","🍕","🍣","🍷","☕","🎢","🎡","🎠","🎳","🎬","🎤","🎮","🛍️","🎨","🎭","🧁","🏟️"],
 "Fiesta":["🎉","🍻","🍕","🎵","📸","🎸","🍖","🥂","🏆","❤️","⭐","😎","💪","🙌","✨","🌴"]};
 let catEmo="Agua";
 function pintaEmo(){
@@ -724,14 +742,25 @@ $("wicons").innerHTML=["moto","ruta","bici","surf","escalada"].map(k=>`<span>${i
 /* vídeo de portada: sube portada.mp4 al repositorio y sale solo (sin sonido, en bucle) */
 (()=>{
   if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  try{if(localStorage.getItem("avl_acepta"))return}catch(_e){}
   const v=document.createElement("video");
   v.muted=true;v.loop=true;v.autoplay=true;v.playsInline=true;
   v.setAttribute("muted","");v.setAttribute("playsinline","");v.setAttribute("loop","");v.setAttribute("aria-hidden","true");
   v.addEventListener("playing",()=>{v.classList.add("on");$("bienvenida").classList.add("con-fotos")},{once:true});
   v.addEventListener("error",()=>{if(v.parentNode)v.parentNode.removeChild(v)});
   $("fotos").appendChild(v);
-  v.src="portada.mp4";
-  const p=v.play();if(p&&p.catch)p.catch(()=>{});
+  const VIDS=["media/portada-moto.mp4","media/portada-mochila.mp4","media/portada-rapel.mp4","media/portada-festival.mp4","media/portada-dj.mp4"];
+  const w=document.createElement("video");w.muted=true;w.loop=true;w.playsInline=true;w.setAttribute("muted","");w.setAttribute("playsinline","");w.setAttribute("loop","");w.setAttribute("aria-hidden","true");
+  $("fotos").appendChild(w);
+  const par=[v,w];let act=0,iv=0;
+  const pon=(e,i)=>{e.src=VIDS[i];const p=e.play();if(p&&p.catch)p.catch(()=>{})};
+  pon(v,0);
+  const tmr=setInterval(()=>{
+    if($("bienvenida").hidden){clearInterval(tmr);par.forEach(e=>{try{e.pause();e.removeAttribute("src");e.load()}catch(_e){}});return}
+    const sig=1-act,e=par[sig];iv=(iv+1)%VIDS.length;
+    e.addEventListener("playing",()=>{e.classList.add("on");par[act].classList.remove("on");const viejo=par[act];act=sig;setTimeout(()=>{try{viejo.pause()}catch(_e){}},1100)},{once:true});
+    pon(e,iv);
+  },6000);
 })();
 const PORTADA=["portada1.jpg","portada2.jpg","portada3.jpg","portada4.jpg","portada5.jpg"];
 (()=>{
@@ -743,6 +772,7 @@ const VER_TERM="2";
 const aceptado=()=>{try{return localStorage.getItem("avl_acepta")===VER_TERM}catch(e){return false}};
 function cierraPortada(){$("bienvenida").classList.add("out");setTimeout(()=>$("bienvenida").hidden=true,420);map.invalidateSize()}
 $("entrar").onclick=()=>{if(!aceptado()){$("acepta").hidden=false;return}cierraPortada()};
+if(aceptado()&&!$("bienvenida").hidden){$("bienvenida").classList.add("splash");setTimeout(()=>{if(!$("bienvenida").hidden)cierraPortada()},1400)}
 const chkAcepta=()=>{$("ac-ok").disabled=!($("ac-edad").checked&&$("ac-term").checked)};
 $("ac-edad").addEventListener("change",chkAcepta);$("ac-term").addEventListener("change",chkAcepta);
 $("ac-ok").onclick=()=>{try{localStorage.setItem("avl_acepta",VER_TERM)}catch(e){}$("acepta").hidden=true;cierraPortada();arranca()};
