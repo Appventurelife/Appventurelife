@@ -653,7 +653,8 @@ main{padding:0!important;max-width:none!important}
 .phead{display:flex;align-items:center;gap:8px;margin:0 0 8px}
 .phead h2{flex:1;margin:0;font-size:26px;line-height:1.1}
 .phead button{width:38px;height:38px;padding:0;border-radius:50%;background:var(--card);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.2);flex:none}
-.visbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:4px 0 10px}.visop{display:flex;gap:6px;margin-top:8px}.visop button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-size:22px;line-height:1.1}.visop button span{font-size:13px;font-weight:600}.visop button.on{border-color:var(--cta);background:var(--cta);color:var(--ctat)}.locbtn.buscando{background:#E4E4E4;color:#444;opacity:1}.locbtn.buscando svg{animation:locgira 1s linear infinite}@keyframes locgira{to{transform:rotate(360deg)}}
+.visbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin:4px 0 10px}.visop{display:flex;gap:6px;margin-top:8px}
+body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegidos"],body.sincorreo #f-visop [data-v="amigos"]{display:none!important}.visop button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border:2px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-size:22px;line-height:1.1}.visop button span{font-size:13px;font-weight:600}.visop button.on{border-color:var(--cta);background:var(--cta);color:var(--ctat)}.locbtn.buscando{background:#E4E4E4;color:#444;opacity:1}.locbtn.buscando svg{animation:locgira 1s linear infinite}@keyframes locgira{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -676,7 +677,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 141 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 142 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -718,7 +719,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 141 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 142 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -900,7 +901,7 @@ main{padding:0!important;max-width:none!important}
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 141 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 142 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1282,7 +1283,7 @@ async function cuPinta(){
   let u=null;try{const r=await sb.auth.getUser();u=r.data&&r.data.user}catch(e){}
   const temp=!u||!!u.is_anonymous||!u.email;
   $("cu-tit").textContent=temp?"Guarda tu cuenta":"Tu cuenta";$("cu-estado").textContent=temp?"Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app.":"✅ "+u.email;
-  $("cu-form").hidden=!temp;$("cu-salir").hidden=temp;{const cb=$("cuentaBox"),t=$(temp?"p-arriba":"p-ajcont");if(cb&&t&&cb.parentElement!==t){if(temp)t.appendChild(cb);else t.insertBefore(cb,t.children[1]||null)}}
+  $("cu-form").hidden=!temp;$("cu-salir").hidden=temp;document.body.classList.toggle("sincorreo",temp);{const cb=$("cuentaBox"),t=$(temp?"p-arriba":"p-ajcont");if(cb&&t&&cb.parentElement!==t){if(temp)t.appendChild(cb);else t.insertBefore(cb,t.children[1]||null)}}
   $("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg("");cuModo="";if(temp)cuModoEntrar(false);
 }
 let cuUltimoMsg="";
@@ -2034,7 +2035,7 @@ function suscribir(){
 }
 async function arranca(){
   if(!sb){cargando=false;render();return}
-  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();avisoEntrada()}
+  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();avisoEntrada();cuEsTemporal().then(t=>document.body.classList.toggle("sincorreo",t)).catch(()=>{})}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
 var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
@@ -2494,7 +2495,7 @@ const enviaDM=async()=>{
 $("dm-ok").onclick=enviaDM;
 $("dm-txt").addEventListener("keydown",e=>{if(e.key==="Enter")enviaDM()});
 $("mCod").onclick=()=>{plusMenu(false);abrirCodigo()};
-$("mAqui").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mAqui").click()))return;irA("explorar");sel=null;cerrarForm();render();pintaVisAqui();$("aqui").classList.add("open");if($("a-vis").value==="grupo")pintaGrSel("grupo")};
+$("mAqui").onclick=()=>{plusMenu(false);if(!exigeAcepta(()=>$("mAqui").click()))return;irA("explorar");sel=null;cerrarForm();render();pintaVisAqui();$("aqui").classList.add("open");if(document.body.classList.contains("sincorreo")&&["amigos","elegidos"].includes($("a-vis").value)){$("a-vis").value="grupo";$("a-vis").dispatchEvent(new Event("change"))}if($("a-vis").value==="grupo")pintaGrSel("grupo")};
 $("a-emojis").innerHTML=["📍","🏋️","🏠","☕","🏃","🍕","🏖️","🥾","🚴","🎉","💼","📚"].map(e=>`<button type="button" aria-label="Usar ${e}">${e}</button>`).join("");
 $("a-emojis").onclick=e=>{const b=e.target.closest("button");if(b)$("a-emoji").value=b.textContent};
 $("a-emoji").addEventListener("input",e=>{e.target.value=ultimo(e.target.value)});
