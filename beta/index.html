@@ -565,7 +565,7 @@ b.po-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:elli
 .ge-c{text-align:center;padding:24px 0}
 .ge-ic{font-size:56px;line-height:1}
 #ge-ok{margin-top:18px!important}
-.pe-bio{font-size:16px;line-height:1.4;margin:10px 0 4px;white-space:pre-wrap}
+.pe-bio{font-size:16px;line-height:1.4;margin:12px 0 2px;white-space:pre-wrap}
 #org-abrir.p-gran:not(:only-of-type){}
 .adm-org{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 8px;background:var(--card)}
 .adm-org>summary{cursor:pointer;font-weight:700;list-style:none}
@@ -648,10 +648,10 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 @keyframes jpulso{0%{transform:scale(1)}45%{transform:scale(1.14);filter:drop-shadow(0 0 28px rgba(58,160,255,.85))}100%{transform:scale(1);filter:none}}
 /* v73: valoraciones */
 .rep{color:var(--mut);font-weight:400}
-.pe-cab{display:flex;align-items:center;gap:14px;margin:0 40px 6px 0}
-.pe-cab .cav{width:72px;height:72px;font-size:30px}
-.pe-cab h2{margin:0}
-.pe-rep{margin:2px 0 0;font-size:15px}.pe-rep .rep{color:var(--ink);font-weight:600}
+.pe-cab{display:flex;align-items:center;gap:14px;margin:16px 50px 16px 0}
+.pe-cab .cav{width:64px;height:64px;font-size:28px}
+.pe-cab h2{margin:0;font-size:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pe-rep{margin:4px 0 0;font-size:16px}.pe-rep .rep{color:var(--ink);font-weight:600}
 .valora{margin:10px 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
 .valora b{display:block;margin-bottom:4px;font-size:15px}
 .valora button{background:none!important;border:0!important;padding:2px 4px!important;font-size:32px!important;line-height:1!important;color:#C9CFC8!important;box-shadow:none!important}
@@ -744,7 +744,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 156 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 157 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -781,7 +781,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 156 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 157 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -872,6 +872,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="pmenu"><button id="peMas" class="pmas" type="button" aria-label="Más opciones">⋯</button><div id="peLista" class="pmlista" hidden><button id="pe-den" type="button">🚩 Denunciar</button><button id="pe-bloq" type="button">🚫 Bloquear</button></div></div>
 <div class="pe-cab"><div id="pe-av"></div><div style="min-width:0"><h2 id="pe-n">Persona</h2><p class="pe-rep" id="pe-rep"></p></div></div>
 <p class="pe-bio" id="pe-bio" hidden></p>
+<div class="p-stats" id="pe-stats"></div>
 <p class="meta" id="pe-e"></p>
 <div id="pe-acc"></div>
 <div id="pe-planes"></div>
@@ -978,7 +979,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 156 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 157 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2513,7 +2514,7 @@ async function quitarAmigo(u){
   if(!confirm("¿Quitar a "+(nombres[u]||"esta persona")+" de tus amigos?"))return;
   try{const r=await sb.rpc("quitar_amigo",{p_amigo:u});if(r.error)throw r.error;await recarga()}catch(e){fallo(e)}
 }
-function abrePersona(u){if(!u||u===uid)return;perCtx=u;pintaPersona();$("persona").classList.add("open")}
+let perNum={};function abrePersona(u){if(!u||u===uid)return;perCtx=u;pintaPersona();$("persona").classList.add("open")}
 function pintaPersona(){
   const u=perCtx,n=nombres[u]||"Alguien";let est="",acc="";
   if(esAmigo(u)){est="👥 Sois amigos";acc=`<button id="pe-dm" type="button">💬 Escribir mensaje</button><button id="pe-quitar" class="sec" type="button">Quitar de amigos</button>`}
@@ -2521,7 +2522,7 @@ function pintaPersona(){
   else if(solEnv.includes(u)){est="Solicitud enviada";acc=`<button id="pe-can" class="sec" type="button">Cancelar solicitud</button>`}
   else{acc=`<button id="pe-add" type="button">👥 Añadir a amigos</button>`}
   $("pe-n").textContent=n;$("pe-e").innerHTML=est;
-  $("pe-av").innerHTML=avPersona(u,n);$("pe-rep").innerHTML=repTxt(u).replace('<span class="rep"> · ','<span class="rep">');{const pb=$("pe-bio");if(pb){pb.textContent=biosP[u]||"";pb.hidden=!biosP[u]}}
+  $("pe-av").innerHTML=avPersona(u,n);$("pe-rep").innerHTML=repTxt(u).replace('<span class="rep"> · ','<span class="rep">');{const pb=$("pe-bio");if(pb){pb.textContent=biosP[u]||"";pb.hidden=!biosP[u]}}{const ps=$("pe-stats");if(ps){ps.innerHTML=cajasNum(perNum[u]);if(sb&&uid&&!perNum[u])sb.rpc("numeros_de",{p_u:u}).then(r=>{if(!r.error&&r.data){perNum[u]=r.data;if(perCtx===u)ps.innerHTML=cajasNum(r.data)}}).catch(()=>{})}}
   const pls=data.filter(a=>a.kind!=="aqui"&&a.orgId===u&&!pasada(a));
   $("pe-planes").innerHTML=pls.length?`<h3 class="who-h">Organiza ahora</h3>`+pls.map(a=>`<div class="item" data-ver="${a.id}"><div style="flex:1;min-width:0"><b>${esc(a.emoji||"")} ${esc(a.titulo)}</b><small>${esc(textoCuando(a))}</small></div></div>`).join(""):"";
   $("pe-planes").onclick=e=>{const i=e.target.closest("[data-ver]");if(!i)return;const pl=data.find(x=>x.id===+i.dataset.ver);if(!pl)return;$("persona").classList.remove("open");irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id)};
