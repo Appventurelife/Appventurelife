@@ -68,7 +68,9 @@ h1,h2{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;font-we
 .msg div{white-space:pre-wrap;word-break:break-word}
 .msg.yo{align-self:flex-end;background:var(--cta);color:var(--ctat);border-radius:14px 14px 4px 14px}
 .msg.yo small{color:inherit;opacity:.75}
-.msg.org:not(.yo){background:#FFF3D1;border:1.5px solid #E8B93A}
+.msg.org:not(.yo){background:#FFF3D1;border:1.5px solid #E8B93A;color:#3A2A00}
+.msg.org:not(.yo) div{color:#3A2A00!important}
+.msg.org:not(.yo) small,.msg.org:not(.yo) small .lnk{color:#7A5A10!important}
 .orgtag{font-size:11px;font-weight:800;color:#8A5A00;background:#FFE29A;border-radius:99px;padding:0 6px}
 .chatgo{display:block;width:100%;margin:10px 0 8px;padding:14px!important;font-size:17px!important;font-weight:700;border-radius:14px!important}
 .chatnew{background:#C4472F;color:#fff;border-radius:99px;padding:1px 8px;font-size:13px;margin-left:4px}
@@ -103,9 +105,14 @@ select,input,textarea{width:100%;padding:10px;border-radius:10px;border:1px soli
 .sheet.open{transform:none}
 .grab{width:42px;height:5px;border-radius:9px;background:var(--line);margin:4px auto 12px}
 .cover{width:100%;height:150px;object-fit:cover;border-radius:14px;margin-bottom:10px;display:block}
+img.cover{height:auto;max-height:340px}
+#volverPlan{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(132px + env(safe-area-inset-bottom,0px));z-index:660;background:#0A2A5E!important;color:#fff!important;border:0!important;border-radius:999px!important;padding:12px 20px!important;font-size:16px!important;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.3);width:auto!important;white-space:nowrap}
+#volverPlan[hidden]{display:none!important}
+body:has(.sheet.open) #volverPlan{display:none!important}
+.dtrow .dtw input{min-height:54px;box-sizing:border-box}
 .cover.ph{display:flex;align-items:center;justify-content:center;color:#fff}
 .sheet h2{font-size:28px;line-height:1.05;margin-bottom:4px}
-#prev{width:100%;height:120px;object-fit:cover;border-radius:12px;margin-top:8px}
+#prev{width:100%;height:auto;max-height:340px;object-fit:cover;border-radius:12px;margin-top:8px;display:block}
 .em{line-height:1;font-family:system-ui,-apple-system,"Apple Color Emoji","Segoe UI Emoji",sans-serif}
 .emojis{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .emojis button{background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:4px 8px;font-size:22px;line-height:1.2}
@@ -653,6 +660,7 @@ main{padding:0!important;max-width:none!important}
 <symbol id="avl-tile" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#0A2A5E"/><use href="#avl-logo" x="23.65" y="17" width="52.70" height="66.00"/></symbol>
 </defs></svg>
 
+<button id="volverPlan" type="button" hidden>‹ Volver al plan</button>
 <div id="intro" aria-hidden="true"><div class="inrow"><svg class="inlogo" viewBox="0 0 407.35 510.12" aria-hidden="true"><use href="#avl-logo"/></svg><div class="incol"><div class="intxt"><i style="--i:0">K</i><i style="--i:1">i</i><i class="v" style="--i:2">p</i><i class="v" style="--i:3">l</i><i class="v" style="--i:4">a</i><i class="v" style="--i:5">n</i></div><p class="inslo">Planes de aventura cerca de ti.<br>Apúntate con un toque.</p></div></div><span class="inbeta">🧪 Versión de prueba</span></div>
 <div id="bienvenida" class="welcome hero2 out" hidden>
 <div class="fotos" id="fotos" aria-hidden="true"></div>
@@ -665,7 +673,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 136 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 137 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -707,7 +715,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 136 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 137 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -828,8 +836,7 @@ main{padding:0!important;max-width:none!important}
 <div class="prevrow"><div id="pinprev"></div><span class="meta">Así se verá tu chincheta en el mapa</span></div>
 </div>
 <div class="paso" data-p="2" hidden>
-<label>Fecha y hora</label>
-<div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
+<div class="chips" id="f-dias" hidden></div>
 <div class="row dtrow"><div><label for="f-dia">Día</label><div class="dtw"><input id="f-dia" type="date"><span class="dtph">Toca para elegir</span></div></div><div><label for="f-hora">Hora</label><div class="dtw"><input id="f-hora" type="time"><span class="dtph">Toca para elegir</span></div></div></div>
 <label for="f-plazas">Plazas</label><div class="stepper"><button type="button" class="sec" data-plz="-1" aria-label="Menos plazas">−</button><input id="f-plazas" type="number" inputmode="numeric" min="2" max="50" value="6"><button type="button" class="sec" data-plz="1" aria-label="Más plazas">+</button></div>
 </div>
@@ -890,7 +897,7 @@ main{padding:0!important;max-width:none!important}
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 136 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 137 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1523,7 +1530,7 @@ function calcularRuta(a,modo){
       capaRuta=L.geoJSON(rt.geometry,{style:{color:"#1C6FD1",weight:5,opacity:.9}}).addTo(map);
       map.fitBounds(capaRuta.getBounds(),{padding:[40,40]});
       ruta={id:a.id,modo,recta,dist:rt.distance,dur:rt.duration,estado:"ok"};
-      if(sel===a.id)sel=null;
+      if(sel===a.id){sel=null;verEnMapa(a.id)}
     }catch(e){if(ruta&&ruta.id===a.id)ruta={id:a.id,modo,recta,estado:"sinruta"}}
     render();
   },()=>{ruta={id:a.id,modo,estado:"sinpermiso"};render()},{enableHighAccuracy:true,timeout:10000});
@@ -1542,7 +1549,7 @@ function rutaHTML(a){
   return `<div class="ruta"><b>${a.ini?"Cómo llegar al punto de salida":"Cómo llegar"}</b><div class="chips" style="margin:6px 0">${modos}</div>${txt}<div class="mini" style="margin:6px 0 0"><a class="payb sec2" href="https://maps.apple.com/?daddr=${dest}&dirflg=${PERFIL[m][3]}" target="_blank" rel="noopener">Apple Maps</a><a class="payb sec2" href="https://www.google.com/maps/dir/?api=1&destination=${dest}&travelmode=${PERFIL[m][2]}" target="_blank" rel="noopener noreferrer">Google Maps</a><a class="payb sec2" href="https://waze.com/ul?ll=${dest}&navigate=yes" target="_blank" rel="noopener noreferrer">Waze</a>${r&&r.estado==="ok"?`<button id="rutaQuita" class="sec" type="button">Quitar ruta</button>`:""}</div></div>`;
 }
 function irA(v){
-  plusMenu(false);
+  plusMenu(false);{const vb=document.getElementById("volverPlan");if(vb)vb.hidden=true}
   vista=v;$("vMios").hidden=v!=="mios";$("panelExp").hidden=true;
   marcaBar();
   if(v==="explorar")setTimeout(()=>map.invalidateSize(),60);else salirColocar();
@@ -2181,7 +2188,7 @@ ${infoPlan(a)}
   on("gofotos",()=>{tab="fotos";render()});
   on("editGo",()=>abrirEdicion(a));on("invGo",()=>abreInvitar(a.id));on("rechInv",()=>rechazarInvitacion(a.id));
   on("denPlan",()=>abreDenuncia(a.orgId,a.id));on("bloqOrg",()=>bloquear(a.orgId));
-  on("verTramo",()=>{sel=null;render();try{map.fitBounds([[a.ini.lat,a.ini.lng],[a.lat,a.lng]],{padding:[60,60]});$("map").scrollIntoView({behavior:"smooth",block:"center"})}catch(e){}});on("rutaGo",()=>calcularRuta(a));on("rutaQuita",()=>{quitaRuta();render()});
+  on("verTramo",()=>{sel=null;verEnMapa(a.id);render();try{map.fitBounds([[a.ini.lat,a.ini.lng],[a.lat,a.lng]],{padding:[60,60]});$("map").scrollIntoView({behavior:"smooth",block:"center"})}catch(e){}});on("rutaGo",()=>calcularRuta(a));on("rutaQuita",()=>{quitaRuta();render()});
   d.querySelectorAll("[data-rm]").forEach(el=>{el.onclick=()=>calcularRuta(a,el.dataset.rm)});
   on("copCod",async()=>{try{await navigator.clipboard.writeText(fmtCod(a.codigo));$("copCod").textContent="¡Copiado!"}catch(e){prompt("Código:",fmtCod(a.codigo))}});
   on("wa",()=>compartir(a));on("copiar",()=>copiar(a));
@@ -2259,7 +2266,10 @@ async function guardaEdicion(id,campos,priv,cod){
   }
 }
 function cerrarForm(){if(editId){limpiaForm()}editId=null;lugarSug="";iniPend=null;iniTmp=null;modoIni=false;iniNombre="";iniTmpNombre="";puntoAuto="";quitaIniMarker();$("centro").hidden=true;$("np-t").textContent="Nuevo plan";$("f-ok").textContent="Publicar";$("f-mover").hidden=true;$("colocarOk").textContent="Crear plan aquí";pend=null;foto="";quitarFoto=false;$("f-foto-quitar").hidden=true;colocando=false;$("colocar").hidden=true;if(pendMarker){map.removeLayer(pendMarker);pendMarker=null}$("prev").hidden=true;$("f-foto").value="";paso=1;pasoErr("");pintaPasos();$("nueva").classList.remove("open")}
-function elegir(id){burbuja=null;tab="info";delId=null;segAbierta=false;cerrarForm();sel=id;const pa=data.find(x=>x.id===id);if(pa&&pa.ini){cargaTramo(pa);try{map.fitBounds([[pa.ini.lat,pa.ini.lng],[pa.lat,pa.lng]],{padding:[60,60]})}catch(e){}}render()}
+var volverId=null;
+function verEnMapa(id){if(vista!=="explorar")irA("explorar");volverId=id;const pe=$("panelExp");if(pe&&!pe.hidden){pe.hidden=true;marcaBar()}const b=$("volverPlan");if(b)b.hidden=false}
+$("volverPlan").onclick=()=>{const id=volverId;$("volverPlan").hidden=true;if(id!=null&&data.find(x=>x.id===id))elegir(id)};
+function elegir(id){{const vb=document.getElementById("volverPlan");if(vb)vb.hidden=true}burbuja=null;tab="info";delId=null;segAbierta=false;cerrarForm();sel=id;const pa=data.find(x=>x.id===id);if(pa&&pa.ini){cargaTramo(pa);try{map.fitBounds([[pa.ini.lat,pa.ini.lng],[pa.lat,pa.lng]],{padding:[60,60]})}catch(e){}}render()}
 
 map.on("click",e=>{
   plusMenu(false);$("resMapa").hidden=true;$("capasMenu").hidden=true;
