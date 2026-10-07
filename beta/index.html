@@ -413,6 +413,28 @@ b.po-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:elli
 .infoplan>summary{list-style:none;color:var(--mut);font-size:14px;text-decoration:underline;cursor:pointer;padding:12px 0}
 .infoplan>summary::-webkit-details-marker{display:none}
 .infoplan{margin:16px 0 8px}
+.p-nrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.p-lapiz{background:none!important;border:0!important;box-shadow:none!important;padding:4px 6px!important;font-size:22px!important;line-height:1;width:auto!important;margin:0!important}
+#p-sub:empty,#p-rep:empty,#org-estado:empty{display:none}
+#p-rep{margin:4px 0 0;font-size:16px}
+.p-botones{display:flex;flex-direction:column;gap:10px;margin:14px 0}
+.p-botones .meta{margin:0}
+.p-gran{width:100%;padding:14px!important;font-size:17px!important;font-weight:700;border-radius:14px!important;margin:0!important}
+#org-abrir.p-gran{background:#0A2A5E!important;color:#fff!important;border:0!important}
+#p-ajustes .p-card{margin:10px 0}
+#p-ajustes .chk{display:flex;align-items:center;gap:8px;margin:10px 0}
+#p-ajustes .p-borrar{margin-top:12px}
+.mispas{margin-top:16px}
+.mispas summary .pcnt{color:var(--mut);font-weight:600}
+.mispas .item{padding-top:8px;padding-bottom:8px}
+.pquita{flex:none;padding:6px 10px!important;font-size:14px!important;width:auto!important;margin:0 0 0 6px!important}
+.po-pas .po-plan{padding:8px 12px;margin:0 0 6px;border-style:dashed;opacity:.75}
+.po-pas .po-plan[open]{opacity:1}
+.po-pas .po-plan:not([open]) .po-res{display:none}
+.adm-stats{display:flex;gap:8px;margin:8px 0 12px}
+.adm-stats>div{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.adm-stats b{display:block;font-size:24px}
+.adm-stats small{color:var(--mut);font-size:13px}
 body:has(#colocar:not([hidden])) #cercaChip,body:has(.sheet.open) #cercaChip,body:has(#nueva.open) #cercaChip{display:none!important}
 #cercaChip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:650;display:flex;align-items:center;gap:4px;background:#0A2A5E;border-radius:999px;padding:4px 4px 4px 6px;box-shadow:0 6px 18px rgba(0,0,0,.3);max-width:calc(100% - 32px)}
 #cercaChip .cc-go{background:none!important;border:0!important;color:#fff!important;font-weight:700;font-size:16px;padding:10px 12px!important;white-space:nowrap;box-shadow:none!important;width:auto}
@@ -583,7 +605,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 130 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 131 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -625,7 +647,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 130 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 131 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -765,15 +787,12 @@ main{padding:0!important;max-width:none!important}
 
 <section id="perfil" class="sheet" aria-label="Tu perfil">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam">📷</span></label><input type="file" id="p-foto" accept="image/*" hidden><div class="p-hi"><h2 id="p-tit">Tu perfil</h2><p class="meta" id="p-sub"></p><button class="p-link p-quita" id="p-quitafoto" type="button" hidden>Quitar foto</button></div></div>
-<div class="p-card">
-<h3 class="p-h">Tu nombre</h3>
-<p class="meta">Es el nombre que verán los demás en los planes a los que vayas.</p>
-<input id="p-nombre" maxlength="24" placeholder="Ej. Marta" aria-label="Tu nombre">
-<label class="chk"><input type="checkbox" id="p-buscable" checked> Que me encuentren por mi nombre</label>
+<div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam">📷</span></label><input type="file" id="p-foto" accept="image/*" hidden><div class="p-hi"><div class="p-nrow"><h2 id="p-tit">Tu perfil</h2><button class="p-lapiz" id="p-edit" type="button" aria-label="Cambiar nombre" hidden>✏️</button></div><p class="meta" id="p-rep"></p><p class="meta" id="p-sub"></p><button class="p-link p-quita" id="p-quitafoto" type="button" hidden>Quitar foto</button></div></div>
+<div class="p-card" id="p-edbox">
+<input id="p-nombre" maxlength="24" placeholder="Tu nombre (ej. Marta)" aria-label="Tu nombre">
 <button id="p-ok" type="button" class="p-wide">Guardar nombre</button><button class="sec" id="p-cancel" type="button" hidden>Cancelar</button>
 </div>
-<div id="cuentaBox" class="p-card">
+<div id="p-arriba"><div id="cuentaBox" class="p-card">
 <h3 class="p-h" id="cu-tit">Guarda tu cuenta</h3>
 <p class="meta" id="cu-estado"></p>
 <div id="cu-form">
@@ -783,15 +802,20 @@ main{padding:0!important;max-width:none!important}
 </div>
 <p class="meta" id="cu-msg"></p>
 <button class="sec" id="cu-salir" type="button" hidden style="width:100%">Cerrar sesión en este navegador</button>
-</div>
-<div id="orgBox" class="p-card">
-<h3 class="p-h">Organizar planes de pago</h3>
+</div></div>
+<div class="p-botones" id="orgBox">
 <p class="meta" id="org-estado"></p>
-<button class="sec" id="org-abrir" type="button" style="width:100%" hidden>Quiero ser organizador verificado</button>
+<button id="org-abrir" type="button" class="p-gran" hidden>Organizar planes de pago</button>
+<button id="p-amigos" type="button" class="p-gran sec">👥 Mis amigos</button>
 </div>
+<details class="mas" id="p-ajustes"><summary>⚙️ Ajustes</summary>
+<div id="p-ajcont">
+<label class="chk"><input type="checkbox" id="p-buscable" checked> Que me encuentren por mi nombre</label>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 130 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+</div>
+</details>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 131 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -808,6 +832,7 @@ main{padding:0!important;max-width:none!important}
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2>Panel del dueño</h2>
 <p class="meta">Solo lo ves tú.</p>
+<div class="adm-stats"><div><b id="adm-online">–</b><small>conectados ahora</small></div><div><b id="adm-usu">–</b><small>personas</small></div><div><b id="adm-cor">–</b><small>con correo</small></div></div>
 <details class="mas" id="adm-priv" data-k="adm-priv"><summary>🔒 Planes privados y de amigos</summary><div id="adm-privl" class="list"></div></details>
 <div id="adminLista" class="list"></div>
 </section>
@@ -878,7 +903,7 @@ let vista="todas",fFecha="",compartido=false;
 const fmtF=f=>new Date(f).toLocaleString("es",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
 const tF=a=>a.fecha?new Date(a.fecha).getTime():NaN;
 const textoCuando=a=>a.fecha?fmtF(a.fecha):a.cuando;
-let viejosOrg=[];const pasada=a=>!!a.fecha&&tF(a)<Date.now()-3*3600000;
+let viejosOrg=[],viejosMios=[];const pasada=a=>!!a.fecha&&tF(a)<Date.now()-3*3600000;
 const mia=a=>!!uid&&(a.orgId===uid||(a.asistIds||[]).includes(uid));
 function cumpleFecha(a){
   if(!fFecha)return true;if(!a.fecha)return false;
@@ -1041,10 +1066,14 @@ async function guardaNombre(n){
   pintaYo();
 }
 let cbNombre=null;
-function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;pintaCabPerfil();$("perfil").classList.add("open");if(cb||!me)setTimeout(()=>$("p-nombre").focus(),300)}
+function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;pintaCabPerfil();pEdita(!!(cb||!me));$("perfil").classList.add("open")}
 $("yo").onclick=()=>pedirNombre();
-$("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);$("perfil").classList.remove("open");const c=cbNombre;cbNombre=null;if(c)c()};
-$("p-cancel").onclick=()=>{$("perfil").classList.remove("open");cbNombre=null};
+$("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);const c=cbNombre;cbNombre=null;if(c){$("perfil").classList.remove("open");c()}else{pEdita(false);pintaCabPerfil()}};
+$("p-cancel").onclick=()=>{pEdita(false)};
+function pEdita(on){$("p-edbox").hidden=!on;$("p-cancel").hidden=!on||!me;$("p-edit").hidden=on||!me;if(on){$("p-nombre").value=me||"";setTimeout(()=>{try{$("p-nombre").focus()}catch(_e){}},300)}}
+$("p-edit").onclick=()=>pEdita(true);
+$("p-amigos").onclick=()=>{$("perfil").classList.remove("open");irA("mios");setTimeout(()=>{const b=$("amigosBox");if(b)b.scrollIntoView({behavior:"smooth",block:"start"})},250)};
+function miRepTxt(){const r=repu[uid],p=[estrellasTxt(uid)];if(r&&+r.hechos>0)p.push(r.hechos+(+r.hechos===1?" plan hecho":" planes hechos"));return p.join(" · ")}
 $("p-foto").onchange=async e=>{const f=e.target.files&&e.target.files[0];e.target.value="";if(!f||!sb||!uid)return;if(!me){alert("Primero pon tu nombre y pulsa «Guardar nombre».");return}
   const vieja=fotosP[uid];$("p-sub").textContent="Subiendo foto…";
   try{const b=await reduceCuad(f);const ruta="perfil/"+uid+"/"+Date.now()+".jpg";
@@ -1114,8 +1143,8 @@ async function cuEsTemporal(){try{const r=await sb.auth.getUser();const u=r.data
 async function cuPinta(){
   let u=null;try{const r=await sb.auth.getUser();u=r.data&&r.data.user}catch(e){}
   const temp=!u||!!u.is_anonymous||!u.email;
-  $("cu-tit").textContent=temp?"Guarda tu cuenta":"Tu cuenta";$("cu-estado").textContent=temp?"Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app.":"✅ Cuenta guardada: "+u.email+". Entra con ese correo desde cualquier móvil.";
-  $("cu-form").hidden=!temp;$("cu-salir").hidden=temp;
+  $("cu-tit").textContent=temp?"Guarda tu cuenta":"Tu cuenta";$("cu-estado").textContent=temp?"Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app.":"✅ "+u.email;
+  $("cu-form").hidden=!temp;$("cu-salir").hidden=temp;{const cb=$("cuentaBox"),t=$(temp?"p-arriba":"p-ajcont");if(cb&&t&&cb.parentElement!==t){if(temp)t.appendChild(cb);else t.insertBefore(cb,t.children[1]||null)}}
   $("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg("");cuModo="";if(temp)cuModoEntrar(false);
 }
 let cuUltimoMsg="";
@@ -1662,7 +1691,7 @@ function planComun(u){return data.find(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&
 let fotosP={};
 const urlP=u=>SB_URL+"/storage/v1/object/public/fotos/"+fotosP[u];
 function avPersona(u,n){n=n||"?";if(u&&fotosP[u])return `<div class="cav"><img src="${esc(urlP(u))}" alt=""></div>`;return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
-function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?(fotosP[uid]?"Así te ven los demás":"Toca el círculo para poner tu foto"):"Aún no has puesto tu nombre";$("p-quitafoto").hidden=!fotosP[uid]}
+function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?"":"Aún no has puesto tu nombre";$("p-rep").textContent=me&&uid?miRepTxt():"";$("p-quitafoto").hidden=!fotosP[uid];if(me&&$("p-edbox").hidden)$("p-edit").hidden=false}
 const reduceCuad=file=>new Promise((ok,ko)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=320;c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,320,320);URL.revokeObjectURL(u);c.toBlob(b=>b?ok(b):ko(new Error("No se pudo leer la foto")),"image/jpeg",.85)};im.onerror=()=>{URL.revokeObjectURL(u);ko(new Error("No se pudo leer la foto"))};im.src=u});
 function pintaDM(){
   const l=dms[dmCon]||[],nom=nombres[dmCon]||"Alguien",pc=planComun(dmCon);
@@ -1816,7 +1845,7 @@ async function recarga(){
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
     pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}if(x.llegado)(a.llegaIds=a.llegaIds||[]).push(x.user_id);}});
     aq.data.filter(r=>!bloqueados.has(r.user_id)).forEach(r=>{lista.push({id:-(hash(r.user_id)%1000000000)-1,kind:"aqui",tipo:"aqui",titulo:r.titulo||"",emoji:r.emoji||"",lat:r.lat,lng:r.lng,orgId:r.user_id,uid:r.user_id,org:nom(r.user_id),asist:[],asistIds:[],pagos:[],pagosIds:[],max:0,t:Date.parse(r.creado),hasta:r.hasta?Date.parse(r.hasta):0,vis:r.visibilidad||"todos"})});
-    viejosOrg=lista.filter(a=>a.viejo&&a.orgId===uid&&a.precio>0&&Date.now()-Date.parse(a.fecha)<90*864e5);data=lista.filter(a=>!a.viejo);errCon="";
+    viejosOrg=lista.filter(a=>a.viejo&&a.orgId===uid&&Date.now()-Date.parse(a.fecha)<90*864e5);viejosMios=lista.filter(a=>a.viejo&&mia(a)&&Date.now()-Date.parse(a.fecha)<90*864e5);data=lista.filter(a=>!a.viejo);errCon="";
     const nuevasInv=[...invitadoA.keys()].filter(id=>!invVista.has(id));
     if(invInit&&nuevasInv.length){const id=nuevasInv[0],pl=lista.find(x=>x.id===id);avisa("✉️ "+nom(invitadoA.get(id))+" te invita a «"+(pl?pl.titulo:"un plan")+"»",()=>{if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id)}})}
     invVista=new Set(invitadoA.keys());invInit=true;
@@ -1826,7 +1855,7 @@ async function recarga(){
   cargando=false;if($("dm").classList.contains("open")&&dmCon)pintaDM();if($("persona").classList.contains("open")&&perCtx)pintaPersona();if($("invitar").classList.contains("open")&&invPlan)pintaInvitar();pintaBusca();render();sincronizaSeguimiento();
 }
 function suscribir(){
-  let tmr=null;const pronto=()=>{clearTimeout(tmr);tmr=setTimeout(recarga,400)};
+  enLinea();let tmr=null;const pronto=()=>{clearTimeout(tmr);tmr=setTimeout(recarga,400)};
   sb.channel("cambios")
     .on("postgres_changes",{event:"*",schema:"public",table:"planes"},pronto)
     .on("postgres_changes",{event:"*",schema:"public",table:"participantes"},pronto)
@@ -1932,7 +1961,8 @@ function render(){
     L.marker([a.ini.lat,a.ini.lng],{icon:fi,zIndexOffset:500}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
   });
   const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado · se quita en "+Math.max(1,Math.ceil((tF(a)+27*3600000-Date.now())/3600000))+" h)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small><span class="tagrow">${soyOrg(a)?`<span class="tag" style="background:#0A2A5E">⭐ Organizas tú</span>`:mia(a)?`<span class="tag">✅ Apuntado</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Van amigos</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}</span></div></div>`;
-  $("lista").innerHTML=lst.length?(vista==="mios"?[["⭐ Organizas tú",lst.filter(soyOrg)],["✅ Te has apuntado",lst.filter(a=>voy(a)&&!soyOrg(a))],["✉️ Te han invitado",lst.filter(a=>!mia(a))]].filter(g=>g[1].length).map(g=>`<h3 class="lgrupo">${g[0]} <span>${g[1].length}</span></h3>`+g[1].map(card).join("")).join(""):lst.map(card).join("")):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
+  const kpOcul=ocultosKP(),kpActu=vista==="mios"?lst.filter(a=>!pasada(a)):lst,kpPas=vista==="mios"?lst.filter(a=>pasada(a)&&mia(a)).concat(viejosMios.filter(a=>!lst.some(x=>x.id===a.id))).filter(a=>!kpOcul.has(a.id)).sort((x,y)=>tF(y)-tF(x)):[];
+  $("lista").innerHTML=(lst.length||kpPas.length)?(vista==="mios"?[["⭐ Organizas tú",kpActu.filter(soyOrg)],["✅ Te has apuntado",kpActu.filter(a=>voy(a)&&!soyOrg(a))],["✉️ Te han invitado",kpActu.filter(a=>!mia(a))]].filter(g=>g[1].length).map(g=>`<h3 class="lgrupo">${g[0]} <span>${g[1].length}</span></h3>`+g[1].map(card).join("")).join("")+pasadosHtml(kpPas):lst.map(card).join("")):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
   $("ahoraBox").hidden=!aq.length;
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
   const rc=$("rutaChip");
@@ -2112,6 +2142,14 @@ map.on("click",e=>{
   lugarSug="";
   ponPunto(e.latlng);
 });
+var pasAb=false,poPasAb=false;
+function ocultosKP(){try{return new Set(JSON.parse(localStorage.getItem("kp_ocultos")||"[]"))}catch(_e){return new Set()}}
+function pasadosHtml(l){if(!l.length)return "";return `<details class="mas mispas" id="misPasados"${pasAb?" open":""}><summary>🕓 Planes pasados <span class="pcnt">${l.length}</span></summary>${l.map(a=>`<div class="item past"${a.viejo?' data-viejo="1"':` data-id="${a.id}"`}><div class="th" style="background:${col(a)}">${sym(a,22)}</div><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>✔️ Terminado · ${esc(textoCuando(a))}${soyOrg(a)?" · lo organizaste tú":""}</small></div><button class="sec pquita" type="button" data-quita="${a.id}">Quitar</button></div>`).join("")}</details>`}
+document.addEventListener("toggle",e=>{const t=e.target;if(!t)return;if(t.id==="misPasados")pasAb=t.open;if(t.id==="po-pasados")poPasAb=t.open},true);
+$("lista").addEventListener("click",e=>{const q=e.target.closest("[data-quita]");if(q){e.stopPropagation();e.preventDefault();const s=ocultosKP();s.add(+q.dataset.quita);try{localStorage.setItem("kp_ocultos",JSON.stringify([...s].slice(-500)))}catch(_e){}render();return}if(e.target.closest("[data-viejo]"))e.stopPropagation()},true);
+var canalOn=null,nOnline=0;
+function enLinea(){try{if(canalOn||!sb||!uid)return;canalOn=sb.channel("en_linea",{config:{presence:{key:uid}}});canalOn.on("presence",{event:"sync"},()=>{try{nOnline=Object.keys(canalOn.presenceState()).length;const e=$("adm-online");if(e)e.textContent=nOnline}catch(_e){}}).subscribe(s=>{if(s==="SUBSCRIBED"){try{canalOn.track({t:Date.now()})}catch(_e){}}})}catch(_e){}}
+async function pintaStats(){try{const e=$("adm-online");if(e)e.textContent=canalOn?nOnline:"–";const r=await sb.rpc("admin_resumen");if(r.error)throw r.error;const d=(r.data||[])[0]||{};$("adm-usu").textContent=d.personas!=null?d.personas:"–";$("adm-cor").textContent=d.con_correo!=null?d.con_correo:"–"}catch(_e){}}
 $("lista").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],14);elegir(+i.dataset.id)}});
 $("filtros").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.r){filtro="";fFecha=""}else if(b.dataset.d!==undefined){fFecha=fFecha===b.dataset.d?"":b.dataset.d}else{filtro=filtro===b.dataset.f?"":b.dataset.f}render()};
 $("rutaTxt").onclick=()=>{if(ruta&&data.find(x=>x.id===ruta.id))elegir(ruta.id)};
@@ -2530,10 +2568,10 @@ pintaPasos();
 function pintaOrg(){
   const e=$("org-estado"),b=$("org-abrir");
   if(!e)return;
-  if(adminApp){e.innerHTML="✓ Eres el <b>administrador</b> de la app: puedes poner precio a tus planes sin pedir verificación.";b.textContent="👑 Abrir el panel del dueño";b.hidden=false;return}
-  if(verifSet.has(uid)){e.innerHTML="✓ Eres <b>organizador verificado</b>. Puedes poner precio a tus planes.";b.textContent="📋 Abrir mi panel de organizador";b.hidden=false;return}
+  if(adminApp){e.innerHTML="";b.textContent="👑 Panel del dueño";b.hidden=false;return}
+  if(verifSet.has(uid)){e.innerHTML="";b.textContent="📊 Mi panel de organizador";b.hidden=false;return}
   const o=miOrg;
-  if(!o){e.textContent="Si quieres cobrar por tus planes (viajes, excursiones...), tienes que ser organizador verificado. Es gratis.";b.textContent="Quiero ser organizador verificado";b.hidden=false;return}
+  if(!o){e.textContent="";b.textContent="💶 Organizar planes de pago";b.hidden=false;return}
   if(o.estado==="pendiente"){e.textContent="Solicitud enviada ✓. La revisaremos pronto; aquí verás el resultado.";b.hidden=true;return}
   e.textContent="Tu solicitud no se ha aprobado"+(o.motivo?": "+o.motivo:".")+" Puedes corregir los datos y enviarla otra vez.";b.textContent="Volver a enviar la solicitud";b.hidden=false;
 }
@@ -2605,7 +2643,7 @@ async function pintaPrivados(){
 document.addEventListener("click",e=>{const s=e.target.closest(".infoplan>summary");if(!s)return;const dd=s.parentElement;if(dd.open)return;setTimeout(()=>{const sh=dd.closest(".sheet");if(sh&&dd.open)sh.scrollTo({top:sh.scrollHeight,behavior:"smooth"})},80)});
 document.addEventListener("toggle",e=>{if(e.target&&e.target.id==="adm-priv"&&e.target.open)pintaPrivados()},true);
 document.addEventListener("click",e=>{const it=e.target.closest("[data-pver]");if(!it||!admMap)return;const [la,ln]=it.dataset.pver.split(",").map(Number);admMap.setView([la,ln],14);const m=$("adm-pmap");if(m)m.scrollIntoView({behavior:"smooth",block:"center"})});
-async function pintaAdmin(){
+async function pintaAdmin(){pintaStats();
   const box=$("adminLista");if(!box||!sb)return;
   box.innerHTML='<p class="meta">Cargando...</p>';
   try{
@@ -2633,13 +2671,13 @@ function filaPlanOrg(a,abierto){
   const res=[gente.length+"/"+a.max+" apuntados"];if(pago){res.push(npg+" pagados ("+precioTxt(npg*a.precio)+")");if(npend)res.push('<span style="color:#C9761B;font-weight:700">🟠 '+npend+' sin pagar</span>')}if(nll)res.push(nll+" han llegado");
   const filas=gente.map(u=>{const p=pg.includes(u),l=ll.includes(u),n=nombres[u]||"Alguien";
     return `<div class="po-per">${avPersona(u,n)}<b class="po-pn">${esc(n)}</b>${pago?`<button type="button" class="po-chip ${p?"ok":"pend"}" data-pp="${a.id}|${esc(u)}">${p?"🟢 Pagado":"🟠 Sin pagar"}</button>`:""}<button type="button" class="po-chip${l?" ok":""}" data-ll="${a.id}|${esc(u)}">${l?"✅ Llegó":"⬜ Llegó"}</button></div>`}).join("");
-  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo?" · terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${""}${filas||'<p class="meta">Nadie todavía.</p>'}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir</button>`}</div></details>`;
+  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo||pasada(a)?" · ✔️ terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${""}${filas||'<p class="meta">Nadie todavía.</p>'}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir</button>`}</div></details>`;
 }
 async function pintaPanelOrg(){
   const todos=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid).sort((x,y)=>(x.viejo?1:0)-(y.viejo?1:0)||tF(x)-tF(y));
   const mios=todos.filter(a=>a.precio>0);$("po-comprob").hidden=!mios.length;
   const box=$("po-planes"),abiertos=new Set([...box.querySelectorAll("details[open]")].map(d=>+d.dataset.pl)),cerrados=new Set([...box.querySelectorAll("details:not([open])")].map(d=>+d.dataset.pl));
-  box.innerHTML=todos.length?todos.map(a=>filaPlanOrg(a,abiertos.has(a.id)||(!a.viejo&&!cerrados.has(a.id)))).join(""):'<p class="meta">Todavía no has creado ningún plan.</p><button type="button" data-nuevo="1" style="width:100%">＋ Crear mi primer plan</button>';
+  const kpFin=a=>a.viejo||pasada(a),kpAct=todos.filter(a=>!kpFin(a)),kpPas2=todos.filter(kpFin).sort((x,y)=>tF(y)-tF(x));box.innerHTML=todos.length?(kpAct.length?"":'<p class="meta">No tienes planes próximos.</p>')+kpAct.map(a=>filaPlanOrg(a,abiertos.has(a.id)||!cerrados.has(a.id))).join("")+(kpPas2.length?`<details class="mas po-pas" id="po-pasados"${poPasAb?" open":""}><summary>🕓 Planes pasados (${kpPas2.length})</summary>${kpPas2.map(a=>filaPlanOrg(a,abiertos.has(a.id))).join("")}</details>`:""):'<p class="meta">Todavía no has creado ningún plan.</p><button type="button" data-nuevo="1" style="width:100%">＋ Crear mi primer plan</button>';
   let ent=[];
   if(mios.length&&sb){try{const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").in("plan_id",mios.map(a=>a.id)).order("enviada",{ascending:false}).limit(30);if(!r.error)ent=r.data||[]}catch(e){}}
   $("po-entradas").innerHTML=ent.length?ent.map(x=>{const a=data.find(p=>p.id===x.plan_id)||{};return `<div class="item" style="cursor:default"><div style="flex:1;min-width:0"><b>${esc(x.codigo)}</b><small>${esc(nombres[x.user_id]||"Alguien")} · ${esc(a.titulo||"")}</small></div></div>`}).join(""):'<p class="meta">Todavía no se ha enviado ninguna entrada.</p>';
