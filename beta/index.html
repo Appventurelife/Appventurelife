@@ -297,7 +297,7 @@ details[open]>summary::after{transform:rotate(180deg)!important}
 .pmlista{position:absolute;right:0;top:46px;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.35);padding:6px;display:flex;flex-direction:column;gap:4px}
 .pmlista[hidden]{display:none}
 .pmlista button{background:none!important;border:0!important;box-shadow:none!important;color:var(--ink)!important;text-align:left;padding:12px!important;font-size:16px!important;border-radius:10px;width:100%}
-.pmlista button#denPlan{color:#C4472F!important}
+.pmlista button#denPlan,.pmlista button#pe-den{color:#C4472F!important}
 .panel{padding-bottom:110px!important}
 #perfil,#grupos{padding-bottom:110px!important}
 .bar5 .plus{bottom:calc(96px + env(safe-area-inset-bottom,0px))!important}
@@ -744,7 +744,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 155 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 156 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -781,7 +781,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 155 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 156 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -869,7 +869,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div class="ge-c"><div class="ge-ic">👪</div><h2 id="ge-n">Grupo</h2><p class="meta" id="ge-sub"></p><button id="ge-ok" type="button" class="p-gran" hidden>Entrar en el grupo</button><p class="meta" id="ge-msg"></p></div>
 </section>
 <section id="persona" class="sheet" aria-label="Persona">
-<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
+<div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button><div class="pmenu"><button id="peMas" class="pmas" type="button" aria-label="Más opciones">⋯</button><div id="peLista" class="pmlista" hidden><button id="pe-den" type="button">🚩 Denunciar</button><button id="pe-bloq" type="button">🚫 Bloquear</button></div></div>
 <div class="pe-cab"><div id="pe-av"></div><div style="min-width:0"><h2 id="pe-n">Persona</h2><p class="pe-rep" id="pe-rep"></p></div></div>
 <p class="pe-bio" id="pe-bio" hidden></p>
 <p class="meta" id="pe-e"></p>
@@ -978,7 +978,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 155 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 156 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2525,7 +2525,7 @@ function pintaPersona(){
   const pls=data.filter(a=>a.kind!=="aqui"&&a.orgId===u&&!pasada(a));
   $("pe-planes").innerHTML=pls.length?`<h3 class="who-h">Organiza ahora</h3>`+pls.map(a=>`<div class="item" data-ver="${a.id}"><div style="flex:1;min-width:0"><b>${esc(a.emoji||"")} ${esc(a.titulo)}</b><small>${esc(textoCuando(a))}</small></div></div>`).join(""):"";
   $("pe-planes").onclick=e=>{const i=e.target.closest("[data-ver]");if(!i)return;const pl=data.find(x=>x.id===+i.dataset.ver);if(!pl)return;$("persona").classList.remove("open");irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id)};
-  $("pe-acc").innerHTML=`<div class="mini" style="flex-direction:column;align-items:stretch">${acc}</div><div class="mini" style="margin-top:6px"><button id="pe-bloq" class="sec" type="button">Bloquear</button><button id="pe-den" class="sec" type="button">Denunciar</button></div>`;
+  $("pe-acc").innerHTML=`<div class="mini" style="flex-direction:column;align-items:stretch">${acc}</div>`;$("peLista").hidden=true;$("peMas").onclick=()=>{$("peLista").hidden=!$("peLista").hidden};
   const on2=(id,fn)=>{const e=$(id);if(e)e.onclick=fn};
   on2("pe-add",()=>enviarSolicitud(u));on2("pe-ok",()=>responderSolicitud(u,true));on2("pe-no",()=>responderSolicitud(u,false));on2("pe-can",()=>cancelarSolicitud(u));
   on2("pe-dm",()=>{$("persona").classList.remove("open");abreDM(u)});on2("pe-quitar",()=>quitarAmigo(u));
@@ -2722,7 +2722,7 @@ $("f-dias").onclick=e=>{
   if(!$("f-hora").value)$("f-hora").value="10:00";
 };
 $("f-tipos").onclick=e=>{const b=e.target.closest("button");if(b){tipoSel=b.dataset.k;pintaTipos()}};
-document.addEventListener("click",e=>{if(!e.target.closest(".pmenu")){const l=document.getElementById("pmLista");if(l)l.hidden=true}});
+document.addEventListener("click",e=>{if(!e.target.closest(".pmenu")){const l=document.getElementById("pmLista");if(l)l.hidden=true;const l2=document.getElementById("peLista");if(l2)l2.hidden=true}});
 function cerrarFormVolver(){const ve=editId;cerrarForm();if(ve&&data.find(x=>x.id===ve))elegir(ve)}
 $("f-cancel").onclick=cerrarFormVolver;
 $("f-foto").onchange=e=>{
