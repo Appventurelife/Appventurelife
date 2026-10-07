@@ -105,14 +105,14 @@ select,input,textarea{width:100%;padding:10px;border-radius:10px;border:1px soli
 .sheet.open{transform:none}
 .grab{width:42px;height:5px;border-radius:9px;background:var(--line);margin:4px auto 12px}
 .cover{width:100%;height:150px;object-fit:cover;border-radius:14px;margin-bottom:10px;display:block}
-img.cover{height:auto;max-height:340px}
+img.cover{height:auto;max-height:65vh;object-fit:contain;background:#000}
 #volverPlan{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(132px + env(safe-area-inset-bottom,0px));z-index:660;background:#0A2A5E!important;color:#fff!important;border:0!important;border-radius:999px!important;padding:12px 20px!important;font-size:16px!important;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.3);width:auto!important;white-space:nowrap}
 #volverPlan[hidden]{display:none!important}
 body:has(.sheet.open) #volverPlan{display:none!important}
 .dtrow .dtw input{min-height:54px;box-sizing:border-box}
 .cover.ph{display:flex;align-items:center;justify-content:center;color:#fff}
 .sheet h2{font-size:28px;line-height:1.05;margin-bottom:4px}
-#prev{width:100%;height:auto;max-height:340px;object-fit:cover;border-radius:12px;margin-top:8px;display:block}
+#prev{width:100%;height:auto;max-height:65vh;object-fit:contain;background:#000;border-radius:12px;margin-top:8px;display:block}
 .em{line-height:1;font-family:system-ui,-apple-system,"Apple Color Emoji","Segoe UI Emoji",sans-serif}
 .emojis{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 .emojis button{background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:4px 8px;font-size:22px;line-height:1.2}
@@ -673,7 +673,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 137 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 138 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -715,7 +715,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 137 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 138 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -860,7 +860,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 </div>
 <p id="pasoErr" class="perr" role="alert" hidden></p>
-<div class="row pbtns" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button class="sec" id="p-atras" type="button" hidden>Atrás</button><button class="sec" id="p-mas" type="button" hidden>＋ Añadir detalles (opcional)<small>Descripción, punto de encuentro, foto…</small></button><button id="p-sig" type="button">Siguiente</button><button id="f-ok" type="button" hidden>Publicar</button></div>
+<div class="row pbtns" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button class="sec" id="p-atras" type="button" hidden>Atrás</button><button class="sec" id="p-mas" type="button" hidden>＋ Añadir detalles (opcional)<small>Foto, descripción, punto de encuentro y 💶 cobrar por el plan</small></button><button id="p-sig" type="button">Siguiente</button><button id="f-ok" type="button" hidden>Publicar</button></div>
 </section>
 
 <div id="visor" class="visor" hidden><button class="x2" id="v-x" type="button" aria-label="Cerrar">✕</button><div id="v-c"></div><button id="v-del" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Eliminar</button><button id="v-den" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Denunciar</button></div>
@@ -897,7 +897,7 @@ main{padding:0!important;max-width:none!important}
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 137 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 138 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1434,7 +1434,7 @@ $("v-del").onclick=async()=>{
 function cerrarSheet(el){
   el.style.transform="";
   if(el.id==="detalle"){sel=null;render()}
-  else if(el.id==="nueva")cerrarForm();
+  else if(el.id==="nueva")cerrarFormVolver();
   else if(el.id==="perfil"){el.classList.remove("open");cbNombre=null}
   else el.classList.remove("open");
 }
@@ -2588,7 +2588,8 @@ $("f-dias").onclick=e=>{
   if(!$("f-hora").value)$("f-hora").value="10:00";
 };
 $("f-tipos").onclick=e=>{const b=e.target.closest("button");if(b){tipoSel=b.dataset.k;pintaTipos()}};
-$("f-cancel").onclick=cerrarForm;
+function cerrarFormVolver(){const ve=editId;cerrarForm();if(ve&&data.find(x=>x.id===ve))elegir(ve)}
+$("f-cancel").onclick=cerrarFormVolver;
 $("f-foto").onchange=e=>{
   const file=e.target.files[0];if(!file)return;
   const r=new FileReader();
