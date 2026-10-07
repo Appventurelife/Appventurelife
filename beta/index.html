@@ -352,7 +352,10 @@ label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--in
 #perfil .p-head{display:flex;align-items:center;gap:14px;margin:16px 50px 16px 0}
 #perfil .p-head .cav{width:64px;height:64px;font-size:28px}
 .po-plan{border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 0 10px;background:var(--card)}
-.po-plan summary{list-style:none;cursor:pointer}
+.po-plan summary{list-style:none;cursor:pointer;position:relative;padding-right:28px}
+.po-plan summary::after{content:"▾";position:absolute;right:0;top:0;color:var(--mut);font-size:20px;transition:transform .2s}
+.po-plan[open] summary::after{transform:rotate(180deg)}
+.po-qv{display:block;font-size:15px;margin:10px 0 2px}
 .po-plan summary::-webkit-details-marker{display:none}
 .po-plan summary b{display:block;font-size:17px}
 .po-plan summary small{display:block;color:var(--mut)}
@@ -566,7 +569,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 122 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 123 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -608,7 +611,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 122 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 123 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -773,7 +776,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 122 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 123 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -799,9 +802,9 @@ main{padding:0!important;max-width:none!important}
 <details class="mas" data-k="po-guia"><summary>❓ Cómo funciona</summary><p class="meta">1. Comparte tu plan con «📤 Compartir» y la gente se apunta.<br>2. Si es de pago, cuando alguien te pague toca «Marcar pagado».<br>3. El día del plan, marca quién ha llegado: tocando «Ha llegado» o escaneando su entrada, como prefieras. Escanear no es obligatorio.</p></details>
 <div id="po-comprob"><button class="sec" type="button" data-escanear="1" style="width:100%;margin:6px 0 4px">📷 Escanear entradas (opcional)</button></div>
 <h3 class="who-h">Mis planes</h3><div id="po-planes" class="list"></div>
-<details class="mas po-cobros"><summary>⚙️ Cómo cobras (Bizum y Stripe)</summary>
+<details class="mas po-cobros"><summary>💶 Cómo cobras (Bizum, efectivo o tarjeta)</summary>
 <p class="meta">Se rellena solo cuando pongas precio a un plan nuevo.</p>
-<label for="po-bizum">Bizum u otra forma de pago</label><input id="po-bizum" maxlength="120" placeholder="Ej. Bizum al 600 000 000">
+<label for="po-bizum">Bizum, efectivo u otra forma de pago</label><input id="po-bizum" maxlength="120" placeholder="Ej. Bizum al 600 000 000 o efectivo el día del plan">
 <label for="po-enlace">Enlace de pago con tarjeta (Stripe, opcional)</label><input id="po-enlace" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
 <div class="row" style="margin-top:8px"><button class="sec" id="po-probar" type="button">Probar mi enlace</button><button id="po-guardar" type="button">Guardar</button></div>
 <p class="meta" id="po-msg"></p>
@@ -2591,13 +2594,13 @@ function filaPlanOrg(a,abierto){
   const res=[gente.length+"/"+a.max+" apuntados"];if(pago){res.push(npg+" pagados");if(npend)res.push('<span style="color:#C9761B;font-weight:700">🟠 '+npend+' sin pagar</span>')}if(nll)res.push(nll+" han llegado");
   const filas=gente.map(u=>{const p=pg.includes(u),l=ll.includes(u),n=nombres[u]||"Alguien";
     return `<div class="po-per">${avPersona(u,n)}<div class="po-pn"><b>${esc(n)}</b><span>${pago?(p?'<i class="tg ok">🟢 Pagado</i>':'<i class="tg pend">🟠 Pendiente</i>'):""}${l?'<i class="tg ll">✅ Ha llegado</i>':""}</span></div><div class="po-acc">${pago?`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}">${p?"Quitar pago":"Marcar pagado"}</button>`:""}<button class="sec" type="button" data-ll="${a.id}|${esc(u)}">${l?"No ha llegado":"Ha llegado"}</button></div></div>`}).join("");
-  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo?" · terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${pago?`<small class="po-cob">Cobrado (lo que has marcado tú): ${precioTxt(npg*a.precio)}</small>`:""}${filas||'<p class="meta">Todavía no se ha apuntado nadie.</p>'}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar el pago (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje a todos</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir el plan</button>`}</div></details>`;
+  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo?" · terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${pago?`<small class="po-cob">Cobrado (lo que has marcado tú): ${precioTxt(npg*a.precio)}</small>`:""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${filas||'<p class="meta">Todavía no se ha apuntado nadie. Compártelo con «📤 Compartir» para que se apunte gente.</p>'}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar el pago (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje a todos</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir el plan</button>`}</div></details>`;
 }
 async function pintaPanelOrg(){
   const todos=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid).sort((x,y)=>(x.viejo?1:0)-(y.viejo?1:0)||tF(x)-tF(y));
   const mios=todos.filter(a=>a.precio>0);$("po-comprob").hidden=!mios.length;
-  const box=$("po-planes"),abiertos=new Set([...box.querySelectorAll("details[open]")].map(d=>+d.dataset.pl));
-  box.innerHTML=todos.length?todos.map(a=>filaPlanOrg(a,abiertos.has(a.id)||todos.length===1)).join(""):'<p class="meta">Todavía no has creado ningún plan.</p><button type="button" data-nuevo="1" style="width:100%">＋ Crear mi primer plan</button>';
+  const box=$("po-planes"),abiertos=new Set([...box.querySelectorAll("details[open]")].map(d=>+d.dataset.pl)),cerrados=new Set([...box.querySelectorAll("details:not([open])")].map(d=>+d.dataset.pl));
+  box.innerHTML=todos.length?todos.map(a=>filaPlanOrg(a,abiertos.has(a.id)||(!a.viejo&&!cerrados.has(a.id)))).join(""):'<p class="meta">Todavía no has creado ningún plan.</p><button type="button" data-nuevo="1" style="width:100%">＋ Crear mi primer plan</button>';
   let ent=[];
   if(mios.length&&sb){try{const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").in("plan_id",mios.map(a=>a.id)).order("enviada",{ascending:false}).limit(30);if(!r.error)ent=r.data||[]}catch(e){}}
   $("po-entradas").innerHTML=ent.length?ent.map(x=>{const a=data.find(p=>p.id===x.plan_id)||{};return `<div class="item" style="cursor:default"><div style="flex:1;min-width:0"><b>${esc(x.codigo)}</b><small>${esc(nombres[x.user_id]||"Alguien")} · ${esc(a.titulo||"")}</small></div></div>`}).join(""):'<p class="meta">Todavía no se ha enviado ninguna entrada.</p>';
