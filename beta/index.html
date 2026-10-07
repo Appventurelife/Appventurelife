@@ -351,6 +351,25 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--ink);margin:14px 0 4px}
 #perfil .p-head{display:flex;align-items:center;gap:14px;margin:16px 50px 16px 0}
 #perfil .p-head .cav{width:64px;height:64px;font-size:28px}
+.po-plan{border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 0 10px;background:var(--card)}
+.po-plan summary{list-style:none;cursor:pointer}
+.po-plan summary::-webkit-details-marker{display:none}
+.po-plan summary b{display:block;font-size:17px}
+.po-plan summary small{display:block;color:var(--mut)}
+.po-plan .po-res{color:var(--ink);font-weight:600;margin-top:2px}
+.po-plan[open] summary{margin-bottom:8px}
+.po-cob{display:block;color:var(--mut);margin-bottom:6px}
+.po-per{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.po-per .cav{width:40px;height:40px;font-size:17px}
+.po-pn{flex:1;min-width:0}
+.po-pn b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.po-pn span{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.tg{font-style:normal;font-size:12px;font-weight:700;padding:1px 8px;border-radius:99px;background:var(--bg)}
+.po-acc{display:flex;flex-direction:column;gap:4px}
+.po-acc button{padding:6px 10px!important;font-size:13px!important;white-space:nowrap}
+.po-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.po-btns button{flex:1 1 auto;font-size:15px}
+.po-cobros{margin-top:14px}
 #perfil .p-avw{position:relative;flex:none;cursor:pointer;display:block}
 #perfil .p-cam{position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px}
 #perfil .p-quita{width:auto;padding:4px 0;margin:2px 0 0;text-align:left;font-size:14px}
@@ -512,7 +531,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 109 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 110 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -554,7 +573,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 109 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 110 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -719,7 +738,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 109 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 110 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -741,8 +760,9 @@ main{padding:0!important;max-width:none!important}
 <section id="panelorg" class="sheet" aria-label="Panel del organizador">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2>Panel del organizador</h2>
-<p class="meta">Tus planes de pago, quién ha pagado y las entradas.</p>
-<h3 class="who-h">Cómo cobras</h3>
+<p class="meta">Tus planes, quién va, quién ha pagado y quién ha llegado.</p>
+<h3 class="who-h">Mis planes</h3><div id="po-planes" class="list"></div>
+<details class="mas po-cobros"><summary>⚙️ Cómo cobras (Bizum y Stripe)</summary>
 <p class="meta">Se rellena solo cuando pongas precio a un plan nuevo.</p>
 <label for="po-bizum">Bizum u otra forma de pago</label><input id="po-bizum" maxlength="120" placeholder="Ej. Bizum al 600 000 000">
 <label for="po-enlace">Enlace de pago con tarjeta (Stripe, opcional)</label><input id="po-enlace" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
@@ -751,7 +771,7 @@ main{padding:0!important;max-width:none!important}
 <details class="mas"><summary>¿Cómo consigo un enlace de Stripe?</summary>
 <p class="meta">1. Crea una cuenta gratis en stripe.com (con el modo de prueba puedes probar sin cobrar de verdad).<br>2. Para cobrar de verdad, Stripe te pedirá verificar tu identidad y tu cuenta bancaria; puede tardar de unos minutos a unos días.<br>3. En el panel de Stripe entra en «Payment Links» (Enlaces de pago) y pulsa crear.<br>4. Pon el nombre del viaje y el precio, y copia el enlace que empieza por https://buy.stripe.com/.<br>5. Pégalo aquí. Si el enlace es de prueba, solo aceptará tarjetas de mentira.</p>
 <p class="meta">Si prefieres no registrarte en Stripe, puedes cobrar solo por Bizum o transferencia: pon tu forma de pago arriba y marca «pagado» tú mismo cuando te llegue.</p></details>
-<h3 class="who-h" style="margin-top:14px">Mis planes de pago</h3><div id="po-planes" class="list"></div>
+</details>
 <div id="po-comprob"><h3 class="who-h" style="margin-top:14px">Comprobar una entrada</h3>
 <div class="row"><input id="po-cod" maxlength="14" placeholder="AVL-AB12-CD34" autocapitalize="characters" autocomplete="off"><button class="sec" id="po-comprobar" type="button">Comprobar</button></div><button class="sec" type="button" data-escanear="1" style="margin-top:8px;width:100%">📷 Escanear con la cámara</button>
 <p class="meta" id="po-res"></p>
@@ -1632,7 +1652,11 @@ async function verEntrada(c){
   let ok=false,txt="";
   try{
     const r=await sb.from("entradas").select("plan_id,user_id").eq("codigo",c).maybeSingle();
-    if(r.data){const a=data.find(p=>p.id===r.data.plan_id)||{};ok=true;txt=esc(nombres[r.data.user_id]||"Alguien")+"<br><small>"+esc(a.titulo||"Plan")+"</small>"}
+    if(r.data){const a=data.concat(viejosOrg).find(p=>p.id===r.data.plan_id)||{};ok=true;txt=esc(nombres[r.data.user_id]||"Alguien")+"<br><small>"+esc(a.titulo||"Plan")+"</small>";
+      if(a.orgId===uid){const ya=(a.llegaIds||[]).includes(r.data.user_id);
+        if(!ya){try{const u2=await sb.from("participantes").update({llegado:new Date().toISOString()}).eq("plan_id",r.data.plan_id).eq("user_id",r.data.user_id);if(!u2.error)(a.llegaIds=a.llegaIds||[]).push(r.data.user_id)}catch(_e){}}
+        const g=(a.asistIds||[]).filter(u=>u!==uid).length,l=(a.llegaIds||[]).length;
+        txt+=ya?"<br><small>⚠️ Esta entrada ya se había usado antes</small>":"<br><small>✅ Marcado como llegado · "+l+" de "+g+"</small>"}}
     else txt="No encuentro esta entrada en tus planes.<br><small>Solo la puede comprobar quien organiza el plan, desde su cuenta.</small>";
   }catch(e){txt="No se pudo comprobar ahora. Inténtalo otra vez."}
   const d=document.createElement("div");d.className="entchk "+(ok?"ok":"no");
@@ -1675,7 +1699,7 @@ async function recarga(){
   try{
     const res=await Promise.all([
       sb.from("planes").select("*").order("creado",{ascending:false}).limit(300),
-      sb.from("participantes").select("plan_id,user_id,pagado"),
+      sb.from("participantes").select("plan_id,user_id,pagado,llegado"),
       sb.from("profiles").select("id,nombre,buscable,foto"),
       sb.from("aqui").select("*"),
       sb.from("planes_codigo").select("plan_id,codigo"),
@@ -1725,7 +1749,7 @@ async function recarga(){
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
-    pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}}});
+    pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}if(x.llegado)(a.llegaIds=a.llegaIds||[]).push(x.user_id);}});
     aq.data.filter(r=>!bloqueados.has(r.user_id)).forEach(r=>{lista.push({id:-(hash(r.user_id)%1000000000)-1,kind:"aqui",tipo:"aqui",titulo:r.titulo||"",emoji:r.emoji||"",lat:r.lat,lng:r.lng,orgId:r.user_id,uid:r.user_id,org:nom(r.user_id),asist:[],asistIds:[],pagos:[],pagosIds:[],max:0,t:Date.parse(r.creado),hasta:r.hasta?Date.parse(r.hasta):0,vis:r.visibilidad||"todos"})});
     viejosOrg=lista.filter(a=>a.viejo&&a.orgId===uid&&a.precio>0&&Date.now()-Date.parse(a.fecha)<90*864e5);data=lista.filter(a=>!a.viejo);errCon="";
     const nuevasInv=[...invitadoA.keys()].filter(id=>!invVista.has(id));
@@ -2506,12 +2530,19 @@ async function abrirPanelOrg(){
   $("po-msg").textContent="";$("po-res").textContent="";
   await pintaPanelOrg();
 }
+function filaPlanOrg(a,abierto){
+  const gente=(a.asistIds||[]).filter(u=>u!==uid),pg=a.pagosIds||[],ll=a.llegaIds||[],pago=a.precio>0;
+  const npg=gente.filter(u=>pg.includes(u)).length,npend=gente.length-npg,nll=gente.filter(u=>ll.includes(u)).length;
+  const res=[gente.length+"/"+a.max+" apuntados"];if(pago){res.push(npg+" pagados");if(npend)res.push(npend+" pendientes")}if(nll)res.push(nll+" han llegado");
+  const filas=gente.map(u=>{const p=pg.includes(u),l=ll.includes(u),n=nombres[u]||"Alguien";
+    return `<div class="po-per">${avPersona(u,n)}<div class="po-pn"><b>${esc(n)}</b><span>${pago?(p?'<i class="tg ok">🟢 Pagado</i>':'<i class="tg pend">🟠 Pendiente</i>'):""}${l?'<i class="tg ll">✅ Ha llegado</i>':""}</span></div><div class="po-acc">${pago?`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}">${p?"Quitar pago":"Marcar pagado"}</button>`:""}<button class="sec" type="button" data-ll="${a.id}|${esc(u)}">${l?"No ha llegado":"Ha llegado"}</button></div></div>`}).join("");
+  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo?" · terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${pago?`<small class="po-cob">Cobrado (lo que has marcado tú): ${precioTxt(npg*a.precio)}</small>`:""}${filas||'<p class="meta">Todavía no se ha apuntado nadie.</p>'}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar el pago (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje a todos</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-abrir="${a.id}">Abrir el plan</button>`}</div></details>`;
+}
 async function pintaPanelOrg(){
-  const mios=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid&&a.precio>0);$("po-comprob").hidden=!mios.length;
-  $("po-planes").innerHTML=mios.length?mios.map(a=>{
-    const gente=(a.asistIds||[]).filter(u=>u!==uid),pg=a.pagosIds||[],cob=gente.filter(u=>pg.includes(u)).length;
-    return `<div class="item" style="display:block;cursor:default"><b>${esc(a.titulo)}</b><small>${esc(a.cuando)} · ${precioTxt(a.precio)} por persona</small><small>Apuntados: ${gente.length} · Han pagado: ${cob} · Cobrado: ${precioTxt(cob*a.precio)}</small>${gente.length?`<div style="margin-top:6px">${gente.map(u=>`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}" style="margin:2px 6px 2px 0">${pg.includes(u)?"✓":"○"} ${esc(nombres[u]||"Alguien")}</button>`).join("")}</div><small style="display:block">Toca un nombre para marcar o desmarcar su pago.</small>`:"<small>Todavía no se ha apuntado nadie.</small>"}${a.viejo?`<small style="display:block;margin-top:6px">Plan terminado: ya no sale en el mapa.</small>`:`<button class="sec" type="button" data-abrir="${a.id}" style="margin-top:6px">Abrir el plan</button>`}</div>`;
-  }).join(""):'<p class="meta">Todavía no tienes planes de pago. Al crear un plan, ponle un precio y saldrá aquí.</p>';
+  const todos=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid).sort((x,y)=>(x.viejo?1:0)-(y.viejo?1:0)||tF(x)-tF(y));
+  const mios=todos.filter(a=>a.precio>0);$("po-comprob").hidden=!mios.length;
+  const box=$("po-planes"),abiertos=new Set([...box.querySelectorAll("details[open]")].map(d=>+d.dataset.pl));
+  box.innerHTML=todos.length?todos.map(a=>filaPlanOrg(a,abiertos.has(a.id)||todos.length===1)).join(""):'<p class="meta">Todavía no has creado ningún plan. Toca + y «Nuevo plan».</p>';
   let ent=[];
   if(mios.length&&sb){try{const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").in("plan_id",mios.map(a=>a.id)).order("enviada",{ascending:false}).limit(30);if(!r.error)ent=r.data||[]}catch(e){}}
   $("po-entradas").innerHTML=ent.length?ent.map(x=>{const a=data.find(p=>p.id===x.plan_id)||{};return `<div class="item" style="cursor:default"><div style="flex:1;min-width:0"><b>${esc(x.codigo)}</b><small>${esc(nombres[x.user_id]||"Alguien")} · ${esc(a.titulo||"")}</small></div></div>`}).join(""):'<p class="meta">Todavía no se ha enviado ninguna entrada.</p>';
@@ -2534,6 +2565,7 @@ function probarEnlace(){
 async function comprobarEntrada(){
   const c=$("po-cod").value.trim().toUpperCase().replace(/\s/g,""),out=$("po-res");
   if(!/^AVL-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(c)){out.textContent="Escribe el código completo, como AVL-AB12-CD34.";return}
+  out.textContent="";$("po-cod").value="";return verEntrada(c);
   try{
     const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").eq("codigo",c).maybeSingle();
     if(r.error||!r.data){out.textContent="✗ No encuentro esa entrada en tus planes.";return}
@@ -2545,6 +2577,15 @@ $("po-guardar").onclick=guardarCobros;$("po-probar").onclick=probarEnlace;$("po-
 $("po-planes").addEventListener("click",async e=>{
   const ab=e.target.closest("[data-abrir]");
   if(ab){$("panelorg").classList.remove("open");elegir(+ab.dataset.abrir);return}
+  const ll=e.target.closest("[data-ll]");
+  if(ll){const [pid,u]=ll.dataset.ll.split("|"),a=data.concat(viejosOrg).find(x=>x.id===+pid);if(!a)return;const ya=(a.llegaIds||[]).includes(u);
+    try{const r=await sb.from("participantes").update({llegado:ya?null:new Date().toISOString()}).eq("plan_id",a.id).eq("user_id",u);if(r.error)throw r.error;await recarga();await pintaPanelOrg()}catch(er){fallo(er)}return}
+  const rc=e.target.closest("[data-rec]");
+  if(rc){const a=data.concat(viejosOrg).find(x=>x.id===+rc.dataset.rec);if(!a)return;if(!confirm("¿Mandar un mensaje privado a quien aún no ha pagado «"+a.titulo+"»?"))return;
+    try{const r=await sb.rpc("org_recordar_pago",{p_plan:a.id});if(r.error)throw r.error;avisa(r.data===-1?"Ya mandaste un recordatorio hace poco. Espera unas horas.":r.data?"💶 Recordatorio enviado a "+r.data+(r.data===1?" persona":" personas"):"No hay nadie pendiente de pago.")}catch(er){fallo(er)}return}
+  const mg=e.target.closest("[data-msg]");
+  if(mg){const a=data.find(x=>x.id===+mg.dataset.msg);if(!a)return;const t=(prompt("Mensaje para todos los apuntados a «"+a.titulo+"». Saldrá en el chat del plan:")||"").trim();if(!t)return;
+    try{const r=await sb.from("mensajes").insert({plan_id:a.id,texto:"📢 "+t.slice(0,290)});if(r.error)throw r.error;avisa("📢 Mensaje enviado al chat del plan");await recarga()}catch(er){fallo(er)}return}
   const pp=e.target.closest("[data-pp]");if(!pp)return;
   const [pid,u]=pp.dataset.pp.split("|"),a=data.find(x=>x.id===+pid);if(!a)return;
   const ya=(a.pagosIds||[]).includes(u);
