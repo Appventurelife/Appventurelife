@@ -566,6 +566,14 @@ b.po-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:elli
 .ge-ic{font-size:56px;line-height:1}
 #ge-ok{margin-top:18px!important}
 .pe-bio{font-size:16px;line-height:1.4;margin:12px 0 2px;white-space:pre-wrap}
+.docs{display:flex;flex-direction:column;gap:8px;margin:0 0 12px}
+.doc{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);text-decoration:none;font-weight:600;font-size:16px}
+.doc span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.doc small{color:var(--mut);font-weight:400;font-size:14px;flex:none}
+.po-doc{display:flex;align-items:center;gap:8px;padding:6px 0}
+.po-doc span{flex:1;min-width:0;overflow-wrap:anywhere}
+.po-doc small{color:var(--mut)}
+.po-doc button{padding:6px 12px;font-size:14px;flex:none}
 #org-abrir.p-gran:not(:only-of-type){}
 .adm-org{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 8px;background:var(--card)}
 .adm-org>summary{cursor:pointer;font-weight:700;list-style:none}
@@ -744,7 +752,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 158 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 159 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -781,7 +789,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 158 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 159 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -979,7 +987,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 158 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 159 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1005,7 +1013,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <h2>Panel del organizador</h2>
 <details class="mas" data-k="po-guia"><summary>❓ Cómo funciona</summary><p class="meta">1. Comparte tu plan con «📤 Compartir» y la gente se apunta.<br>2. Si es de pago, cuando alguien te pague toca «Marcar pagado».<br>3. El día del plan, marca quién ha llegado: tocando «Ha llegado» o escaneando su entrada, como prefieras. Escanear no es obligatorio.</p></details>
 <div id="po-comprob"><button class="sec" type="button" data-escanear="1" style="width:100%;margin:6px 0 4px">📷 Escanear entradas</button></div>
-<h3 class="who-h">Mis planes</h3><div id="po-planes" class="list"></div>
+<h3 class="who-h">Mis planes</h3><div id="po-planes" class="list"></div><input type="file" id="doc-file" accept="application/pdf,image/*" hidden>
 <details class="mas po-cobros"><summary>💶 Cómo cobras (Bizum, efectivo o tarjeta)</summary>
 <p class="meta">Se rellena solo cuando pongas precio a un plan nuevo.</p>
 <label for="po-bizum">Bizum, efectivo u otra forma de pago</label><input id="po-bizum" maxlength="120" placeholder="Ej. Bizum al 600 000 000 o efectivo el día del plan">
@@ -1908,6 +1916,64 @@ function menuConv(el){
 function planComun(u){return data.find(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&(a.orgId===u||(a.asistIds||[]).includes(u)))}
 let fotosP={};
 const urlP=u=>SB_URL+"/storage/v1/object/public/fotos/"+fotosP[u];
+var docsOrg={},docsP={},docDest=null,docQOk=null;
+function docExt(f){const m=/\.([a-z0-9]{2,5})$/i.exec(f.name||"");if(m)return m[1].toLowerCase();const t=f.type||"";return t==="application/pdf"?"pdf":t==="image/png"?"png":t==="image/heic"?"heic":t==="image/webp"?"webp":"jpg"}
+function docUid(){try{return crypto.randomUUID()}catch(_e){return Date.now().toString(36)+Math.random().toString(36).slice(2)}}
+async function docsOrgCarga(ids){if(!sb||!uid||!ids.length)return;try{const r=await sb.from("plan_docs").select("id,plan_id,para,nombre,creado").in("plan_id",ids).order("creado",{ascending:true});if(r.error)return;const m={};for(const d of r.data||[])(m[d.plan_id]=m[d.plan_id]||[]).push(d);docsOrg=m}catch(_e){}}
+function docsHTML(a){
+  if(!sb||!uid||soyOrg(a)||!voy(a))return "";
+  const c=docsP[a.id];
+  if(!c||(!c.cargando&&Date.now()-c.t>120000))docsPCarga(a.id);
+  if(!c||!c.l.length)return "";
+  return `<h3 class="fsec">📎 Tus documentos</h3><div class="docs">${c.l.map(d=>`<a class="doc" href="${esc(d.url)}" target="_blank" rel="noopener"><b>${d.pdf?"📄":"🖼️"}</b><span>${esc(d.nombre)}</span><small>${d.para?"Solo para ti":"Para todos"}</small></a>`).join("")}</div>`;
+}
+async function docsPCarga(pid){
+  const antes=docsP[pid];docsP[pid]={l:antes?antes.l:[],t:antes?antes.t:0,cargando:true};
+  let l=[];
+  try{const r=await sb.from("plan_docs").select("id,nombre,ruta,para").eq("plan_id",pid).order("creado",{ascending:true});
+    if(!r.error&&r.data&&r.data.length){const s=await sb.storage.from("docs").createSignedUrls(r.data.map(d=>d.ruta),3600);
+      const u={};if(!s.error)for(const x of s.data||[])if(x&&x.signedUrl)u[x.path]=x.signedUrl;
+      l=r.data.filter(d=>u[d.ruta]).map(d=>({id:d.id,nombre:d.nombre,para:!!d.para,pdf:/\.pdf$/i.test(d.ruta),url:u[d.ruta]}))}}
+  catch(_e){}
+  docsP[pid]={l,t:Date.now()};
+  const ka=a=>a.map(x=>x.id).join(",");
+  if(ka(l)!==ka(antes?antes.l:[]))render();
+}
+function docElegir(plan,para){docDest={plan,para};const i=$("doc-file");i.value="";i.click()}
+async function docSubir(f){
+  const d=docDest;docDest=null;if(!f||!d||!sb||!uid)return;
+  if(f.size>10485760){alert("Este archivo pesa demasiado. Máximo 10 MB.");return}
+  const base=(f.name||"").replace(/\.[a-z0-9]{2,5}$/i,"").trim();
+  const def=(/^(image|img|photo|foto)[\s_-]?\d*$/i.test(base)||!base)?(d.para?"Billete":"Documento"):base.slice(0,60);
+  const nom=prompt(d.para?"Nombre del documento para "+(nombres[d.para]||"esta persona")+":":"Nombre del documento para todos:",def);
+  if(nom===null)return;
+  const ruta=d.plan+"/"+docUid()+"."+docExt(f);
+  avisa("📎 Subiendo…");
+  try{
+    const up=await sb.storage.from("docs").upload(ruta,f,{contentType:f.type||"application/octet-stream",upsert:false});if(up.error)throw up.error;
+    const r=await sb.rpc("doc_registrar",{p_plan:d.plan,p_para:d.para,p_nombre:(nom.trim()||def).slice(0,80),p_ruta:ruta});
+    if(r.error){try{await sb.storage.from("docs").remove([ruta])}catch(_e){}throw r.error}
+    avisa(d.para?"📎 Enviado a "+(nombres[d.para]||"esa persona"):"📎 Enviado a todos los apuntados");
+    await docsOrgCarga([d.plan].concat(Object.keys(docsOrg).map(Number).filter(x=>x!==d.plan)));await pintaPanelOrg();
+  }catch(e){fallo(e)}
+}
+async function docQuitar(btn){
+  const id=btn.dataset.docq;
+  if(docQOk!==id){docQOk=id;btn.textContent="¿Seguro? Toca otra vez";return}
+  docQOk=null;
+  try{const r=await sb.rpc("doc_quitar",{p_id:id});if(r.error)throw r.error;
+    if(r.data){try{await sb.storage.from("docs").remove([r.data])}catch(_e){}}
+    for(const k in docsOrg)docsOrg[k]=docsOrg[k].filter(x=>x.id!==id);
+    await pintaPanelOrg();
+  }catch(e){fallo(e)}
+}
+function docsLista(a){const l=docsOrg[a.id]||[];if(!l.length)return "";return `<details class="mas po-docs"><summary>📎 Documentos enviados (${l.length})</summary>${l.map(d=>`<div class="po-doc"><span>${esc(d.nombre)} <small>· ${d.para?esc(nombres[d.para]||"Alguien"):"para todos"}</small></span><button class="sec" type="button" data-docq="${esc(d.id)}">Quitar</button></div>`).join("")}</details>`}
+$("doc-file").onchange=e=>{const f=e.target.files&&e.target.files[0];docSubir(f)};
+$("po-planes").addEventListener("click",e=>{
+  const b=e.target.closest("[data-doc]");if(b){const [p,u]=b.dataset.doc.split("|");docElegir(+p,u);return}
+  const t=e.target.closest("[data-doct]");if(t){docElegir(+t.dataset.doct,null);return}
+  const q=e.target.closest("[data-docq]");if(q)docQuitar(q);
+});
 function avPersona(u,n){n=n||"?";if(u&&fotosP[u])return `<div class="cav"><img src="${esc(urlP(u))}" alt=""></div>`;return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
 function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?"":"Aún no has puesto tu nombre";$("p-rep").textContent=me&&uid?miRepTxt():"";$("p-quitafoto").hidden=!fotosP[uid];if(me&&$("p-edbox").hidden)$("p-edit").hidden=false;pintaPerfilExtra()}
 const reduceCuad=file=>new Promise((ok,ko)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=320;c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,320,320);URL.revokeObjectURL(u);c.toBlob(b=>b?ok(b):ko(new Error("No se pudo leer la foto")),"image/jpeg",.85)};im.onerror=()=>{URL.revokeObjectURL(u);ko(new Error("No se pudo leer la foto"))};im.src=u});
@@ -2288,7 +2354,7 @@ ${soyOrg(a)?`<div class="mini"><button id="panGo" class="pango" type="button">�
 <div class="caja"><span class="ci">👥</span><small>Plazas</small><b>${libres?`${a.max-libres} ${a.max-libres===1?"apuntado":"apuntados"} · <span class="${libres===1?"plz-poco":""}">${libres===1?"queda 1":"quedan "+libres}</span>`:`<span class="plz-poco">Completo</span> (${a.max} de ${a.max})`}</b></div>
 ${a.precio>0?`<div class="caja ancha"><span class="ci">💶</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${""}</div>`:`<div class="caja"><span class="ci">💶</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
 </div>
-${tiempoHTML(a)}
+${docsHTML(a)}${tiempoHTML(a)}
 ${tramoHTML(a)}
 ${(yo||soyOrg(a))?rutaHTML(a):""}
 ${a.desc?`<h3 class="fsec">Descripción</h3><p style="margin:0 0 12px;white-space:pre-wrap">${esc(a.desc)}</p>`:""}
@@ -2945,12 +3011,13 @@ function filaPlanOrg(a,abierto){
   const gente=(a.asistIds||[]).filter(u=>u!==uid),pg=a.pagosIds||[],ll=a.llegaIds||[],pago=a.precio>0;
   const npg=gente.filter(u=>pg.includes(u)).length,npend=gente.length-npg,nll=gente.filter(u=>ll.includes(u)).length;
   const res=[gente.length+"/"+a.max+" apuntados"];if(pago){res.push(npg+" pagados ("+precioTxt(npg*a.precio)+")");if(npend)res.push('<span style="color:#C9761B;font-weight:700">🟠 '+npend+' sin pagar</span>')}if(nll)res.push(nll+" han llegado");
-  const filas=gente.map(u=>{const p=pg.includes(u),l=ll.includes(u),n=nombres[u]||"Alguien";
-    return `<div class="po-per">${avPersona(u,n)}<b class="po-pn">${esc(n)}</b>${pago?`<button type="button" class="po-chip ${p?"ok":"pend"}" data-pp="${a.id}|${esc(u)}">${p?"🟢 Pagado":"🟠 Sin pagar"}</button>`:""}<button type="button" class="po-chip${l?" ok":""}" data-ll="${a.id}|${esc(u)}">${l?"✅ Llegó":"⬜ Llegó"}</button></div>`}).join("");
-  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo||pasada(a)?" · ✔️ terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${""}${filas||'<p class="meta">Nadie todavía.</p>'}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir</button>`}</div></details>`;
+  const filas=gente.map(u=>{const p=pg.includes(u),l=ll.includes(u),n=nombres[u]||"Alguien",nd=(docsOrg[a.id]||[]).filter(d=>d.para===u).length;
+    return `<div class="po-per">${avPersona(u,n)}<b class="po-pn">${esc(n)}</b>${pago?`<button type="button" class="po-chip ${p?"ok":"pend"}" data-pp="${a.id}|${esc(u)}">${p?"🟢 Pagado":"🟠 Sin pagar"}</button>`:""}<button type="button" class="po-chip${l?" ok":""}" data-ll="${a.id}|${esc(u)}">${l?"✅ Llegó":"⬜ Llegó"}</button>${a.viejo?"":`<button type="button" class="po-chip${nd?" ok":""}" data-doc="${a.id}|${esc(u)}" aria-label="Enviar billete">📎${nd?" "+nd:""}</button>`}</div>`}).join("");
+  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo||pasada(a)?" · ✔️ terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${""}${filas||'<p class="meta">Nadie todavía.</p>'}${docsLista(a)}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje</button><button class="sec" type="button" data-doct="${a.id}">📎 Documento para todos</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir</button>`}</div></details>`;
 }
 async function pintaPanelOrg(){
   const todos=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid).sort((x,y)=>(x.viejo?1:0)-(y.viejo?1:0)||tF(x)-tF(y));
+  await docsOrgCarga(todos.map(a=>a.id));
   const mios=todos.filter(a=>a.precio>0);$("po-comprob").hidden=!mios.length;
   const box=$("po-planes"),abiertos=new Set([...box.querySelectorAll("details[open]")].map(d=>+d.dataset.pl)),cerrados=new Set([...box.querySelectorAll("details:not([open])")].map(d=>+d.dataset.pl));
   const kpFin=a=>a.viejo||pasada(a),kpAct=todos.filter(a=>!kpFin(a)),kpPas2=todos.filter(kpFin).sort((x,y)=>tF(y)-tF(x));box.innerHTML=todos.length?(kpAct.length?"":'<p class="meta">No tienes planes próximos.</p>')+kpAct.map(a=>filaPlanOrg(a,abiertos.has(a.id)||!cerrados.has(a.id))).join("")+(kpPas2.length?`<details class="mas po-pas" id="po-pasados"${poPasAb?" open":""}><summary>🕓 Planes pasados (${kpPas2.length})</summary>${kpPas2.map(a=>filaPlanOrg(a,abiertos.has(a.id))).join("")}</details>`:""):'<p class="meta">Todavía no has creado ningún plan.</p><button type="button" data-nuevo="1" style="width:100%">＋ Crear mi primer plan</button>';
@@ -3006,8 +3073,8 @@ $("po-planes").addEventListener("click",async e=>{
 });
 /* ===== Ayuda (fase A: respuestas fijas, sin coste; la IA se enchufa aquí después) ===== */
 const FAQ=[
- {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Paso 1: quién puede verlo, el nombre, el tipo y el emoji.\n5. Paso 2: el día, la hora y las plazas. Pulsa «Publicar ya» o «＋ Añadir detalles (opcional)».\n6. En «Añadir detalles» puedes poner descripción, equipo, punto de encuentro, contacto de emergencia y foto. Si eres organizador verificado, en el último paso eliges si es gratis o de pago."},
- {q:"¿Cómo me apunto a un plan?",p:["plan","mapa"],k:["apuntar","apuntarme","apuntarse","unir","unirme","participar","inscribir","plan"],a:"Toca una chincheta del mapa (o un plan de la lista de debajo). Vuelve a tocar la chincheta para abrir el plan y pulsa «Apuntarme». Para salir, abre el plan y pulsa «Salir del plan»."},
+ {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón redondo + (abajo a la derecha) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Paso 1: quién puede verlo, el nombre, el tipo y el emoji.\n5. Paso 2: el día, la hora y las plazas. Pulsa «Publicar ya» o «＋ Añadir detalles (opcional)».\n6. En «Añadir detalles» puedes poner descripción, equipo, punto de encuentro, contacto de emergencia y foto. Si eres organizador verificado, en el último paso eliges si es gratis o de pago."},
+ {q:"¿Cómo me apunto a un plan?",p:["plan","mapa"],k:["apuntar","apuntarme","apuntarse","unir","unirme","participar","inscribir","plan"],a:"Toca una chincheta del mapa. Vuelve a tocar la chincheta para abrir el plan y pulsa «Apuntarme». Para salir, abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo salgo de un plan?",p:["plan"],k:["salir","salgo","quitarme","desapuntar","abandonar","borrarme"],a:"Abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo marco el punto de salida?",p:["crear","editar"],k:["salida","inicio","punto","quedamos","quedar","empezar","ruta","recorrido","encuentro"],a:"Al crear o editar un plan, en el recuadro «Punto de salida (opcional)» pulsa «Marcar el inicio», toca el mapa o busca el sitio y pulsa «Usar este inicio». También puedes pulsar «Poner el nombre de este sitio como punto de encuentro»."},
  {q:"¿Cómo edito o borro mi plan?",p:["plan","editar"],k:["editar","cambiar","modificar","borrar","eliminar","cancelar","plan"],a:"Abre tu plan: «✏️ Editar» sirve para cambiar nombre, fecha, lugar o detalles (luego «Guardar cambios»), y «Eliminar plan» para borrarlo. Si cambias el nombre, la fecha o el lugar, se avisa en el chat del plan."},
@@ -3015,7 +3082,8 @@ const FAQ=[
  {q:"¿Cómo cambio mi nombre?",p:["perfil"],k:["nombre","perfil","llamo","apodo","cambiar"],a:"Toca tu nombre arriba a la derecha. Ahí cambias el nombre y eliges si apareces cuando otras personas buscan por nombre."},
  {q:"¿Cómo guardo mi cuenta para no perderla?",p:["perfil"],k:["cuenta","correo","email","guardar","perder","entrar","dispositivo","movil","sesion","codigo"],a:"Toca tu nombre arriba a la derecha, busca «Tu cuenta», escribe tu correo y pulsa «Continuar»; te llegará un código que escribes en la app. Para entrar en otro móvil con tu cuenta, haz lo mismo con el mismo correo: la app ve sola que ya tienes cuenta."},
  {q:"¿Cómo busco personas y les escribo?",p:["mapa"],k:["amigo","amigos","buscar","persona","personas","mensaje","mensajes","escribir","seguir"],a:"Toca + y elige «🔍 Buscar personas», escribe su nombre y envía la solicitud de amistad. En la pestaña «Mensajes» están tus chats y los de tus planes. Solo puedes escribir directamente a quien comparte su ubicación con «Estoy aquí» o a quien ya te ha escrito."},
- {q:"¿Cómo hablo con el grupo de un plan?",p:["plan"],k:["chat","grupo","hablar","comentar","comentario","preguntar"],a:"Abre el plan y pulsa «Chat». Los chats de tus planes también salen en la pestaña «Mensajes»."},
+ {q:"¿Cómo envío billetes o documentos?",p:["plan"],k:["billete","billetes","documento","documentos","pdf","archivo","adjuntar"],a:"Si organizas: abre «📊 Panel del organizador». En «👥 Quién viene» toca 📎 al lado de una persona para mandarle su billete, o pulsa «📎 Documento para todos». Puede ser un PDF o una foto de hasta 10 MB. Quien va al plan lo ve dentro del plan, en «📎 Tus documentos». Se borran solos 7 días después del plan."},
+ {q:"¿Cómo hablo con el grupo de un plan?",p:["plan"],k:["chat","grupo","hablar","comentar","comentario","preguntar"],a:"Abre el plan y pulsa «💬 Chat del grupo». Los chats de tus planes también salen en la pestaña «Mensajes»."},
  {q:"¿Cómo hago que solo me vean mis amigos o con código?",p:["mapa","crear"],k:["amigos","codigo","privado","candado","ubicacion","aqui","visibilidad"],a:"Al compartir «Estoy aquí», o al crear un plan, elige en «¿Quién puede verlo?» la opción «👥 Solo mis amigos» o «🔒 Solo con código (privado)». Con el código, solo lo ve quien lo escriba en «🔒 Tengo un código»."},
  {q:"¿Cómo hago un plan privado?",p:["crear","editar"],k:["privado","codigo","secreto","invitar","visibilidad","amigos"],a:"Al crear el plan, en «¿Quién puede verlo?» elige «🔒 Solo con código (privado)» o «👥 Solo mis amigos». Comparte el código con quien quieras, o usa «👥 Invitar» dentro del plan. Para entrar a uno privado: toca + y elige «🔒 Tengo un código»."},
  {q:"¿Cómo llego al sitio?",p:["plan"],k:["llegar","ruta","camino","coche","bici","pie","direccion","navegar","indicaciones"],a:"Abre el plan: en la tarjeta «Cómo llegar» elige coche, bici o a pie para ver la ruta en el mapa, o abre Apple Maps o Google Maps. Si el plan tiene punto de salida, te lleva hasta allí."},
