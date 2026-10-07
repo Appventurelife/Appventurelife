@@ -531,7 +531,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 110 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 111 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -573,7 +573,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 110 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 111 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -665,9 +665,6 @@ main{padding:0!important;max-width:none!important}
 </div>
 <button id="ay-form" class="sec" type="button" style="padding:6px 12px;font-size:14px;margin:0 0 6px">💬 ¿Dudas? Pregunta aquí</button>
 <button id="f-mover" class="sec" type="button" hidden style="margin:0 0 6px">📍 Cambiar ubicación en el mapa</button>
-<label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
-<label>Tipo</label><div class="chips" id="f-tipos"></div>
-<label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
 <div id="iniBox" class="inibox" hidden>
 <b>¿Salís desde otro sitio? <span style="font-weight:400;color:var(--mut)">(opcional)</span></b>
 <div id="iniMini" class="inimini" role="button" aria-label="Cambiar la salida" hidden></div>
@@ -675,6 +672,9 @@ main{padding:0!important;max-width:none!important}
 <div class="row"><button class="sec" id="iniMarcar" type="button">Marcar el inicio</button><button class="sec" id="iniQuitar" type="button" hidden>Quitar</button></div>
 <button class="sec" id="iniNombreBtn" type="button" hidden style="margin-top:8px;width:100%">📍 Poner el nombre de este sitio como punto de encuentro</button>
 </div>
+<label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
+<label>¿De qué tipo es?</label><div class="chips" id="f-tipos"></div>
+<input id="f-tipo" type="hidden"><datalist id="tipos"></datalist>
 <label for="f-emoji">Emoji para la redondita del mapa</label>
 <input id="f-emoji" placeholder="Escribe uno o elige abajo" style="font-size:22px"><div class="cats" id="cats"></div><div class="emojis" id="emojis"></div>
 <div class="prevrow"><div id="pinprev"></div><span class="meta">Así se verá tu chincheta en el mapa</span></div>
@@ -738,7 +738,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 110 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 111 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2396,6 +2396,7 @@ $("f-emoji").addEventListener("input",pintaPrev);
 $("emojis").addEventListener("click",()=>setTimeout(pintaPrev,0));
 $("f-tipo").addEventListener("input",pintaPrev);
 $("f-tipo").addEventListener("input",pintaIni);
+$("f-tipos").addEventListener("click",()=>{$("f-tipo").value="";setTimeout(pintaPrev,0)});
 try{document.querySelectorAll("a.corr").forEach(a=>{const m=a.dataset.u+"@"+a.dataset.d;a.href="mailto:"+m;a.textContent=m})}catch(e){}
 function pintaPrecioAviso(){
   const p=+$("f-precio").value||0,box=$("precioAviso");
