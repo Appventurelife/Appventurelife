@@ -566,7 +566,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 118 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 119 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -608,7 +608,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 118 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 119 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -773,7 +773,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 118 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 119 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1091,7 +1091,7 @@ $("ac-no").onclick=()=>{$("acepta").hidden=true;accCb=null};
 async function registraAceptacion(){try{await sb.from("aceptaciones").upsert({user_id:uid,version:VER_TERM},{onConflict:"user_id,version",ignoreDuplicates:true})}catch(e){}}
 /* cuenta con correo: para ser la misma persona en Safari, en la app de la pantalla de inicio y en otros móviles */
 let cuModo="",cuEmail="",sb2=null,cuQuiere="";
-function cuModoEntrar(on){cuQuiere=on?"entrar":"";$("cu-tit").textContent=on?"Entra con tu cuenta":"Guarda tu cuenta";$("cu-estado").textContent=on?"Pon el correo con el que guardaste tu cuenta. Te mandamos un código para entrar.":"Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app.";$("cu-guardar").textContent=on?"Entrar con mi cuenta":"Guardar mi cuenta";$("cu-entrar").textContent=on?"No tengo cuenta, quiero guardarla":"Ya tengo cuenta";$("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg(on?"El iPhone te sugiere tu correo encima del teclado.":"")}
+function cuModoEntrar(on){cuQuiere=on?"entrar":"";$("cu-tit").textContent=on?"Entra con tu cuenta":"Guarda tu cuenta";$("cu-estado").textContent=on?"Pon el correo con el que guardaste tu cuenta. Te mandamos un código para entrar. Ojo: lo que hayas hecho en este móvil sin cuenta se perderá.":"Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app.";$("cu-guardar").textContent=on?"Entrar con mi cuenta":"Guardar mi cuenta";$("cu-entrar").textContent=on?"No tengo cuenta, quiero guardarla":"Ya tengo cuenta";$("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg("")}
 function cuCliente(){if(!sb2)sb2=supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:"avl-tmp"}});return sb2}
 async function cuEsTemporal(){try{const r=await sb.auth.getUser();const u=r.data&&r.data.user;return !u||!!u.is_anonymous||!u.email}catch(e){return true}}
 async function cuPinta(){
@@ -1147,7 +1147,7 @@ async function cuConfirmar(tokenRaw){
 $("cu-guardar").onclick=()=>cuQuiere==="entrar"?cuEntrar():cuEnviar("guardar",$("cu-email").value);
 $("cu-entrar").onclick=()=>{if(cuQuiere==="entrar"){cuModoEntrar(false);return}cuModoEntrar(true);$("cu-email").focus()};
 async function cuEntrar(){
-  if(await cuEsTemporal()&&!confirm("Al entrar con tu cuenta guardada, lo que hayas hecho en este navegador como cuenta temporal se borrará (por ejemplo, los planes a los que te hayas apuntado). ¿Seguir?"))return;
+  /* el aviso va en el texto de la caja: confirm() a veces no sale en Safari */
   cuEnviar("entrar",$("cu-email").value);
 }
 $("cu-ok").onclick=()=>cuConfirmar($("cu-codigo").value);
