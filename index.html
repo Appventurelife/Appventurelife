@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#E9EFE7;--ink:#17301F;--mut:#58705E;--card:#fff;--line:#C6D3C4;--cta:#1F5A3A;--ctat:#fff;--pin:#F2B632;
---t-moto:#1B7F8C;--t-ruta:#5E8C3A;--t-bici:#C8892B;--t-surf:#2D6CC0;--t-escalada:#7A5A3A;--t-otro:#7B8A80;--t-viaje:#7B4FB0;--t-ocio:#D04A7B;
+--t-moto:#1565C0;--t-ruta:#3F8F3A;--t-bici:#E07B00;--t-surf:#0E9FB5;--t-escalada:#8A5A2B;--t-otro:#6B7280;--t-viaje:#7B4FB0;--t-ocio:#D0343A;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15;--tkl:#0A4FA0}}
 :root[data-theme="dark"]{--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15;--tkl:#0A4FA0}
@@ -349,6 +349,60 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--ink);margin:14px 0 4px}
 #perfil .p-head{display:flex;align-items:center;gap:14px;margin:16px 50px 16px 0}
 #perfil .p-head .cav{width:64px;height:64px;font-size:28px}
+.po-plan{border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 0 10px;background:var(--card)}
+.po-plan summary{list-style:none;cursor:pointer}
+.po-plan summary::-webkit-details-marker{display:none}
+.po-plan summary b{display:block;font-size:17px}
+.po-plan summary small{display:block;color:var(--mut)}
+.po-plan .po-res{color:var(--ink);font-weight:600;margin-top:2px}
+.po-plan[open] summary{margin-bottom:8px}
+.po-cob{display:block;color:var(--mut);margin-bottom:6px}
+.po-per{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.po-per .cav{width:40px;height:40px;font-size:17px}
+.po-pn{flex:1;min-width:0}
+.po-pn b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.po-pn span{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+.tg{font-style:normal;font-size:12px;font-weight:700;padding:1px 8px;border-radius:99px;background:var(--bg)}
+.po-acc{display:flex;flex-direction:column;gap:4px}
+.po-acc button{padding:6px 10px!important;font-size:13px!important;white-space:nowrap}
+.po-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.po-btns button{flex:1 1 auto;font-size:15px}
+.po-cobros{margin-top:14px}
+.tagrow{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.tagrow:empty{display:none}
+.tagrow .tag{margin:0}
+.lgrupo{font-size:19px;margin:16px 2px 8px}
+.lgrupo:first-child{margin-top:4px}
+.lgrupo span{font-size:14px;color:var(--mut);font-weight:600}
+#f-tipos .tchip{border:2px solid var(--tc)!important}
+#f-tipos .tchip::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--tc);margin-right:6px;vertical-align:1px}
+#f-tipos .tchip.on{background:var(--tc)!important;color:#fff!important}
+#f-tipos .tchip.on::before{background:#fff}
+.dtrow>div{flex:1;min-width:0}
+.dtw{position:relative}
+.dtw input{width:100%;min-width:0;-webkit-appearance:none;appearance:none}
+.dtph{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--mut);pointer-events:none;font-size:16px}
+.dtw.lleno .dtph{display:none}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper input{flex:1;text-align:center;font-size:20px;font-weight:700}
+.stepper button{flex:none;width:52px;height:48px;padding:0!important;font-size:24px!important}
+.pbtns{flex-wrap:wrap}
+.pbtns #f-ok{order:-2;flex:1 1 100%}
+.pbtns #p-mas:not([hidden]){order:-1;flex:1 1 100%}
+#p-mas small{display:block;font-size:12px;font-weight:400;color:var(--mut);margin-top:2px}
+.pbtns #p-atras{flex:0 0 auto;background:none!important;border:0!important;box-shadow:none!important;text-decoration:underline;color:var(--mut)!important}
+.infoplan{margin:12px 0}
+.infoplan ul{margin:8px 0 0;padding-left:18px}
+.infoplan li{color:var(--mut);font-size:14px;margin:0 0 6px;line-height:1.4}
+.infoplan li b{color:var(--ink)}
+.infoplan>summary{list-style:none;color:var(--mut);font-size:14px;text-decoration:underline;cursor:pointer;padding:6px 0}
+.infoplan>summary::-webkit-details-marker{display:none}
+.infoplan{margin:16px 0 8px}
+body:has(#colocar:not([hidden])) #cercaChip,body:has(.sheet.open) #cercaChip,body:has(#nueva.open) #cercaChip{display:none!important}
+#cercaChip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:650;display:flex;align-items:center;gap:4px;background:#0A2A5E;border-radius:999px;padding:4px 4px 4px 6px;box-shadow:0 6px 18px rgba(0,0,0,.3);max-width:calc(100% - 32px)}
+#cercaChip .cc-go{background:none!important;border:0!important;color:#fff!important;font-weight:700;font-size:16px;padding:10px 12px!important;white-space:nowrap;box-shadow:none!important;width:auto}
+#cercaChip .cc-x{background:rgba(255,255,255,.18)!important;border:0!important;color:#fff!important;width:34px;height:34px;border-radius:50%;padding:0!important;font-size:15px;box-shadow:none!important;flex:none}
+.mini .pango{flex:1 1 100%;order:-1;background:#0A2A5E!important;color:#fff!important;border:0!important;font-weight:700;padding:12px!important}
 #perfil .p-avw{position:relative;flex:none;cursor:pointer;display:block}
 #perfil .p-cam{position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px}
 #perfil .p-quita{width:auto;padding:4px 0;margin:2px 0 0;text-align:left;font-size:14px}
@@ -509,7 +563,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 109 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 116 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -551,7 +605,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 109 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 116 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -643,9 +697,6 @@ main{padding:0!important;max-width:none!important}
 </div>
 <button id="ay-form" class="sec" type="button" style="padding:6px 12px;font-size:14px;margin:0 0 6px">💬 ¿Dudas? Pregunta aquí</button>
 <button id="f-mover" class="sec" type="button" hidden style="margin:0 0 6px">📍 Cambiar ubicación en el mapa</button>
-<label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
-<label>Tipo</label><div class="chips" id="f-tipos"></div>
-<label for="f-tipo">Otro tipo (si no está arriba)</label><input id="f-tipo" list="tipos" placeholder="Ej. Kayak, Pesca..." autocomplete="off"><datalist id="tipos"></datalist>
 <div id="iniBox" class="inibox" hidden>
 <b>¿Salís desde otro sitio? <span style="font-weight:400;color:var(--mut)">(opcional)</span></b>
 <div id="iniMini" class="inimini" role="button" aria-label="Cambiar la salida" hidden></div>
@@ -653,6 +704,9 @@ main{padding:0!important;max-width:none!important}
 <div class="row"><button class="sec" id="iniMarcar" type="button">Marcar el inicio</button><button class="sec" id="iniQuitar" type="button" hidden>Quitar</button></div>
 <button class="sec" id="iniNombreBtn" type="button" hidden style="margin-top:8px;width:100%">📍 Poner el nombre de este sitio como punto de encuentro</button>
 </div>
+<label for="f-titulo">¿Qué plan es?</label><input id="f-titulo" placeholder="Ej. Salida en moto de agua">
+<label>¿De qué tipo es?</label><div class="chips" id="f-tipos"></div>
+<input id="f-tipo" type="hidden"><datalist id="tipos"></datalist>
 <label for="f-emoji">Emoji para la redondita del mapa</label>
 <input id="f-emoji" placeholder="Escribe uno o elige abajo" style="font-size:22px"><div class="cats" id="cats"></div><div class="emojis" id="emojis"></div>
 <div class="prevrow"><div id="pinprev"></div><span class="meta">Así se verá tu chincheta en el mapa</span></div>
@@ -660,8 +714,8 @@ main{padding:0!important;max-width:none!important}
 <div class="paso" data-p="2" hidden>
 <label>Fecha y hora</label>
 <div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
-<div class="row"><div><label for="f-dia">Día</label><input id="f-dia" type="date"></div><div><label for="f-hora">Hora</label><input id="f-hora" type="time"></div></div>
-<label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6">
+<div class="row dtrow"><div><label for="f-dia">Día</label><div class="dtw"><input id="f-dia" type="date"><span class="dtph">Toca para elegir</span></div></div><div><label for="f-hora">Hora</label><div class="dtw"><input id="f-hora" type="time"><span class="dtph">Toca para elegir</span></div></div></div>
+<label for="f-plazas">Plazas</label><div class="stepper"><button type="button" class="sec" data-plz="-1" aria-label="Menos plazas">−</button><input id="f-plazas" type="number" inputmode="numeric" min="2" max="50" value="6"><button type="button" class="sec" data-plz="1" aria-label="Más plazas">+</button></div>
 </div>
 <div class="paso" data-p="3" hidden>
 <p class="meta" style="margin:0 0 4px">Todo esto es opcional. Puedes publicar sin rellenarlo.</p>
@@ -683,7 +737,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 </div>
 <p id="pasoErr" class="perr" role="alert" hidden></p>
-<div class="row" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button class="sec" id="p-atras" type="button" hidden>Atrás</button><button class="sec" id="p-mas" type="button" hidden>Añadir más</button><button id="p-sig" type="button">Siguiente</button><button id="f-ok" type="button" hidden>Publicar</button></div>
+<div class="row pbtns" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button class="sec" id="p-atras" type="button" hidden>Atrás</button><button class="sec" id="p-mas" type="button" hidden>＋ Añadir detalles (opcional)<small>Descripción, punto de encuentro, foto…</small></button><button id="p-sig" type="button">Siguiente</button><button id="f-ok" type="button" hidden>Publicar</button></div>
 </section>
 
 <div id="visor" class="visor" hidden><button class="x2" id="v-x" type="button" aria-label="Cerrar">✕</button><div id="v-c"></div><button id="v-del" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Eliminar</button><button id="v-den" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Denunciar</button></div>
@@ -716,7 +770,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 109 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 116 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -738,8 +792,9 @@ main{padding:0!important;max-width:none!important}
 <section id="panelorg" class="sheet" aria-label="Panel del organizador">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2>Panel del organizador</h2>
-<p class="meta">Tus planes de pago, quién ha pagado y las entradas.</p>
-<h3 class="who-h">Cómo cobras</h3>
+<p class="meta">Tus planes, quién va, quién ha pagado y quién ha llegado.</p>
+<h3 class="who-h">Mis planes</h3><div id="po-planes" class="list"></div>
+<details class="mas po-cobros"><summary>⚙️ Cómo cobras (Bizum y Stripe)</summary>
 <p class="meta">Se rellena solo cuando pongas precio a un plan nuevo.</p>
 <label for="po-bizum">Bizum u otra forma de pago</label><input id="po-bizum" maxlength="120" placeholder="Ej. Bizum al 600 000 000">
 <label for="po-enlace">Enlace de pago con tarjeta (Stripe, opcional)</label><input id="po-enlace" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
@@ -748,7 +803,7 @@ main{padding:0!important;max-width:none!important}
 <details class="mas"><summary>¿Cómo consigo un enlace de Stripe?</summary>
 <p class="meta">1. Crea una cuenta gratis en stripe.com (con el modo de prueba puedes probar sin cobrar de verdad).<br>2. Para cobrar de verdad, Stripe te pedirá verificar tu identidad y tu cuenta bancaria; puede tardar de unos minutos a unos días.<br>3. En el panel de Stripe entra en «Payment Links» (Enlaces de pago) y pulsa crear.<br>4. Pon el nombre del viaje y el precio, y copia el enlace que empieza por https://buy.stripe.com/.<br>5. Pégalo aquí. Si el enlace es de prueba, solo aceptará tarjetas de mentira.</p>
 <p class="meta">Si prefieres no registrarte en Stripe, puedes cobrar solo por Bizum o transferencia: pon tu forma de pago arriba y marca «pagado» tú mismo cuando te llegue.</p></details>
-<h3 class="who-h" style="margin-top:14px">Mis planes de pago</h3><div id="po-planes" class="list"></div>
+</details>
 <div id="po-comprob"><h3 class="who-h" style="margin-top:14px">Comprobar una entrada</h3>
 <div class="row"><input id="po-cod" maxlength="14" placeholder="AVL-AB12-CD34" autocapitalize="characters" autocomplete="off"><button class="sec" id="po-comprobar" type="button">Comprobar</button></div><button class="sec" type="button" data-escanear="1" style="margin-top:8px;width:100%">📷 Escanear con la cámara</button>
 <p class="meta" id="po-res"></p>
@@ -791,7 +846,7 @@ function valoraHtml(a){
   const v=misVotos[a.id]||0;
   return `<div class="valora" data-plan="${a.id}"><b>${v?"Tu valoración":"¿Qué tal fue? Valora a quien organizó"}</b>${[1,2,3,4,5].map(i=>`<button type="button" data-e="${i}" class="${i<=v?"on":""}" aria-label="${i} estrellas">★</button>`).join("")}</div>`;
 }
-const quien=(a,sinOrg)=>`${sinOrg?"":`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>`}${valoraHtml(a)}${entradaHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
+const quien=(a,sinOrg)=>`${sinOrg?"":`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>`}${valoraHtml(a)}${entradaHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0&&(soyOrg(a)||u===uid)?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
 const migra=a=>{if(!Array.isArray(a.asist)){a.asist=[];for(let i=0;i<(a.n||0);i++)a.asist.push(i===0&&a.yo&&me?me:"Participante")}if(!a.org)a.org=a.asist[0]||"Anónimo"};
 const vivos=()=>data.filter(a=>!a.hasta||a.hasta>Date.now());
 const hace=t=>{const m=Math.round((Date.now()-t)/60000);return m<1?"ahora mismo":m<60?"hace "+m+" min":"hace "+Math.floor(m/60)+" h"};
@@ -816,6 +871,15 @@ function cumpleFecha(a){
 const orden=(x,y)=>{const px=pasada(x),py=pasada(y);if(px!==py)return px?1:-1;const tx=tF(x),ty=tF(y);if(isNaN(tx)&&isNaN(ty))return y.id-x.id;if(isNaN(tx))return 1;if(isNaN(ty))return -1;return tx-ty};
 const AGUA=a=>/moto de agua|jet ?ski|agua|surf|kayak|paddle|buceo|pesca|vela|nata|barco|kite|piragu/i.test((TIPOS[a.tipo]||a.tipo)+" "+a.titulo);
 const MONTE=a=>/ruta|sender|monta|escal|bici|trail|run|corr|camp/i.test(TIPOS[a.tipo]||a.tipo);
+function infoPlan(a){
+  const tip=AGUA(a)?"Lleva chaleco salvavidas, agua y protección solar. Mira el estado del mar y avisa a alguien de tu salida.":MONTE(a)?"Lleva agua, calzado adecuado y el móvil cargado. Avisa a alguien de tu ruta y no vayas solo si no conoces la zona.":"Avisa a alguien de dónde vas y lleva lo necesario para el plan.";
+  const li=["AppVentureLife solo pone en contacto a las personas. <b>Quien organiza el plan es el responsable</b> de la actividad, los permisos y los seguros"+(a.precio>0?", y también de los cobros y las devoluciones":"")+".",
+   a.precio>0?"La app no cobra ni guarda tu dinero (0 % de comisión). Paga solo como indique quien organiza"+(verifSet.has(a.orgId)?" (organizador verificado ✓)":"")+".":"",
+   "Las actividades al aire libre tienen riesgos. Cada persona es responsable de su seguridad y de ir preparada. Hay que tener 18 años o más.",
+   "🛟 "+tip,
+   "¿Algo no cuadra? Usa «Denunciar» en el plan o en el perfil de la persona."].filter(Boolean);
+  return `<details class="infoplan" data-k="info"><summary>ℹ️ Información importante y condiciones</summary><ul>${li.map(x=>`<li>${x}</li>`).join("")}</ul></details>`;
+}
 function seguridad(a){
   const tip=AGUA(a)?"Lleva chaleco salvavidas, agua y protección solar. Mira el estado del mar y avisa a alguien de tu salida.":MONTE(a)?"Lleva agua, calzado adecuado y el móvil cargado. Avisa a alguien de tu ruta y no vayas solo si no conoces la zona.":"Avisa a alguien de dónde vas y lleva lo necesario para el plan.";
   return `<details class="safe"><summary><b>Seguridad</b></summary><p class="meta" style="margin:6px 0 0">${tip}</p><p class="meta" style="margin:6px 0 0;font-size:12px">Cada persona es responsable de su seguridad. AppVentureLife no gestiona pagos ni seguros.</p></details>`;
@@ -1243,17 +1307,17 @@ function irAMiUbicacion(){
     else yoMarker=L.circleMarker(ll,{radius:9,color:"#fff",weight:3,fillColor:"#1E7BFF",fillOpacity:1}).addTo(map);
   },()=>{locando(false);alert("No pude obtener tu ubicación. Activa el permiso de ubicación para este sitio en los ajustes de Safari.")},{enableHighAccuracy:true,timeout:10000});
 }
-$("loc").onclick=()=>{compartido=false;irAMiUbicacion()};
+$("loc").onclick=()=>{const cc=$("cercaChip");if(cc)cc.remove();compartido=false;irAMiUbicacion()};
 let ubiHecha=false;
 function inicioUbi(){
-  const pedir=()=>setTimeout(()=>{if(compartido||!$("aviso").hidden)return;avisa("📍 ¿Ver planes cerca de ti? Toca aquí",()=>{compartido=false;irAMiUbicacion()})},1500);
+  const pedir=()=>setTimeout(()=>{if(compartido||$("cercaChip"))return;try{if(localStorage.getItem("avl_nocerca")==="1")return}catch(e){}const c=document.createElement("div");c.id="cercaChip";c.innerHTML='<button type="button" class="cc-go">📍 Ver planes cerca de mí</button><button type="button" class="cc-x" aria-label="No, gracias">✕</button>';document.body.appendChild(c);c.querySelector(".cc-go").onclick=()=>{c.remove();compartido=false;irAMiUbicacion()};c.querySelector(".cc-x").onclick=()=>{c.remove();try{localStorage.setItem("avl_nocerca","1")}catch(e){}}},1500);
   try{if(navigator.permissions&&navigator.permissions.query){navigator.permissions.query({name:"geolocation"}).then(r=>{if(r.state==="granted")irAMiUbicacion();else if(r.state!=="denied")pedir()}).catch(pedir);return}}catch(e){}
   pedir();
 }
 function vistaInicial(){
   if(compartido||ubiHecha)return;ubiHecha=true;
   try{const pts=data.filter(a=>a.kind!=="aqui"&&a.lat!=null&&a.lng!=null&&isFinite(+a.lat)&&isFinite(+a.lng)&&!pasada(a)).map(a=>[+a.lat,+a.lng]);
-  if(pts.length)map.fitBounds(pts,{padding:[50,50],maxZoom:13});else map.setView([41.9794,2.8214],12)}catch(e){}
+  if(pts.length){const cerca=(p,q)=>Math.abs(p[0]-q[0])<0.6&&Math.abs(p[1]-q[1])<0.8;let best=pts[0],bn=0;pts.forEach(p=>{const n=pts.filter(q=>cerca(p,q)).length;if(n>bn){bn=n;best=p}});map.fitBounds(pts.filter(q=>cerca(best,q)),{padding:[50,50],maxZoom:13});}else map.setView([41.9794,2.8214],12)}catch(e){}
   inicioUbi();
 }
 
@@ -1524,7 +1588,7 @@ function elegirLugar(l){
 }
 function ponPunto(ll){marcaPunto(ll);colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Plan en este punto";$("colocarOk").disabled=false}
 function pintaPrev(){const c=$("f-tipo").value.trim(),t=c?norm(c):tipoSel,a={tipo:t,emoji:ultimo($("f-emoji").value)};$("pinprev").innerHTML=`<div class="pin" style="background:${col(a)}">${sym(a,22)}</div>`}
-function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>`<button type="button" class="fchip${tipoSel===k?" on":""}" data-k="${k}">${esc(v)}</button>`).join("");pintaPrev();pintaIni()}
+function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>`<button type="button" class="fchip tchip${tipoSel===k?" on":""}" data-k="${k}" style="--tc:var(--t-${k})">${esc(v)}</button>`).join("");pintaPrev();pintaIni()}
 /* ===== servidor (Supabase) ===== */
 const SB_URL="https://gluinrtmrrfecbhjwvdl.supabase.co",SB_KEY="sb_publishable_qjY62DUZEKjXFqMfX14x7w_TBe-grRt";
 let sb=null,uid=null,nombres={},chats={},perfilOk=false,cargando=true,errCon="";
@@ -1616,7 +1680,7 @@ const cargaJs=u=>new Promise((ok,ko)=>{const s=document.createElement("script");
 const URL_ENTRADA="https://appventurelife.com/#entrada=";
 function entradaHtml(a){
   if(a.kind==="aqui"||!uid)return "";
-  if(soyOrg(a))return a.precio>0?`<button type="button" class="sec escbtn" data-escanear="1">📷 Escanear entradas</button>`:"";
+  if(soyOrg(a))return "";
   const c=misEntradas[a.id];if(!c||pasada(a))return "";
   return `<div class="mientrada"><b>🎟️ Tu entrada</b><div class="qr" data-qr="${URL_ENTRADA+c}"></div><div class="cod">${esc(c)}</div><small>Enséñala a quien organiza al llegar</small></div>`;
 }
@@ -1629,7 +1693,11 @@ async function verEntrada(c){
   let ok=false,txt="";
   try{
     const r=await sb.from("entradas").select("plan_id,user_id").eq("codigo",c).maybeSingle();
-    if(r.data){const a=data.find(p=>p.id===r.data.plan_id)||{};ok=true;txt=esc(nombres[r.data.user_id]||"Alguien")+"<br><small>"+esc(a.titulo||"Plan")+"</small>"}
+    if(r.data){const a=data.concat(viejosOrg).find(p=>p.id===r.data.plan_id)||{};ok=true;txt=esc(nombres[r.data.user_id]||"Alguien")+"<br><small>"+esc(a.titulo||"Plan")+"</small>";
+      if(a.orgId===uid){const ya=(a.llegaIds||[]).includes(r.data.user_id);
+        if(!ya){try{const u2=await sb.from("participantes").update({llegado:new Date().toISOString()}).eq("plan_id",r.data.plan_id).eq("user_id",r.data.user_id);if(!u2.error)(a.llegaIds=a.llegaIds||[]).push(r.data.user_id)}catch(_e){}}
+        const g=(a.asistIds||[]).filter(u=>u!==uid).length,l=(a.llegaIds||[]).length;
+        txt+=ya?"<br><small>⚠️ Esta entrada ya se había usado antes</small>":"<br><small>✅ Marcado como llegado · "+l+" de "+g+"</small>"}}
     else txt="No encuentro esta entrada en tus planes.<br><small>Solo la puede comprobar quien organiza el plan, desde su cuenta.</small>";
   }catch(e){txt="No se pudo comprobar ahora. Inténtalo otra vez."}
   const d=document.createElement("div");d.className="entchk "+(ok?"ok":"no");
@@ -1672,7 +1740,7 @@ async function recarga(){
   try{
     const res=await Promise.all([
       sb.from("planes").select("*").order("creado",{ascending:false}).limit(300),
-      sb.from("participantes").select("plan_id,user_id,pagado"),
+      Promise.all([sb.from("participantes").select("plan_id,user_id"),sb.rpc("mis_pagos")]).then(([p,q])=>{if(p.error)return p;const m={};((q&&q.data)||[]).forEach(r=>{m[r.plan_id+"|"+r.user_id]=r});return {data:(p.data||[]).map(r=>Object.assign({},r,m[r.plan_id+"|"+r.user_id]||{})),error:null}}),
       sb.from("profiles").select("id,nombre,buscable,foto"),
       sb.from("aqui").select("*"),
       sb.from("planes_codigo").select("plan_id,codigo"),
@@ -1722,7 +1790,7 @@ async function recarga(){
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
-    pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}}});
+    pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}if(x.llegado)(a.llegaIds=a.llegaIds||[]).push(x.user_id);}});
     aq.data.filter(r=>!bloqueados.has(r.user_id)).forEach(r=>{lista.push({id:-(hash(r.user_id)%1000000000)-1,kind:"aqui",tipo:"aqui",titulo:r.titulo||"",emoji:r.emoji||"",lat:r.lat,lng:r.lng,orgId:r.user_id,uid:r.user_id,org:nom(r.user_id),asist:[],asistIds:[],pagos:[],pagosIds:[],max:0,t:Date.parse(r.creado),hasta:r.hasta?Date.parse(r.hasta):0,vis:r.visibilidad||"todos"})});
     viejosOrg=lista.filter(a=>a.viejo&&a.orgId===uid&&a.precio>0&&Date.now()-Date.parse(a.fecha)<90*864e5);data=lista.filter(a=>!a.viejo);errCon="";
     const nuevasInv=[...invitadoA.keys()].filter(id=>!invVista.has(id));
@@ -1839,8 +1907,8 @@ function render(){
     const fi=L.divIcon({className:"",html:`<div class="pin" style="background:#0A2A5E;transform:scale(.72)"><svg width="24" height="30" viewBox="0 0 407.35 510.12" aria-hidden="true"><use href="#avl-logo"/></svg></div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.ini.lat,a.ini.lng],{icon:fi,zIndexOffset:500}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
   });
-  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado · se quita en "+Math.max(1,Math.ceil((tF(a)+27*3600000-Date.now())/3600000))+" h)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Van amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
-  $("lista").innerHTML=lst.length?lst.map(card).join(""):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
+  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado · se quita en "+Math.max(1,Math.ceil((tF(a)+27*3600000-Date.now())/3600000))+" h)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small><span class="tagrow">${soyOrg(a)?`<span class="tag" style="background:#0A2A5E">⭐ Organizas tú</span>`:mia(a)?`<span class="tag">✅ Apuntado</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Van amigos</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}</span></div></div>`;
+  $("lista").innerHTML=lst.length?(vista==="mios"?[["⭐ Organizas tú",lst.filter(soyOrg)],["✅ Te has apuntado",lst.filter(a=>voy(a)&&!soyOrg(a))],["✉️ Te han invitado",lst.filter(a=>!mia(a))]].filter(g=>g[1].length).map(g=>`<h3 class="lgrupo">${g[0]} <span>${g[1].length}</span></h3>`+g[1].map(card).join("")).join(""):lst.map(card).join("")):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
   $("ahoraBox").hidden=!aq.length;
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
   const rc=$("rutaChip");
@@ -1901,12 +1969,12 @@ function render(){
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
-<div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${soyOrg(a)?`<button id="panGo" class="sec" type="button">📊 Panel organizador</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
+<div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${soyOrg(a)?`<button id="panGo" class="pango" type="button">📊 Panel del organizador</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
 <div class="cajas">
 <div class="caja ancha"><span class="ci">📅</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
 <div class="caja ancha"><span class="ci">📍</span><small>Punto de encuentro</small><b>${esc(a.punto||"Marcado en el mapa")}</b><details class="irmapa" data-k="mapa"><summary>🧭 Cómo llegar</summary><a href="https://maps.apple.com/?daddr=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Apple Maps</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Google Maps</a></details></div>
 <div class="caja"><span class="ci">👥</span><small>Plazas</small><b>${libres?`${libres} de ${a.max} plazas libres`:`Completo (${a.max} de ${a.max})`}</b></div>
-${a.precio>0?`<div class="caja ancha"><span class="ci">💶</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${!soyOrg(a)?`<p class="meta aviso-pago">AppVentureLife no comprueba la identidad de quien organiza. Paga en efectivo, por Bizum o con tarjeta, como indique quien organiza.</p>`:""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}</div>`:`<div class="caja"><span class="ci">💶</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
+${a.precio>0?`<div class="caja ancha"><span class="ci">💶</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}</div>`:`<div class="caja"><span class="ci">💶</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
 </div>
 ${tiempoHTML(a)}
 ${tramoHTML(a)}
@@ -1915,8 +1983,8 @@ ${a.desc?`<h3 class="fsec">Descripción</h3><p style="margin:0 0 12px;white-spac
 ${eqL.length?`<h3 class="fsec">Equipo necesario</h3><ul class="equipo">${eqL.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
 ${a.emerg&&(yo||soyOrg(a))?`<div class="emerg"><small class="meta" style="display:block;margin:0 0 2px">🆘 Contacto de emergencia</small><b style="color:var(--ink)">${esc(a.emerg)}</b>${soyOrg(a)?`<p class="meta" style="margin:4px 0 0;font-size:12px">Solo lo ves tú y quien se apunta.</p>`:""}</div>`:""}
 ${quien(a,true)}
-<div style="margin:12px 0">${a.precio>0?`<p class="meta">AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}${seguridad(a)}</div>
 <div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>
+${infoPlan(a)}
 <div class="fbar"><button id="unir" class="big" ${lleno||(yo&&soyOrg(a))?"disabled":""}>${yo&&soyOrg(a)?"Organizas este plan":yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button></div>`;
   }
   const mismo=d.dataset.pid===String(a.id)&&d.dataset.tab===tab&&d.classList.contains("open"),abiertos=mismo?[...d.querySelectorAll("details[data-k]")].filter(x=>x.open).map(x=>x.dataset.k):[],st=mismo?d.scrollTop:0;
@@ -1961,11 +2029,11 @@ ${quien(a,true)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";prefillCobros=false;pagoOn=false;pintaTipos();pintaPrecioAviso();
+  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";tipoManual=false;prefillCobros=false;pagoOn=false;pintaTipos();pintaPrecioAviso();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
-  const conocido=!!TIPOS[a.tipo];tipoSel=conocido?a.tipo:"otro";$("f-tipo").value=conocido?"":a.tipo;
+  const conocido=!!TIPOS[a.tipo];tipoSel=conocido?a.tipo:"otro";tipoManual=true;$("f-tipo").value=conocido?"":a.tipo;
   $("f-titulo").value=a.titulo;$("f-emoji").value=a.emoji||"";
   $("f-dia").value=a.fecha?a.fecha.slice(0,10):"";$("f-hora").value=a.fecha?a.fecha.slice(11,16):"";
   $("f-plazas").value=a.max;
@@ -2369,6 +2437,14 @@ $("f-emoji").addEventListener("input",pintaPrev);
 $("emojis").addEventListener("click",()=>setTimeout(pintaPrev,0));
 $("f-tipo").addEventListener("input",pintaPrev);
 $("f-tipo").addEventListener("input",pintaIni);
+$("f-tipos").addEventListener("click",()=>{$("f-tipo").value="";tipoManual=true;setTimeout(pintaPrev,0)});
+var tipoManual=false;
+function adivinaTipo(t){const R=[["moto",/moto ?de ?agua|jet ?ski|moto acu/i],["surf",/surf|kite|kait|paddle|\bsup\b|bodyboard|olas/i],["escalada",/escal|ferrata|boulder|roc[oó]dromo/i],["bici",/bici|btt|mtb|ciclis|pedal/i],["viaje",/viaje|escapada|vuelo|\btour\b/i],["ruta",/ruta|camin|sender|excursi|trek|monta[ñn]|subida|cima|pico|paseo/i],["ocio",/\bbar\b|cena|comida|fiesta|cerve|caf[eé]|concierto|cine|tapas|copas|festival/i]];for(const [k,r] of R)if(r.test(t))return k;return "otro"}
+function pintaDt(){["f-dia","f-hora"].forEach(i=>{const e=$(i);if(e&&e.parentNode&&e.parentNode.classList)e.parentNode.classList.toggle("lleno",!!e.value)})}
+$("f-titulo").addEventListener("input",()=>{if(tipoManual||$("f-tipo").value)return;const k=adivinaTipo($("f-titulo").value);if(k!==tipoSel){tipoSel=k;pintaTipos()}});
+["f-dia","f-hora"].forEach(i=>{$(i).addEventListener("input",pintaDt);$(i).addEventListener("change",pintaDt)});
+$("f-dias").addEventListener("click",()=>setTimeout(pintaDt,0));
+document.addEventListener("click",e=>{const b=e.target.closest("[data-plz]");if(!b)return;const i=$("f-plazas");i.value=Math.max(2,Math.min(50,(+i.value||6)+ +b.dataset.plz))});
 try{document.querySelectorAll("a.corr").forEach(a=>{const m=a.dataset.u+"@"+a.dataset.d;a.href="mailto:"+m;a.textContent=m})}catch(e){}
 function pintaPrecioAviso(){
   const p=+$("f-precio").value||0,box=$("precioAviso");
@@ -2389,7 +2465,7 @@ function puedeCobrar(){try{return !!(uid&&verifSet&&verifSet.has(uid))}catch(e){
 function nPasos(){return (puedeCobrar()||(editId&&pagoOn))?4:3}
 function pasoErr(t){const e=$("pasoErr");if(!e)return;e.textContent=t||"";e.hidden=!t}
 function pintaPasos(){
-  const ed=!!editId,n=nPasos();if(paso>n)paso=n;if(paso<1)paso=1;
+  pintaDt();const ed=!!editId,n=nPasos();if(paso>n)paso=n;if(paso<1)paso=1;
   document.querySelectorAll("#nueva .paso").forEach(d=>{d.hidden=+d.dataset.p!==paso});
   const bar=$("pasosBar");
   if(ed){bar.className="pasostab";bar.innerHTML=["Qué","Cuándo","Detalles","Precio"].slice(0,n).map((t,i)=>'<button type="button" data-p="'+(i+1)+'"'+(i+1===paso?' class="on"':'')+'>'+t+'</button>').join("")}
@@ -2503,12 +2579,19 @@ async function abrirPanelOrg(){
   $("po-msg").textContent="";$("po-res").textContent="";
   await pintaPanelOrg();
 }
+function filaPlanOrg(a,abierto){
+  const gente=(a.asistIds||[]).filter(u=>u!==uid),pg=a.pagosIds||[],ll=a.llegaIds||[],pago=a.precio>0;
+  const npg=gente.filter(u=>pg.includes(u)).length,npend=gente.length-npg,nll=gente.filter(u=>ll.includes(u)).length;
+  const res=[gente.length+"/"+a.max+" apuntados"];if(pago){res.push(npg+" pagados");if(npend)res.push(npend+" pendientes")}if(nll)res.push(nll+" han llegado");
+  const filas=gente.map(u=>{const p=pg.includes(u),l=ll.includes(u),n=nombres[u]||"Alguien";
+    return `<div class="po-per">${avPersona(u,n)}<div class="po-pn"><b>${esc(n)}</b><span>${pago?(p?'<i class="tg ok">🟢 Pagado</i>':'<i class="tg pend">🟠 Pendiente</i>'):""}${l?'<i class="tg ll">✅ Ha llegado</i>':""}</span></div><div class="po-acc">${pago?`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}">${p?"Quitar pago":"Marcar pagado"}</button>`:""}<button class="sec" type="button" data-ll="${a.id}|${esc(u)}">${l?"No ha llegado":"Ha llegado"}</button></div></div>`}).join("");
+  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo?" · terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${pago?`<small class="po-cob">Cobrado (lo que has marcado tú): ${precioTxt(npg*a.precio)}</small>`:""}${filas||'<p class="meta">Todavía no se ha apuntado nadie.</p>'}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar el pago (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje a todos</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-abrir="${a.id}">Abrir el plan</button>`}</div></details>`;
+}
 async function pintaPanelOrg(){
-  const mios=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid&&a.precio>0);$("po-comprob").hidden=!mios.length;
-  $("po-planes").innerHTML=mios.length?mios.map(a=>{
-    const gente=(a.asistIds||[]).filter(u=>u!==uid),pg=a.pagosIds||[],cob=gente.filter(u=>pg.includes(u)).length;
-    return `<div class="item" style="display:block;cursor:default"><b>${esc(a.titulo)}</b><small>${esc(a.cuando)} · ${precioTxt(a.precio)} por persona</small><small>Apuntados: ${gente.length} · Han pagado: ${cob} · Cobrado: ${precioTxt(cob*a.precio)}</small>${gente.length?`<div style="margin-top:6px">${gente.map(u=>`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}" style="margin:2px 6px 2px 0">${pg.includes(u)?"✓":"○"} ${esc(nombres[u]||"Alguien")}</button>`).join("")}</div><small style="display:block">Toca un nombre para marcar o desmarcar su pago.</small>`:"<small>Todavía no se ha apuntado nadie.</small>"}${a.viejo?`<small style="display:block;margin-top:6px">Plan terminado: ya no sale en el mapa.</small>`:`<button class="sec" type="button" data-abrir="${a.id}" style="margin-top:6px">Abrir el plan</button>`}</div>`;
-  }).join(""):'<p class="meta">Todavía no tienes planes de pago. Al crear un plan, ponle un precio y saldrá aquí.</p>';
+  const todos=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid).sort((x,y)=>(x.viejo?1:0)-(y.viejo?1:0)||tF(x)-tF(y));
+  const mios=todos.filter(a=>a.precio>0);$("po-comprob").hidden=!mios.length;
+  const box=$("po-planes"),abiertos=new Set([...box.querySelectorAll("details[open]")].map(d=>+d.dataset.pl));
+  box.innerHTML=todos.length?todos.map(a=>filaPlanOrg(a,abiertos.has(a.id)||todos.length===1)).join(""):'<p class="meta">Todavía no has creado ningún plan. Toca + y «Nuevo plan».</p>';
   let ent=[];
   if(mios.length&&sb){try{const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").in("plan_id",mios.map(a=>a.id)).order("enviada",{ascending:false}).limit(30);if(!r.error)ent=r.data||[]}catch(e){}}
   $("po-entradas").innerHTML=ent.length?ent.map(x=>{const a=data.find(p=>p.id===x.plan_id)||{};return `<div class="item" style="cursor:default"><div style="flex:1;min-width:0"><b>${esc(x.codigo)}</b><small>${esc(nombres[x.user_id]||"Alguien")} · ${esc(a.titulo||"")}</small></div></div>`}).join(""):'<p class="meta">Todavía no se ha enviado ninguna entrada.</p>';
@@ -2531,6 +2614,7 @@ function probarEnlace(){
 async function comprobarEntrada(){
   const c=$("po-cod").value.trim().toUpperCase().replace(/\s/g,""),out=$("po-res");
   if(!/^AVL-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(c)){out.textContent="Escribe el código completo, como AVL-AB12-CD34.";return}
+  out.textContent="";$("po-cod").value="";return verEntrada(c);
   try{
     const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").eq("codigo",c).maybeSingle();
     if(r.error||!r.data){out.textContent="✗ No encuentro esa entrada en tus planes.";return}
@@ -2542,6 +2626,15 @@ $("po-guardar").onclick=guardarCobros;$("po-probar").onclick=probarEnlace;$("po-
 $("po-planes").addEventListener("click",async e=>{
   const ab=e.target.closest("[data-abrir]");
   if(ab){$("panelorg").classList.remove("open");elegir(+ab.dataset.abrir);return}
+  const ll=e.target.closest("[data-ll]");
+  if(ll){const [pid,u]=ll.dataset.ll.split("|"),a=data.concat(viejosOrg).find(x=>x.id===+pid);if(!a)return;const ya=(a.llegaIds||[]).includes(u);
+    try{const r=await sb.from("participantes").update({llegado:ya?null:new Date().toISOString()}).eq("plan_id",a.id).eq("user_id",u);if(r.error)throw r.error;await recarga();await pintaPanelOrg()}catch(er){fallo(er)}return}
+  const rc=e.target.closest("[data-rec]");
+  if(rc){const a=data.concat(viejosOrg).find(x=>x.id===+rc.dataset.rec);if(!a)return;if(!confirm("¿Mandar un mensaje privado a quien aún no ha pagado «"+a.titulo+"»?"))return;
+    try{const r=await sb.rpc("org_recordar_pago",{p_plan:a.id});if(r.error)throw r.error;avisa(r.data===-1?"Ya mandaste un recordatorio hace poco. Espera unas horas.":r.data?"💶 Recordatorio enviado a "+r.data+(r.data===1?" persona":" personas"):"No hay nadie pendiente de pago.")}catch(er){fallo(er)}return}
+  const mg=e.target.closest("[data-msg]");
+  if(mg){const a=data.find(x=>x.id===+mg.dataset.msg);if(!a)return;const t=(prompt("Mensaje para todos los apuntados a «"+a.titulo+"». Saldrá en el chat del plan:")||"").trim();if(!t)return;
+    try{const r=await sb.from("mensajes").insert({plan_id:a.id,texto:"📢 "+t.slice(0,290)});if(r.error)throw r.error;avisa("📢 Mensaje enviado al chat del plan");await recarga()}catch(er){fallo(er)}return}
   const pp=e.target.closest("[data-pp]");if(!pp)return;
   const [pid,u]=pp.dataset.pp.split("|"),a=data.find(x=>x.id===+pid);if(!a)return;
   const ya=(a.pagosIds||[]).includes(u);
@@ -2549,7 +2642,7 @@ $("po-planes").addEventListener("click",async e=>{
 });
 /* ===== Ayuda (fase A: respuestas fijas, sin coste; la IA se enchufa aquí después) ===== */
 const FAQ=[
- {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Paso 1: quién puede verlo, el nombre, el tipo y el emoji.\n5. Paso 2: el día, la hora y las plazas. Pulsa «Publicar ya» o «Añadir más».\n6. En «Añadir más» puedes poner descripción, equipo, punto de encuentro, contacto de emergencia y foto. Si eres organizador verificado, en el último paso eliges si es gratis o de pago."},
+ {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Paso 1: quién puede verlo, el nombre, el tipo y el emoji.\n5. Paso 2: el día, la hora y las plazas. Pulsa «Publicar ya» o «＋ Añadir detalles (opcional)».\n6. En «Añadir detalles» puedes poner descripción, equipo, punto de encuentro, contacto de emergencia y foto. Si eres organizador verificado, en el último paso eliges si es gratis o de pago."},
  {q:"¿Cómo me apunto a un plan?",p:["plan","mapa"],k:["apuntar","apuntarme","apuntarse","unir","unirme","participar","inscribir","plan"],a:"Toca una chincheta del mapa (o un plan de la lista de debajo). Vuelve a tocar la chincheta para abrir el plan y pulsa «Apuntarme». Para salir, abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo salgo de un plan?",p:["plan"],k:["salir","salgo","quitarme","desapuntar","abandonar","borrarme"],a:"Abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo marco el punto de salida?",p:["crear","editar"],k:["salida","inicio","punto","quedamos","quedar","empezar","ruta","recorrido","encuentro"],a:"Al crear o editar un plan, en el recuadro «Punto de salida (opcional)» pulsa «Marcar el inicio», toca el mapa o busca el sitio y pulsa «Usar este inicio». También puedes pulsar «Poner el nombre de este sitio como punto de encuentro»."},
