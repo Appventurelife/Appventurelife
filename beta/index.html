@@ -19,8 +19,8 @@
 :root{--bg:#E9EFE7;--ink:#17301F;--mut:#58705E;--card:#fff;--line:#C6D3C4;--cta:#1F5A3A;--ctat:#fff;--pin:#F2B632;
 --t-moto:#1B7F8C;--t-ruta:#5E8C3A;--t-bici:#C8892B;--t-surf:#2D6CC0;--t-escalada:#7A5A3A;--t-otro:#7B8A80;--t-viaje:#7B4FB0;--t-ocio:#D04A7B;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15}}
-:root[data-theme="dark"]{--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15;--tkl:#0A4FA0}}
+:root[data-theme="dark"]{--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15;--tkl:#0A4FA0}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito Sans",system-ui,-apple-system,sans-serif;line-height:1.45}
@@ -55,6 +55,9 @@ h1,h2{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;font-we
 .msg div{white-space:pre-wrap;word-break:break-word}
 .msg.yo{align-self:flex-end;background:var(--cta);color:var(--ctat);border-radius:14px 14px 4px 14px}
 .msg.yo small{color:inherit;opacity:.75}
+.tk{margin-left:5px;letter-spacing:-4px;padding-right:4px;font-weight:700}
+.tk.lei{color:var(--tkl,#6CCBFF)}
+.msg.yo small:has(.tk.lei){opacity:1}
 .send{display:flex;gap:8px;margin-bottom:12px}.send input{flex:1}
 .item{box-shadow:0 2px 10px rgba(16,48,31,.07)}
 .th{border-radius:14px}
@@ -489,7 +492,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra y crea planes de aventura cerca de ti</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 103 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 104 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -531,7 +534,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 103 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 104 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -693,7 +696,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 103 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 104 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1547,10 +1550,11 @@ function pintaDM(){
   $("dm-sub").textContent=esAmigo(dmCon)?"👥 Amigo":solEnv.includes(dmCon)?"Solicitud de amistad enviada":pc?"Va a «"+pc.titulo+"»":"";
   $("dm-av").innerHTML=avPersona(dmCon,nom);
   $("dm-plan").hidden=!pc;
-  $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
+  $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}${m.de===uid?palom(m):""}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
   const c=$("dm-msgs");c.scrollTop=c.scrollHeight;
 }
-function marcaDM(){if(!dmCon)return;visto["d"+dmCon]=ultimoId(dms[dmCon]);guardaVisto();render()}
+function palom(m){return `<span class="tk${m.lei?" lei":""}" aria-label="${m.lei?"Leído":m.rec?"Recibido":"Enviado"}">${m.lei||m.rec?"✓✓":"✓"}</span>`}
+function marcaDM(){if(!dmCon)return;{const l=dms[dmCon]||[];if(sb&&l.some(m=>m.de===dmCon&&!m.lei)){l.forEach(m=>{if(m.de===dmCon){m.lei=m.lei||1;m.rec=m.rec||1}});sb.rpc("dm_marcar",{p_de:dmCon,p_leido:true}).then(()=>{},()=>{})}}visto["d"+dmCon]=ultimoId(dms[dmCon]);guardaVisto();render()}
 function abreDM(u){if(!exigeAcepta(()=>abreDM(u)))return;dmCon=u;$("dm-menu").hidden=true;pintaDM();$("dm").classList.add("open");marcaDM()}
 function fallo(e){alert((e&&e.message)||"Algo ha fallado. Inténtalo de nuevo.")}
 async function perfilListo(){
@@ -1669,8 +1673,9 @@ async function recarga(){
     if(solInit&&nuevasSol.length)avisa("👥 "+nom(nuevasSol[0])+" quiere ser tu amigo",()=>abrePersona(nuevasSol[0]));
     solVista=new Set(solRec);solInit=true;
     chats={};ms.data.filter(m=>!bloqueados.has(m.user_id)).forEach(m=>{(chats[m.plan_id]=chats[m.plan_id]||[]).push({id:m.id,uid:m.user_id,n:nom(m.user_id),t:Date.parse(m.creado),txt:m.texto})});
-    dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)})});
+    dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado),rec:m.recibido,lei:m.leido})});
     amigosSet=new Set(am.data.map(r=>r.amigo_id).filter(u=>!bloqueados.has(u)));
+    if(dr.data.some(m=>m.para===uid&&!m.recibido))sb.rpc("dm_marcar",{}).then(()=>{},()=>{});
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});const emMap={};((emq&&emq.data)||[]).forEach(x=>{emMap[x.plan_id]=x.texto});
     const esViejo=r=>!!r.fecha&&Date.parse(String(r.fecha).slice(0,16))<Date.now()-27*3600000;const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
@@ -1712,15 +1717,16 @@ function suscribir(){
     .on("postgres_changes",{event:"*",schema:"public",table:"solicitudes"},p=>{
       pronto();
     })
+    .on("postgres_changes",{event:"UPDATE",schema:"public",table:"directos"},p=>{const m=p.new;if(!m||m.de!==uid)return;const x=(dms[m.para]||[]).find(y=>y.id===m.id);if(!x)return;x.rec=m.recibido;x.lei=m.leido;if($("dm").classList.contains("open")&&dmCon===m.para)pintaDM()})
     .on("postgres_changes",{event:"INSERT",schema:"public",table:"directos"},p=>{
       const m=p.new;if(!m||(m.para!==uid&&m.de!==uid)||bloqueados.has(m.de))return;
       const u=m.de===uid?m.para:m.de,l=(dms[u]=dms[u]||[]);
       if(l.some(x=>x.id===m.id))return;
-      l.push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)});
+      l.push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado),rec:m.recibido,lei:m.leido});
       if(m.de!==uid){
         const abierto=$("dm").classList.contains("open")&&dmCon===u;
         if(abierto){pintaDM();marcaDM()}
-        else avisa("💬 "+(nombres[u]||"Alguien")+": "+String(m.texto).slice(0,60),()=>abreDM(u));
+        else{sb.rpc("dm_marcar",{p_de:m.de}).then(()=>{},()=>{});avisa("💬 "+(nombres[u]||"Alguien")+": "+String(m.texto).slice(0,60),()=>abreDM(u))}
       }
       render();
     })
