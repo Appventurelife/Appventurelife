@@ -17,8 +17,8 @@
 :root{--bg:#E9EFE7;--ink:#17301F;--mut:#58705E;--card:#fff;--line:#C6D3C4;--cta:#1F5A3A;--ctat:#fff;--pin:#F2B632;
 --t-moto:#1B7F8C;--t-ruta:#5E8C3A;--t-bici:#C8892B;--t-surf:#2D6CC0;--t-escalada:#7A5A3A;--t-otro:#7B8A80;--t-viaje:#7B4FB0;--t-ocio:#D04A7B;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15}}
-:root[data-theme="dark"]{--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15;--tkl:#0A4FA0}}
+:root[data-theme="dark"]{--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15;--tkl:#0A4FA0}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito Sans",system-ui,-apple-system,sans-serif;line-height:1.45}
@@ -53,6 +53,9 @@ h1,h2{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;font-we
 .msg div{white-space:pre-wrap;word-break:break-word}
 .msg.yo{align-self:flex-end;background:var(--cta);color:var(--ctat);border-radius:14px 14px 4px 14px}
 .msg.yo small{color:inherit;opacity:.75}
+.tk{margin-left:5px;letter-spacing:-4px;padding-right:4px;font-weight:700}
+.tk.lei{color:var(--tkl,#6CCBFF)}
+.msg.yo small:has(.tk.lei){opacity:1}
 .send{display:flex;gap:8px;margin-bottom:12px}.send input{flex:1}
 .item{box-shadow:0 2px 10px rgba(16,48,31,.07)}
 .th{border-radius:14px}
@@ -309,6 +312,15 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .conv .cder{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
 .conv .cder small{color:var(--mut);font-size:12px}
 .conv.nuevo .cder small{color:#1E7BFF;font-weight:700}
+.conv{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.conv.mudo .cnum{background:#9AA3AD}
+.conv.mudo.nuevo .cder small{color:var(--mut);font-weight:400}
+#accmenu{position:fixed;inset:0;z-index:3000}
+#accmenu[hidden]{display:none}
+#accmenu .accbg{position:absolute;inset:0;background:rgba(0,0,0,.4)}
+#accmenu .acccard{position:absolute;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:480px;margin:0 auto;background:var(--card);color:var(--ink);border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:8px;animation:up .2s both}
+#accmenu .acccard p{margin:4px 0 6px;text-align:center;font-weight:700;color:var(--mut)}
+#accmenu .acccard button{width:100%;padding:14px;font-size:17px}
 .cnum{background:#1E7BFF;color:#fff;border-radius:99px;font-size:12px;font-weight:800;min-width:20px;height:20px;padding:0 6px;display:flex;align-items:center;justify-content:center}
 #dm.chatv{top:0;bottom:0;max-height:none;height:100%;border-radius:0;padding:0;display:flex;flex-direction:column;overflow:hidden}
 #detalle.full.chatmode{padding:0}
@@ -375,6 +387,13 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 /* v71: logo que se junta */
 .junta{display:none;position:relative;width:180px;height:225px}
 .welcome.splash .junta{display:block}
+#bienvenida.hero2:not(.splash){background:radial-gradient(120% 80% at 50% 20%,#2A7FE0 0%,#1C6FD1 30%,#0A2A5E 100%)!important;-webkit-backdrop-filter:none;backdrop-filter:none;padding-top:calc(24px + env(safe-area-inset-top,0px))!important}
+#bienvenida.hero2 .h2card{background:none;box-shadow:none;color:#fff;padding:0 6px}
+#bienvenida.hero2 .h2card .h2logo{width:104px;height:104px;border-radius:24px;box-shadow:0 12px 32px rgba(0,0,0,.4)}
+#bienvenida.hero2 .h2card h1{color:#fff;font-size:46px!important;margin:18px 0 8px!important;text-shadow:0 2px 10px rgba(0,0,0,.25)}
+#bienvenida.hero2 .h2card p{color:rgba(255,255,255,.88);font-size:18px;margin-bottom:28px}
+#bienvenida.hero2 .h2card button{background:#fff!important;color:#0A2A5E!important;border-radius:999px!important;box-shadow:0 12px 30px rgba(0,0,0,.35)!important;transition:transform .15s}
+#bienvenida.hero2 .h2card button:active{transform:scale(.97)}
 .junta .pz{position:absolute;inset:0;width:100%;height:100%;opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.6)}
 .junta.go .pz{animation:pzj 1.8s cubic-bezier(.2,.9,.25,1.08) var(--d) forwards}
 @keyframes pzj{to{opacity:1;transform:none}}
@@ -470,7 +489,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra y crea planes de aventura cerca de ti</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 99 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 105 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -512,7 +531,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 99 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 105 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -674,7 +693,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 99 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 105 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -761,7 +780,7 @@ let vista="todas",fFecha="",compartido=false;
 const fmtF=f=>new Date(f).toLocaleString("es",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
 const tF=a=>a.fecha?new Date(a.fecha).getTime():NaN;
 const textoCuando=a=>a.fecha?fmtF(a.fecha):a.cuando;
-const pasada=a=>!!a.fecha&&tF(a)<Date.now()-3*3600000;
+let viejosOrg=[];const pasada=a=>!!a.fecha&&tF(a)<Date.now()-3*3600000;
 const mia=a=>!!uid&&(a.orgId===uid||(a.asistIds||[]).includes(uid));
 function cumpleFecha(a){
   if(!fFecha)return true;if(!a.fecha)return false;
@@ -1496,7 +1515,27 @@ function avisa(txt,fn){
 }
 const sinLeerPlan=a=>(a.chat||[]).filter(m=>m.uid!==uid&&m.id>(visto["p"+a.id]||0)).length;
 const sinLeerDM=u=>(dms[u]||[]).filter(m=>m.de!==uid&&m.id>(visto["d"+u]||0)).length;
-const totalSinLeer=()=>data.filter(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))).reduce((n,a)=>n+sinLeerPlan(a),0)+Object.keys(dms).reduce((n,u)=>n+sinLeerDM(u),0);
+let mudos=new Set();try{mudos=new Set(JSON.parse(localStorage.getItem("avl_mudos")||"[]"))}catch(e){}
+const esMudo=k=>mudos.has(k);
+function ponMudo(k,on){if(on)mudos.add(k);else mudos.delete(k);try{localStorage.setItem("avl_mudos",JSON.stringify([...mudos]))}catch(e){}}
+const totalSinLeer=()=>data.filter(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&!esMudo("p"+a.id)).reduce((n,a)=>n+sinLeerPlan(a),0)+Object.keys(dms).filter(u=>!esMudo("d"+u)).reduce((n,u)=>n+sinLeerDM(u),0);
+let lpHecho=false,lpTmr=null;
+function menuConv(el){
+  const k=el.dataset.dm?"d"+el.dataset.dm:"p"+el.dataset.planchat;
+  const nom=((el.querySelector(".ctx b")||{}).textContent||"Chat").replace(" 🔕","");
+  const m=esMudo(k);
+  let box=$("accmenu");if(!box){box=document.createElement("div");box.id="accmenu";document.body.appendChild(box)}
+  box.innerHTML=`<div class="accbg"></div><div class="acccard"><p>${esc(nom)}</p><button type="button" data-acc="mudo">${m?"🔔 Quitar silencio":"🔕 Silenciar"}</button><button type="button" data-acc="leido">✓ Marcar como leído</button><button type="button" data-acc="no" class="sec">Cancelar</button></div>`;
+  box.hidden=false;
+  box.onclick=e=>{
+    const b=e.target.closest("[data-acc]");
+    if(!b&&!e.target.classList.contains("accbg"))return;
+    box.hidden=true;if(!b)return;
+    if(b.dataset.acc==="mudo"){ponMudo(k,!m);avisa(m?"🔔 Avisos activados en este chat":"🔕 Chat silenciado")}
+    else if(b.dataset.acc==="leido"){const l=k[0]==="d"?dms[k.slice(1)]:((data.find(x=>x.id===+k.slice(1))||{}).chat);visto[k]=ultimoId(l);guardaVisto()}
+    pintaBandeja();
+  };
+}
 function planComun(u){return data.find(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&(a.orgId===u||(a.asistIds||[]).includes(u)))}
 function avPersona(u,n){n=n||"?";return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
 function pintaDM(){
@@ -1508,10 +1547,13 @@ function pintaDM(){
   $("dm-sub").textContent=esAmigo(dmCon)?"👥 Amigo":solEnv.includes(dmCon)?"Solicitud de amistad enviada":pc?"Va a «"+pc.titulo+"»":"";
   $("dm-av").innerHTML=avPersona(dmCon,nom);
   $("dm-plan").hidden=!pc;
-  $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
+  $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}${m.de===uid?palom(m):""}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
   const c=$("dm-msgs");c.scrollTop=c.scrollHeight;
 }
-function marcaDM(){if(!dmCon)return;visto["d"+dmCon]=ultimoId(dms[dmCon]);guardaVisto();render()}
+function palom(m){return `<span class="tk" aria-label="${m.rec?"Recibido":"Enviado"}">${m.rec?"✓✓":"✓"}</span>`}
+let cvisto={};
+function palomG(a,m){const o=[...new Set([a.orgId,...(a.asistIds||[])])].filter(u=>u&&u!==uid&&!bloqueados.has(u));if(!o.length)return palom({});const v=cvisto[a.id]||{};return palom({rec:o.every(u=>(v[u]||0)>=m.id)})}
+function marcaDM(){if(!dmCon)return;{const l=dms[dmCon]||[];if(sb&&l.some(m=>m.de===dmCon&&!m.rec)){l.forEach(m=>{if(m.de===dmCon)m.rec=m.rec||1});sb.rpc("dm_marcar",{p_de:dmCon}).then(()=>{},()=>{})}}visto["d"+dmCon]=ultimoId(dms[dmCon]);guardaVisto();render()}
 function abreDM(u){if(!exigeAcepta(()=>abreDM(u)))return;dmCon=u;$("dm-menu").hidden=true;pintaDM();$("dm").classList.add("open");marcaDM()}
 function fallo(e){alert((e&&e.message)||"Algo ha fallado. Inténtalo de nuevo.")}
 async function perfilListo(){
@@ -1630,18 +1672,20 @@ async function recarga(){
     if(solInit&&nuevasSol.length)avisa("👥 "+nom(nuevasSol[0])+" quiere ser tu amigo",()=>abrePersona(nuevasSol[0]));
     solVista=new Set(solRec);solInit=true;
     chats={};ms.data.filter(m=>!bloqueados.has(m.user_id)).forEach(m=>{(chats[m.plan_id]=chats[m.plan_id]||[]).push({id:m.id,uid:m.user_id,n:nom(m.user_id),t:Date.parse(m.creado),txt:m.texto})});
-    dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)})});
+    dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado),rec:m.recibido,lei:m.leido})});
     amigosSet=new Set(am.data.map(r=>r.amigo_id).filter(u=>!bloqueados.has(u)));
+    if(dr.data.some(m=>m.para===uid&&!m.recibido))sb.rpc("dm_marcar",{}).then(()=>{},()=>{});
+    sb.rpc("chat_marcar",{}).then(()=>sb.from("chat_visto").select("plan_id,user_id,recibido")).then(r=>{if(r&&r.data){cvisto={};r.data.forEach(x=>{(cvisto[x.plan_id]=cvisto[x.plan_id]||{})[x.user_id]=+x.recibido});render()}},()=>{});
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});const emMap={};((emq&&emq.data)||[]).forEach(x=>{emMap[x.plan_id]=x.texto});
-    const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
+    const esViejo=r=>!!r.fecha&&Date.parse(String(r.fecha).slice(0,16))<Date.now()-27*3600000;const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:emMap[r.id]||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {viejo:esViejo(r),id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:emMap[r.id]||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
     pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}}});
     aq.data.filter(r=>!bloqueados.has(r.user_id)).forEach(r=>{lista.push({id:-(hash(r.user_id)%1000000000)-1,kind:"aqui",tipo:"aqui",titulo:r.titulo||"",emoji:r.emoji||"",lat:r.lat,lng:r.lng,orgId:r.user_id,uid:r.user_id,org:nom(r.user_id),asist:[],asistIds:[],pagos:[],pagosIds:[],max:0,t:Date.parse(r.creado),hasta:r.hasta?Date.parse(r.hasta):0,vis:r.visibilidad||"todos"})});
-    data=lista;errCon="";
+    viejosOrg=lista.filter(a=>a.viejo&&a.orgId===uid&&a.precio>0&&Date.now()-Date.parse(a.fecha)<90*864e5);data=lista.filter(a=>!a.viejo);errCon="";
     const nuevasInv=[...invitadoA.keys()].filter(id=>!invVista.has(id));
     if(invInit&&nuevasInv.length){const id=nuevasInv[0],pl=lista.find(x=>x.id===id);avisa("✉️ "+nom(invitadoA.get(id))+" te invita a «"+(pl?pl.titulo:"un plan")+"»",()=>{if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id)}})}
     invVista=new Set(invitadoA.keys());invInit=true;
@@ -1665,6 +1709,7 @@ function suscribir(){
         const a=data.find(x=>x.id===m.plan_id);if(a)a.chat=l;
         if(m.user_id!==uid){
           const abierto=a&&sel===a.id&&tab==="chat"&&$("detalle").classList.contains("open");
+          sb.rpc("chat_marcar",{p_plan:m.plan_id}).then(()=>{},()=>{});
           if(!abierto)avisa("💬 "+(nombres[m.user_id]||"Alguien")+" en "+(a?a.titulo:"un plan")+": "+String(m.texto).slice(0,60),()=>{if(a){irA("explorar");elegir(a.id);tab="chat";render()}});
         }
         render();
@@ -1673,15 +1718,17 @@ function suscribir(){
     .on("postgres_changes",{event:"*",schema:"public",table:"solicitudes"},p=>{
       pronto();
     })
+    .on("postgres_changes",{event:"*",schema:"public",table:"chat_visto"},p=>{const r=p.new;if(!r||!r.plan_id)return;(cvisto[r.plan_id]=cvisto[r.plan_id]||{})[r.user_id]=+r.recibido;if(sel===r.plan_id&&tab==="chat")render()})
+    .on("postgres_changes",{event:"UPDATE",schema:"public",table:"directos"},p=>{const m=p.new;if(!m||m.de!==uid)return;const x=(dms[m.para]||[]).find(y=>y.id===m.id);if(!x)return;x.rec=m.recibido;x.lei=m.leido;if($("dm").classList.contains("open")&&dmCon===m.para)pintaDM()})
     .on("postgres_changes",{event:"INSERT",schema:"public",table:"directos"},p=>{
       const m=p.new;if(!m||(m.para!==uid&&m.de!==uid)||bloqueados.has(m.de))return;
       const u=m.de===uid?m.para:m.de,l=(dms[u]=dms[u]||[]);
       if(l.some(x=>x.id===m.id))return;
-      l.push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)});
+      l.push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado),rec:m.recibido,lei:m.leido});
       if(m.de!==uid){
         const abierto=$("dm").classList.contains("open")&&dmCon===u;
         if(abierto){pintaDM();marcaDM()}
-        else avisa("💬 "+(nombres[u]||"Alguien")+": "+String(m.texto).slice(0,60),()=>abreDM(u));
+        else{sb.rpc("dm_marcar",{p_de:m.de}).then(()=>{},()=>{});avisa("💬 "+(nombres[u]||"Alguien")+": "+String(m.texto).slice(0,60),()=>abreDM(u))}
       }
       render();
     })
@@ -1696,14 +1743,14 @@ var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
 function avion(){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>'}
 function hCorta(t){const d=new Date(t);return d.toDateString()===new Date().toDateString()?hora(t):d.toLocaleDateString("es",{day:"numeric",month:"short"})}
 function pintaBandeja(){
-  const nP=bandeja.p.reduce((n,c)=>n+sinLeerPlan(c.a),0),nD=bandeja.d.reduce((n,c)=>n+sinLeerDM(c.u),0);
+  const nP=bandeja.p.reduce((n,c)=>n+(esMudo("p"+c.a.id)?0:sinLeerPlan(c.a)),0),nD=bandeja.d.reduce((n,c)=>n+(esMudo("d"+c.u)?0:sinLeerDM(c.u)),0);
   if(!msgTab)msgTab=(nD&&!nP)||(!bandeja.p.length&&bandeja.d.length)?"d":"p";
   const l=bandeja[msgTab]||[];
   $("listaDM").innerHTML=`<div class="mtabs"><button type="button" data-mt="p" class="${msgTab==="p"?"on":""}">Planes grupales${nP?`<i>${nP}</i>`:""}</button><button type="button" data-mt="d" class="${msgTab==="d"?"on":""}">Privados${nD?`<i>${nD}</i>`:""}</button></div>`+(l.length?`<div class="lista-conv">`+l.map(c=>{
-    if(c.tipo==="d"){const ult=c.l[c.l.length-1],n=sinLeerDM(c.u),nom=nombres[c.u]||"Alguien";return `<div class="conv${n?" nuevo":""}" data-dm="${esc(c.u)}">${avPersona(c.u,nom)}<div class="ctx"><b>${esc(nom)}</b><small>${ult.de===uid?"Tú: ":""}${esc(ult.txt.slice(0,60))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`}
+    if(c.tipo==="d"){const ult=c.l[c.l.length-1],n=sinLeerDM(c.u),nom=nombres[c.u]||"Alguien";return `<div class="conv${n?" nuevo":""}${esMudo("d"+c.u)?" mudo":""}" data-dm="${esc(c.u)}">${avPersona(c.u,nom)}<div class="ctx"><b>${esc(nom)}${esMudo("d"+c.u)?" 🔕":""}</b><small>${ult.de===uid?"Tú: ":""}${esc(ult.txt.slice(0,60))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`}
     const a=c.a,ult=a.chat[a.chat.length-1],n=sinLeerPlan(a);
-    return `<div class="conv${n?" nuevo":""}" data-planchat="${a.id}"><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,24)}</div><div class="ctx"><b>${esc(a.titulo)}</b><small>${esc(ult.uid===uid?"Tú":ult.n)}: ${esc(ult.txt.slice(0,50))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`;
-  }).join("")+`</div>`:`<p class="meta">${msgTab==="p"?"Aún no hay chats de planes. Apúntate a un plan para hablar con el grupo.":"Aún no tienes mensajes privados. Toca el nombre de un amigo, o de alguien en un plan, para escribirle."}</p>`);
+    return `<div class="conv${n?" nuevo":""}${esMudo("p"+a.id)?" mudo":""}" data-planchat="${a.id}"><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,24)}</div><div class="ctx"><b>${esc(a.titulo)}${esMudo("p"+a.id)?" 🔕":""}</b><small>${esc(ult.uid===uid?"Tú":ult.n)}: ${esc(ult.txt.slice(0,50))}</small></div><div class="cder"><small>${hCorta(ult.t)}</small>${n?`<span class="cnum">${n}</span>`:""}</div></div>`;
+  }).join("")+`</div><p class="meta" style="text-align:center;font-size:12px;margin:8px 0 0">Mantén pulsado un chat para silenciarlo.</p>`:`<p class="meta">${msgTab==="p"?"Aún no hay chats de planes. Apúntate a un plan para hablar con el grupo.":"Aún no tienes mensajes privados. Toca el nombre de un amigo, o de alguien en un plan, para escribirle."}</p>`);
 }
 function pinUno(a){
   const pg=a.kind!=="aqui"&&a.precio>0,lleno=a.kind!=="aqui"&&a.asist.length>=a.max;
@@ -1753,7 +1800,7 @@ function render(){
     const fi=L.divIcon({className:"",html:`<div class="pin" style="background:#0A2A5E;transform:scale(.72)"><svg width="24" height="30" viewBox="0 0 407.35 510.12" aria-hidden="true"><use href="#avl-logo"/></svg></div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.ini.lat,a.ini.lng],{icon:fi,zIndexOffset:500}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
   });
-  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Van amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
+  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado · se quita en "+Math.max(1,Math.ceil((tF(a)+27*3600000-Date.now())/3600000))+" h)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small></div>${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Van amigos</span>`:""}${mia(a)?`<span class="tag">Apuntado</span>`:""}</div>`;
   $("lista").innerHTML=lst.length?lst.map(card).join(""):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
   $("ahoraBox").hidden=!aq.length;
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
@@ -1802,7 +1849,7 @@ function render(){
   if(tab==="chat"&&puede&&a.chat.length){const ult=ultimoId(a.chat);if((visto["p"+a.id]||0)<ult){visto["p"+a.id]=ult;guardaVisto()}}
   let body;
   if(tab==="chat"){
-    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
+    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}${m.uid===uid?palomG(a,m):""}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
   }else if(tab==="fotos"){
     body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Fotos del plan</h3>${puede?`<label class="subir" for="m-file" style="margin-bottom:6px">Añadir fotos</label><input id="m-file" type="file" accept="image/*" multiple hidden><p class="meta" id="m-estado"></p>`:`<p class="meta">Solo quien va al plan puede subir fotos.</p>`}<div class="gal">${ms.length?ms.map(f=>`<div class="tile" data-f="${esc(f.id)}"><img src="${esc(urlFoto(f))}" alt="" loading="lazy"></div>`).join(""):`<p class="meta" style="grid-column:1/-1;text-align:center">Aún no hay fotos. ¡Sube la primera!</p>`}</div><p class="meta" style="font-size:12px">Las fotos las ve quien puede ver el plan. Sube solo fotos tuyas o de personas que estén de acuerdo. Quien organiza puede borrar cualquier foto de su plan.</p>`;
   }else{
@@ -2108,7 +2155,10 @@ $("listaBloq").addEventListener("click",async e=>{
   const b=e.target.closest("[data-desb]");if(!b)return;
   try{const r=await sb.from("bloqueos").delete().eq("user_id",uid).eq("bloqueado_id",b.dataset.desb);if(r.error)throw r.error;await recarga()}catch(x){fallo(x)}
 });
-$("listaDM").addEventListener("click",e=>{
+$("listaDM").addEventListener("touchstart",e=>{lpHecho=false;const c=e.target.closest(".conv");if(!c)return;clearTimeout(lpTmr);lpTmr=setTimeout(()=>{lpHecho=true;menuConv(c)},500)},{passive:true});
+["touchend","touchmove","touchcancel"].forEach(ev=>$("listaDM").addEventListener(ev,()=>clearTimeout(lpTmr),{passive:true}));
+$("listaDM").addEventListener("contextmenu",e=>{const c=e.target.closest(".conv");if(!c)return;e.preventDefault();menuConv(c)});
+$("listaDM").addEventListener("click",e=>{if(lpHecho){lpHecho=false;return}
   const t=e.target.closest("[data-mt]");if(t){msgTab=t.dataset.mt;pintaBandeja();return}
   const i=e.target.closest(".item,.conv");if(!i)return;
   if(i.dataset.planchat){const pl=data.find(x=>x.id===+i.dataset.planchat);if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id);tab="chat";chatDesde="bandeja";render()}}
@@ -2415,10 +2465,10 @@ async function abrirPanelOrg(){
   await pintaPanelOrg();
 }
 async function pintaPanelOrg(){
-  const mios=data.filter(a=>a.kind!=="aqui"&&a.orgId===uid&&a.precio>0);$("po-comprob").hidden=!mios.length;
+  const mios=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid&&a.precio>0);$("po-comprob").hidden=!mios.length;
   $("po-planes").innerHTML=mios.length?mios.map(a=>{
     const gente=(a.asistIds||[]).filter(u=>u!==uid),pg=a.pagosIds||[],cob=gente.filter(u=>pg.includes(u)).length;
-    return `<div class="item" style="display:block;cursor:default"><b>${esc(a.titulo)}</b><small>${esc(a.cuando)} · ${precioTxt(a.precio)} por persona</small><small>Apuntados: ${gente.length} · Han pagado: ${cob} · Cobrado: ${precioTxt(cob*a.precio)}</small>${gente.length?`<div style="margin-top:6px">${gente.map(u=>`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}" style="margin:2px 6px 2px 0">${pg.includes(u)?"✓":"○"} ${esc(nombres[u]||"Alguien")}</button>`).join("")}</div><small style="display:block">Toca un nombre para marcar o desmarcar su pago.</small>`:"<small>Todavía no se ha apuntado nadie.</small>"}<button class="sec" type="button" data-abrir="${a.id}" style="margin-top:6px">Abrir el plan</button></div>`;
+    return `<div class="item" style="display:block;cursor:default"><b>${esc(a.titulo)}</b><small>${esc(a.cuando)} · ${precioTxt(a.precio)} por persona</small><small>Apuntados: ${gente.length} · Han pagado: ${cob} · Cobrado: ${precioTxt(cob*a.precio)}</small>${gente.length?`<div style="margin-top:6px">${gente.map(u=>`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}" style="margin:2px 6px 2px 0">${pg.includes(u)?"✓":"○"} ${esc(nombres[u]||"Alguien")}</button>`).join("")}</div><small style="display:block">Toca un nombre para marcar o desmarcar su pago.</small>`:"<small>Todavía no se ha apuntado nadie.</small>"}${a.viejo?`<small style="display:block;margin-top:6px">Plan terminado: ya no sale en el mapa.</small>`:`<button class="sec" type="button" data-abrir="${a.id}" style="margin-top:6px">Abrir el plan</button>`}</div>`;
   }).join(""):'<p class="meta">Todavía no tienes planes de pago. Al crear un plan, ponle un precio y saldrá aquí.</p>';
   let ent=[];
   if(mios.length&&sb){try{const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").in("plan_id",mios.map(a=>a.id)).order("enviada",{ascending:false}).limit(30);if(!r.error)ent=r.data||[]}catch(e){}}
