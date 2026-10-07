@@ -1,4 +1,4 @@
-/* AppVentureLife - datos del titular.
+/* Kiplan - datos del titular.
    No estan escritos en las paginas: se montan aqui cuando una persona pulsa el boton. */
 (function(){
   function d(t){try{return decodeURIComponent(escape(atob(t.split("").reverse().join(""))))}catch(e){return ""}}
