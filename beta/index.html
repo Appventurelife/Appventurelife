@@ -349,6 +349,17 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .cbar input{flex:1;margin:0;border-radius:99px;padding:11px 16px}
 .cenv{width:44px;height:44px;padding:0!important;border-radius:50%!important;flex:none;display:flex;align-items:center;justify-content:center}
 label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--ink);margin:14px 0 4px}
+#perfil .p-head{display:flex;align-items:center;gap:14px;margin:16px 50px 16px 0}
+#perfil .p-head .cav{width:64px;height:64px;font-size:28px}
+#perfil .p-hi{min-width:0}
+#perfil .p-head h2{margin:0;font-size:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#perfil .p-head .meta{margin:2px 0 0}
+#perfil .p-card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px;margin:0 0 12px}
+#perfil .p-h{margin:0 0 4px;font-size:19px}
+#perfil .p-card input:not([type=checkbox]){width:100%}
+#perfil .p-wide{width:100%;margin-top:10px}
+#perfil .p-link{display:block;width:100%;margin-top:6px;background:none!important;border:0!important;box-shadow:none!important;color:var(--cta)!important;text-decoration:underline;font-size:15px;font-weight:600;padding:8px}
+#perfil .p-borrar{display:block;margin:18px auto 0;background:none!important;border:0!important;box-shadow:none!important;color:#C4472F!important;font-size:14px;font-weight:600;text-decoration:underline;padding:8px}
 input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 #cod-in,#f-cod{letter-spacing:2px;text-transform:uppercase}
 .ruta{border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;margin:0 0 12px}
@@ -497,7 +508,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 107 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 108 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -539,7 +550,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 107 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 108 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -676,32 +687,35 @@ main{padding:0!important;max-width:none!important}
 
 <div id="visor" class="visor" hidden><button class="x2" id="v-x" type="button" aria-label="Cerrar">✕</button><div id="v-c"></div><button id="v-del" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Eliminar</button><button id="v-den" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Denunciar</button></div>
 
-<section id="perfil" class="sheet" aria-label="Tu nombre">
+<section id="perfil" class="sheet" aria-label="Tu perfil">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<h2>¿Cómo te llamas?</h2>
+<div class="p-head"><div id="p-av"></div><div class="p-hi"><h2 id="p-tit">Tu perfil</h2><p class="meta" id="p-sub"></p></div></div>
+<div class="p-card">
+<h3 class="p-h">Tu nombre</h3>
 <p class="meta">Es el nombre que verán los demás en los planes a los que vayas.</p>
-<label for="p-nombre">Nombre</label><input id="p-nombre" maxlength="24" placeholder="Ej. Marta">
-<label class="chk"><input type="checkbox" id="p-buscable" checked> Aparecer cuando otras personas me buscan por nombre</label>
-<div class="row" style="margin-top:14px"><button class="sec" id="p-cancel" type="button">Cancelar</button><button id="p-ok" type="button">Guardar</button></div>
-<div id="cuentaBox">
-<h3 class="who-h" style="margin-top:16px">Tu cuenta</h3>
+<input id="p-nombre" maxlength="24" placeholder="Ej. Marta" aria-label="Tu nombre">
+<label class="chk"><input type="checkbox" id="p-buscable" checked> Que me encuentren por mi nombre</label>
+<button id="p-ok" type="button" class="p-wide">Guardar nombre</button><button class="sec" id="p-cancel" type="button" hidden>Cancelar</button>
+</div>
+<div id="cuentaBox" class="p-card">
+<h3 class="p-h" id="cu-tit">Guarda tu cuenta</h3>
 <p class="meta" id="cu-estado"></p>
 <div id="cu-form">
 <input id="cu-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" placeholder="tu@correo.com">
-<div class="row" style="margin-top:8px"><button class="sec" id="cu-guardar" type="button">Guardar mi cuenta</button><button class="sec" id="cu-entrar" type="button">Ya tengo cuenta</button></div>
+<button id="cu-guardar" type="button" class="p-wide">Guardar mi cuenta</button><button class="p-link" id="cu-entrar" type="button">Ya tengo cuenta en otro móvil</button>
 <div id="cu-paso2" hidden style="margin-top:8px"><input id="cu-codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="Código del correo"><button id="cu-ok" type="button" style="margin-top:8px;width:100%">Confirmar código</button></div>
 </div>
 <p class="meta" id="cu-msg"></p>
 <button class="sec" id="cu-salir" type="button" hidden style="width:100%">Cerrar sesión en este navegador</button>
 </div>
-<div id="orgBox">
-<h3 class="who-h" style="margin-top:16px">Organizar planes de pago</h3>
+<div id="orgBox" class="p-card">
+<h3 class="p-h">Organizar planes de pago</h3>
 <p class="meta" id="org-estado"></p>
 <button class="sec" id="org-abrir" type="button" style="width:100%" hidden>Quiero ser organizador verificado</button>
 </div>
-<div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
-<button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 107 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
+<button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 108 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -942,7 +956,7 @@ async function guardaNombre(n){
   pintaYo();
 }
 let cbNombre=null;
-function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
+function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?"Así te ven los demás":"Aún no has puesto tu nombre";$("perfil").classList.add("open");if(cb||!me)setTimeout(()=>$("p-nombre").focus(),300)}
 $("yo").onclick=()=>pedirNombre();
 $("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);$("perfil").classList.remove("open");const c=cbNombre;cbNombre=null;if(c)c()};
 $("p-cancel").onclick=()=>{$("perfil").classList.remove("open");cbNombre=null};
@@ -1003,7 +1017,7 @@ async function cuEsTemporal(){try{const r=await sb.auth.getUser();const u=r.data
 async function cuPinta(){
   let u=null;try{const r=await sb.auth.getUser();u=r.data&&r.data.user}catch(e){}
   const temp=!u||!!u.is_anonymous||!u.email;
-  $("cu-estado").textContent=temp?"Ahora tu cuenta solo existe en este navegador: si abres la app desde otro sitio (Safari, la pantalla de inicio u otro móvil) serás otra persona. Guárdala con tu correo para ser siempre la misma.":"Cuenta guardada con "+u.email+". Entra con ese correo desde cualquier sitio y serás la misma persona.";
+  $("cu-tit").textContent=temp?"Guarda tu cuenta":"Tu cuenta";$("cu-estado").textContent=temp?"Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app.":"✅ Cuenta guardada: "+u.email+". Entra con ese correo desde cualquier móvil.";
   $("cu-form").hidden=!temp;$("cu-salir").hidden=temp;
   $("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg("");cuModo="";
 }
