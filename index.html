@@ -264,6 +264,9 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 /* v86: intro animada */
 #intro{position:fixed;inset:0;z-index:3000;background:linear-gradient(160deg,#1C6FD1 0%,#0A2A5E 100%);display:flex;align-items:center;justify-content:center;transition:opacity .45s ease}
 #intro.fin{opacity:0;pointer-events:none}
+#intro{flex-direction:column;text-align:center;padding:0 24px}
+.inslo{margin:16px 0 0;max-width:320px;color:rgba(255,255,255,.92);font-size:18px;line-height:1.35;opacity:0;transform:translateY(12px);animation:letra .6s ease .8s forwards}
+.inbeta{margin-top:18px;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:14px;font-weight:700;opacity:0;animation:letra .6s ease 1.1s forwards}
 .intxt{font:800 48px/1 "Barlow Condensed",system-ui,sans-serif;color:#fff;letter-spacing:.5px;white-space:nowrap}
 .intxt i{font-style:normal;display:inline-block;opacity:0;transform:translateY(26px);animation:letra .5s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(var(--i) * 45ms)}
 .intxt i.v{color:#FFD66B}
@@ -344,6 +347,21 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .cbar input{flex:1;margin:0;border-radius:99px;padding:11px 16px}
 .cenv{width:44px;height:44px;padding:0!important;border-radius:50%!important;flex:none;display:flex;align-items:center;justify-content:center}
 label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--ink);margin:14px 0 4px}
+#perfil .p-head{display:flex;align-items:center;gap:14px;margin:16px 50px 16px 0}
+#perfil .p-head .cav{width:64px;height:64px;font-size:28px}
+#perfil .p-avw{position:relative;flex:none;cursor:pointer;display:block}
+#perfil .p-cam{position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px}
+#perfil .p-quita{width:auto;padding:4px 0;margin:2px 0 0;text-align:left;font-size:14px}
+.pin .pinfoto{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+#perfil .p-hi{min-width:0}
+#perfil .p-head h2{margin:0;font-size:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#perfil .p-head .meta{margin:2px 0 0}
+#perfil .p-card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px;margin:0 0 12px}
+#perfil .p-h{margin:0 0 4px;font-size:19px}
+#perfil .p-card input:not([type=checkbox]){width:100%}
+#perfil .p-wide{width:100%;margin-top:10px}
+#perfil .p-link{display:block;width:100%;margin-top:6px;background:none!important;border:0!important;box-shadow:none!important;color:var(--cta)!important;text-decoration:underline;font-size:15px;font-weight:600;padding:8px}
+#perfil .p-borrar{display:block;margin:18px auto 0;background:none!important;border:0!important;box-shadow:none!important;color:#C4472F!important;font-size:14px;font-weight:600;text-decoration:underline;padding:8px}
 input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 #cod-in,#f-cod{letter-spacing:2px;text-transform:uppercase}
 .ruta{border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;margin:0 0 12px}
@@ -392,6 +410,7 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 #bienvenida.hero2 .h2card .h2logo{width:104px;height:104px;border-radius:24px;box-shadow:0 12px 32px rgba(0,0,0,.4)}
 #bienvenida.hero2 .h2card h1{color:#fff;font-size:46px!important;margin:18px 0 8px!important;text-shadow:0 2px 10px rgba(0,0,0,.25)}
 #bienvenida.hero2 .h2card p{color:rgba(255,255,255,.88);font-size:18px;margin-bottom:28px}
+.h2beta{display:inline-block;margin-top:18px;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:14px;font-weight:700}
 #bienvenida.hero2 .h2card button{background:#fff!important;color:#0A2A5E!important;border-radius:999px!important;box-shadow:0 12px 30px rgba(0,0,0,.35)!important;transition:transform .15s}
 #bienvenida.hero2 .h2card button:active{transform:scale(.97)}
 .junta .pz{position:absolute;inset:0;width:100%;height:100%;opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.6)}
@@ -478,18 +497,19 @@ main{padding:0!important;max-width:none!important}
 <symbol id="avl-tile" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#0A2A5E"/><use href="#avl-logo" x="23.65" y="17" width="52.70" height="66.00"/></symbol>
 </defs></svg>
 
-<div id="intro" aria-hidden="true"><div class="intxt"><i style="--i:0">A</i><i style="--i:1">p</i><i style="--i:2">p</i><i class="v" style="--i:3">V</i><i class="v" style="--i:4">e</i><i class="v" style="--i:5">n</i><i class="v" style="--i:6">t</i><i class="v" style="--i:7">u</i><i class="v" style="--i:8">r</i><i class="v" style="--i:9">e</i><i style="--i:10">L</i><i style="--i:11">i</i><i style="--i:12">f</i><i style="--i:13">e</i></div></div>
+<div id="intro" aria-hidden="true"><div class="intxt"><i style="--i:0">A</i><i style="--i:1">p</i><i style="--i:2">p</i><i class="v" style="--i:3">V</i><i class="v" style="--i:4">e</i><i class="v" style="--i:5">n</i><i class="v" style="--i:6">t</i><i class="v" style="--i:7">u</i><i class="v" style="--i:8">r</i><i class="v" style="--i:9">e</i><i style="--i:10">L</i><i style="--i:11">i</i><i style="--i:12">f</i><i style="--i:13">e</i></div><p class="inslo">Encuentra planes de aventura cerca de ti y apúntate con un toque.</p><span class="inbeta">🧪 Versión de prueba</span></div>
 <div id="bienvenida" class="welcome hero2 out" hidden>
 <div class="fotos" id="fotos" aria-hidden="true"></div>
 <div id="logoJunta" class="junta" aria-hidden="true"></div>
 <div class="wicons" id="wicons" hidden></div>
 <div class="h2card">
 <svg class="h2logo" width="72" height="72" viewBox="0 0 100 100" aria-hidden="true"><use href="#avl-tile"/></svg>
+<div class="h2beta">🧪 Versión de prueba</div>
 <h1>AppVentureLife</h1>
-<p>Encuentra y crea planes de aventura cerca de ti</p>
+<p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 105 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 109 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -531,7 +551,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 105 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 109 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -668,32 +688,35 @@ main{padding:0!important;max-width:none!important}
 
 <div id="visor" class="visor" hidden><button class="x2" id="v-x" type="button" aria-label="Cerrar">✕</button><div id="v-c"></div><button id="v-del" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Eliminar</button><button id="v-den" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Denunciar</button></div>
 
-<section id="perfil" class="sheet" aria-label="Tu nombre">
+<section id="perfil" class="sheet" aria-label="Tu perfil">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<h2>¿Cómo te llamas?</h2>
+<div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam">📷</span></label><input type="file" id="p-foto" accept="image/*" hidden><div class="p-hi"><h2 id="p-tit">Tu perfil</h2><p class="meta" id="p-sub"></p><button class="p-link p-quita" id="p-quitafoto" type="button" hidden>Quitar foto</button></div></div>
+<div class="p-card">
+<h3 class="p-h">Tu nombre</h3>
 <p class="meta">Es el nombre que verán los demás en los planes a los que vayas.</p>
-<label for="p-nombre">Nombre</label><input id="p-nombre" maxlength="24" placeholder="Ej. Marta">
-<label class="chk"><input type="checkbox" id="p-buscable" checked> Aparecer cuando otras personas me buscan por nombre</label>
-<div class="row" style="margin-top:14px"><button class="sec" id="p-cancel" type="button">Cancelar</button><button id="p-ok" type="button">Guardar</button></div>
-<div id="cuentaBox">
-<h3 class="who-h" style="margin-top:16px">Tu cuenta</h3>
+<input id="p-nombre" maxlength="24" placeholder="Ej. Marta" aria-label="Tu nombre">
+<label class="chk"><input type="checkbox" id="p-buscable" checked> Que me encuentren por mi nombre</label>
+<button id="p-ok" type="button" class="p-wide">Guardar nombre</button><button class="sec" id="p-cancel" type="button" hidden>Cancelar</button>
+</div>
+<div id="cuentaBox" class="p-card">
+<h3 class="p-h" id="cu-tit">Guarda tu cuenta</h3>
 <p class="meta" id="cu-estado"></p>
 <div id="cu-form">
 <input id="cu-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" placeholder="tu@correo.com">
-<div class="row" style="margin-top:8px"><button class="sec" id="cu-guardar" type="button">Guardar mi cuenta</button><button class="sec" id="cu-entrar" type="button">Ya tengo cuenta</button></div>
+<button id="cu-guardar" type="button" class="p-wide">Guardar mi cuenta</button><button class="p-link" id="cu-entrar" type="button">Ya tengo cuenta en otro móvil</button>
 <div id="cu-paso2" hidden style="margin-top:8px"><input id="cu-codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="Código del correo"><button id="cu-ok" type="button" style="margin-top:8px;width:100%">Confirmar código</button></div>
 </div>
 <p class="meta" id="cu-msg"></p>
 <button class="sec" id="cu-salir" type="button" hidden style="width:100%">Cerrar sesión en este navegador</button>
 </div>
-<div id="orgBox">
-<h3 class="who-h" style="margin-top:16px">Organizar planes de pago</h3>
+<div id="orgBox" class="p-card">
+<h3 class="p-h">Organizar planes de pago</h3>
 <p class="meta" id="org-estado"></p>
 <button class="sec" id="org-abrir" type="button" style="width:100%" hidden>Quiero ser organizador verificado</button>
 </div>
-<div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
-<button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 105 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
+<button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 109 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -934,10 +957,21 @@ async function guardaNombre(n){
   pintaYo();
 }
 let cbNombre=null;
-function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;$("perfil").classList.add("open");setTimeout(()=>$("p-nombre").focus(),300)}
+function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;pintaCabPerfil();$("perfil").classList.add("open");if(cb||!me)setTimeout(()=>$("p-nombre").focus(),300)}
 $("yo").onclick=()=>pedirNombre();
 $("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);$("perfil").classList.remove("open");const c=cbNombre;cbNombre=null;if(c)c()};
 $("p-cancel").onclick=()=>{$("perfil").classList.remove("open");cbNombre=null};
+$("p-foto").onchange=async e=>{const f=e.target.files&&e.target.files[0];e.target.value="";if(!f||!sb||!uid)return;if(!me){alert("Primero pon tu nombre y pulsa «Guardar nombre».");return}
+  const vieja=fotosP[uid];$("p-sub").textContent="Subiendo foto…";
+  try{const b=await reduceCuad(f);const ruta="perfil/"+uid+"/"+Date.now()+".jpg";
+    const up=await sb.storage.from("fotos").upload(ruta,b,{contentType:"image/jpeg",upsert:false});if(up.error)throw up.error;
+    const r=await sb.from("profiles").update({foto:ruta}).eq("id",uid);if(r.error){try{await sb.storage.from("fotos").remove([ruta])}catch(_e){}throw r.error}
+    fotosP[uid]=ruta;if(vieja){try{await sb.storage.from("fotos").remove([vieja])}catch(_e){}}
+  }catch(err){fallo(err)}
+  pintaCabPerfil();render()};
+$("p-quitafoto").onclick=async()=>{const v=fotosP[uid];if(!v||!sb)return;if(!confirm("¿Quitar tu foto de perfil?"))return;
+  try{const r=await sb.from("profiles").update({foto:null}).eq("id",uid);if(r.error)throw r.error;delete fotosP[uid];try{await sb.storage.from("fotos").remove([v])}catch(_e){}}catch(err){fallo(err)}
+  pintaCabPerfil();render()};
 pintaYo();
 $("wicons").innerHTML=["moto","ruta","bici","surf","escalada"].map(k=>`<span>${icon(k,24)}</span>`).join("");
 /* fotos reales de portada: sube portada1.jpg, portada2.jpg... al repositorio y salen solas */
@@ -972,7 +1006,7 @@ const PORTADA=["portada1.jpg","portada2.jpg","portada3.jpg","portada4.jpg","port
 const VER_TERM="2";
 const aceptado=()=>{try{return localStorage.getItem("avl_acepta")===VER_TERM}catch(e){return false}};
 var accCb=null;function exigeAcepta(cb){if(aceptado())return true;accCb=cb||null;$("acepta").hidden=false;return false}
-(()=>{const el=$("intro");if(!el)return;let hecho=false;const fin=()=>{if(hecho)return;hecho=true;el.classList.add("fin");setTimeout(()=>{el.hidden=true;try{map.invalidateSize()}catch(e){}},460)};el.addEventListener("click",fin);setTimeout(fin,1500)})();
+(()=>{const el=$("intro");if(!el)return;let hecho=false;const fin=()=>{if(hecho)return;hecho=true;el.classList.add("fin");setTimeout(()=>{el.hidden=true;try{map.invalidateSize()}catch(e){}},460)};el.addEventListener("click",fin);setTimeout(fin,3000)})();
 function cierraPortada(){$("bienvenida").classList.add("out");setTimeout(()=>$("bienvenida").hidden=true,420);map.invalidateSize()}
 (()=>{const P=[[0,0],[55,0],[100,0],[100,45],[100,100],[40,100],[0,100],[0,55]],C=[50,52];
   const S=[[-150,-170,-40],[20,-240,30],[190,-160,60],[240,30,-30],[170,210,45],[-10,250,-50],[-200,180,35],[-250,-20,-60]];
@@ -995,7 +1029,7 @@ async function cuEsTemporal(){try{const r=await sb.auth.getUser();const u=r.data
 async function cuPinta(){
   let u=null;try{const r=await sb.auth.getUser();u=r.data&&r.data.user}catch(e){}
   const temp=!u||!!u.is_anonymous||!u.email;
-  $("cu-estado").textContent=temp?"Ahora tu cuenta solo existe en este navegador: si abres la app desde otro sitio (Safari, la pantalla de inicio u otro móvil) serás otra persona. Guárdala con tu correo para ser siempre la misma.":"Cuenta guardada con "+u.email+". Entra con ese correo desde cualquier sitio y serás la misma persona.";
+  $("cu-tit").textContent=temp?"Guarda tu cuenta":"Tu cuenta";$("cu-estado").textContent=temp?"Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app.":"✅ Cuenta guardada: "+u.email+". Entra con ese correo desde cualquier móvil.";
   $("cu-form").hidden=!temp;$("cu-salir").hidden=temp;
   $("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg("");cuModo="";
 }
@@ -1060,6 +1094,7 @@ $("p-borrar").onclick=async()=>{
   borrarOk=false;$("p-borrar").textContent="Borrar todos mis datos";
   if(!sb||!uid)return;
   try{
+    if(fotosP[uid]){try{await sb.storage.from("fotos").remove([fotosP[uid]])}catch(_e){}}
     const r=await sb.from("profiles").delete().eq("id",uid);if(r.error)throw r.error;
     pararSeguimiento();perfilOk=false;me="";try{localStorage.removeItem("avl_nombre")}catch(e){}
     pintaYo();$("perfil").classList.remove("open");sel=null;await recarga();alert("Tus datos se han borrado.");
@@ -1537,7 +1572,11 @@ function menuConv(el){
   };
 }
 function planComun(u){return data.find(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&(a.orgId===u||(a.asistIds||[]).includes(u)))}
-function avPersona(u,n){n=n||"?";return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
+let fotosP={};
+const urlP=u=>SB_URL+"/storage/v1/object/public/fotos/"+fotosP[u];
+function avPersona(u,n){n=n||"?";if(u&&fotosP[u])return `<div class="cav"><img src="${esc(urlP(u))}" alt=""></div>`;return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
+function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?(fotosP[uid]?"Así te ven los demás":"Toca el círculo para poner tu foto"):"Aún no has puesto tu nombre";$("p-quitafoto").hidden=!fotosP[uid]}
+const reduceCuad=file=>new Promise((ok,ko)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=320;c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,320,320);URL.revokeObjectURL(u);c.toBlob(b=>b?ok(b):ko(new Error("No se pudo leer la foto")),"image/jpeg",.85)};im.onerror=()=>{URL.revokeObjectURL(u);ko(new Error("No se pudo leer la foto"))};im.src=u});
 function pintaDM(){
   const l=dms[dmCon]||[],nom=nombres[dmCon]||"Alguien",pc=planComun(dmCon);
   $("dm-quitar").hidden=!esAmigo(dmCon);
@@ -1634,7 +1673,7 @@ async function recarga(){
     const res=await Promise.all([
       sb.from("planes").select("*").order("creado",{ascending:false}).limit(300),
       sb.from("participantes").select("plan_id,user_id,pagado"),
-      sb.from("profiles").select("id,nombre,buscable"),
+      sb.from("profiles").select("id,nombre,buscable,foto"),
       sb.from("aqui").select("*"),
       sb.from("planes_codigo").select("plan_id,codigo"),
       sb.from("mensajes").select("*").order("creado",{ascending:true}).limit(1500),
@@ -1664,7 +1703,7 @@ async function recarga(){
     solRec=sl.data.filter(r=>r.para===uid&&!bloqueados.has(r.de)).map(r=>r.de);
     solEnv=sl.data.filter(r=>r.de===uid&&!bloqueados.has(r.para)).map(r=>r.para);
     invitadoA=new Map(il.data.filter(r=>r.user_id===uid&&!bloqueados.has(r.de)).map(r=>[r.plan_id,r.de]));
-    nombres={};pr.data.forEach(p=>{nombres[p.id]=p.nombre});
+    nombres={};fotosP={};pr.data.forEach(p=>{nombres[p.id]=p.nombre;if(p.foto)fotosP[p.id]=p.foto});
     perfiles=pr.data.map(p=>({id:p.id,nombre:p.nombre,buscable:p.buscable}));
     const yoPerf=pr.data.find(p=>p.id===uid);miBuscable=!yoPerf||yoPerf.buscable!==false;$("p-buscable").checked=miBuscable;
     const nom=i=>nombres[i]||"Alguien";
@@ -1754,7 +1793,7 @@ function pintaBandeja(){
 }
 function pinUno(a){
   const pg=a.kind!=="aqui"&&a.precio>0,lleno=a.kind!=="aqui"&&a.asist.length>=a.max;
-    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}${pg?" pago":""}${lleno&&a.id!==burbuja?" lleno":""}" style="background:${col(a)}">${sym(a,22)}${pg?`<span class="eur">€</span>`:""}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}${pg?" pago":""}${lleno&&a.id!==burbuja?" lleno":""}" style="background:${col(a)}">${a.kind==="aqui"&&fotosP[a.orgId]?`<img class="pinfoto" src="${esc(urlP(a.orgId))}" alt="">`:sym(a,22)}${pg?`<span class="eur">€</span>`:""}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.lat,a.lng],{icon:ic,zIndexOffset:a.id===burbuja?1000:0}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capaPins);
 }
 function pinGrupo(l){
