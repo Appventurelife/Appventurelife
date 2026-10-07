@@ -17,7 +17,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#E9EFE7;--ink:#17301F;--mut:#58705E;--card:#fff;--line:#C6D3C4;--cta:#1F5A3A;--ctat:#fff;--pin:#F2B632;
---t-moto:#1B7F8C;--t-ruta:#5E8C3A;--t-bici:#C8892B;--t-surf:#2D6CC0;--t-escalada:#7A5A3A;--t-otro:#7B8A80;--t-viaje:#7B4FB0;--t-ocio:#D04A7B;
+--t-moto:#1565C0;--t-ruta:#3F8F3A;--t-bici:#E07B00;--t-surf:#0E9FB5;--t-escalada:#8A5A2B;--t-otro:#6B7280;--t-viaje:#7B4FB0;--t-ocio:#D0343A;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15;--tkl:#0A4FA0}}
 :root[data-theme="dark"]{--bg:#0F1D15;--ink:#E4EEE2;--mut:#93AB98;--card:#16281D;--line:#2A4332;--cta:#7FC48F;--ctat:#0F1D15;--tkl:#0A4FA0}
@@ -376,6 +376,27 @@ label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--in
 .lgrupo{font-size:19px;margin:16px 2px 8px}
 .lgrupo:first-child{margin-top:4px}
 .lgrupo span{font-size:14px;color:var(--mut);font-weight:600}
+#f-tipos .tchip{border:2px solid var(--tc)!important}
+#f-tipos .tchip::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--tc);margin-right:6px;vertical-align:1px}
+#f-tipos .tchip.on{background:var(--tc)!important;color:#fff!important}
+#f-tipos .tchip.on::before{background:#fff}
+.dtrow>div{flex:1;min-width:0}
+.dtw{position:relative}
+.dtw input{width:100%;min-width:0;-webkit-appearance:none;appearance:none}
+.dtph{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--mut);pointer-events:none;font-size:16px}
+.dtw.lleno .dtph{display:none}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper input{flex:1;text-align:center;font-size:20px;font-weight:700}
+.stepper button{flex:none;width:52px;height:48px;padding:0!important;font-size:24px!important}
+.pbtns{flex-wrap:wrap}
+.pbtns #f-ok{order:-2;flex:1 1 100%}
+.pbtns #p-mas:not([hidden]){order:-1;flex:1 1 100%}
+#p-mas small{display:block;font-size:12px;font-weight:400;color:var(--mut);margin-top:2px}
+.pbtns #p-atras{flex:0 0 auto;background:none!important;border:0!important;box-shadow:none!important;text-decoration:underline;color:var(--mut)!important}
+.infoplan{margin:12px 0}
+.infoplan ul{margin:8px 0 0;padding-left:18px}
+.infoplan li{color:var(--mut);font-size:14px;margin:0 0 6px;line-height:1.4}
+.infoplan li b{color:var(--ink)}
 #perfil .p-avw{position:relative;flex:none;cursor:pointer;display:block}
 #perfil .p-cam{position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px}
 #perfil .p-quita{width:auto;padding:4px 0;margin:2px 0 0;text-align:left;font-size:14px}
@@ -537,7 +558,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 112 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 113 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -579,7 +600,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 112 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 113 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -688,8 +709,8 @@ main{padding:0!important;max-width:none!important}
 <div class="paso" data-p="2" hidden>
 <label>Fecha y hora</label>
 <div class="chips" id="f-dias"><button type="button" class="fchip" data-d="0">Hoy</button><button type="button" class="fchip" data-d="1">Mañana</button><button type="button" class="fchip" data-d="sab">Este sábado</button><button type="button" class="fchip" data-d="dom">Este domingo</button></div>
-<div class="row"><div><label for="f-dia">Día</label><input id="f-dia" type="date"></div><div><label for="f-hora">Hora</label><input id="f-hora" type="time"></div></div>
-<label for="f-plazas">Plazas</label><input id="f-plazas" type="number" min="2" max="50" value="6">
+<div class="row dtrow"><div><label for="f-dia">Día</label><div class="dtw"><input id="f-dia" type="date"><span class="dtph">Toca para elegir</span></div></div><div><label for="f-hora">Hora</label><div class="dtw"><input id="f-hora" type="time"><span class="dtph">Toca para elegir</span></div></div></div>
+<label for="f-plazas">Plazas</label><div class="stepper"><button type="button" class="sec" data-plz="-1" aria-label="Menos plazas">−</button><input id="f-plazas" type="number" inputmode="numeric" min="2" max="50" value="6"><button type="button" class="sec" data-plz="1" aria-label="Más plazas">+</button></div>
 </div>
 <div class="paso" data-p="3" hidden>
 <p class="meta" style="margin:0 0 4px">Todo esto es opcional. Puedes publicar sin rellenarlo.</p>
@@ -711,7 +732,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 </div>
 <p id="pasoErr" class="perr" role="alert" hidden></p>
-<div class="row" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button class="sec" id="p-atras" type="button" hidden>Atrás</button><button class="sec" id="p-mas" type="button" hidden>Añadir más</button><button id="p-sig" type="button">Siguiente</button><button id="f-ok" type="button" hidden>Publicar</button></div>
+<div class="row pbtns" style="margin-top:14px"><button class="sec" id="f-cancel" type="button">Cancelar</button><button class="sec" id="p-atras" type="button" hidden>Atrás</button><button class="sec" id="p-mas" type="button" hidden>＋ Añadir detalles (opcional)<small>Descripción, punto de encuentro, foto…</small></button><button id="p-sig" type="button">Siguiente</button><button id="f-ok" type="button" hidden>Publicar</button></div>
 </section>
 
 <div id="visor" class="visor" hidden><button class="x2" id="v-x" type="button" aria-label="Cerrar">✕</button><div id="v-c"></div><button id="v-del" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Eliminar</button><button id="v-den" class="sec" type="button" style="color:#fff;border-color:rgba(255,255,255,.5)" hidden>Denunciar</button></div>
@@ -744,7 +765,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 112 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 113 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -845,6 +866,15 @@ function cumpleFecha(a){
 const orden=(x,y)=>{const px=pasada(x),py=pasada(y);if(px!==py)return px?1:-1;const tx=tF(x),ty=tF(y);if(isNaN(tx)&&isNaN(ty))return y.id-x.id;if(isNaN(tx))return 1;if(isNaN(ty))return -1;return tx-ty};
 const AGUA=a=>/moto de agua|jet ?ski|agua|surf|kayak|paddle|buceo|pesca|vela|nata|barco|kite|piragu/i.test((TIPOS[a.tipo]||a.tipo)+" "+a.titulo);
 const MONTE=a=>/ruta|sender|monta|escal|bici|trail|run|corr|camp/i.test(TIPOS[a.tipo]||a.tipo);
+function infoPlan(a){
+  const tip=AGUA(a)?"Lleva chaleco salvavidas, agua y protección solar. Mira el estado del mar y avisa a alguien de tu salida.":MONTE(a)?"Lleva agua, calzado adecuado y el móvil cargado. Avisa a alguien de tu ruta y no vayas solo si no conoces la zona.":"Avisa a alguien de dónde vas y lleva lo necesario para el plan.";
+  const li=["AppVentureLife solo pone en contacto a las personas. <b>Quien organiza el plan es el responsable</b> de la actividad, los permisos y los seguros"+(a.precio>0?", y también de los cobros y las devoluciones":"")+".",
+   a.precio>0?"La app no cobra ni guarda tu dinero (0 % de comisión). Paga solo como indique quien organiza"+(verifSet.has(a.orgId)?" (organizador verificado ✓)":"")+".":"",
+   "Las actividades al aire libre tienen riesgos. Cada persona es responsable de su seguridad y de ir preparada. Hay que tener 18 años o más.",
+   "🛟 "+tip,
+   "¿Algo no cuadra? Usa «Denunciar» en el plan o en el perfil de la persona."].filter(Boolean);
+  return `<details class="mas infoplan"><summary>ℹ️ Detalles importantes</summary><ul>${li.map(x=>`<li>${x}</li>`).join("")}</ul></details>`;
+}
 function seguridad(a){
   const tip=AGUA(a)?"Lleva chaleco salvavidas, agua y protección solar. Mira el estado del mar y avisa a alguien de tu salida.":MONTE(a)?"Lleva agua, calzado adecuado y el móvil cargado. Avisa a alguien de tu ruta y no vayas solo si no conoces la zona.":"Avisa a alguien de dónde vas y lleva lo necesario para el plan.";
   return `<details class="safe"><summary><b>Seguridad</b></summary><p class="meta" style="margin:6px 0 0">${tip}</p><p class="meta" style="margin:6px 0 0;font-size:12px">Cada persona es responsable de su seguridad. AppVentureLife no gestiona pagos ni seguros.</p></details>`;
@@ -1553,7 +1583,7 @@ function elegirLugar(l){
 }
 function ponPunto(ll){marcaPunto(ll);colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Plan en este punto";$("colocarOk").disabled=false}
 function pintaPrev(){const c=$("f-tipo").value.trim(),t=c?norm(c):tipoSel,a={tipo:t,emoji:ultimo($("f-emoji").value)};$("pinprev").innerHTML=`<div class="pin" style="background:${col(a)}">${sym(a,22)}</div>`}
-function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>`<button type="button" class="fchip${tipoSel===k?" on":""}" data-k="${k}">${esc(v)}</button>`).join("");pintaPrev();pintaIni()}
+function pintaTipos(){$("f-tipos").innerHTML=Object.entries(TIPOS).map(([k,v])=>`<button type="button" class="fchip tchip${tipoSel===k?" on":""}" data-k="${k}" style="--tc:var(--t-${k})">${esc(v)}</button>`).join("");pintaPrev();pintaIni()}
 /* ===== servidor (Supabase) ===== */
 const SB_URL="https://gluinrtmrrfecbhjwvdl.supabase.co",SB_KEY="sb_publishable_qjY62DUZEKjXFqMfX14x7w_TBe-grRt";
 let sb=null,uid=null,nombres={},chats={},perfilOk=false,cargando=true,errCon="";
@@ -1948,7 +1978,7 @@ ${a.desc?`<h3 class="fsec">Descripción</h3><p style="margin:0 0 12px;white-spac
 ${eqL.length?`<h3 class="fsec">Equipo necesario</h3><ul class="equipo">${eqL.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
 ${a.emerg&&(yo||soyOrg(a))?`<div class="emerg"><small class="meta" style="display:block;margin:0 0 2px">🆘 Contacto de emergencia</small><b style="color:var(--ink)">${esc(a.emerg)}</b>${soyOrg(a)?`<p class="meta" style="margin:4px 0 0;font-size:12px">Solo lo ves tú y quien se apunta.</p>`:""}</div>`:""}
 ${quien(a,true)}
-<div style="margin:12px 0">${a.precio>0?`<p class="meta">AppVentureLife solo facilita el contacto entre personas: quien organiza el plan es responsable de la actividad, de los cobros y de las devoluciones.</p>`:""}${seguridad(a)}</div>
+${infoPlan(a)}
 <div class="acts">${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">Copiar enlace</button>`:""}${soyOrg(a)?`<button id="del" class="sec" type="button">Eliminar plan</button>`:""}${!soyOrg(a)?`<button id="denPlan" class="sec" type="button">Denunciar plan</button><button id="bloqOrg" class="sec" type="button">Bloquear a ${esc(a.org)}</button>`:""}</div>
 <div class="fbar"><button id="unir" class="big" ${lleno||(yo&&soyOrg(a))?"disabled":""}>${yo&&soyOrg(a)?"Organizas este plan":yo?"Salir del plan":lleno?"Completo":quedan===1?"Apuntarme · queda 1 plaza":"Apuntarme"}</button></div>`;
   }
@@ -1994,11 +2024,11 @@ ${quien(a,true)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";prefillCobros=false;pagoOn=false;pintaTipos();pintaPrecioAviso();
+  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";tipoManual=false;prefillCobros=false;pagoOn=false;pintaTipos();pintaPrecioAviso();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
-  const conocido=!!TIPOS[a.tipo];tipoSel=conocido?a.tipo:"otro";$("f-tipo").value=conocido?"":a.tipo;
+  const conocido=!!TIPOS[a.tipo];tipoSel=conocido?a.tipo:"otro";tipoManual=true;$("f-tipo").value=conocido?"":a.tipo;
   $("f-titulo").value=a.titulo;$("f-emoji").value=a.emoji||"";
   $("f-dia").value=a.fecha?a.fecha.slice(0,10):"";$("f-hora").value=a.fecha?a.fecha.slice(11,16):"";
   $("f-plazas").value=a.max;
@@ -2402,7 +2432,14 @@ $("f-emoji").addEventListener("input",pintaPrev);
 $("emojis").addEventListener("click",()=>setTimeout(pintaPrev,0));
 $("f-tipo").addEventListener("input",pintaPrev);
 $("f-tipo").addEventListener("input",pintaIni);
-$("f-tipos").addEventListener("click",()=>{$("f-tipo").value="";setTimeout(pintaPrev,0)});
+$("f-tipos").addEventListener("click",()=>{$("f-tipo").value="";tipoManual=true;setTimeout(pintaPrev,0)});
+var tipoManual=false;
+function adivinaTipo(t){const R=[["moto",/moto ?de ?agua|jet ?ski|moto acu/i],["surf",/surf|kite|kait|paddle|\bsup\b|bodyboard|olas/i],["escalada",/escal|ferrata|boulder|roc[oó]dromo/i],["bici",/bici|btt|mtb|ciclis|pedal/i],["viaje",/viaje|escapada|vuelo|\btour\b/i],["ruta",/ruta|camin|sender|excursi|trek|monta[ñn]|subida|cima|pico|paseo/i],["ocio",/\bbar\b|cena|comida|fiesta|cerve|caf[eé]|concierto|cine|tapas|copas|festival/i]];for(const [k,r] of R)if(r.test(t))return k;return "otro"}
+function pintaDt(){["f-dia","f-hora"].forEach(i=>{const e=$(i);if(e&&e.parentNode&&e.parentNode.classList)e.parentNode.classList.toggle("lleno",!!e.value)})}
+$("f-titulo").addEventListener("input",()=>{if(tipoManual||$("f-tipo").value)return;const k=adivinaTipo($("f-titulo").value);if(k!==tipoSel){tipoSel=k;pintaTipos()}});
+["f-dia","f-hora"].forEach(i=>{$(i).addEventListener("input",pintaDt);$(i).addEventListener("change",pintaDt)});
+$("f-dias").addEventListener("click",()=>setTimeout(pintaDt,0));
+document.addEventListener("click",e=>{const b=e.target.closest("[data-plz]");if(!b)return;const i=$("f-plazas");i.value=Math.max(2,Math.min(50,(+i.value||6)+ +b.dataset.plz))});
 try{document.querySelectorAll("a.corr").forEach(a=>{const m=a.dataset.u+"@"+a.dataset.d;a.href="mailto:"+m;a.textContent=m})}catch(e){}
 function pintaPrecioAviso(){
   const p=+$("f-precio").value||0,box=$("precioAviso");
@@ -2423,7 +2460,7 @@ function puedeCobrar(){try{return !!(uid&&verifSet&&verifSet.has(uid))}catch(e){
 function nPasos(){return (puedeCobrar()||(editId&&pagoOn))?4:3}
 function pasoErr(t){const e=$("pasoErr");if(!e)return;e.textContent=t||"";e.hidden=!t}
 function pintaPasos(){
-  const ed=!!editId,n=nPasos();if(paso>n)paso=n;if(paso<1)paso=1;
+  pintaDt();const ed=!!editId,n=nPasos();if(paso>n)paso=n;if(paso<1)paso=1;
   document.querySelectorAll("#nueva .paso").forEach(d=>{d.hidden=+d.dataset.p!==paso});
   const bar=$("pasosBar");
   if(ed){bar.className="pasostab";bar.innerHTML=["Qué","Cuándo","Detalles","Precio"].slice(0,n).map((t,i)=>'<button type="button" data-p="'+(i+1)+'"'+(i+1===paso?' class="on"':'')+'>'+t+'</button>').join("")}
@@ -2600,7 +2637,7 @@ $("po-planes").addEventListener("click",async e=>{
 });
 /* ===== Ayuda (fase A: respuestas fijas, sin coste; la IA se enchufa aquí después) ===== */
 const FAQ=[
- {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Paso 1: quién puede verlo, el nombre, el tipo y el emoji.\n5. Paso 2: el día, la hora y las plazas. Pulsa «Publicar ya» o «Añadir más».\n6. En «Añadir más» puedes poner descripción, equipo, punto de encuentro, contacto de emergencia y foto. Si eres organizador verificado, en el último paso eliges si es gratis o de pago."},
+ {q:"¿Cómo creo un plan?",p:["crear","mapa"],k:["crear","plan","nuevo","publicar","organizar","salida","aventura"],a:"1. Toca el botón + (abajo, en el centro) y elige «Nuevo plan».\n2. Toca en el mapa el lugar del plan, o busca un sitio en la barra de arriba del mapa.\n3. Pulsa «Crear plan aquí».\n4. Paso 1: quién puede verlo, el nombre, el tipo y el emoji.\n5. Paso 2: el día, la hora y las plazas. Pulsa «Publicar ya» o «＋ Añadir detalles (opcional)».\n6. En «Añadir detalles» puedes poner descripción, equipo, punto de encuentro, contacto de emergencia y foto. Si eres organizador verificado, en el último paso eliges si es gratis o de pago."},
  {q:"¿Cómo me apunto a un plan?",p:["plan","mapa"],k:["apuntar","apuntarme","apuntarse","unir","unirme","participar","inscribir","plan"],a:"Toca una chincheta del mapa (o un plan de la lista de debajo). Vuelve a tocar la chincheta para abrir el plan y pulsa «Apuntarme». Para salir, abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo salgo de un plan?",p:["plan"],k:["salir","salgo","quitarme","desapuntar","abandonar","borrarme"],a:"Abre el plan y pulsa «Salir del plan»."},
  {q:"¿Cómo marco el punto de salida?",p:["crear","editar"],k:["salida","inicio","punto","quedamos","quedar","empezar","ruta","recorrido","encuentro"],a:"Al crear o editar un plan, en el recuadro «Punto de salida (opcional)» pulsa «Marcar el inicio», toca el mapa o busca el sitio y pulsa «Usar este inicio». También puedes pulsar «Poner el nombre de este sitio como punto de encuentro»."},
