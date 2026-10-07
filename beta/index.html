@@ -673,7 +673,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 138 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 139 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -715,7 +715,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 138 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 139 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -897,7 +897,7 @@ main{padding:0!important;max-width:none!important}
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 138 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 139 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1530,7 +1530,7 @@ function calcularRuta(a,modo){
       capaRuta=L.geoJSON(rt.geometry,{style:{color:"#1C6FD1",weight:5,opacity:.9}}).addTo(map);
       map.fitBounds(capaRuta.getBounds(),{padding:[40,40]});
       ruta={id:a.id,modo,recta,dist:rt.distance,dur:rt.duration,estado:"ok"};
-      if(sel===a.id){sel=null;verEnMapa(a.id)}
+      /* se queda en el plan */
     }catch(e){if(ruta&&ruta.id===a.id)ruta={id:a.id,modo,recta,estado:"sinruta"}}
     render();
   },()=>{ruta={id:a.id,modo,estado:"sinpermiso"};render()},{enableHighAccuracy:true,timeout:10000});
@@ -1542,7 +1542,7 @@ function rutaHTML(a){
   if(!r)txt=`<button id="rutaGo" type="button">Ver distancia y ruta desde donde estoy</button>`;
   else if(r.estado==="buscando")txt=`<p class="meta" style="margin:6px 0">Buscando tu ubicación…</p>`;
   else if(r.estado==="calculando")txt=`<p class="meta" style="margin:6px 0">En línea recta: <b style="color:var(--ink)">${km(r.recta)}</b>. Calculando la ruta…</p>`;
-  else if(r.estado==="ok")txt=`<p style="margin:6px 0 2px"><b>${km(r.dist)}</b> · ${durTxt(r.dur)} ${PERFIL[m][1]}</p><p class="meta" style="margin:0 0 6px">En línea recta: ${km(r.recta)}. La ruta está dibujada en el mapa.</p>`;
+  else if(r.estado==="ok")txt=`<p style="margin:6px 0 2px"><b>${km(r.dist)}</b> · ${durTxt(r.dur)} ${PERFIL[m][1]}</p><p class="meta" style="margin:0 0 6px">En línea recta: ${km(r.recta)}.</p><button id="rutaVer" class="sec" type="button" style="width:100%;margin:2px 0 6px">🗺️ Ver la ruta en el mapa</button>`;
   else if(r.estado==="sinruta")txt=`<p class="meta" style="margin:6px 0">En línea recta: <b style="color:var(--ink)">${km(r.recta)}</b>. No pude calcular la ruta aquí; usa tu app de mapas.</p>`;
   else txt=`<p class="meta" style="margin:6px 0">No pude obtener tu ubicación. Activa el permiso de ubicación para este sitio en los ajustes de Safari.</p>`;
   const dest=`${(+(a.ini||a).lat).toFixed(6)},${(+(a.ini||a).lng).toFixed(6)}`;
@@ -2188,7 +2188,7 @@ ${infoPlan(a)}
   on("gofotos",()=>{tab="fotos";render()});
   on("editGo",()=>abrirEdicion(a));on("invGo",()=>abreInvitar(a.id));on("rechInv",()=>rechazarInvitacion(a.id));
   on("denPlan",()=>abreDenuncia(a.orgId,a.id));on("bloqOrg",()=>bloquear(a.orgId));
-  on("verTramo",()=>{sel=null;verEnMapa(a.id);render();try{map.fitBounds([[a.ini.lat,a.ini.lng],[a.lat,a.lng]],{padding:[60,60]});$("map").scrollIntoView({behavior:"smooth",block:"center"})}catch(e){}});on("rutaGo",()=>calcularRuta(a));on("rutaQuita",()=>{quitaRuta();render()});
+  on("verTramo",()=>{sel=null;verEnMapa(a.id);render();try{map.fitBounds([[a.ini.lat,a.ini.lng],[a.lat,a.lng]],{padding:[60,60]});$("map").scrollIntoView({behavior:"smooth",block:"center"})}catch(e){}});on("rutaGo",()=>calcularRuta(a));on("rutaVer",()=>{sel=null;verEnMapa(a.id);render()});on("rutaQuita",()=>{quitaRuta();render()});
   d.querySelectorAll("[data-rm]").forEach(el=>{el.onclick=()=>calcularRuta(a,el.dataset.rm)});
   on("copCod",async()=>{try{await navigator.clipboard.writeText(fmtCod(a.codigo));$("copCod").textContent="¡Copiado!"}catch(e){prompt("Código:",fmtCod(a.codigo))}});
   on("wa",()=>compartir(a));on("copiar",()=>copiar(a));
