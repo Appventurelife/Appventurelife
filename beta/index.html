@@ -269,6 +269,20 @@ body:has(#perfil.open) .bar,body:has(#grupos.open) .bar{z-index:1350}
 body:has(#colocar:not([hidden])) .bar5 .plus,body:has(#colocar:not([hidden])) .plusmenu{display:none!important}
 #cercaChip{bottom:calc(104px + env(safe-area-inset-bottom,0px))!important;max-width:calc(100% - 120px)!important}
 #cercaChip span,#cercaChip b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#panelExp[data-modo="planes"] #listaSum{display:none!important}
+.lgdet{margin:0 0 10px}
+.lgdet>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:19px;font-weight:800;padding:10px 2px;position:relative}
+.lgdet>summary::-webkit-details-marker{display:none}
+.lgdet>summary::after{content:"▾";margin-left:auto;color:var(--mut);font-size:20px;transition:transform .2s}
+.lgdet[open]>summary::after{transform:rotate(180deg)}
+.lgdet .lgn{font-size:14px;font-weight:700;color:var(--mut);background:var(--line);border-radius:99px;padding:1px 9px}
+.lgdet .lgm{font-size:13px;font-weight:700;color:#fff;background:#C4472F;border-radius:99px;padding:2px 8px}
+#lista .item{padding:8px 10px;margin:0 0 8px;gap:10px}
+#lista .th{width:46px!important;height:46px!important}
+#lista .item b{font-size:17px}
+.crel{font-weight:800;color:var(--cta)}
+.crel.pronto{color:#E8590C}
+.plz-poco{color:#C4472F;font-weight:800}
 .bar5 .plus{bottom:calc(96px + env(safe-area-inset-bottom,0px))!important}
 .plusmenu{bottom:calc(162px + env(safe-area-inset-bottom,0px))!important}
 .bar.bar5>button:not(.on):not(.plus) .bi{opacity:1!important}
@@ -713,7 +727,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 150 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 151 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -750,7 +764,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 150 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 151 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -947,7 +961,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 150 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 151 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2130,6 +2144,11 @@ $("gc-msgs").addEventListener("click",e=>{const s=e.target.closest("[data-gu]");
 $("msgLupa").onclick=()=>{const b=$("msgBusca");b.hidden=!b.hidden;if(!b.hidden)setTimeout(()=>{try{$("msgQ").focus()}catch(_e){}},50);else $("msgQ").value="";pintaBandeja()};
 $("msgQ").addEventListener("input",()=>pintaBandeja());
 function abreAmigos(foco){$("perfil").classList.remove("open");$("amigosSh").classList.add("open");if(foco)setTimeout(()=>{try{$("busca").focus()}catch(_e){}},300)}
+function cuandoRel(a){if(!a.fecha||pasada(a))return "";const d=new Date(a.fecha),h=new Date();const d0=new Date(d.getFullYear(),d.getMonth(),d.getDate()),h0=new Date(h.getFullYear(),h.getMonth(),h.getDate());const n=Math.round((d0-h0)/864e5);const t=n<=0?"Hoy":n===1?"Mañana":n<7?"En "+n+" días":"";return t?`<span class="crel${n<=1?" pronto":""}">${t}</span> · `:""}
+function plazTxt(a){const n=(a.asist||[]).length,q=(a.max||0)-n;if(q<=0)return '<span class="plz-poco">Completo</span>';return n+(n===1?" apuntado":" apuntados")+" · "+(q===1?'<span class="plz-poco">queda 1</span>':"quedan "+q)}
+function lgEstado(){try{return JSON.parse(localStorage.getItem("kp_lg")||"{}")}catch(_e){return {}}}
+function lgAbierto(k,n){const s=lgEstado();if(k==="inv"&&n>(s.invN||0))return true;return s[k]!==false}
+document.addEventListener("toggle",e=>{const t=e.target;if(t&&t.classList&&t.classList.contains("lgdet")){const s=lgEstado();s[t.dataset.lg]=t.open;if(t.dataset.lg==="inv")s.invN=t.querySelectorAll(".item").length;try{localStorage.setItem("kp_lg",JSON.stringify(s))}catch(_e){}}},true);
 function pinUno(a){
   const pg=a.kind!=="aqui"&&a.precio>0,lleno=a.kind!=="aqui"&&a.asist.length>=a.max;
     const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}${pg?" pago":""}${lleno&&a.id!==burbuja?" lleno":""}" style="background:${col(a)}">${a.kind==="aqui"&&fotosP[a.orgId]?`<img class="pinfoto" src="${esc(urlP(a.orgId))}" alt="">`:sym(a,22)}${pg?`<span class="eur">€</span>`:""}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
@@ -2178,9 +2197,10 @@ function render(){
     const fi=L.divIcon({className:"",html:`<div class="pin" style="background:#0A2A5E;transform:scale(.72)"><svg width="24" height="30" viewBox="0 0 407.35 510.12" aria-hidden="true"><use href="#avl-logo"/></svg></div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.ini.lat,a.ini.lng],{icon:fi,zIndexOffset:500}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
   });
-  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado · se quita en "+Math.max(1,Math.ceil((tF(a)+27*3600000-Date.now())/3600000))+" h)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small><span class="tagrow">${soyOrg(a)?`<span class="tag" style="background:#0A2A5E">⭐ Organizas tú</span>`:mia(a)?`<span class="tag">✅ Apuntado</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Van amigos</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}</span></div></div>`;
-  const kpOcul=ocultosKP(),kpActu=vista==="mios"?lst.filter(a=>!pasada(a)):lst,kpPas=vista==="mios"?lst.filter(a=>pasada(a)&&mia(a)).concat(viejosMios.filter(a=>!lst.some(x=>x.id===a.id))).filter(a=>!kpOcul.has(a.id)).sort((x,y)=>tF(y)-tF(x)):[];
-  $("lista").innerHTML=(lst.length||kpPas.length)?(vista==="mios"?[["⭐ Organizas tú",kpActu.filter(soyOrg)],["✅ Te has apuntado",kpActu.filter(a=>voy(a)&&!soyOrg(a))],["✉️ Te han invitado",kpActu.filter(a=>!mia(a))]].filter(g=>g[1].length).map(g=>`<h3 class="lgrupo">${g[0]} <span>${g[1].length}</span></h3>`+g[1].map(card).join("")).join("")+pasadosHtml(kpPas):lst.map(card).join("")):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
+  const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,24)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${cuandoRel(a)}${esc(textoCuando(a))}${pasada(a)?" (terminado)":""} · ${plazTxt(a)}${a.precio>0?" · "+precioTxt(a.precio):""}</small><span class="tagrow">${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Van amigos</span>`:""}${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}</span></div></div>`;
+  const kpOcul=ocultosKP(),kpActu=lst.filter(a=>!pasada(a)),kpPas=lst.filter(a=>pasada(a)&&mia(a)).concat(viejosMios.filter(a=>!lst.some(x=>x.id===a.id))).filter(a=>!kpOcul.has(a.id)).sort((x,y)=>tF(y)-tF(x));
+  const grs=[["org","⭐ Organizas tú",kpActu.filter(soyOrg)],["voy","✅ Te has apuntado",kpActu.filter(a=>voy(a)&&!soyOrg(a))],["inv","✉️ Invitaciones",kpActu.filter(a=>!mia(a))]].filter(g=>g[2].length);
+  $("lista").innerHTML=(kpActu.length||kpPas.length)?grs.map(g=>{const nm=g[2].reduce((n,a)=>n+(mia(a)?sinLeerPlan(a):0),0);return `<details class="lgdet" data-lg="${g[0]}"${lgAbierto(g[0],g[2].length)?" open":""}><summary><span class="lgt">${g[1]}</span><span class="lgn">${g[2].length}</span>${nm?`<span class="lgm">💬 ${nm}</span>`:""}</summary>${g[2].slice().sort((x,y)=>(tF(x)||9e15)-(tF(y)||9e15)).map(card).join("")}</details>`}).join("")+pasadosHtml(kpPas):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
   $("ahoraBox").hidden=!aq.length;
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
   const rc=$("rutaChip");
@@ -2247,7 +2267,7 @@ ${soyOrg(a)?`<div class="mini"><button id="panGo" class="pango" type="button">�
 <div class="cajas">
 <div class="caja ancha"><span class="ci">📅</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
 <div class="caja ancha"><span class="ci">📍</span><small>Punto de encuentro</small><b>${esc(a.punto||"Marcado en el mapa")}</b><details class="irmapa" data-k="mapa"><summary>🧭 Cómo llegar</summary><a href="https://maps.apple.com/?daddr=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Apple Maps</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Google Maps</a></details></div>
-<div class="caja"><span class="ci">👥</span><small>Plazas</small><b>${libres?`${libres} de ${a.max} plazas libres`:`Completo (${a.max} de ${a.max})`}</b></div>
+<div class="caja"><span class="ci">👥</span><small>Plazas</small><b>${libres?`${a.max-libres} ${a.max-libres===1?"apuntado":"apuntados"} · <span class="${libres===1?"plz-poco":""}">${libres===1?"queda 1":"quedan "+libres}</span>`:`<span class="plz-poco">Completo</span> (${a.max} de ${a.max})`}</b></div>
 ${a.precio>0?`<div class="caja ancha"><span class="ci">💶</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${""}</div>`:`<div class="caja"><span class="ci">💶</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
 </div>
 ${tiempoHTML(a)}
