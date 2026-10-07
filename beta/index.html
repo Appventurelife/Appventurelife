@@ -400,6 +400,9 @@ label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--in
 .infoplan>summary{list-style:none;color:var(--mut);font-size:14px;text-decoration:underline;cursor:pointer;padding:6px 0}
 .infoplan>summary::-webkit-details-marker{display:none}
 .infoplan{margin:16px 0 8px}
+#cercaChip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:650;display:flex;align-items:center;gap:4px;background:#0A2A5E;border-radius:999px;padding:4px 4px 4px 6px;box-shadow:0 6px 18px rgba(0,0,0,.3);max-width:calc(100% - 32px)}
+#cercaChip .cc-go{background:none!important;border:0!important;color:#fff!important;font-weight:700;font-size:16px;padding:10px 12px!important;white-space:nowrap;box-shadow:none!important;width:auto}
+#cercaChip .cc-x{background:rgba(255,255,255,.18)!important;border:0!important;color:#fff!important;width:34px;height:34px;border-radius:50%;padding:0!important;font-size:15px;box-shadow:none!important;flex:none}
 .mini .pango{flex:1 1 100%;order:-1;background:#0A2A5E!important;color:#fff!important;border:0!important;font-weight:700;padding:12px!important}
 #perfil .p-avw{position:relative;flex:none;cursor:pointer;display:block}
 #perfil .p-cam{position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px}
@@ -562,7 +565,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 114 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 115 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -604,7 +607,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 114 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 115 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -769,7 +772,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 114 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 115 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1306,17 +1309,17 @@ function irAMiUbicacion(){
     else yoMarker=L.circleMarker(ll,{radius:9,color:"#fff",weight:3,fillColor:"#1E7BFF",fillOpacity:1}).addTo(map);
   },()=>{locando(false);alert("No pude obtener tu ubicación. Activa el permiso de ubicación para este sitio en los ajustes de Safari.")},{enableHighAccuracy:true,timeout:10000});
 }
-$("loc").onclick=()=>{compartido=false;irAMiUbicacion()};
+$("loc").onclick=()=>{const cc=$("cercaChip");if(cc)cc.remove();compartido=false;irAMiUbicacion()};
 let ubiHecha=false;
 function inicioUbi(){
-  const pedir=()=>setTimeout(()=>{if(compartido||!$("aviso").hidden)return;avisa("📍 ¿Ver planes cerca de ti? Toca aquí",()=>{compartido=false;irAMiUbicacion()})},1500);
+  const pedir=()=>setTimeout(()=>{if(compartido||$("cercaChip"))return;try{if(localStorage.getItem("avl_nocerca")==="1")return}catch(e){}const c=document.createElement("div");c.id="cercaChip";c.innerHTML='<button type="button" class="cc-go">📍 Ver planes cerca de mí</button><button type="button" class="cc-x" aria-label="No, gracias">✕</button>';document.body.appendChild(c);c.querySelector(".cc-go").onclick=()=>{c.remove();compartido=false;irAMiUbicacion()};c.querySelector(".cc-x").onclick=()=>{c.remove();try{localStorage.setItem("avl_nocerca","1")}catch(e){}}},1500);
   try{if(navigator.permissions&&navigator.permissions.query){navigator.permissions.query({name:"geolocation"}).then(r=>{if(r.state==="granted")irAMiUbicacion();else if(r.state!=="denied")pedir()}).catch(pedir);return}}catch(e){}
   pedir();
 }
 function vistaInicial(){
   if(compartido||ubiHecha)return;ubiHecha=true;
   try{const pts=data.filter(a=>a.kind!=="aqui"&&a.lat!=null&&a.lng!=null&&isFinite(+a.lat)&&isFinite(+a.lng)&&!pasada(a)).map(a=>[+a.lat,+a.lng]);
-  if(pts.length)map.fitBounds(pts,{padding:[50,50],maxZoom:13});else map.setView([41.9794,2.8214],12)}catch(e){}
+  if(pts.length){const cerca=(p,q)=>Math.abs(p[0]-q[0])<0.6&&Math.abs(p[1]-q[1])<0.8;let best=pts[0],bn=0;pts.forEach(p=>{const n=pts.filter(q=>cerca(p,q)).length;if(n>bn){bn=n;best=p}});map.fitBounds(pts.filter(q=>cerca(best,q)),{padding:[50,50],maxZoom:13});}else map.setView([41.9794,2.8214],12)}catch(e){}
   inicioUbi();
 }
 
@@ -1739,7 +1742,7 @@ async function recarga(){
   try{
     const res=await Promise.all([
       sb.from("planes").select("*").order("creado",{ascending:false}).limit(300),
-      sb.from("participantes").select("plan_id,user_id,pagado,llegado"),
+      Promise.all([sb.from("participantes").select("plan_id,user_id"),sb.rpc("mis_pagos")]).then(([p,q])=>{if(p.error)return p;const m={};((q&&q.data)||[]).forEach(r=>{m[r.plan_id+"|"+r.user_id]=r});return {data:(p.data||[]).map(r=>Object.assign({},r,m[r.plan_id+"|"+r.user_id]||{})),error:null}}),
       sb.from("profiles").select("id,nombre,buscable,foto"),
       sb.from("aqui").select("*"),
       sb.from("planes_codigo").select("plan_id,codigo"),
