@@ -410,14 +410,14 @@ b.po-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:elli
 .infoplan ul{margin:8px 0 0;padding-left:18px}
 .infoplan li{color:var(--mut);font-size:14px;margin:0 0 6px;line-height:1.4}
 .infoplan li b{color:var(--ink)}
-.infoplan>summary{list-style:none;color:var(--mut);font-size:14px;text-decoration:underline;cursor:pointer;padding:6px 0}
+.infoplan>summary{list-style:none;color:var(--mut);font-size:14px;text-decoration:underline;cursor:pointer;padding:12px 0}
 .infoplan>summary::-webkit-details-marker{display:none}
 .infoplan{margin:16px 0 8px}
 body:has(#colocar:not([hidden])) #cercaChip,body:has(.sheet.open) #cercaChip,body:has(#nueva.open) #cercaChip{display:none!important}
 #cercaChip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:650;display:flex;align-items:center;gap:4px;background:#0A2A5E;border-radius:999px;padding:4px 4px 4px 6px;box-shadow:0 6px 18px rgba(0,0,0,.3);max-width:calc(100% - 32px)}
 #cercaChip .cc-go{background:none!important;border:0!important;color:#fff!important;font-weight:700;font-size:16px;padding:10px 12px!important;white-space:nowrap;box-shadow:none!important;width:auto}
 #cercaChip .cc-x{background:rgba(255,255,255,.18)!important;border:0!important;color:#fff!important;width:34px;height:34px;border-radius:50%;padding:0!important;font-size:15px;box-shadow:none!important;flex:none}
-.mini .pango{flex:1 1 100%;order:-1;background:#0A2A5E!important;color:#fff!important;border:0!important;font-weight:700;padding:12px!important}
+.mini .pango{flex:1 1 100%;order:-1;background:#0A2A5E!important;color:#fff!important;border:0!important;font-weight:700;padding:14px!important;font-size:17px!important;border-radius:14px!important}
 #perfil .p-avw{position:relative;flex:none;cursor:pointer;display:block}
 #perfil .p-cam{position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px}
 #perfil .p-quita{width:auto;padding:4px 0;margin:2px 0 0;text-align:left;font-size:14px}
@@ -583,7 +583,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 129 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 130 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -625,7 +625,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 129 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 130 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -791,7 +791,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 129 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 130 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2602,6 +2602,7 @@ async function pintaPrivados(){
     lb.innerHTML=l.length?l.map(p=>`<div class="item" style="display:block" data-pver="${+p.lat},${+p.lng}"><b>${p.privado?"🔒":"👥"} ${esc(p.titulo||"")}</b><small>${esc(p.organiza||"Alguien")} · ${p.fecha?esc(String(p.fecha).slice(0,16).replace("T"," ")):"sin fecha"} · ${p.apuntados} apuntados</small></div>`).join(""):'<p class="meta">No hay planes privados.</p>';
   }catch(e){lb.innerHTML='<p class="meta">No se pudo cargar: '+esc((e&&e.message)||"")+'</p>'}
 }
+document.addEventListener("click",e=>{const s=e.target.closest(".infoplan>summary");if(!s)return;const dd=s.parentElement;if(dd.open)return;setTimeout(()=>{const sh=dd.closest(".sheet");if(sh&&dd.open)sh.scrollTo({top:sh.scrollHeight,behavior:"smooth"})},80)});
 document.addEventListener("toggle",e=>{if(e.target&&e.target.id==="adm-priv"&&e.target.open)pintaPrivados()},true);
 document.addEventListener("click",e=>{const it=e.target.closest("[data-pver]");if(!it||!admMap)return;const [la,ln]=it.dataset.pver.split(",").map(Number);admMap.setView([la,ln],14);const m=$("adm-pmap");if(m)m.scrollIntoView({behavior:"smooth",block:"center"})});
 async function pintaAdmin(){
