@@ -489,7 +489,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra y crea planes de aventura cerca de ti</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">AppVentureLife · versión 102 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">AppVentureLife · versión 103 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -531,7 +531,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 102 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 103 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -693,7 +693,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" hidden><h3 class="who-h" style="margin-top:16px">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="sec" type="button" style="margin-top:14px;color:#C4472F;width:100%">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 102 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">AppVentureLife · versión 103 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -780,7 +780,7 @@ let vista="todas",fFecha="",compartido=false;
 const fmtF=f=>new Date(f).toLocaleString("es",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
 const tF=a=>a.fecha?new Date(a.fecha).getTime():NaN;
 const textoCuando=a=>a.fecha?fmtF(a.fecha):a.cuando;
-const pasada=a=>!!a.fecha&&tF(a)<Date.now()-3*3600000;
+let viejosOrg=[];const pasada=a=>!!a.fecha&&tF(a)<Date.now()-3*3600000;
 const mia=a=>!!uid&&(a.orgId===uid||(a.asistIds||[]).includes(uid));
 function cumpleFecha(a){
   if(!fFecha)return true;if(!a.fecha)return false;
@@ -1672,15 +1672,15 @@ async function recarga(){
     dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado)})});
     amigosSet=new Set(am.data.map(r=>r.amigo_id).filter(u=>!bloqueados.has(u)));
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});const emMap={};((emq&&emq.data)||[]).forEach(x=>{emMap[x.plan_id]=x.texto});
-    const lista=pl.data.filter(r=>!bloqueados.has(r.org)&&!(r.fecha&&Date.parse(String(r.fecha).slice(0,16))<Date.now()-27*3600000)).map(r=>{
+    const esViejo=r=>!!r.fecha&&Date.parse(String(r.fecha).slice(0,16))<Date.now()-27*3600000;const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:emMap[r.id]||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {viejo:esViejo(r),id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:emMap[r.id]||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
     pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}}});
     aq.data.filter(r=>!bloqueados.has(r.user_id)).forEach(r=>{lista.push({id:-(hash(r.user_id)%1000000000)-1,kind:"aqui",tipo:"aqui",titulo:r.titulo||"",emoji:r.emoji||"",lat:r.lat,lng:r.lng,orgId:r.user_id,uid:r.user_id,org:nom(r.user_id),asist:[],asistIds:[],pagos:[],pagosIds:[],max:0,t:Date.parse(r.creado),hasta:r.hasta?Date.parse(r.hasta):0,vis:r.visibilidad||"todos"})});
-    data=lista;errCon="";
+    viejosOrg=lista.filter(a=>a.viejo&&a.orgId===uid&&a.precio>0&&Date.now()-Date.parse(a.fecha)<90*864e5);data=lista.filter(a=>!a.viejo);errCon="";
     const nuevasInv=[...invitadoA.keys()].filter(id=>!invVista.has(id));
     if(invInit&&nuevasInv.length){const id=nuevasInv[0],pl=lista.find(x=>x.id===id);avisa("✉️ "+nom(invitadoA.get(id))+" te invita a «"+(pl?pl.titulo:"un plan")+"»",()=>{if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id)}})}
     invVista=new Set(invitadoA.keys());invInit=true;
@@ -2457,10 +2457,10 @@ async function abrirPanelOrg(){
   await pintaPanelOrg();
 }
 async function pintaPanelOrg(){
-  const mios=data.filter(a=>a.kind!=="aqui"&&a.orgId===uid&&a.precio>0);$("po-comprob").hidden=!mios.length;
+  const mios=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid&&a.precio>0);$("po-comprob").hidden=!mios.length;
   $("po-planes").innerHTML=mios.length?mios.map(a=>{
     const gente=(a.asistIds||[]).filter(u=>u!==uid),pg=a.pagosIds||[],cob=gente.filter(u=>pg.includes(u)).length;
-    return `<div class="item" style="display:block;cursor:default"><b>${esc(a.titulo)}</b><small>${esc(a.cuando)} · ${precioTxt(a.precio)} por persona</small><small>Apuntados: ${gente.length} · Han pagado: ${cob} · Cobrado: ${precioTxt(cob*a.precio)}</small>${gente.length?`<div style="margin-top:6px">${gente.map(u=>`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}" style="margin:2px 6px 2px 0">${pg.includes(u)?"✓":"○"} ${esc(nombres[u]||"Alguien")}</button>`).join("")}</div><small style="display:block">Toca un nombre para marcar o desmarcar su pago.</small>`:"<small>Todavía no se ha apuntado nadie.</small>"}<button class="sec" type="button" data-abrir="${a.id}" style="margin-top:6px">Abrir el plan</button></div>`;
+    return `<div class="item" style="display:block;cursor:default"><b>${esc(a.titulo)}</b><small>${esc(a.cuando)} · ${precioTxt(a.precio)} por persona</small><small>Apuntados: ${gente.length} · Han pagado: ${cob} · Cobrado: ${precioTxt(cob*a.precio)}</small>${gente.length?`<div style="margin-top:6px">${gente.map(u=>`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}" style="margin:2px 6px 2px 0">${pg.includes(u)?"✓":"○"} ${esc(nombres[u]||"Alguien")}</button>`).join("")}</div><small style="display:block">Toca un nombre para marcar o desmarcar su pago.</small>`:"<small>Todavía no se ha apuntado nadie.</small>"}${a.viejo?`<small style="display:block;margin-top:6px">Plan terminado: ya no sale en el mapa.</small>`:`<button class="sec" type="button" data-abrir="${a.id}" style="margin-top:6px">Abrir el plan</button>`}</div>`;
   }).join(""):'<p class="meta">Todavía no tienes planes de pago. Al crear un plan, ponle un precio y saldrá aquí.</p>';
   let ent=[];
   if(mios.length&&sb){try{const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").in("plan_id",mios.map(a=>a.id)).order("enviada",{ascending:false}).limit(30);if(!r.error)ent=r.data||[]}catch(e){}}
