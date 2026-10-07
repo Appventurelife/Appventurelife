@@ -435,6 +435,13 @@ b.po-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:elli
 .adm-stats>div{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
 .adm-stats b{display:block;font-size:24px}
 .adm-stats small{color:var(--mut);font-size:13px}
+#p-mipanel.p-gran{background:#0A2A5E!important;color:#fff!important;border:0!important}
+#org-abrir.p-gran:not(:only-of-type){}
+.adm-org{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 8px;background:var(--card)}
+.adm-org>summary{cursor:pointer;font-weight:700;list-style:none}
+.adm-org>summary::-webkit-details-marker{display:none}
+.adm-org>summary small{color:var(--mut);font-weight:600}
+.adm-org .item{border:0!important;padding:8px 0 0!important;margin:0!important;box-shadow:none!important;background:none!important}
 body:has(#colocar:not([hidden])) #cercaChip,body:has(.sheet.open) #cercaChip,body:has(#nueva.open) #cercaChip{display:none!important}
 #cercaChip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:650;display:flex;align-items:center;gap:4px;background:#0A2A5E;border-radius:999px;padding:4px 4px 4px 6px;box-shadow:0 6px 18px rgba(0,0,0,.3);max-width:calc(100% - 32px)}
 #cercaChip .cc-go{background:none!important;border:0!important;color:#fff!important;font-weight:700;font-size:16px;padding:10px 12px!important;white-space:nowrap;box-shadow:none!important;width:auto}
@@ -605,7 +612,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 131 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 132 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -647,7 +654,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 131 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 132 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -806,7 +813,7 @@ main{padding:0!important;max-width:none!important}
 <div class="p-botones" id="orgBox">
 <p class="meta" id="org-estado"></p>
 <button id="org-abrir" type="button" class="p-gran" hidden>Organizar planes de pago</button>
-<button id="p-amigos" type="button" class="p-gran sec">👥 Mis amigos</button>
+<button id="p-mipanel" type="button" class="p-gran" hidden>📊 Mi panel de organizador</button><button id="p-amigos" type="button" class="p-gran sec">👥 Mis amigos</button>
 </div>
 <details class="mas" id="p-ajustes"><summary>⚙️ Ajustes</summary>
 <div id="p-ajcont">
@@ -815,7 +822,7 @@ main{padding:0!important;max-width:none!important}
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 131 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 132 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1072,6 +1079,7 @@ $("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombr
 $("p-cancel").onclick=()=>{pEdita(false)};
 function pEdita(on){$("p-edbox").hidden=!on;$("p-cancel").hidden=!on||!me;$("p-edit").hidden=on||!me;if(on){$("p-nombre").value=me||"";setTimeout(()=>{try{$("p-nombre").focus()}catch(_e){}},300)}}
 $("p-edit").onclick=()=>pEdita(true);
+$("p-mipanel").onclick=()=>abrirPanelOrg();
 $("p-amigos").onclick=()=>{$("perfil").classList.remove("open");irA("mios");setTimeout(()=>{const b=$("amigosBox");if(b)b.scrollIntoView({behavior:"smooth",block:"start"})},250)};
 function miRepTxt(){const r=repu[uid],p=[estrellasTxt(uid)];if(r&&+r.hechos>0)p.push(r.hechos+(+r.hechos===1?" plan hecho":" planes hechos"));return p.join(" · ")}
 $("p-foto").onchange=async e=>{const f=e.target.files&&e.target.files[0];e.target.value="";if(!f||!sb||!uid)return;if(!me){alert("Primero pon tu nombre y pulsa «Guardar nombre».");return}
@@ -2566,7 +2574,7 @@ $("pg-pago").onclick=()=>{pagoOn=true;pintaPasos();pintaPrecioAviso();setTimeout
 $("cobrarHintBtn").onclick=()=>abrirVerif();
 pintaPasos();
 function pintaOrg(){
-  const e=$("org-estado"),b=$("org-abrir");
+  const e=$("org-estado"),b=$("org-abrir");{const mp=$("p-mipanel");if(mp)mp.hidden=!adminApp}
   if(!e)return;
   if(adminApp){e.innerHTML="";b.textContent="👑 Panel del dueño";b.hidden=false;return}
   if(verifSet.has(uid)){e.innerHTML="";b.textContent="📊 Mi panel de organizador";b.hidden=false;return}
@@ -2643,20 +2651,21 @@ async function pintaPrivados(){
 document.addEventListener("click",e=>{const s=e.target.closest(".infoplan>summary");if(!s)return;const dd=s.parentElement;if(dd.open)return;setTimeout(()=>{const sh=dd.closest(".sheet");if(sh&&dd.open)sh.scrollTo({top:sh.scrollHeight,behavior:"smooth"})},80)});
 document.addEventListener("toggle",e=>{if(e.target&&e.target.id==="adm-priv"&&e.target.open)pintaPrivados()},true);
 document.addEventListener("click",e=>{const it=e.target.closest("[data-pver]");if(!it||!admMap)return;const [la,ln]=it.dataset.pver.split(",").map(Number);admMap.setView([la,ln],14);const m=$("adm-pmap");if(m)m.scrollIntoView({behavior:"smooth",block:"center"})});
+var admAb=new Set();document.addEventListener("toggle",e=>{const t=e.target;if(t&&t.dataset&&t.dataset.ao){if(t.open)admAb.add(t.dataset.ao);else admAb.delete(t.dataset.ao)}},true);
 async function pintaAdmin(){pintaStats();
   const box=$("adminLista");if(!box||!sb)return;
   box.innerHTML='<p class="meta">Cargando...</p>';
   try{
-    const [s1,e1]=await Promise.all([sb.rpc("admin_solicitudes"),sb.rpc("admin_entradas")]);
+    const s1=await sb.rpc("admin_solicitudes"),e1=null;
     if(s1.error)throw s1.error;
     const sol=s1.data||[],ent=(e1&&e1.data)||[];
     const pend=sol.filter(f=>f.estado==="pendiente"),otras=sol.filter(f=>f.estado!=="pendiente");
     const pagos=data.filter(a=>a.kind!=="aqui"&&a.precio>0);
+    const filaOrg=f=>`<details class="adm-org" data-ao="${esc(f.user_id)}"${admAb.has(String(f.user_id))?" open":""}><summary>${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal||f.nombre||"Sin nombre")}${f.estado!=="aprobado"?` <small>· ${esc(f.estado)}</small>`:""}</summary>${filaSolicitud(f)}</details>`;
     box.innerHTML=
-      `<h3 class="who-h">Solicitudes pendientes (${pend.length})</h3>`+(pend.length?pend.map(filaSolicitud).join(""):'<p class="meta">No hay solicitudes pendientes.</p>')+
-      `<h3 class="who-h" style="margin-top:14px">Organizadores (${otras.length})</h3>`+(otras.length?otras.map(filaSolicitud).join(""):'<p class="meta">Todavía no hay organizadores.</p>')+
-      `<h3 class="who-h" style="margin-top:14px">Planes de pago (${pagos.length})</h3>`+(pagos.length?pagos.map(a=>`<div class="item" data-plan="${a.id}"><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(a.org)} · ${precioTxt(a.precio)} · ${a.asist.length}/${a.max} personas · cobrado ${npag(a)}</small></div></div>`).join(""):'<p class="meta">Todavía no hay planes de pago.</p>')+
-      `<h3 class="who-h" style="margin-top:14px">Últimas entradas enviadas (${ent.length})</h3>`+(ent.length?ent.map(x=>`<div class="item" style="cursor:default"><div style="flex:1;min-width:0"><b>${esc(x.codigo)}</b><small>${esc(x.persona||"")} · ${esc(x.titulo||"")} · ${esc(String(x.enviada||"").slice(0,16).replace("T"," "))}</small></div></div>`).join(""):'<p class="meta">Todavía no se ha enviado ninguna entrada.</p>');
+      (pend.length?`<h3 class="who-h">Solicitudes pendientes (${pend.length})</h3>`+pend.map(filaSolicitud).join(""):"")+
+      `<h3 class="who-h" style="margin-top:14px">Organizadores (${otras.length})</h3>`+(otras.length?otras.map(filaOrg).join(""):'<p class="meta">Todavía no hay organizadores.</p>')+
+      `<details class="mas" data-ao="pagos"${admAb.has("pagos")?" open":""} style="margin-top:14px"><summary>💶 Planes de pago (${pagos.length})</summary>`+(pagos.length?pagos.map(a=>`<div class="item" data-plan="${a.id}"><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(a.org)} · ${precioTxt(a.precio)} · ${a.asist.length}/${a.max} personas · cobrado ${npag(a)}</small></div></div>`).join(""):'<p class="meta">Todavía no hay planes de pago.</p>')+`</details>`;
   }catch(er){box.innerHTML='<p class="meta">No se pudo cargar el panel. '+esc((er&&er.message)||"")+'</p>'}
 }
 async function abrirPanelOrg(){
