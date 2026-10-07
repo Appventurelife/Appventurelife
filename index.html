@@ -53,6 +53,10 @@ h1,h2{font-family:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;font-we
 .msg div{white-space:pre-wrap;word-break:break-word}
 .msg.yo{align-self:flex-end;background:var(--cta);color:var(--ctat);border-radius:14px 14px 4px 14px}
 .msg.yo small{color:inherit;opacity:.75}
+.msg.org:not(.yo){background:#FFF3D1;border:1.5px solid #E8B93A}
+.orgtag{font-size:11px;font-weight:800;color:#8A5A00;background:#FFE29A;border-radius:99px;padding:0 6px}
+.chatgo{display:block;width:100%;margin:10px 0 8px;padding:14px!important;font-size:17px!important;font-weight:700;border-radius:14px!important}
+.chatnew{background:#C4472F;color:#fff;border-radius:99px;padding:1px 8px;font-size:13px;margin-left:4px}
 .tk{margin-left:5px;letter-spacing:-4px;padding-right:4px;font-weight:700}
 .tk.lei{color:var(--tkl,#6CCBFF)}
 .msg.yo small:has(.tk.lei){opacity:1}
@@ -350,7 +354,10 @@ label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--in
 #perfil .p-head{display:flex;align-items:center;gap:14px;margin:16px 50px 16px 0}
 #perfil .p-head .cav{width:64px;height:64px;font-size:28px}
 .po-plan{border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 0 10px;background:var(--card)}
-.po-plan summary{list-style:none;cursor:pointer}
+.po-plan summary{list-style:none;cursor:pointer;position:relative;padding-right:28px}
+.po-plan summary::after{content:"▾";position:absolute;right:0;top:0;color:var(--mut);font-size:20px;transition:transform .2s}
+.po-plan[open] summary::after{transform:rotate(180deg)}
+.po-qv{display:block;font-size:15px;margin:10px 0 2px}
 .po-plan summary::-webkit-details-marker{display:none}
 .po-plan summary b{display:block;font-size:17px}
 .po-plan summary small{display:block;color:var(--mut)}
@@ -358,7 +365,12 @@ label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--in
 .po-plan[open] summary{margin-bottom:8px}
 .po-cob{display:block;color:var(--mut);margin-bottom:6px}
 .po-per{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
-.po-per .cav{width:40px;height:40px;font-size:17px}
+.po-per .cav{width:30px;height:30px;font-size:14px;flex:0 0 auto}
+.po-per{padding:6px 0!important;gap:8px!important}
+b.po-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px}
+.po-chip{padding:5px 9px!important;font-size:13px!important;font-weight:700;border-radius:99px!important;white-space:nowrap;background:var(--bg)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;width:auto!important;margin:0!important;flex:0 0 auto}
+.po-chip.pend{border-color:#E8A24A!important}.po-chip.ok{border-color:#1F7A4D!important}
+.po-tip{display:block;color:var(--mut);font-size:12px;margin-bottom:2px}
 .po-pn{flex:1;min-width:0}
 .po-pn b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .po-pn span{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
@@ -366,7 +378,8 @@ label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--in
 .po-acc{display:flex;flex-direction:column;gap:4px}
 .po-acc button{padding:6px 10px!important;font-size:13px!important;white-space:nowrap}
 .po-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.po-btns button{flex:1 1 auto;font-size:15px}
+.po-btns{flex-wrap:nowrap!important}
+.po-btns button{flex:1 1 0;font-size:14px;padding:9px 4px!important;white-space:nowrap;min-width:0}
 .po-cobros{margin-top:14px}
 .tagrow{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
 .tagrow:empty{display:none}
@@ -395,14 +408,36 @@ label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--in
 .infoplan ul{margin:8px 0 0;padding-left:18px}
 .infoplan li{color:var(--mut);font-size:14px;margin:0 0 6px;line-height:1.4}
 .infoplan li b{color:var(--ink)}
-.infoplan>summary{list-style:none;color:var(--mut);font-size:14px;text-decoration:underline;cursor:pointer;padding:6px 0}
+.infoplan>summary{list-style:none;color:var(--mut);font-size:14px;text-decoration:underline;cursor:pointer;padding:12px 0}
 .infoplan>summary::-webkit-details-marker{display:none}
 .infoplan{margin:16px 0 8px}
+.p-nrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.p-lapiz{background:none!important;border:0!important;box-shadow:none!important;padding:4px 6px!important;font-size:22px!important;line-height:1;width:auto!important;margin:0!important}
+#p-sub:empty,#p-rep:empty,#org-estado:empty{display:none}
+#p-rep{margin:4px 0 0;font-size:16px}
+.p-botones{display:flex;flex-direction:column;gap:10px;margin:14px 0}
+.p-botones .meta{margin:0}
+.p-gran{width:100%;padding:14px!important;font-size:17px!important;font-weight:700;border-radius:14px!important;margin:0!important}
+#org-abrir.p-gran{background:#0A2A5E!important;color:#fff!important;border:0!important}
+#p-ajustes .p-card{margin:10px 0}
+#p-ajustes .chk{display:flex;align-items:center;gap:8px;margin:10px 0}
+#p-ajustes .p-borrar{margin-top:12px}
+.mispas{margin-top:16px}
+.mispas summary .pcnt{color:var(--mut);font-weight:600}
+.mispas .item{padding-top:8px;padding-bottom:8px}
+.pquita{flex:none;padding:6px 10px!important;font-size:14px!important;width:auto!important;margin:0 0 0 6px!important}
+.po-pas .po-plan{padding:8px 12px;margin:0 0 6px;border-style:dashed;opacity:.75}
+.po-pas .po-plan[open]{opacity:1}
+.po-pas .po-plan:not([open]) .po-res{display:none}
+.adm-stats{display:flex;gap:8px;margin:8px 0 12px}
+.adm-stats>div{flex:1;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+.adm-stats b{display:block;font-size:24px}
+.adm-stats small{color:var(--mut);font-size:13px}
 body:has(#colocar:not([hidden])) #cercaChip,body:has(.sheet.open) #cercaChip,body:has(#nueva.open) #cercaChip{display:none!important}
 #cercaChip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:650;display:flex;align-items:center;gap:4px;background:#0A2A5E;border-radius:999px;padding:4px 4px 4px 6px;box-shadow:0 6px 18px rgba(0,0,0,.3);max-width:calc(100% - 32px)}
 #cercaChip .cc-go{background:none!important;border:0!important;color:#fff!important;font-weight:700;font-size:16px;padding:10px 12px!important;white-space:nowrap;box-shadow:none!important;width:auto}
 #cercaChip .cc-x{background:rgba(255,255,255,.18)!important;border:0!important;color:#fff!important;width:34px;height:34px;border-radius:50%;padding:0!important;font-size:15px;box-shadow:none!important;flex:none}
-.mini .pango{flex:1 1 100%;order:-1;background:#0A2A5E!important;color:#fff!important;border:0!important;font-weight:700;padding:12px!important}
+.mini .pango{flex:1 1 100%;order:-1;background:#0A2A5E!important;color:#fff!important;border:0!important;font-weight:700;padding:14px!important;font-size:17px!important;border-radius:14px!important}
 #perfil .p-avw{position:relative;flex:none;cursor:pointer;display:block}
 #perfil .p-cam{position:absolute;right:-4px;bottom:-4px;width:28px;height:28px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px}
 #perfil .p-quita{width:auto;padding:4px 0;margin:2px 0 0;text-align:left;font-size:14px}
@@ -474,6 +509,10 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 @keyframes jpulso{0%{transform:scale(1)}45%{transform:scale(1.14);filter:drop-shadow(0 0 28px rgba(58,160,255,.85))}100%{transform:scale(1);filter:none}}
 /* v73: valoraciones */
 .rep{color:var(--mut);font-weight:400}
+.pe-cab{display:flex;align-items:center;gap:14px;margin:0 40px 6px 0}
+.pe-cab .cav{width:72px;height:72px;font-size:30px}
+.pe-cab h2{margin:0}
+.pe-rep{margin:2px 0 0;font-size:15px}.pe-rep .rep{color:var(--ink);font-weight:600}
 .valora{margin:10px 0 12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}
 .valora b{display:block;margin-bottom:4px;font-size:15px}
 .valora button{background:none!important;border:0!important;padding:2px 4px!important;font-size:32px!important;line-height:1!important;color:#C9CFC8!important;box-shadow:none!important}
@@ -563,7 +602,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 117 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 131 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -605,7 +644,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 117 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 131 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -667,9 +706,10 @@ main{padding:0!important;max-width:none!important}
 
 <section id="persona" class="sheet" aria-label="Persona">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<h2 id="pe-n">Persona</h2>
+<div class="pe-cab"><div id="pe-av"></div><div style="min-width:0"><h2 id="pe-n">Persona</h2><p class="pe-rep" id="pe-rep"></p></div></div>
 <p class="meta" id="pe-e"></p>
 <div id="pe-acc"></div>
+<div id="pe-planes"></div>
 </section>
 
 <section id="denuncia" class="sheet" aria-label="Denunciar">
@@ -744,33 +784,35 @@ main{padding:0!important;max-width:none!important}
 
 <section id="perfil" class="sheet" aria-label="Tu perfil">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam">📷</span></label><input type="file" id="p-foto" accept="image/*" hidden><div class="p-hi"><h2 id="p-tit">Tu perfil</h2><p class="meta" id="p-sub"></p><button class="p-link p-quita" id="p-quitafoto" type="button" hidden>Quitar foto</button></div></div>
-<div class="p-card">
-<h3 class="p-h">Tu nombre</h3>
-<p class="meta">Es el nombre que verán los demás en los planes a los que vayas.</p>
-<input id="p-nombre" maxlength="24" placeholder="Ej. Marta" aria-label="Tu nombre">
-<label class="chk"><input type="checkbox" id="p-buscable" checked> Que me encuentren por mi nombre</label>
+<div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam">📷</span></label><input type="file" id="p-foto" accept="image/*" hidden><div class="p-hi"><div class="p-nrow"><h2 id="p-tit">Tu perfil</h2><button class="p-lapiz" id="p-edit" type="button" aria-label="Cambiar nombre" hidden>✏️</button></div><p class="meta" id="p-rep"></p><p class="meta" id="p-sub"></p><button class="p-link p-quita" id="p-quitafoto" type="button" hidden>Quitar foto</button></div></div>
+<div class="p-card" id="p-edbox">
+<input id="p-nombre" maxlength="24" placeholder="Tu nombre (ej. Marta)" aria-label="Tu nombre">
 <button id="p-ok" type="button" class="p-wide">Guardar nombre</button><button class="sec" id="p-cancel" type="button" hidden>Cancelar</button>
 </div>
-<div id="cuentaBox" class="p-card">
+<div id="p-arriba"><div id="cuentaBox" class="p-card">
 <h3 class="p-h" id="cu-tit">Guarda tu cuenta</h3>
 <p class="meta" id="cu-estado"></p>
 <div id="cu-form">
 <input id="cu-email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" placeholder="tu@correo.com">
-<button id="cu-guardar" type="button" class="p-wide">Guardar mi cuenta</button><button class="p-link" id="cu-entrar" type="button">Ya tengo cuenta en otro móvil</button>
+<button id="cu-guardar" type="button" class="p-wide">Continuar</button><button class="p-link" id="cu-entrar" type="button" hidden>Ya tengo cuenta</button>
 <div id="cu-paso2" hidden style="margin-top:8px"><input id="cu-codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="Código del correo"><button id="cu-ok" type="button" style="margin-top:8px;width:100%">Confirmar código</button></div>
 </div>
 <p class="meta" id="cu-msg"></p>
 <button class="sec" id="cu-salir" type="button" hidden style="width:100%">Cerrar sesión en este navegador</button>
-</div>
-<div id="orgBox" class="p-card">
-<h3 class="p-h">Organizar planes de pago</h3>
+</div></div>
+<div class="p-botones" id="orgBox">
 <p class="meta" id="org-estado"></p>
-<button class="sec" id="org-abrir" type="button" style="width:100%" hidden>Quiero ser organizador verificado</button>
+<button id="org-abrir" type="button" class="p-gran" hidden>Organizar planes de pago</button>
+<button id="p-amigos" type="button" class="p-gran sec">👥 Mis amigos</button>
 </div>
+<details class="mas" id="p-ajustes"><summary>⚙️ Ajustes</summary>
+<div id="p-ajcont">
+<label class="chk"><input type="checkbox" id="p-buscable" checked> Que me encuentren por mi nombre</label>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 117 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+</div>
+</details>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 131 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -787,16 +829,19 @@ main{padding:0!important;max-width:none!important}
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2>Panel del dueño</h2>
 <p class="meta">Solo lo ves tú.</p>
+<div class="adm-stats"><div><b id="adm-online">–</b><small>conectados ahora</small></div><div><b id="adm-usu">–</b><small>personas</small></div><div><b id="adm-cor">–</b><small>con correo</small></div></div>
+<details class="mas" id="adm-priv" data-k="adm-priv"><summary>🔒 Planes privados y de amigos</summary><div id="adm-privl" class="list"></div></details>
 <div id="adminLista" class="list"></div>
 </section>
 <section id="panelorg" class="sheet" aria-label="Panel del organizador">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2>Panel del organizador</h2>
-<p class="meta">Tus planes, quién va, quién ha pagado y quién ha llegado.</p>
+<details class="mas" data-k="po-guia"><summary>❓ Cómo funciona</summary><p class="meta">1. Comparte tu plan con «📤 Compartir» y la gente se apunta.<br>2. Si es de pago, cuando alguien te pague toca «Marcar pagado».<br>3. El día del plan, marca quién ha llegado: tocando «Ha llegado» o escaneando su entrada, como prefieras. Escanear no es obligatorio.</p></details>
+<div id="po-comprob"><button class="sec" type="button" data-escanear="1" style="width:100%;margin:6px 0 4px">📷 Escanear entradas</button></div>
 <h3 class="who-h">Mis planes</h3><div id="po-planes" class="list"></div>
-<details class="mas po-cobros"><summary>⚙️ Cómo cobras (Bizum y Stripe)</summary>
+<details class="mas po-cobros"><summary>💶 Cómo cobras (Bizum, efectivo o tarjeta)</summary>
 <p class="meta">Se rellena solo cuando pongas precio a un plan nuevo.</p>
-<label for="po-bizum">Bizum u otra forma de pago</label><input id="po-bizum" maxlength="120" placeholder="Ej. Bizum al 600 000 000">
+<label for="po-bizum">Bizum, efectivo u otra forma de pago</label><input id="po-bizum" maxlength="120" placeholder="Ej. Bizum al 600 000 000 o efectivo el día del plan">
 <label for="po-enlace">Enlace de pago con tarjeta (Stripe, opcional)</label><input id="po-enlace" type="url" autocapitalize="none" placeholder="https://buy.stripe.com/...">
 <div class="row" style="margin-top:8px"><button class="sec" id="po-probar" type="button">Probar mi enlace</button><button id="po-guardar" type="button">Guardar</button></div>
 <p class="meta" id="po-msg"></p>
@@ -804,10 +849,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta">1. Crea una cuenta gratis en stripe.com (con el modo de prueba puedes probar sin cobrar de verdad).<br>2. Para cobrar de verdad, Stripe te pedirá verificar tu identidad y tu cuenta bancaria; puede tardar de unos minutos a unos días.<br>3. En el panel de Stripe entra en «Payment Links» (Enlaces de pago) y pulsa crear.<br>4. Pon el nombre del viaje y el precio, y copia el enlace que empieza por https://buy.stripe.com/.<br>5. Pégalo aquí. Si el enlace es de prueba, solo aceptará tarjetas de mentira.</p>
 <p class="meta">Si prefieres no registrarte en Stripe, puedes cobrar solo por Bizum o transferencia: pon tu forma de pago arriba y marca «pagado» tú mismo cuando te llegue.</p></details>
 </details>
-<div id="po-comprob"><h3 class="who-h" style="margin-top:14px">Comprobar una entrada</h3>
-<div class="row"><input id="po-cod" maxlength="14" placeholder="KIP-AB12-CD34" autocapitalize="characters" autocomplete="off"><button class="sec" id="po-comprobar" type="button">Comprobar</button></div><button class="sec" type="button" data-escanear="1" style="margin-top:8px;width:100%">📷 Escanear con la cámara</button>
-<p class="meta" id="po-res"></p>
-<h3 class="who-h" style="margin-top:14px">Entradas enviadas</h3><div id="po-entradas" class="list"></div></div>
+<div id="po-entradas" hidden></div>
 </section>
 <section id="ayuda" class="sheet" aria-label="Ayuda">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -834,19 +876,19 @@ const sym=(a,s)=>a.emoji?`<span class="em" style="font-size:${s}px">${esc(a.emoj
 const norm=v=>{v=v.trim();if(!v)return"otro";const k=Object.keys(TIPOS).find(k=>TIPOS[k].toLowerCase()===v.toLowerCase());return k||v};
 const hash=t=>{let h=0;for(const c of t)h=(h*31+c.charCodeAt(0))>>>0;return h};
 const col=a=>a.kind==="aqui"?"#1E7BFF":TIPOS[a.tipo]?`var(--t-${a.tipo})`:`hsl(${hash(String(a.tipo).toLowerCase())%360} 50% 38%)`;
+function estrellasTxt(u){const r=repu[u];return r&&+r.num>0?"⭐ "+(Math.round(+r.media*10)/10).toFixed(1).replace(".",",")+" ("+r.num+")":"☆ Sin valoraciones"}
 function repTxt(u){
-  const r=repu[u],p=[];
-  if(r&&+r.num>0)p.push("⭐ "+String(r.media).replace(".",",")+" ("+r.num+")");
+  const r=repu[u],p=[estrellasTxt(u)];
   if(r&&+r.hechos>0)p.push(r.hechos+(+r.hechos===1?" plan hecho":" planes hechos"));
   if(verifSet.has(u))p.push("✓ verificado");
-  return `<span class="rep"> · ${p.length?p.join(" · "):"Nuevo, sin valoraciones"}</span>`;
+  return `<span class="rep"> · ${p.join(" · ")}</span>`;
 }
 function valoraHtml(a){
   if(a.kind==="aqui"||!uid||a.orgId===uid||!pasada(a)||!(a.asistIds||[]).includes(uid))return "";
   const v=misVotos[a.id]||0;
   return `<div class="valora" data-plan="${a.id}"><b>${v?"Tu valoración":"¿Qué tal fue? Valora a quien organizó"}</b>${[1,2,3,4,5].map(i=>`<button type="button" data-e="${i}" class="${i<=v?"on":""}" aria-label="${i} estrellas">★</button>`).join("")}</div>`;
 }
-const quien=(a,sinOrg)=>`${sinOrg?"":`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>`}${valoraHtml(a)}${entradaHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0&&(soyOrg(a)||u===uid)?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
+const quien=(a,sinOrg)=>`${sinOrg?"":`<p class="meta" style="margin-bottom:4px">Organiza <b class="lnk" data-u="${esc(a.orgId)}">${esc(a.org)}</b>${repTxt(a.orgId)}</p>`}${valoraHtml(a)}${entradaHtml(a)}<h3 class="who-h">Quién va (${a.asist.length}/${a.max})</h3><div class="who">${a.asist.length?a.asist.map((n,i)=>{const u=a.asistIds[i],pg=(a.pagosIds||[]).includes(u);return `<span class="user" data-u="${esc(u)}" style="cursor:pointer"><i style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</i>${esc(n)}${u===uid?" (tú)":esAmigo(u)?" 👥":""}${a.precio>0&&u===uid&&!soyOrg(a)?`<em class="pg${pg?" ok":""}"${soyOrg(a)?` data-p="${esc(u)}"`:""}>${pg?"Pagado":"Pendiente"}</em>`:""}</span>`}).join(""):`<span class="meta">Aún no se ha apuntado nadie.</span>`}</div>`;
 const migra=a=>{if(!Array.isArray(a.asist)){a.asist=[];for(let i=0;i<(a.n||0);i++)a.asist.push(i===0&&a.yo&&me?me:"Participante")}if(!a.org)a.org=a.asist[0]||"Anónimo"};
 const vivos=()=>data.filter(a=>!a.hasta||a.hasta>Date.now());
 const hace=t=>{const m=Math.round((Date.now()-t)/60000);return m<1?"ahora mismo":m<60?"hace "+m+" min":"hace "+Math.floor(m/60)+" h"};
@@ -858,7 +900,7 @@ let vista="todas",fFecha="",compartido=false;
 const fmtF=f=>new Date(f).toLocaleString("es",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
 const tF=a=>a.fecha?new Date(a.fecha).getTime():NaN;
 const textoCuando=a=>a.fecha?fmtF(a.fecha):a.cuando;
-let viejosOrg=[];const pasada=a=>!!a.fecha&&tF(a)<Date.now()-3*3600000;
+let viejosOrg=[],viejosMios=[];const pasada=a=>!!a.fecha&&tF(a)<Date.now()-3*3600000;
 const mia=a=>!!uid&&(a.orgId===uid||(a.asistIds||[]).includes(uid));
 function cumpleFecha(a){
   if(!fFecha)return true;if(!a.fecha)return false;
@@ -1021,10 +1063,14 @@ async function guardaNombre(n){
   pintaYo();
 }
 let cbNombre=null;
-function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;pintaCabPerfil();$("perfil").classList.add("open");if(cb||!me)setTimeout(()=>$("p-nombre").focus(),300)}
+function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;pintaCabPerfil();pEdita(!!(cb||!me));$("perfil").classList.add("open")}
 $("yo").onclick=()=>pedirNombre();
-$("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);$("perfil").classList.remove("open");const c=cbNombre;cbNombre=null;if(c)c()};
-$("p-cancel").onclick=()=>{$("perfil").classList.remove("open");cbNombre=null};
+$("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);const c=cbNombre;cbNombre=null;if(c){$("perfil").classList.remove("open");c()}else{pEdita(false);pintaCabPerfil()}};
+$("p-cancel").onclick=()=>{pEdita(false)};
+function pEdita(on){$("p-edbox").hidden=!on;$("p-cancel").hidden=!on||!me;$("p-edit").hidden=on||!me;if(on){$("p-nombre").value=me||"";setTimeout(()=>{try{$("p-nombre").focus()}catch(_e){}},300)}}
+$("p-edit").onclick=()=>pEdita(true);
+$("p-amigos").onclick=()=>{$("perfil").classList.remove("open");irA("mios");setTimeout(()=>{const b=$("amigosBox");if(b)b.scrollIntoView({behavior:"smooth",block:"start"})},250)};
+function miRepTxt(){const r=repu[uid],p=[estrellasTxt(uid)];if(r&&+r.hechos>0)p.push(r.hechos+(+r.hechos===1?" plan hecho":" planes hechos"));return p.join(" · ")}
 $("p-foto").onchange=async e=>{const f=e.target.files&&e.target.files[0];e.target.value="";if(!f||!sb||!uid)return;if(!me){alert("Primero pon tu nombre y pulsa «Guardar nombre».");return}
   const vieja=fotosP[uid];$("p-sub").textContent="Subiendo foto…";
   try{const b=await reduceCuad(f);const ruta="perfil/"+uid+"/"+Date.now()+".jpg";
@@ -1087,15 +1133,16 @@ $("ac-ok").onclick=()=>{try{localStorage.setItem("avl_acepta",VER_TERM)}catch(e)
 $("ac-no").onclick=()=>{$("acepta").hidden=true;accCb=null};
 async function registraAceptacion(){try{await sb.from("aceptaciones").upsert({user_id:uid,version:VER_TERM},{onConflict:"user_id,version",ignoreDuplicates:true})}catch(e){}}
 /* cuenta con correo: para ser la misma persona en Safari, en la app de la pantalla de inicio y en otros móviles */
-let cuModo="",cuEmail="",sb2=null;
+let cuModo="",cuEmail="",sb2=null,cuQuiere="";
+function cuModoEntrar(on){cuQuiere="";$("cu-tit").textContent="Tu cuenta";$("cu-estado").textContent="Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app. Si ya tenías cuenta con ese correo, entrarás en ella (lo que hayas hecho en este móvil sin cuenta se perderá).";$("cu-guardar").textContent="Continuar";$("cu-entrar").hidden=true;$("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg("")}
 function cuCliente(){if(!sb2)sb2=supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false,storageKey:"avl-tmp"}});return sb2}
 async function cuEsTemporal(){try{const r=await sb.auth.getUser();const u=r.data&&r.data.user;return !u||!!u.is_anonymous||!u.email}catch(e){return true}}
 async function cuPinta(){
   let u=null;try{const r=await sb.auth.getUser();u=r.data&&r.data.user}catch(e){}
   const temp=!u||!!u.is_anonymous||!u.email;
-  $("cu-tit").textContent=temp?"Guarda tu cuenta":"Tu cuenta";$("cu-estado").textContent=temp?"Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app.":"✅ Cuenta guardada: "+u.email+". Entra con ese correo desde cualquier móvil.";
-  $("cu-form").hidden=!temp;$("cu-salir").hidden=temp;
-  $("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg("");cuModo="";
+  $("cu-tit").textContent=temp?"Guarda tu cuenta":"Tu cuenta";$("cu-estado").textContent=temp?"Pon tu correo para no perder tu cuenta si cambias de móvil o borras la app.":"✅ "+u.email;
+  $("cu-form").hidden=!temp;$("cu-salir").hidden=temp;{const cb=$("cuentaBox"),t=$(temp?"p-arriba":"p-ajcont");if(cb&&t&&cb.parentElement!==t){if(temp)t.appendChild(cb);else t.insertBefore(cb,t.children[1]||null)}}
+  $("cu-paso2").hidden=true;$("cu-codigo").value="";cuMsg("");cuModo="";if(temp)cuModoEntrar(false);
 }
 let cuUltimoMsg="";
 function cuMsg(t){cuUltimoMsg=t;$("cu-msg").textContent=t}
@@ -1111,6 +1158,7 @@ async function cuEnviar(modo,emailRaw){
     $("cu-codigo").focus();
   }catch(e){
     const m=String((e&&e.message)||e);
+    if(modo==="guardar"&&/already|registered|exists/i.test(m))return cuEnviar("entrar",email);
     cuMsg(
       modo==="guardar"&&/already|registered|exists/i.test(m)?"Ese correo ya tiene una cuenta. Pulsa «Ya tengo cuenta» para entrar con ella.":
       modo==="entrar"&&/signups not allowed|not found|invalid/i.test(m)?"No encuentro una cuenta guardada con ese correo. Primero guárdala desde el navegador donde ya tienes tus amigos.":
@@ -1140,11 +1188,12 @@ async function cuConfirmar(tokenRaw){
   }
   $("cu-ok").disabled=false;
 }
-$("cu-guardar").onclick=()=>cuEnviar("guardar",$("cu-email").value);
-$("cu-entrar").onclick=async()=>{
-  if(await cuEsTemporal()&&!confirm("Al entrar con tu cuenta guardada, lo que hayas hecho en este navegador como cuenta temporal se borrará (por ejemplo, los planes a los que te hayas apuntado). ¿Seguir?"))return;
+$("cu-guardar").onclick=()=>cuQuiere==="entrar"?cuEntrar():cuEnviar("guardar",$("cu-email").value);
+$("cu-entrar").onclick=()=>{if(cuQuiere==="entrar"){cuModoEntrar(false);return}cuModoEntrar(true);$("cu-email").focus()};
+async function cuEntrar(){
+  /* el aviso va en el texto de la caja: confirm() a veces no sale en Safari */
   cuEnviar("entrar",$("cu-email").value);
-};
+}
 $("cu-ok").onclick=()=>cuConfirmar($("cu-codigo").value);
 $("cu-salir").onclick=async()=>{
   if(!confirm("Vas a cerrar sesión en este navegador. Podrás volver a entrar con tu correo. ¿Seguir?"))return;
@@ -1639,7 +1688,7 @@ function planComun(u){return data.find(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&
 let fotosP={};
 const urlP=u=>SB_URL+"/storage/v1/object/public/fotos/"+fotosP[u];
 function avPersona(u,n){n=n||"?";if(u&&fotosP[u])return `<div class="cav"><img src="${esc(urlP(u))}" alt=""></div>`;return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
-function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?(fotosP[uid]?"Así te ven los demás":"Toca el círculo para poner tu foto"):"Aún no has puesto tu nombre";$("p-quitafoto").hidden=!fotosP[uid]}
+function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?"":"Aún no has puesto tu nombre";$("p-rep").textContent=me&&uid?miRepTxt():"";$("p-quitafoto").hidden=!fotosP[uid];if(me&&$("p-edbox").hidden)$("p-edit").hidden=false}
 const reduceCuad=file=>new Promise((ok,ko)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=320;c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,320,320);URL.revokeObjectURL(u);c.toBlob(b=>b?ok(b):ko(new Error("No se pudo leer la foto")),"image/jpeg",.85)};im.onerror=()=>{URL.revokeObjectURL(u);ko(new Error("No se pudo leer la foto"))};im.src=u});
 function pintaDM(){
   const l=dms[dmCon]||[],nom=nombres[dmCon]||"Alguien",pc=planComun(dmCon);
@@ -1706,15 +1755,16 @@ async function verEntrada(c){
 }
 async function escanear(){
   const d=document.createElement("div");d.className="escaner";
-  d.innerHTML=`<div class="esc-in"><b>Apunta al código QR de la entrada</b><div id="escVista"></div><button type="button" class="sec">Cerrar</button></div>`;
+  d.innerHTML=`<div class="esc-in"><b>Apunta al código QR de la entrada</b><div id="escVista"></div><p class="meta" style="margin:4px 0 6px">¿No lee el QR? Escribe el código:</p><div class="row"><input id="escCod" maxlength="14" placeholder="KIP-AB12-CD34" autocapitalize="characters" autocomplete="off"><button type="button" id="escOk">Comprobar</button></div><p class="meta" id="escRes"></p><button type="button" class="sec" style="margin-top:8px;width:100%">Cerrar</button></div>`;
   document.body.appendChild(d);
   let qr=null,hecho=false;const cerrar=async()=>{try{if(qr)await qr.stop()}catch(_e){}d.remove()};
-  d.querySelector("button").onclick=cerrar;
+  d.querySelector("button.sec").onclick=cerrar;
+  d.querySelector("#escOk").onclick=()=>{const c=d.querySelector("#escCod").value.trim().toUpperCase().replace(/\s/g,"");if(!/^(?:AVL|KIP)-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(c)){d.querySelector("#escRes").textContent="Escribe el código completo, como KIP-AB12-CD34.";return}hecho=true;cerrar();verEntrada(c)};
   try{
     if(!window.Html5Qrcode)await cargaJs("https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js");
     qr=new Html5Qrcode("escVista");
     await qr.start({facingMode:"environment"},{fps:10,qrbox:220},t=>{if(hecho)return;const m=String(t).toUpperCase().match(/(?:AVL|KIP)-[A-Z0-9]{4}-[A-Z0-9]{4}/);if(!m)return;hecho=true;cerrar();verEntrada(m[0])},()=>{});
-  }catch(e){d.querySelector("b").textContent="No puedo abrir la cámara. Dale permiso de cámara a la app, o escribe el código a mano en tu panel."}
+  }catch(e){d.querySelector("b").textContent="No puedo abrir la cámara. Dale permiso de cámara a la app, o escribe el código aquí abajo."}
 }
 document.addEventListener("click",e=>{if(e.target.closest("[data-escanear]")){e.preventDefault();escanear()}});
 async function cargaRepu(){
@@ -1792,7 +1842,7 @@ async function recarga(){
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
     pa.data.forEach(x=>{const a=por[x.plan_id];if(a){a.asistIds.push(x.user_id);a.asist.push(nom(x.user_id));if(x.pagado){a.pagosIds.push(x.user_id);a.pagos.push(nom(x.user_id))}if(x.llegado)(a.llegaIds=a.llegaIds||[]).push(x.user_id);}});
     aq.data.filter(r=>!bloqueados.has(r.user_id)).forEach(r=>{lista.push({id:-(hash(r.user_id)%1000000000)-1,kind:"aqui",tipo:"aqui",titulo:r.titulo||"",emoji:r.emoji||"",lat:r.lat,lng:r.lng,orgId:r.user_id,uid:r.user_id,org:nom(r.user_id),asist:[],asistIds:[],pagos:[],pagosIds:[],max:0,t:Date.parse(r.creado),hasta:r.hasta?Date.parse(r.hasta):0,vis:r.visibilidad||"todos"})});
-    viejosOrg=lista.filter(a=>a.viejo&&a.orgId===uid&&a.precio>0&&Date.now()-Date.parse(a.fecha)<90*864e5);data=lista.filter(a=>!a.viejo);errCon="";
+    viejosOrg=lista.filter(a=>a.viejo&&a.orgId===uid&&Date.now()-Date.parse(a.fecha)<90*864e5);viejosMios=lista.filter(a=>a.viejo&&mia(a)&&Date.now()-Date.parse(a.fecha)<90*864e5);data=lista.filter(a=>!a.viejo);errCon="";
     const nuevasInv=[...invitadoA.keys()].filter(id=>!invVista.has(id));
     if(invInit&&nuevasInv.length){const id=nuevasInv[0],pl=lista.find(x=>x.id===id);avisa("✉️ "+nom(invitadoA.get(id))+" te invita a «"+(pl?pl.titulo:"un plan")+"»",()=>{if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id)}})}
     invVista=new Set(invitadoA.keys());invInit=true;
@@ -1802,7 +1852,7 @@ async function recarga(){
   cargando=false;if($("dm").classList.contains("open")&&dmCon)pintaDM();if($("persona").classList.contains("open")&&perCtx)pintaPersona();if($("invitar").classList.contains("open")&&invPlan)pintaInvitar();pintaBusca();render();sincronizaSeguimiento();
 }
 function suscribir(){
-  let tmr=null;const pronto=()=>{clearTimeout(tmr);tmr=setTimeout(recarga,400)};
+  enLinea();let tmr=null;const pronto=()=>{clearTimeout(tmr);tmr=setTimeout(recarga,400)};
   sb.channel("cambios")
     .on("postgres_changes",{event:"*",schema:"public",table:"planes"},pronto)
     .on("postgres_changes",{event:"*",schema:"public",table:"participantes"},pronto)
@@ -1908,7 +1958,8 @@ function render(){
     L.marker([a.ini.lat,a.ini.lng],{icon:fi,zIndexOffset:500}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capa);
   });
   const card=a=>`<div class="item${pasada(a)?" past":""}" data-id="${a.id}"><div class="th" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,28)}</div><div style="flex:1;min-width:0"><b>${a.priv?"🔒 ":""}${a.soloAmigos?"👥 ":""}${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${pasada(a)?" (terminado · se quita en "+Math.max(1,Math.ceil((tF(a)+27*3600000-Date.now())/3600000))+" h)":""} · ${a.asist.length}/${a.max} personas${a.precio>0?" · "+precioTxt(a.precio):""}</small><span class="tagrow">${soyOrg(a)?`<span class="tag" style="background:#0A2A5E">⭐ Organizas tú</span>`:mia(a)?`<span class="tag">✅ Apuntado</span>`:""}${conAmigos(a)?`<span class="tag" style="background:#C8892B">👥 Van amigos</span>`:""}${invitadoA.has(a.id)&&!mia(a)?`<span class="tag" style="background:#6B4FBB">✉️ Invitación</span>`:""}${sinLeerPlan(a)&&mia(a)?`<span class="tag" style="background:#C4472F">${sinLeerPlan(a)} 💬</span>`:""}</span></div></div>`;
-  $("lista").innerHTML=lst.length?(vista==="mios"?[["⭐ Organizas tú",lst.filter(soyOrg)],["✅ Te has apuntado",lst.filter(a=>voy(a)&&!soyOrg(a))],["✉️ Te han invitado",lst.filter(a=>!mia(a))]].filter(g=>g[1].length).map(g=>`<h3 class="lgrupo">${g[0]} <span>${g[1].length}</span></h3>`+g[1].map(card).join("")).join(""):lst.map(card).join("")):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
+  const kpOcul=ocultosKP(),kpActu=vista==="mios"?lst.filter(a=>!pasada(a)):lst,kpPas=vista==="mios"?lst.filter(a=>pasada(a)&&mia(a)).concat(viejosMios.filter(a=>!lst.some(x=>x.id===a.id))).filter(a=>!kpOcul.has(a.id)).sort((x,y)=>tF(y)-tF(x)):[];
+  $("lista").innerHTML=(lst.length||kpPas.length)?(vista==="mios"?[["⭐ Organizas tú",kpActu.filter(soyOrg)],["✅ Te has apuntado",kpActu.filter(a=>voy(a)&&!soyOrg(a))],["✉️ Te han invitado",kpActu.filter(a=>!mia(a))]].filter(g=>g[1].length).map(g=>`<h3 class="lgrupo">${g[0]} <span>${g[1].length}</span></h3>`+g[1].map(card).join("")).join("")+pasadosHtml(kpPas):lst.map(card).join("")):`<p class="meta">${errCon?"No pude conectar con el servidor: "+esc(errCon):cargando?"Cargando planes…":"Aún no tienes planes. Toca una chincheta del mapa o crea el tuyo con +."}</p>`;
   $("ahoraBox").hidden=!aq.length;
   $("ahora").innerHTML=aq.map(a=>`<div class="item" data-id="${a.id}"><div class="th" style="background:#1E7BFF"><span class="em" style="font-size:28px">${esc(a.emoji||"📍")}</span></div><div><b>${esc(a.org)}${a.titulo?" · "+esc(a.titulo):""}</b><small>${hace(a.t)}${a.hasta?" · hasta las "+hora(a.hasta):""}</small></div></div>`).join("");
   const rc=$("rutaChip");
@@ -1956,7 +2007,7 @@ function render(){
   if(tab==="chat"&&puede&&a.chat.length){const ult=ultimoId(a.chat);if((visto["p"+a.id]||0)<ult){visto["p"+a.id]=ult;guardaVisto()}}
   let body;
   if(tab==="chat"){
-    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}${m.uid===uid?palomG(a,m):""}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
+    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}${m.uid===a.orgId?" org":""}"><small>${m.uid===a.orgId?'<b class="orgtag">⭐ Organizador</b> ':""}${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}${m.uid===uid?palomG(a,m):""}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
   }else if(tab==="fotos"){
     body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Fotos del plan</h3>${puede?`<label class="subir" for="m-file" style="margin-bottom:6px">Añadir fotos</label><input id="m-file" type="file" accept="image/*" multiple hidden><p class="meta" id="m-estado"></p>`:`<p class="meta">Solo quien va al plan puede subir fotos.</p>`}<div class="gal">${ms.length?ms.map(f=>`<div class="tile" data-f="${esc(f.id)}"><img src="${esc(urlFoto(f))}" alt="" loading="lazy"></div>`).join(""):`<p class="meta" style="grid-column:1/-1;text-align:center">Aún no hay fotos. ¡Sube la primera!</p>`}</div><p class="meta" style="font-size:12px">Las fotos las ve quien puede ver el plan. Sube solo fotos tuyas o de personas que estén de acuerdo. Quien organiza puede borrar cualquier foto de su plan.</p>`;
   }else{
@@ -1969,12 +2020,13 @@ function render(){
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
-<div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${soyOrg(a)?`<button id="panGo" class="pango" type="button">📊 Panel del organizador</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}<button id="gochat" class="sec" type="button">Chat${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?" · "+sinLeerPlan(a)+" nuevos":""}</button>${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
+${soyOrg(a)?`<div class="mini"><button id="panGo" class="pango" type="button">📊 Panel del organizador</button></div>`:""}<button id="gochat" class="chatgo" type="button">💬 Chat del grupo${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?` <span class="chatnew">${sinLeerPlan(a)} nuevos</span>`:""}</button>
+<div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}${""}${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
 <div class="cajas">
 <div class="caja ancha"><span class="ci">📅</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
 <div class="caja ancha"><span class="ci">📍</span><small>Punto de encuentro</small><b>${esc(a.punto||"Marcado en el mapa")}</b><details class="irmapa" data-k="mapa"><summary>🧭 Cómo llegar</summary><a href="https://maps.apple.com/?daddr=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Apple Maps</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Google Maps</a></details></div>
 <div class="caja"><span class="ci">👥</span><small>Plazas</small><b>${libres?`${libres} de ${a.max} plazas libres`:`Completo (${a.max} de ${a.max})`}</b></div>
-${a.precio>0?`<div class="caja ancha"><span class="ci">💶</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${soyOrg(a)?`<p class="meta" style="margin:8px 0 0">Cobrado: ${npag(a)} de ${a.asist.length} (${precioTxt(npag(a)*a.precio)}). Toca a una persona de la lista para marcar que ha pagado.</p>`:""}</div>`:`<div class="caja"><span class="ci">💶</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
+${a.precio>0?`<div class="caja ancha"><span class="ci">💶</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${""}</div>`:`<div class="caja"><span class="ci">💶</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
 </div>
 ${tiempoHTML(a)}
 ${tramoHTML(a)}
@@ -2087,6 +2139,14 @@ map.on("click",e=>{
   lugarSug="";
   ponPunto(e.latlng);
 });
+var pasAb=false,poPasAb=false;
+function ocultosKP(){try{return new Set(JSON.parse(localStorage.getItem("kp_ocultos")||"[]"))}catch(_e){return new Set()}}
+function pasadosHtml(l){if(!l.length)return "";return `<details class="mas mispas" id="misPasados"${pasAb?" open":""}><summary>🕓 Planes pasados <span class="pcnt">${l.length}</span></summary>${l.map(a=>`<div class="item past"${a.viejo?' data-viejo="1"':` data-id="${a.id}"`}><div class="th" style="background:${col(a)}">${sym(a,22)}</div><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>✔️ Terminado · ${esc(textoCuando(a))}${soyOrg(a)?" · lo organizaste tú":""}</small></div><button class="sec pquita" type="button" data-quita="${a.id}">Quitar</button></div>`).join("")}</details>`}
+document.addEventListener("toggle",e=>{const t=e.target;if(!t)return;if(t.id==="misPasados")pasAb=t.open;if(t.id==="po-pasados")poPasAb=t.open},true);
+$("lista").addEventListener("click",e=>{const q=e.target.closest("[data-quita]");if(q){e.stopPropagation();e.preventDefault();const s=ocultosKP();s.add(+q.dataset.quita);try{localStorage.setItem("kp_ocultos",JSON.stringify([...s].slice(-500)))}catch(_e){}render();return}if(e.target.closest("[data-viejo]"))e.stopPropagation()},true);
+var canalOn=null,nOnline=0;
+function enLinea(){try{if(canalOn||!sb||!uid)return;canalOn=sb.channel("en_linea",{config:{presence:{key:uid}}});canalOn.on("presence",{event:"sync"},()=>{try{nOnline=Object.keys(canalOn.presenceState()).length;const e=$("adm-online");if(e)e.textContent=nOnline}catch(_e){}}).subscribe(s=>{if(s==="SUBSCRIBED"){try{canalOn.track({t:Date.now()})}catch(_e){}}})}catch(_e){}}
+async function pintaStats(){try{const e=$("adm-online");if(e)e.textContent=canalOn?nOnline:"–";const r=await sb.rpc("admin_resumen");if(r.error)throw r.error;const d=(r.data||[])[0]||{};$("adm-usu").textContent=d.personas!=null?d.personas:"–";$("adm-cor").textContent=d.con_correo!=null?d.con_correo:"–"}catch(_e){}}
 $("lista").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){const a=data.find(x=>x.id===+i.dataset.id);if(a)map.setView([a.lat,a.lng],14);elegir(+i.dataset.id)}});
 $("filtros").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.r){filtro="";fFecha=""}else if(b.dataset.d!==undefined){fFecha=fFecha===b.dataset.d?"":b.dataset.d}else{filtro=filtro===b.dataset.f?"":b.dataset.f}render()};
 $("rutaTxt").onclick=()=>{if(ruta&&data.find(x=>x.id===ruta.id))elegir(ruta.id)};
@@ -2195,6 +2255,10 @@ function pintaPersona(){
   else if(solEnv.includes(u)){est="Solicitud enviada";acc=`<button id="pe-can" class="sec" type="button">Cancelar solicitud</button>`}
   else{acc=`<button id="pe-add" type="button">👥 Añadir a amigos</button>`}
   $("pe-n").textContent=n;$("pe-e").innerHTML=est;
+  $("pe-av").innerHTML=avPersona(u,n);$("pe-rep").innerHTML=repTxt(u).replace('<span class="rep"> · ','<span class="rep">');
+  const pls=data.filter(a=>a.kind!=="aqui"&&a.orgId===u&&!pasada(a));
+  $("pe-planes").innerHTML=pls.length?`<h3 class="who-h">Organiza ahora</h3>`+pls.map(a=>`<div class="item" data-ver="${a.id}"><div style="flex:1;min-width:0"><b>${esc(a.emoji||"")} ${esc(a.titulo)}</b><small>${esc(textoCuando(a))}</small></div></div>`).join(""):"";
+  $("pe-planes").onclick=e=>{const i=e.target.closest("[data-ver]");if(!i)return;const pl=data.find(x=>x.id===+i.dataset.ver);if(!pl)return;$("persona").classList.remove("open");irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id)};
   $("pe-acc").innerHTML=`<div class="mini" style="flex-direction:column;align-items:stretch">${acc}</div><div class="mini" style="margin-top:6px"><button id="pe-bloq" class="sec" type="button">Bloquear</button><button id="pe-den" class="sec" type="button">Denunciar</button></div>`;
   const on2=(id,fn)=>{const e=$(id);if(e)e.onclick=fn};
   on2("pe-add",()=>enviarSolicitud(u));on2("pe-ok",()=>responderSolicitud(u,true));on2("pe-no",()=>responderSolicitud(u,false));on2("pe-can",()=>cancelarSolicitud(u));
@@ -2501,10 +2565,10 @@ pintaPasos();
 function pintaOrg(){
   const e=$("org-estado"),b=$("org-abrir");
   if(!e)return;
-  if(adminApp){e.innerHTML="✓ Eres el <b>administrador</b> de la app: puedes poner precio a tus planes sin pedir verificación.";b.textContent="👑 Abrir el panel del dueño";b.hidden=false;return}
-  if(verifSet.has(uid)){e.innerHTML="✓ Eres <b>organizador verificado</b>. Puedes poner precio a tus planes.";b.textContent="📋 Abrir mi panel de organizador";b.hidden=false;return}
+  if(adminApp){e.innerHTML="";b.textContent="👑 Panel del dueño";b.hidden=false;return}
+  if(verifSet.has(uid)){e.innerHTML="";b.textContent="📊 Mi panel de organizador";b.hidden=false;return}
   const o=miOrg;
-  if(!o){e.textContent="Si quieres cobrar por tus planes (viajes, excursiones...), tienes que ser organizador verificado. Es gratis.";b.textContent="Quiero ser organizador verificado";b.hidden=false;return}
+  if(!o){e.textContent="";b.textContent="💶 Organizar planes de pago";b.hidden=false;return}
   if(o.estado==="pendiente"){e.textContent="Solicitud enviada ✓. La revisaremos pronto; aquí verás el resultado.";b.hidden=true;return}
   e.textContent="Tu solicitud no se ha aprobado"+(o.motivo?": "+o.motivo:".")+" Puedes corregir los datos y enviarla otra vez.";b.textContent="Volver a enviar la solicitud";b.hidden=false;
 }
@@ -2557,7 +2621,26 @@ function filaSolicitud(f){
   const enlace=esUrl?`<a class="payb sec2" href="${esc(/^https?:/i.test(web)?web:"https://"+web)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:6px">Abrir su web</a>`:(web?`<small style="display:block">${esc(web)}</small>`:"");
   return `<div class="item" style="display:block;cursor:default"><b>${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")}</small>${mot}${enlace}<small style="display:block;margin-top:4px"><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" data-sem="${esc(f.semaforo||"")}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`;
 }
-async function pintaAdmin(){
+let admMap=null;
+async function pintaPrivados(){
+  const box=$("adm-privl");if(!box||!sb)return;
+  if(admMap){try{admMap.remove()}catch(_e){}admMap=null}
+  box.innerHTML='<div id="adm-pmap" style="height:320px;border-radius:12px;margin:6px 0 10px;overflow:hidden"></div><div id="adm-plist"><p class="meta">Cargando...</p></div>';
+  const lb=$("adm-plist");
+  try{const r=await sb.rpc("admin_planes_privados");if(r.error)throw r.error;const l=(r.data||[]).filter(p=>p.lat!=null&&p.lng!=null);
+    admMap=L.map("adm-pmap",{zoomControl:false,attributionControl:false});
+    L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20}).addTo(admMap);
+    l.forEach(p=>{const ic=L.divIcon({className:"",html:`<div class="pin" style="background:${col({tipo:p.tipo})}">${esc(p.emoji||"")}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+      L.marker([+p.lat,+p.lng],{icon:ic}).bindPopup(`<b>${esc(p.titulo||"")}</b><br>${esc(p.organiza||"Alguien")}`).addTo(admMap)});
+    if(l.length)admMap.fitBounds(l.map(p=>[+p.lat,+p.lng]),{padding:[40,40],maxZoom:13});else admMap.setView([41.98,2.82],8);
+    setTimeout(()=>{try{admMap&&admMap.invalidateSize()}catch(_e){}},250);
+    lb.innerHTML=l.length?l.map(p=>`<div class="item" style="display:block" data-pver="${+p.lat},${+p.lng}"><b>${p.privado?"🔒":"👥"} ${esc(p.titulo||"")}</b><small>${esc(p.organiza||"Alguien")} · ${p.fecha?esc(String(p.fecha).slice(0,16).replace("T"," ")):"sin fecha"} · ${p.apuntados} apuntados</small></div>`).join(""):'<p class="meta">No hay planes privados.</p>';
+  }catch(e){lb.innerHTML='<p class="meta">No se pudo cargar: '+esc((e&&e.message)||"")+'</p>'}
+}
+document.addEventListener("click",e=>{const s=e.target.closest(".infoplan>summary");if(!s)return;const dd=s.parentElement;if(dd.open)return;setTimeout(()=>{const sh=dd.closest(".sheet");if(sh&&dd.open)sh.scrollTo({top:sh.scrollHeight,behavior:"smooth"})},80)});
+document.addEventListener("toggle",e=>{if(e.target&&e.target.id==="adm-priv"&&e.target.open)pintaPrivados()},true);
+document.addEventListener("click",e=>{const it=e.target.closest("[data-pver]");if(!it||!admMap)return;const [la,ln]=it.dataset.pver.split(",").map(Number);admMap.setView([la,ln],14);const m=$("adm-pmap");if(m)m.scrollIntoView({behavior:"smooth",block:"center"})});
+async function pintaAdmin(){pintaStats();
   const box=$("adminLista");if(!box||!sb)return;
   box.innerHTML='<p class="meta">Cargando...</p>';
   try{
@@ -2576,22 +2659,22 @@ async function pintaAdmin(){
 async function abrirPanelOrg(){
   $("perfil").classList.remove("open");$("panelorg").classList.add("open");
   $("po-bizum").value=(miCobros&&miCobros.bizum)||"";$("po-enlace").value=(miCobros&&miCobros.enlace)||"";
-  $("po-msg").textContent="";$("po-res").textContent="";
+  $("po-msg").textContent="";
   await pintaPanelOrg();
 }
 function filaPlanOrg(a,abierto){
   const gente=(a.asistIds||[]).filter(u=>u!==uid),pg=a.pagosIds||[],ll=a.llegaIds||[],pago=a.precio>0;
   const npg=gente.filter(u=>pg.includes(u)).length,npend=gente.length-npg,nll=gente.filter(u=>ll.includes(u)).length;
-  const res=[gente.length+"/"+a.max+" apuntados"];if(pago){res.push(npg+" pagados");if(npend)res.push(npend+" pendientes")}if(nll)res.push(nll+" han llegado");
+  const res=[gente.length+"/"+a.max+" apuntados"];if(pago){res.push(npg+" pagados ("+precioTxt(npg*a.precio)+")");if(npend)res.push('<span style="color:#C9761B;font-weight:700">🟠 '+npend+' sin pagar</span>')}if(nll)res.push(nll+" han llegado");
   const filas=gente.map(u=>{const p=pg.includes(u),l=ll.includes(u),n=nombres[u]||"Alguien";
-    return `<div class="po-per">${avPersona(u,n)}<div class="po-pn"><b>${esc(n)}</b><span>${pago?(p?'<i class="tg ok">🟢 Pagado</i>':'<i class="tg pend">🟠 Pendiente</i>'):""}${l?'<i class="tg ll">✅ Ha llegado</i>':""}</span></div><div class="po-acc">${pago?`<button class="sec" type="button" data-pp="${a.id}|${esc(u)}">${p?"Quitar pago":"Marcar pagado"}</button>`:""}<button class="sec" type="button" data-ll="${a.id}|${esc(u)}">${l?"No ha llegado":"Ha llegado"}</button></div></div>`}).join("");
-  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo?" · terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${pago?`<small class="po-cob">Cobrado (lo que has marcado tú): ${precioTxt(npg*a.precio)}</small>`:""}${filas||'<p class="meta">Todavía no se ha apuntado nadie.</p>'}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar el pago (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje a todos</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-abrir="${a.id}">Abrir el plan</button>`}</div></details>`;
+    return `<div class="po-per">${avPersona(u,n)}<b class="po-pn">${esc(n)}</b>${pago?`<button type="button" class="po-chip ${p?"ok":"pend"}" data-pp="${a.id}|${esc(u)}">${p?"🟢 Pagado":"🟠 Sin pagar"}</button>`:""}<button type="button" class="po-chip${l?" ok":""}" data-ll="${a.id}|${esc(u)}">${l?"✅ Llegó":"⬜ Llegó"}</button></div>`}).join("");
+  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo||pasada(a)?" · ✔️ terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${""}${filas||'<p class="meta">Nadie todavía.</p>'}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir</button>`}</div></details>`;
 }
 async function pintaPanelOrg(){
   const todos=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid).sort((x,y)=>(x.viejo?1:0)-(y.viejo?1:0)||tF(x)-tF(y));
   const mios=todos.filter(a=>a.precio>0);$("po-comprob").hidden=!mios.length;
-  const box=$("po-planes"),abiertos=new Set([...box.querySelectorAll("details[open]")].map(d=>+d.dataset.pl));
-  box.innerHTML=todos.length?todos.map(a=>filaPlanOrg(a,abiertos.has(a.id)||todos.length===1)).join(""):'<p class="meta">Todavía no has creado ningún plan. Toca + y «Nuevo plan».</p>';
+  const box=$("po-planes"),abiertos=new Set([...box.querySelectorAll("details[open]")].map(d=>+d.dataset.pl)),cerrados=new Set([...box.querySelectorAll("details:not([open])")].map(d=>+d.dataset.pl));
+  const kpFin=a=>a.viejo||pasada(a),kpAct=todos.filter(a=>!kpFin(a)),kpPas2=todos.filter(kpFin).sort((x,y)=>tF(y)-tF(x));box.innerHTML=todos.length?(kpAct.length?"":'<p class="meta">No tienes planes próximos.</p>')+kpAct.map(a=>filaPlanOrg(a,abiertos.has(a.id)||!cerrados.has(a.id))).join("")+(kpPas2.length?`<details class="mas po-pas" id="po-pasados"${poPasAb?" open":""}><summary>🕓 Planes pasados (${kpPas2.length})</summary>${kpPas2.map(a=>filaPlanOrg(a,abiertos.has(a.id))).join("")}</details>`:""):'<p class="meta">Todavía no has creado ningún plan.</p><button type="button" data-nuevo="1" style="width:100%">＋ Crear mi primer plan</button>';
   let ent=[];
   if(mios.length&&sb){try{const r=await sb.from("entradas").select("plan_id,user_id,codigo,enviada").in("plan_id",mios.map(a=>a.id)).order("enviada",{ascending:false}).limit(30);if(!r.error)ent=r.data||[]}catch(e){}}
   $("po-entradas").innerHTML=ent.length?ent.map(x=>{const a=data.find(p=>p.id===x.plan_id)||{};return `<div class="item" style="cursor:default"><div style="flex:1;min-width:0"><b>${esc(x.codigo)}</b><small>${esc(nombres[x.user_id]||"Alguien")} · ${esc(a.titulo||"")}</small></div></div>`}).join(""):'<p class="meta">Todavía no se ha enviado ninguna entrada.</p>';
@@ -2622,10 +2705,12 @@ async function comprobarEntrada(){
     out.textContent="✓ Entrada válida: "+(nombres[r.data.user_id]||"Alguien")+" · "+(a.titulo||"plan");
   }catch(e){out.textContent="No se pudo comprobar ahora. Inténtalo otra vez."}
 }
-$("po-guardar").onclick=guardarCobros;$("po-probar").onclick=probarEnlace;$("po-comprobar").onclick=comprobarEntrada;
+$("po-guardar").onclick=guardarCobros;$("po-probar").onclick=probarEnlace;/* comprobar a mano: ahora dentro del escáner */
 $("po-planes").addEventListener("click",async e=>{
   const ab=e.target.closest("[data-abrir]");
   if(ab){$("panelorg").classList.remove("open");elegir(+ab.dataset.abrir);return}
+  const wa=e.target.closest("[data-wa]");if(wa){const p=data.find(x=>x.id===+wa.dataset.wa);if(p)compartir(p);return}
+  if(e.target.closest("[data-nuevo]")){$("panelorg").classList.remove("open");$("mPlan").click();return}
   const ll=e.target.closest("[data-ll]");
   if(ll){const [pid,u]=ll.dataset.ll.split("|"),a=data.concat(viejosOrg).find(x=>x.id===+pid);if(!a)return;const ya=(a.llegaIds||[]).includes(u);
     try{const r=await sb.from("participantes").update({llegado:ya?null:new Date().toISOString()}).eq("plan_id",a.id).eq("user_id",u);if(r.error)throw r.error;await recarga();await pintaPanelOrg()}catch(er){fallo(er)}return}
@@ -2649,7 +2734,7 @@ const FAQ=[
  {q:"¿Cómo edito o borro mi plan?",p:["plan","editar"],k:["editar","cambiar","modificar","borrar","eliminar","cancelar","plan"],a:"Abre tu plan: «✏️ Editar» sirve para cambiar nombre, fecha, lugar o detalles (luego «Guardar cambios»), y «Eliminar plan» para borrarlo. Si cambias el nombre, la fecha o el lugar, se avisa en el chat del plan."},
  {q:"¿Qué es «Estoy aquí»?",p:["mapa"],k:["aqui","ubicacion","compartir","chincheta","mover","mientras","vean"],a:"Sirve para que otras personas te vean en el mapa un rato. Toca + y elige «Estoy aquí», escribe dónde estás (opcional), elige cuánto tiempo, elige quién puede verlo (todos, solo tus amigos o solo con código) y pulsa «Compartir mi ubicación». Con «Mover mi chincheta mientras me muevo» se actualiza con la app abierta; al bloquear el móvil se para. Para quitarla, abre tu chincheta y pulsa «Dejar de compartir»."},
  {q:"¿Cómo cambio mi nombre?",p:["perfil"],k:["nombre","perfil","llamo","apodo","cambiar"],a:"Toca tu nombre arriba a la derecha. Ahí cambias el nombre y eliges si apareces cuando otras personas buscan por nombre."},
- {q:"¿Cómo guardo mi cuenta para no perderla?",p:["perfil"],k:["cuenta","correo","email","guardar","perder","entrar","dispositivo","movil","sesion","codigo"],a:"Toca tu nombre arriba a la derecha, busca «Tu cuenta», escribe tu correo y pulsa «Guardar mi cuenta»; te llegará un código que escribes en la app. Para entrar en otro móvil con una cuenta que ya tienes, usa «Ya tengo cuenta» con el mismo correo."},
+ {q:"¿Cómo guardo mi cuenta para no perderla?",p:["perfil"],k:["cuenta","correo","email","guardar","perder","entrar","dispositivo","movil","sesion","codigo"],a:"Toca tu nombre arriba a la derecha, busca «Tu cuenta», escribe tu correo y pulsa «Continuar»; te llegará un código que escribes en la app. Para entrar en otro móvil con tu cuenta, haz lo mismo con el mismo correo: la app ve sola que ya tienes cuenta."},
  {q:"¿Cómo busco personas y les escribo?",p:["mapa"],k:["amigo","amigos","buscar","persona","personas","mensaje","mensajes","escribir","seguir"],a:"Toca + y elige «🔍 Buscar personas», escribe su nombre y envía la solicitud de amistad. En la pestaña «Mensajes» están tus chats y los de tus planes. Solo puedes escribir directamente a quien comparte su ubicación con «Estoy aquí» o a quien ya te ha escrito."},
  {q:"¿Cómo hablo con el grupo de un plan?",p:["plan"],k:["chat","grupo","hablar","comentar","comentario","preguntar"],a:"Abre el plan y pulsa «Chat». Los chats de tus planes también salen en la pestaña «Mensajes»."},
  {q:"¿Cómo hago que solo me vean mis amigos o con código?",p:["mapa","crear"],k:["amigos","codigo","privado","candado","ubicacion","aqui","visibilidad"],a:"Al compartir «Estoy aquí», o al crear un plan, elige en «¿Quién puede verlo?» la opción «👥 Solo mis amigos» o «🔒 Solo con código (privado)». Con el código, solo lo ve quien lo escriba en «🔒 Tengo un código»."},
