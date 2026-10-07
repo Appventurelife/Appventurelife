@@ -583,7 +583,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 128 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 129 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -625,7 +625,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 128 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 129 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -791,7 +791,7 @@ main{padding:0!important;max-width:none!important}
 </div>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 128 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 129 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1993,8 +1993,8 @@ function render(){
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
-<button id="gochat" class="chatgo" type="button">💬 Chat del grupo${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?` <span class="chatnew">${sinLeerPlan(a)} nuevos</span>`:""}</button>
-<div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${soyOrg(a)?`<button id="panGo" class="pango" type="button">📊 Panel del organizador</button>`:""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}${""}${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
+${soyOrg(a)?`<div class="mini"><button id="panGo" class="pango" type="button">📊 Panel del organizador</button></div>`:""}<button id="gochat" class="chatgo" type="button">💬 Chat del grupo${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?` <span class="chatnew">${sinLeerPlan(a)} nuevos</span>`:""}</button>
+<div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}${""}${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
 <div class="cajas">
 <div class="caja ancha"><span class="ci">📅</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
 <div class="caja ancha"><span class="ci">📍</span><small>Punto de encuentro</small><b>${esc(a.punto||"Marcado en el mapa")}</b><details class="irmapa" data-k="mapa"><summary>🧭 Cómo llegar</summary><a href="https://maps.apple.com/?daddr=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Apple Maps</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Google Maps</a></details></div>
@@ -2586,15 +2586,24 @@ function filaSolicitud(f){
   const enlace=esUrl?`<a class="payb sec2" href="${esc(/^https?:/i.test(web)?web:"https://"+web)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:6px">Abrir su web</a>`:(web?`<small style="display:block">${esc(web)}</small>`:"");
   return `<div class="item" style="display:block;cursor:default"><b>${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")}</small>${mot}${enlace}<small style="display:block;margin-top:4px"><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" data-sem="${esc(f.semaforo||"")}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`;
 }
+let admMap=null;
 async function pintaPrivados(){
-  const box=$("adm-privl");if(!box||!sb)return;box.innerHTML='<p class="meta">Cargando...</p>';
-  try{const r=await sb.rpc("admin_planes_privados");if(r.error)throw r.error;const l=r.data||[];
-    box.innerHTML=l.length?l.map(p=>`<div class="item" style="display:block" data-pchat="${p.plan_id}"><b>🔒 ${esc(p.titulo||"")}</b><small>${esc(p.organiza||"Alguien")} · ${p.fecha?esc(String(p.fecha).slice(0,16).replace("T"," ")):"sin fecha"} · ${p.apuntados} apuntados · ${p.mensajes} mensajes</small>${p.descr?`<small style="display:block">${esc(p.descr)}</small>`:""}<div class="adm-chat"></div></div>`).join(""):'<p class="meta">No hay planes privados.</p>';
-  }catch(e){box.innerHTML='<p class="meta">No se pudo cargar: '+esc((e&&e.message)||"")+'</p>'}
+  const box=$("adm-privl");if(!box||!sb)return;
+  if(admMap){try{admMap.remove()}catch(_e){}admMap=null}
+  box.innerHTML='<div id="adm-pmap" style="height:320px;border-radius:12px;margin:6px 0 10px;overflow:hidden"></div><div id="adm-plist"><p class="meta">Cargando...</p></div>';
+  const lb=$("adm-plist");
+  try{const r=await sb.rpc("admin_planes_privados");if(r.error)throw r.error;const l=(r.data||[]).filter(p=>p.lat!=null&&p.lng!=null);
+    admMap=L.map("adm-pmap",{zoomControl:false,attributionControl:false});
+    L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20}).addTo(admMap);
+    l.forEach(p=>{const ic=L.divIcon({className:"",html:`<div class="pin" style="background:${col({tipo:p.tipo})}">${esc(p.emoji||"")}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+      L.marker([+p.lat,+p.lng],{icon:ic}).bindPopup(`<b>${esc(p.titulo||"")}</b><br>${esc(p.organiza||"Alguien")}`).addTo(admMap)});
+    if(l.length)admMap.fitBounds(l.map(p=>[+p.lat,+p.lng]),{padding:[40,40],maxZoom:13});else admMap.setView([41.98,2.82],8);
+    setTimeout(()=>{try{admMap&&admMap.invalidateSize()}catch(_e){}},250);
+    lb.innerHTML=l.length?l.map(p=>`<div class="item" style="display:block" data-pver="${+p.lat},${+p.lng}"><b>${p.privado?"🔒":"👥"} ${esc(p.titulo||"")}</b><small>${esc(p.organiza||"Alguien")} · ${p.fecha?esc(String(p.fecha).slice(0,16).replace("T"," ")):"sin fecha"} · ${p.apuntados} apuntados</small></div>`).join(""):'<p class="meta">No hay planes privados.</p>';
+  }catch(e){lb.innerHTML='<p class="meta">No se pudo cargar: '+esc((e&&e.message)||"")+'</p>'}
 }
 document.addEventListener("toggle",e=>{if(e.target&&e.target.id==="adm-priv"&&e.target.open)pintaPrivados()},true);
-document.addEventListener("click",async e=>{const it=e.target.closest("[data-pchat]");if(!it)return;const c=it.querySelector(".adm-chat");if(c.innerHTML){c.innerHTML="";return}c.innerHTML="<small>Cargando chat...</small>";
-  try{const r=await sb.rpc("admin_chat_plan",{p_plan:+it.dataset.pchat});if(r.error)throw r.error;const m=r.data||[];c.innerHTML=m.length?m.map(x=>`<small style="display:block;margin-top:4px"><b>${esc(x.quien||"Alguien")}:</b> ${esc(x.texto)}</small>`).join(""):"<small>Sin mensajes.</small>"}catch(er){c.innerHTML="<small>No se pudo cargar el chat.</small>"}});
+document.addEventListener("click",e=>{const it=e.target.closest("[data-pver]");if(!it||!admMap)return;const [la,ln]=it.dataset.pver.split(",").map(Number);admMap.setView([la,ln],14);const m=$("adm-pmap");if(m)m.scrollIntoView({behavior:"smooth",block:"center"})});
 async function pintaAdmin(){
   const box=$("adminLista");if(!box||!sb)return;
   box.innerHTML='<p class="meta">Cargando...</p>';
