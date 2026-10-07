@@ -436,6 +436,17 @@ b.po-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:elli
 .adm-stats b{display:block;font-size:24px}
 .adm-stats small{color:var(--mut);font-size:13px}
 #p-mipanel.p-gran{background:#0A2A5E!important;color:#fff!important;border:0!important}
+.p-biotxt{font-size:16px;line-height:1.4;margin:12px 0 2px;color:var(--ink);white-space:pre-wrap}
+#p-bioedit{margin:6px 0 0}
+#p-bioform textarea{width:100%;font-size:16px;border-radius:12px;padding:10px;border:1px solid var(--line);margin-top:8px;box-sizing:border-box;font-family:inherit;resize:none}
+#p-bioform .p-wide{margin-top:8px}
+.p-stats{display:flex;gap:8px;margin:14px 0 4px}
+.p-stats>div{flex:1;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 6px;text-align:center}
+.p-stats b{display:block;font-size:26px;line-height:1.1}
+.p-stats small{color:var(--mut);font-size:13px}
+#p-prox{margin:6px 0 4px}
+#p-prox .lgrupo{margin-top:10px}
+.pe-bio{font-size:16px;line-height:1.4;margin:10px 0 4px;white-space:pre-wrap}
 #org-abrir.p-gran:not(:only-of-type){}
 .adm-org{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0 0 8px;background:var(--card)}
 .adm-org>summary{cursor:pointer;font-weight:700;list-style:none}
@@ -612,7 +623,7 @@ main{padding:0!important;max-width:none!important}
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 132 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 133 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -654,7 +665,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="amHint">También puedes tocar el nombre de alguien en un plan.</p>
 <div id="listaAmigos" class="list"></div></div>
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 132 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 133 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🧭</span><span class="bt">Explorar</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -717,6 +728,7 @@ main{padding:0!important;max-width:none!important}
 <section id="persona" class="sheet" aria-label="Persona">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <div class="pe-cab"><div id="pe-av"></div><div style="min-width:0"><h2 id="pe-n">Persona</h2><p class="pe-rep" id="pe-rep"></p></div></div>
+<p class="pe-bio" id="pe-bio" hidden></p>
 <p class="meta" id="pe-e"></p>
 <div id="pe-acc"></div>
 <div id="pe-planes"></div>
@@ -795,6 +807,7 @@ main{padding:0!important;max-width:none!important}
 <section id="perfil" class="sheet" aria-label="Tu perfil">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam">📷</span></label><input type="file" id="p-foto" accept="image/*" hidden><div class="p-hi"><div class="p-nrow"><h2 id="p-tit">Tu perfil</h2><button class="p-lapiz" id="p-edit" type="button" aria-label="Cambiar nombre" hidden>✏️</button></div><p class="meta" id="p-rep"></p><p class="meta" id="p-sub"></p><button class="p-link p-quita" id="p-quitafoto" type="button" hidden>Quitar foto</button></div></div>
+<div id="p-extra" hidden><p class="p-biotxt" id="p-bio" hidden></p><button class="p-link" id="p-bioedit" type="button">✏️ Escribe algo sobre ti</button><div id="p-bioform" hidden><textarea id="p-biotx" maxlength="160" rows="2" placeholder="Ej. Me encanta la montaña y el kayak"></textarea><button id="p-biook" type="button" class="p-wide">Guardar</button></div><div class="p-stats" id="p-stats"></div></div>
 <div class="p-card" id="p-edbox">
 <input id="p-nombre" maxlength="24" placeholder="Tu nombre (ej. Marta)" aria-label="Tu nombre">
 <button id="p-ok" type="button" class="p-wide">Guardar nombre</button><button class="sec" id="p-cancel" type="button" hidden>Cancelar</button>
@@ -810,6 +823,7 @@ main{padding:0!important;max-width:none!important}
 <p class="meta" id="cu-msg"></p>
 <button class="sec" id="cu-salir" type="button" hidden style="width:100%">Cerrar sesión en este navegador</button>
 </div></div>
+<div id="p-prox" hidden></div>
 <div class="p-botones" id="orgBox">
 <p class="meta" id="org-estado"></p>
 <button id="org-abrir" type="button" class="p-gran" hidden>Organizar planes de pago</button>
@@ -822,7 +836,7 @@ main{padding:0!important;max-width:none!important}
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 132 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 133 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1073,7 +1087,7 @@ async function guardaNombre(n){
   pintaYo();
 }
 let cbNombre=null;
-function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;pintaCabPerfil();pEdita(!!(cb||!me));$("perfil").classList.add("open")}
+function pedirNombre(cb){if(!aceptado()){exigeAcepta(()=>pedirNombre(cb));return}cbNombre=cb||null;if(sb){cuPinta();pintaOrg()}$("p-nombre").value=me;$("p-bioform").hidden=true;$("p-bioedit").hidden=false;pintaCabPerfil();pEdita(!!(cb||!me));$("perfil").classList.add("open")}
 $("yo").onclick=()=>pedirNombre();
 $("p-ok").onclick=async()=>{const n=$("p-nombre").value.trim();if(!n){$("p-nombre").focus();return}await guardaNombre(n);const c=cbNombre;cbNombre=null;if(c){$("perfil").classList.remove("open");c()}else{pEdita(false);pintaCabPerfil()}};
 $("p-cancel").onclick=()=>{pEdita(false)};
@@ -1081,7 +1095,21 @@ function pEdita(on){$("p-edbox").hidden=!on;$("p-cancel").hidden=!on||!me;$("p-e
 $("p-edit").onclick=()=>pEdita(true);
 $("p-mipanel").onclick=()=>abrirPanelOrg();
 $("p-amigos").onclick=()=>{$("perfil").classList.remove("open");irA("mios");setTimeout(()=>{const b=$("amigosBox");if(b)b.scrollIntoView({behavior:"smooth",block:"start"})},250)};
-function miRepTxt(){const r=repu[uid],p=[estrellasTxt(uid)];if(r&&+r.hechos>0)p.push(r.hechos+(+r.hechos===1?" plan hecho":" planes hechos"));return p.join(" · ")}
+function miRepTxt(){return estrellasTxt(uid)}
+var biosP={},misNum=null;
+function cajasNum(m){const c=(v,t)=>`<div><b>${v==null?"–":esc(String(v))}</b><small>${t}</small></div>`;m=m||{};return c(m.hechos,"planes hechos")+c(m.organizados,"organizados")+c(m.amigos,"amigos")}
+async function pintaPerfilExtra(){if(!biosP)biosP={};
+  const on=!!me;$("p-extra").hidden=!on;$("p-prox").hidden=true;if(!on)return;
+  const bio=biosP[uid]||"";$("p-bio").textContent=bio;$("p-bio").hidden=!bio;$("p-bioedit").textContent=bio?"✏️ Cambiar":"✏️ Escribe algo sobre ti";
+  $("p-stats").innerHTML=cajasNum(misNum);
+  const prox=data.filter(a=>a.kind!=="aqui"&&mia(a)&&!pasada(a)).sort((x,y)=>(tF(x)||9e15)-(tF(y)||9e15)).slice(0,3);
+  $("p-prox").innerHTML=prox.length?`<h3 class="lgrupo">📅 Tus próximos planes</h3>`+prox.map(a=>`<div class="item" data-pprox="${a.id}"><div class="th" style="background:${col(a)}">${sym(a,22)}</div><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${soyOrg(a)?" · organizas tú":""}</small></div></div>`).join(""):"";
+  $("p-prox").hidden=!prox.length;
+  if(sb&&uid){try{const r=await sb.rpc("mis_numeros");if(!r.error&&r.data){misNum=r.data;$("p-stats").innerHTML=cajasNum(misNum)}}catch(_e){}}
+}
+$("p-bioedit").onclick=()=>{$("p-bioform").hidden=false;$("p-bioedit").hidden=true;$("p-biotx").value=biosP[uid]||"";setTimeout(()=>{try{$("p-biotx").focus()}catch(_e){}},100)};
+$("p-biook").onclick=async()=>{const v=$("p-biotx").value.trim().slice(0,160);try{if(!await perfilListo())return;const r=await sb.from("profiles").update({bio:v||null}).eq("id",uid);if(r.error)throw r.error;biosP[uid]=v;$("p-bioform").hidden=true;$("p-bioedit").hidden=false;pintaPerfilExtra()}catch(e){fallo(e)}};
+document.addEventListener("click",e=>{const it=e.target.closest("[data-pprox]");if(!it)return;const id=+it.dataset.pprox,a=data.find(x=>x.id===id);$("perfil").classList.remove("open");if(a)map.setView([a.lat,a.lng],14);elegir(id)});
 $("p-foto").onchange=async e=>{const f=e.target.files&&e.target.files[0];e.target.value="";if(!f||!sb||!uid)return;if(!me){alert("Primero pon tu nombre y pulsa «Guardar nombre».");return}
   const vieja=fotosP[uid];$("p-sub").textContent="Subiendo foto…";
   try{const b=await reduceCuad(f);const ruta="perfil/"+uid+"/"+Date.now()+".jpg";
@@ -1699,7 +1727,7 @@ function planComun(u){return data.find(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&
 let fotosP={};
 const urlP=u=>SB_URL+"/storage/v1/object/public/fotos/"+fotosP[u];
 function avPersona(u,n){n=n||"?";if(u&&fotosP[u])return `<div class="cav"><img src="${esc(urlP(u))}" alt=""></div>`;return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
-function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?"":"Aún no has puesto tu nombre";$("p-rep").textContent=me&&uid?miRepTxt():"";$("p-quitafoto").hidden=!fotosP[uid];if(me&&$("p-edbox").hidden)$("p-edit").hidden=false}
+function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?"":"Aún no has puesto tu nombre";$("p-rep").textContent=me&&uid?miRepTxt():"";$("p-quitafoto").hidden=!fotosP[uid];if(me&&$("p-edbox").hidden)$("p-edit").hidden=false;pintaPerfilExtra()}
 const reduceCuad=file=>new Promise((ok,ko)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=320;c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,320,320);URL.revokeObjectURL(u);c.toBlob(b=>b?ok(b):ko(new Error("No se pudo leer la foto")),"image/jpeg",.85)};im.onerror=()=>{URL.revokeObjectURL(u);ko(new Error("No se pudo leer la foto"))};im.src=u});
 function pintaDM(){
   const l=dms[dmCon]||[],nom=nombres[dmCon]||"Alguien",pc=planComun(dmCon);
@@ -1802,7 +1830,7 @@ async function recarga(){
     const res=await Promise.all([
       sb.from("planes").select("*").order("creado",{ascending:false}).limit(300),
       Promise.all([sb.from("participantes").select("plan_id,user_id"),sb.rpc("mis_pagos")]).then(([p,q])=>{if(p.error)return p;const m={};((q&&q.data)||[]).forEach(r=>{m[r.plan_id+"|"+r.user_id]=r});return {data:(p.data||[]).map(r=>Object.assign({},r,m[r.plan_id+"|"+r.user_id]||{})),error:null}}),
-      sb.from("profiles").select("id,nombre,buscable,foto"),
+      sb.from("profiles").select("id,nombre,buscable,foto,bio"),
       sb.from("aqui").select("*"),
       sb.from("planes_codigo").select("plan_id,codigo"),
       sb.from("mensajes").select("*").order("creado",{ascending:true}).limit(1500),
@@ -1832,7 +1860,7 @@ async function recarga(){
     solRec=sl.data.filter(r=>r.para===uid&&!bloqueados.has(r.de)).map(r=>r.de);
     solEnv=sl.data.filter(r=>r.de===uid&&!bloqueados.has(r.para)).map(r=>r.para);
     invitadoA=new Map(il.data.filter(r=>r.user_id===uid&&!bloqueados.has(r.de)).map(r=>[r.plan_id,r.de]));
-    nombres={};fotosP={};pr.data.forEach(p=>{nombres[p.id]=p.nombre;if(p.foto)fotosP[p.id]=p.foto});
+    nombres={};fotosP={};biosP={};pr.data.forEach(p=>{nombres[p.id]=p.nombre;if(p.foto)fotosP[p.id]=p.foto;if(p.bio)biosP[p.id]=p.bio});
     perfiles=pr.data.map(p=>({id:p.id,nombre:p.nombre,buscable:p.buscable}));
     const yoPerf=pr.data.find(p=>p.id===uid);miBuscable=!yoPerf||yoPerf.buscable!==false;$("p-buscable").checked=miBuscable;
     const nom=i=>nombres[i]||"Alguien";
@@ -2266,7 +2294,7 @@ function pintaPersona(){
   else if(solEnv.includes(u)){est="Solicitud enviada";acc=`<button id="pe-can" class="sec" type="button">Cancelar solicitud</button>`}
   else{acc=`<button id="pe-add" type="button">👥 Añadir a amigos</button>`}
   $("pe-n").textContent=n;$("pe-e").innerHTML=est;
-  $("pe-av").innerHTML=avPersona(u,n);$("pe-rep").innerHTML=repTxt(u).replace('<span class="rep"> · ','<span class="rep">');
+  $("pe-av").innerHTML=avPersona(u,n);$("pe-rep").innerHTML=repTxt(u).replace('<span class="rep"> · ','<span class="rep">');{const pb=$("pe-bio");if(pb){pb.textContent=biosP[u]||"";pb.hidden=!biosP[u]}}
   const pls=data.filter(a=>a.kind!=="aqui"&&a.orgId===u&&!pasada(a));
   $("pe-planes").innerHTML=pls.length?`<h3 class="who-h">Organiza ahora</h3>`+pls.map(a=>`<div class="item" data-ver="${a.id}"><div style="flex:1;min-width:0"><b>${esc(a.emoji||"")} ${esc(a.titulo)}</b><small>${esc(textoCuando(a))}</small></div></div>`).join(""):"";
   $("pe-planes").onclick=e=>{const i=e.target.closest("[data-ver]");if(!i)return;const pl=data.find(x=>x.id===+i.dataset.ver);if(!pl)return;$("persona").classList.remove("open");irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id)};
