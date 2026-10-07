@@ -247,7 +247,11 @@ body.sincorreo #p-amigos{display:none!important}
 #invitar{z-index:1150}
 #persona{z-index:1200}
 #denuncia{z-index:1250}
-#perfil{z-index:1300;bottom:calc(56px + env(safe-area-inset-bottom,0px));padding-bottom:16px}
+#perfil,#grupos{z-index:1300;bottom:calc(56px + env(safe-area-inset-bottom,0px));padding-bottom:44px}
+body:has(#perfil.open) .bar,body:has(#grupos.open) .bar{z-index:1350}
+#bExp{display:none!important}
+#p-grupos{display:none!important}
+html,body,button,a,input,label,select,.bar,.sheet,.panel{touch-action:manipulation}
 .burbuja{position:absolute;left:50%;bottom:54px;transform:translateX(-50%);background:var(--card);color:var(--ink);border-radius:14px;padding:8px 12px;box-shadow:0 3px 12px rgba(0,0,0,.35);width:max-content;max-width:210px;text-align:center;cursor:pointer;z-index:5}
 .burbuja b{display:block;font-size:15px;line-height:1.2;white-space:normal}
 .burbuja small{display:block;color:var(--mut);font-size:12px;margin-top:2px;font-weight:400}
@@ -687,7 +691,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 144 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 145 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -724,10 +728,10 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 144 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 145 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
-<nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
+<nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
 
 <div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mAdmin" type="button" hidden>👑 Panel del dueño</button><button id="mOrg" type="button" hidden>📋 Panel de organizador</button><button id="mAyuda" type="button">💬 Ayuda</button><button id="mPlan" type="button">Nuevo plan</button></div>
 
@@ -921,7 +925,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 144 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 145 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2069,7 +2073,7 @@ function pintaBandeja(){
   if(!msgTab)msgTab=(nG&&!nP&&!nD)?"g":((nD&&!nP)||(!bandeja.p.length&&bandeja.d.length))?"d":"p";
   let l=(msgTab==="g"?convGrupos():bandeja[msgTab])||[];
   if(q)l=l.filter(c=>nombreConv(c).toLowerCase().includes(q));
-  const tabs=`<div class="mtabs">`+[["p","Planes",nP],["g","Grupos",nG],["d","Privados",nD]].map(t=>`<button type="button" data-mt="${t[0]}" class="${msgTab===t[0]?"on":""}">${t[1]}${t[2]?`<i>${t[2]}</i>`:""}</button>`).join("")+`</div>`;
+  const tabs=`<div class="mtabs">`+[["p","🎒 Planes",nP],["g","👪 Grupos",nG],["d","👤 Privados",nD]].map(t=>`<button type="button" data-mt="${t[0]}" class="${msgTab===t[0]?"on":""}">${t[1]}${t[2]?`<i>${t[2]}</i>`:""}</button>`).join("")+`</div>`;
   $("listaDM").innerHTML=tabs+(l.length?`<div class="lista-conv">`+l.map(filaConv).join("")+`</div>`:`<p class="meta">${q?"No hay chats con ese nombre.":msgTab==="p"?"Aún no hay chats de planes. Apúntate a un plan para hablar con el grupo.":msgTab==="g"?"Aún no estás en ningún grupo. Créalo en Perfil → 👪 Mis grupos.":"Aún no tienes mensajes privados. Toca el nombre de alguien en un plan para escribirle."}</p>`);
   if(l.length)avisoPulsar();
 }
@@ -2361,10 +2365,12 @@ $("resMapa").addEventListener("click",e=>{
 function marcaBar(){const pe=$("panelExp"),m=vista==="mios"?"m":(!pe.hidden&&pe.dataset.modo==="planes")?"p":"e";$("bExp").classList.toggle("on",m==="e");$("bMios").classList.toggle("on",m==="m");$("bPlanes").classList.toggle("on",m==="p")}
 function abrePanelExp(modo){const pe=$("panelExp");pe.dataset.modo=modo;$("pxTit").textContent=modo==="planes"?"Mis planes":"Explorar";$("listaDet").open=true;pe.hidden=false;marcaBar()}
 $("bExp").onclick=()=>{plusMenu(false);irA("explorar")};
-document.querySelector("nav.bar").addEventListener("click",e=>{const b=e.target.closest("button");if(!b||b.id==="crearBtn")return;document.querySelectorAll(".sheet.open").forEach(s=>{if(!(b.id==="bPerfil"&&s.id==="perfil"))cerrarSheet(s)})},true);
-new MutationObserver(()=>{const po=$("perfil").classList.contains("open");$("bPerfil").classList.toggle("on",po);if(po)["bExp","bMios","bPlanes"].forEach(i=>$(i).classList.remove("on"));else marcaBar()}).observe($("perfil"),{attributes:true,attributeFilter:["class"]});
+document.querySelector("nav.bar").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll(".sheet.open").forEach(s=>{if(!(b.id==="bPerfil"&&s.id==="perfil")&&!(b.id==="bGrupos"&&s.id==="grupos"))cerrarSheet(s)})},true);
+function marcaHojas(){const po=$("perfil").classList.contains("open"),go=$("grupos").classList.contains("open");$("bPerfil").classList.toggle("on",po&&!go);$("bGrupos").classList.toggle("on",go);if(po||go)["bExp","bMios","bPlanes"].forEach(i=>$(i).classList.remove("on"));else marcaBar()}
+[$("perfil"),$("grupos")].forEach(el=>new MutationObserver(marcaHojas).observe(el,{attributes:true,attributeFilter:["class"]}));
 $("bPlanes").onclick=()=>{const pe=$("panelExp"),ab=vista==="explorar"&&!pe.hidden&&pe.dataset.modo==="planes";irA("explorar");if(!ab)abrePanelExp("planes")};
-$("bPerfil").onclick=()=>{plusMenu(false);pedirNombre()};
+$("bPerfil").onclick=()=>{plusMenu(false);if($("perfil").classList.contains("open")){cerrarSheet($("perfil"));return}pedirNombre()};
+$("bGrupos").onclick=()=>{plusMenu(false);if($("grupos").classList.contains("open")){cerrarSheet($("grupos"));return}abrirGrupos()};
 $("pxExp").onclick=()=>irA("explorar");$("pxMios").onclick=()=>irA("explorar");$("msgMudo").onclick=()=>{const m=!msgMudo();try{localStorage.setItem("avl_mudo",m?"1":"0")}catch(e){}pintaMudo();avisa(m?"🔕 Avisos de mensajes silenciados":"🔔 Avisos de mensajes activados")};pintaMudo();
 {const pie=document.querySelector("main>p.meta");if(pie)pie.hidden=true}
 $("bMios").onclick=()=>{if(vista==="mios"){irA("explorar");return}if(!exigeAcepta(()=>irA("mios")))return;irA("mios")};
