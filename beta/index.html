@@ -245,6 +245,14 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .mpt{display:flex;gap:6px;margin:6px 0 2px;flex-wrap:wrap;white-space:normal}
 .mpt a{flex:1 1 auto;text-align:center;padding:8px;border-radius:10px;background:var(--card);color:var(--ink);font-weight:700;font-size:13px;text-decoration:none;white-space:nowrap}
 .gr-dos{flex-direction:row}.gr-dos .sec{flex:1;width:auto}
+#mx-bus{position:absolute;left:12px;right:62px;top:calc(12px + env(safe-area-inset-top,0px));z-index:5}
+#mx-q{width:100%;box-sizing:border-box;margin:0;border-radius:99px;padding:11px 16px;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.25);background:var(--card);color:var(--ink);border:0}
+#mx-res{margin-top:6px;background:var(--card);border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.3);max-height:45vh;overflow:auto}
+#mx-res div{padding:11px 14px;border-bottom:1px solid var(--line);cursor:pointer}
+#mx-res b{display:block;font-size:15px;color:var(--ink)}#mx-res small{color:var(--mut);font-size:13px}
+#mx-res p{padding:12px 14px;margin:0;color:var(--mut)}
+label.chk input[type=radio],label.chk input[type=checkbox]{width:auto;flex:none;margin:0}
+#f-grsel label.chk{margin:10px 0;text-align:left;justify-content:flex-start}
 #gchat.chatv{top:0;bottom:0;max-height:none;height:100%;border-radius:0;padding:0;display:flex;flex-direction:column;overflow:hidden}
 #gchat.chatv .chat{flex:1 1 auto;min-height:0;max-height:none;margin:0;padding:12px;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #gchat .cav{display:flex;align-items:center;justify-content:center;font-size:22px}
@@ -797,7 +805,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 181 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 182 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -834,7 +842,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 181 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 182 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -905,11 +913,11 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="listaAmigos" class="list"></div></div>
 </section>
 <section id="gchat" class="sheet chatv" aria-label="Chat del grupo">
-<div class="chead"><button id="gc-back" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:#0A2A5E">👪</div><div class="cnom"><b id="gc-t">Grupo</b><small id="gc-sub"></small></div><button id="gc-ver" class="cplan" type="button">Ver grupo</button></div>
+<div class="chead"><button id="gc-back" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:#0A2A5E">👪</div><div class="cnom"><b id="gc-t">Grupo</b><small id="gc-sub"></small></div><button id="gc-plan" class="cplan" type="button">＋ Plan</button><button id="gc-ver" class="cplan" type="button">Ver grupo</button></div>
 <div class="chat" id="gc-msgs"></div>
 <div class="send cbar"><input id="gc-txt" maxlength="500" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="gc" aria-label="Poner mi ubicación">📍</button><button id="gc-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
 </section>
-<section id="mapx" class="sheet" aria-label="Enviar un punto"><button class="x" type="button" aria-label="Cerrar">✕</button><div id="mx-map"></div><svg class="mx-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="#FFD66B" stroke="#0A2A5E" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" fill="#0A2A5E"/></svg><button id="mx-yo" type="button" aria-label="Ir a mi ubicación"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button><button id="mx-ok" type="button" class="p-gran">📍 Enviar este punto</button></section>
+<section id="mapx" class="sheet" aria-label="Enviar un punto"><button class="x" type="button" aria-label="Cerrar">✕</button><div id="mx-map"></div><div id="mx-bus"><input id="mx-q" type="search" placeholder="🔍 Busca una calle o sitio" autocomplete="off" enterkeyhint="search" aria-label="Buscar una calle o sitio"><div id="mx-res" hidden></div></div><svg class="mx-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="#FFD66B" stroke="#0A2A5E" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" fill="#0A2A5E"/></svg><button id="mx-yo" type="button" aria-label="Ir a mi ubicación"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button><button id="mx-ok" type="button" class="p-gran">📍 Enviar este punto</button></section>
 <section id="grupos" class="sheet" aria-label="Mis grupos">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2>👪 Mis grupos</h2>
@@ -1033,7 +1041,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 181 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 182 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1315,7 +1323,7 @@ document.addEventListener("click",async e=>{
   if((b=t.closest("[data-grnuevo]"))){if(b.dataset.ok!=="1"){b.dataset.ok="1";b.textContent="El enlace viejo dejará de valer. ¿Seguro?";return}try{const r=await sb.rpc("nuevo_enlace_grupo",{p_grupo:+b.dataset.grnuevo});if(r.error)throw r.error;await pintaGrupos();avisa("🔄 Enlace nuevo creado")}catch(er){fallo(er)}return}
   if((b=t.closest("[data-grsalir]"))){if(b.dataset.ok!=="1"){b.dataset.ok="1";b.textContent="¿Seguro que quieres salir?";return}const id=+b.dataset.grsalir;try{const r=await sb.rpc("salir_grupo",{p_grupo:id});if(r.error)throw r.error;grAb=new Set([...grAb].filter(x=>x!==id));await pintaGrupos()}catch(er){fallo(er)}return}
   if((b=t.closest("[data-grpto]"))){const id=+b.dataset.grpto;abreGChat(id);setTimeout(()=>{if($("gchat").classList.contains("open"))abreMapx("gc")},350);return}
-  if((b=t.closest("[data-grplan]"))){const id=+b.dataset.grplan;document.querySelectorAll(".sheet.open").forEach(s=>{s.dataset.desde="";cerrarSheet(s)});$("mPlan").click();if(colocando){fGrDef=id;$("f-vis").value="grupo";$("privBox").hidden=true;pintaVis()}return}
+  if((b=t.closest("[data-grplan]"))){planDeGrupo(+b.dataset.grplan);return}
   if((b=t.closest("[data-grchat2]"))){abreGChat(+b.dataset.grchat2);return}
   if((b=t.closest("[data-grp]"))){if(t.closest("button"))return;$("grupos").classList.remove("open");abrePersona(b.dataset.grp)}
 });
@@ -2058,19 +2066,28 @@ function enlaces(t){return esc(t).replace(/(https?:\/\/[^\s<]+|www\.[^\s<]+)/gi,
   const ico=/maps\.apple|maps\.app\.goo\.gl|goo\.gl\/maps|google\.[a-z.]+\/maps|maps\.google/i.test(u)?"📍 ":"🔗 ";
   return `<a class="msg-a" href="${href}" target="_blank" rel="noopener noreferrer nofollow">${ico}${corto}</a>${tail}`})}
 function mptCard(la,ln){const d=la+","+ln;return `<span class="mpt"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${d}" target="_blank" rel="noopener noreferrer">Google Maps</a><a href="https://maps.apple.com/?daddr=${d}" target="_blank" rel="noopener">Apple Maps</a><a href="https://waze.com/ul?ll=${d}&amp;navigate=yes" target="_blank" rel="noopener noreferrer">Waze</a></span>`}
-var mxMap=null,mxK="";
-function abreMapx(k){mxK=k;$("mapx").classList.add("open");
+var mxMap=null,mxK="",mxAuto=true,mxNom="",mxT=null,mxN=0,mxL=[];
+function abreMapx(k){mxK=k;mxAuto=true;mxNom="";$("mx-q").value="";$("mx-res").hidden=true;$("mapx").classList.add("open");
   let c0={lat:41.98,lng:2.82};try{if(typeof map!=="undefined"&&map)c0=map.getCenter()}catch(_e){}
-  setTimeout(()=>{try{if(!mxMap){mxMap=L.map("mx-map",{zoomControl:false,attributionControl:false}).setView([c0.lat,c0.lng],15);L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20}).addTo(mxMap)}mxMap.invalidateSize()}catch(_e){}mxYo()},320)}
-function mxYo(){if(!navigator.geolocation||!mxMap)return;$("mx-yo").disabled=true;
-  navigator.geolocation.getCurrentPosition(p=>{$("mx-yo").disabled=false;try{mxMap.setView([p.coords.latitude,p.coords.longitude],17)}catch(_e){}},
-    er=>{$("mx-yo").disabled=false;if(er&&er.code===1)alert("Kiplan no tiene permiso para ver tu ubicación. Actívalo en Ajustes → Privacidad → Localización → Safari. También puedes mover el mapa a mano.")},
+  setTimeout(()=>{try{if(!mxMap){mxMap=L.map("mx-map",{zoomControl:false,attributionControl:false}).setView([c0.lat,c0.lng],15);L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20}).addTo(mxMap);mxMap.on("dragstart",()=>{mxAuto=false;mxNom="";$("mx-res").hidden=true})}mxMap.invalidateSize()}catch(_e){}mxYo(true)},320)}
+function mxYo(auto){if(!navigator.geolocation||!mxMap)return;$("mx-yo").disabled=true;
+  navigator.geolocation.getCurrentPosition(p=>{$("mx-yo").disabled=false;if(auto&&!mxAuto)return;mxNom="";try{mxMap.setView([p.coords.latitude,p.coords.longitude],17)}catch(_e){}},
+    er=>{$("mx-yo").disabled=false;if(er&&er.code===1&&!auto)alert("Kiplan no tiene permiso para ver tu ubicación. Actívalo en Ajustes → Privacidad → Localización → Safari. También puedes buscar la calle arriba.")},
     {enableHighAccuracy:true,timeout:15000,maximumAge:30000})}
-$("mx-yo").onclick=()=>mxYo();
+$("mx-yo").onclick=()=>mxYo(false);
+async function mxBusca(){const q=$("mx-q").value.trim(),box=$("mx-res");if(q.length<3){box.hidden=true;return}const n=++mxN;box.innerHTML="<p>Buscando…</p>";box.hidden=false;
+  try{const r=await buscaLugares(q);if(n!==mxN)return;mxL=r;box.innerHTML=r.length?r.map((l,i)=>`<div data-mxi="${i}"><b>${l.ic} ${esc(l.nombre)}</b><small>${esc(l.det)}</small></div>`).join(""):"<p>No lo encuentro. Prueba añadiendo el pueblo.</p>"}
+  catch(_e){if(n===mxN)box.innerHTML="<p>No se pudo buscar. Prueba otra vez.</p>"}}
+$("mx-q").addEventListener("input",()=>{clearTimeout(mxT);mxT=setTimeout(mxBusca,450)});
+$("mx-q").addEventListener("keydown",e=>{if(e.key==="Enter"){clearTimeout(mxT);mxBusca();try{e.target.blur()}catch(_e){}}});
+$("mx-res").addEventListener("click",e=>{const d=e.target.closest("[data-mxi]");if(!d||!mxMap)return;const l=mxL[+d.dataset.mxi];if(!l)return;
+  mxAuto=false;$("mx-res").hidden=true;try{$("mx-q").blur()}catch(_e){}mxMap.setView([l.lat,l.lng],Math.max(16,Math.min(l.zoom||17,18)));mxNom=String(l.nombre||"").slice(0,60)});
 $("mx-ok").onclick=()=>{if(!mxMap)return;const c=mxMap.getCenter(),k=mxK;cerrarSheet($("mapx"));$("mapx").classList.remove("open");
   const inp=$(k+"-txt"),ok=$(k+"-ok");if(!inp||!ok)return;
-  inp.value="📍 Punto de encuentro: https://maps.google.com/?q="+c.lat.toFixed(5)+","+c.lng.toFixed(5);ok.click()};
+  inp.value="📍 "+(mxNom||"Punto de encuentro")+": https://maps.google.com/?q="+c.lat.toFixed(5)+","+c.lng.toFixed(5);ok.click()};
 document.addEventListener("click",e=>{const b=e.target.closest("[data-ubi]");if(!b)return;abreMapx(b.dataset.ubi)});
+function planDeGrupo(id){document.querySelectorAll(".sheet.open").forEach(s=>{s.dataset.desde="";cerrarSheet(s)});$("mPlan").click();if(colocando){fGrDef=id;$("f-vis").value="grupo";$("privBox").hidden=true;pintaVis()}}
+$("gc-plan").onclick=()=>{if(gcId)planDeGrupo(gcId)};
 function quitaMsg(k,id){try{
   if(k==="p"){for(const pid in chats){const l=chats[pid],i=l.findIndex(x=>x.id===id);if(i>=0){l.splice(i,1);const a=data.find(x=>x.id===+pid);if(a)a.chat=l}}render()}
   else if(k==="d"){for(const u in dms)dms[u]=dms[u].filter(x=>x.id!==id);if($("dm").classList.contains("open"))pintaDM();render()}
