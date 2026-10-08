@@ -609,6 +609,19 @@ body:has(.sheet.open) .plusmenu{z-index:1400}
 #detalle .caja{border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;padding:12px 0 12px 36px;position:relative}
 #detalle .caja:last-child{border-bottom:0}
 #detalle .caja .ci{position:absolute;left:0;top:14px;margin:0;font-size:20px}
+.ico{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.25em;flex:none}
+.bar5 .bi .ico{width:26px;height:26px;stroke-width:1.8;display:block;margin:0 auto}
+.plusmenu button .ico{margin-right:8px}
+#orgBox .p-gran .ico,#p-ajustes>summary .ico{margin-right:12px;width:22px;height:22px;color:var(--cta)}
+#detalle .caja .ci .ico{width:22px;height:22px;color:var(--cta);vertical-align:0}
+.mini .ico,.chatgo .ico,.pango .ico,.gr-btns .ico,.gr-chatb .ico,.shm .ico,.p-link .ico{margin-right:6px}
+#perfil .p-cam .ico{width:16px;height:16px;vertical-align:0}
+.p-lapiz .ico{width:22px;height:22px;color:var(--mut)}
+#orgBox{border:0!important;background:none!important;overflow:visible!important}
+#orgBox #org-abrir.p-gran,#orgBox #p-mipanel.p-gran{background:#0A2A5E!important;color:#fff!important;border:0!important;border-radius:14px!important;margin:0 0 10px!important}
+#orgBox #org-abrir.p-gran::after,#orgBox #p-mipanel.p-gran::after,#orgBox #org-abrir .ico,#orgBox #p-mipanel .ico{color:#fff}
+#orgBox #p-amigos{border:1px solid var(--line)!important;border-radius:16px 16px 0 0!important;background:var(--card)!important}
+#orgBox #p-grupos{border:1px solid var(--line)!important;border-top:0!important;border-radius:0 0 16px 16px!important;background:var(--card)!important}
 .fsh{flex-wrap:nowrap}.fsh button{flex:1;min-width:0}
 .shm{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 10px;background:var(--card)}
 .shm[hidden]{display:none}
@@ -833,7 +846,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 185 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 186 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -870,12 +883,32 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 185 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 186 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
-<nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-map" viewBox="0 0 24 24"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15M9 3.236v15"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+<symbol id="i-backpack" viewBox="0 0 24 24"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 10h8M8 18h8"/><path d="M8 22v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-crown" viewBox="0 0 24 24"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+<symbol id="i-pencil" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+<symbol id="i-euro" viewBox="0 0 24 24"><path d="M4 10h12M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></symbol>
+</defs></svg>
+<nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg></span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-backpack"/></svg></span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg></span><span class="bt">Perfil</span></button></nav>
 
-<div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mAdmin" type="button" hidden>👑 Panel del dueño</button><button id="mOrg" type="button" hidden>📋 Panel de organizador</button><button id="mAyuda" type="button">💬 Ayuda</button><button id="mGrupo" type="button">👪 Crear grupo</button><button id="mPlan" type="button">Nuevo plan</button></div>
+<div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button"><svg class="ico" aria-hidden="true"><use href="#i-search"/></svg>Buscar personas</button><button id="mCod" type="button"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>Tengo un código</button><button id="mAqui" type="button"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Estoy aquí</button><button id="mAdmin" type="button" hidden><svg class="ico" aria-hidden="true"><use href="#i-crown"/></svg>Panel del dueño</button><button id="mOrg" type="button" hidden><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Panel de organizador</button><button id="mAyuda" type="button"><svg class="ico" aria-hidden="true"><use href="#i-help"/></svg>Ayuda</button><button id="mGrupo" type="button"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>Crear grupo</button><button id="mPlan" type="button"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>Nuevo plan</button></div>
 
 <section id="aqui" class="sheet" aria-label="Estoy aquí">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1039,8 +1072,8 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 
 <section id="perfil" class="sheet" aria-label="Tu perfil">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam">📷</span></label><input type="file" id="p-foto" accept="image/*" hidden><div id="p-fmenu" class="p-fmenu" hidden><label for="p-foto">📷 Cambiar foto</label><button id="p-quitafoto" type="button">🗑️ Quitar foto</button></div><div class="p-hi"><div class="p-nrow"><h2 id="p-tit">Tu perfil</h2><button class="p-lapiz" id="p-edit" type="button" aria-label="Cambiar nombre" hidden>✏️</button></div><p class="meta" id="p-rep"></p><p class="meta" id="p-sub"></p></div></div>
-<div id="p-extra" hidden><p class="p-biotxt" id="p-bio" hidden></p><button class="p-link" id="p-bioedit" type="button">✏️ Escribe algo sobre ti</button><div id="p-bioform" hidden><textarea id="p-biotx" maxlength="160" rows="2" placeholder="Ej. Me encanta la montaña y el kayak"></textarea><button id="p-biook" type="button" class="p-wide">Guardar</button></div><div class="p-stats" id="p-stats"></div></div>
+<div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam"><svg class="ico" aria-hidden="true"><use href="#i-camera"/></svg></span></label><input type="file" id="p-foto" accept="image/*" hidden><div id="p-fmenu" class="p-fmenu" hidden><label for="p-foto">📷 Cambiar foto</label><button id="p-quitafoto" type="button">🗑️ Quitar foto</button></div><div class="p-hi"><div class="p-nrow"><h2 id="p-tit">Tu perfil</h2><button class="p-lapiz" id="p-edit" type="button" aria-label="Cambiar nombre" hidden><svg class="ico" aria-hidden="true"><use href="#i-pencil"/></svg></button></div><p class="meta" id="p-rep"></p><p class="meta" id="p-sub"></p></div></div>
+<div id="p-extra" hidden><p class="p-biotxt" id="p-bio" hidden></p><button class="p-link" id="p-bioedit" type="button"><svg class="ico" aria-hidden="true"><use href="#i-pencil"/></svg>Escribe algo sobre ti</button><div id="p-bioform" hidden><textarea id="p-biotx" maxlength="160" rows="2" placeholder="Ej. Me encanta la montaña y el kayak"></textarea><button id="p-biook" type="button" class="p-wide">Guardar</button></div><div class="p-stats" id="p-stats"></div></div>
 <div class="p-card" id="p-edbox">
 <input id="p-nombre" maxlength="24" placeholder="Tu nombre (ej. Marta)" aria-label="Tu nombre">
 <button id="p-ok" type="button" class="p-wide">Guardar nombre</button><button class="sec" id="p-cancel" type="button" hidden>Cancelar</button>
@@ -1060,16 +1093,16 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div class="p-botones" id="orgBox">
 <p class="meta" id="org-estado"></p>
 <button id="org-abrir" type="button" class="p-gran" hidden>Organizar planes de pago</button>
-<button id="p-mipanel" type="button" class="p-gran" hidden>📊 Mi panel de organizador</button><button id="p-amigos" type="button" class="p-gran sec">👥 Mis amigos</button><button id="p-grupos" type="button" class="p-gran sec">👪 Mis grupos</button>
+<button id="p-mipanel" type="button" class="p-gran" hidden><svg class="ico" aria-hidden="true"><use href="#i-chart"/></svg>Mi panel de organizador</button><button id="p-amigos" type="button" class="p-gran sec"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>Mis amigos</button><button id="p-grupos" type="button" class="p-gran sec"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>Mis grupos</button>
 </div>
-<details class="mas" id="p-ajustes"><summary>🔐 Cuenta y privacidad</summary>
+<details class="mas" id="p-ajustes"><summary><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>Cuenta y privacidad</summary>
 <div id="p-ajcont">
 <label class="chk"><input type="checkbox" id="p-buscable" checked> Que me encuentren por mi nombre</label>
 <div id="bloqBox" class="p-card" hidden><h3 class="p-h">Personas bloqueadas</h3><div id="listaBloq" class="list"></div></div>
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 185 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 186 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1266,6 +1299,7 @@ async function descifra(txt,cod){const u=b64Buf(txt),k=await claveDe(cod,u.slice
 const enlacePriv=async a=>location.origin+location.pathname+"#pv="+await cifra(datosComp(a),a.codigo);
 function textoCompartir(a){if(a.priv)return "🔒 Plan privado en Kiplan. Abre el enlace y escribe el código que te darán:";return `${a.emoji||"🌊"} ${a.titulo}${a.fecha?" · "+fmtF(a.fecha):""}${a.precio>0?" · "+precioTxt(a.precio):""}${a.ini?"\n📍 Punto de salida: https://www.google.com/maps?q="+(+a.ini.lat).toFixed(5)+","+(+a.ini.lng).toFixed(5):""}\nÚnete en Kiplan:`}
 function compartir(a){window.open("https://wa.me/?text="+encodeURIComponent(textoCompartir(a)+" "+enlaceDe(a)),"_blank")}
+function ic(n){return '<svg class="ico" aria-hidden="true"><use href="#i-'+n+'"/></svg>'}
 function compartirNat(a){const u=enlaceDe(a),t=textoCompartir(a);if(navigator.share){navigator.share({title:a.titulo||"Kiplan",text:t,url:u}).catch(()=>{});return}
   (async()=>{try{await navigator.clipboard.writeText(t+" "+u);avisa("🔗 Enlace copiado")}catch(_e){prompt("Copia este enlace:",u)}})()}
 async function copiar(a){const u=enlaceDe(a);try{await navigator.clipboard.writeText(u);if($("copiar"))$("copiar").textContent="¡Enlace copiado!"}catch(e){prompt("Copia este enlace:",u)}}
@@ -1339,7 +1373,7 @@ const enlaceGrupo=c=>location.origin+location.pathname+"#grupo="+c;
 async function cargaGrupos(){if(!sb||!uid)return;try{const r=await sb.rpc("mis_grupos");if(r.error)throw r.error;misGr=r.data||[];misGr.forEach(g=>(g.miembros||[]).forEach(m=>{if(!nombres[m.id])nombres[m.id]=m.nombre;if(m.foto&&!fotosP[m.id])fotosP[m.id]=m.foto}))}catch(e){$("gr-msg").textContent="No se pudieron cargar tus grupos."}}
 function filaGrupo(g){const ms=g.miembros||[];
   return `<details class="gr-g" data-gr="${g.id}"${grAb.has(g.id)?" open":""}><summary><b>${esc(g.nombre)}</b><small>${ms.length} ${ms.length===1?"persona":"personas"}${g.mio?" · lo creaste tú":""}</small></summary>`+
-  `<button type="button" class="p-gran gr-chatb" data-grchat2="${g.id}">💬 Chat del grupo</button><div class="gr-btns gr-dos"><button type="button" class="sec" data-grpto="${g.id}">📍 Enviar punto</button><button type="button" class="sec" data-grplan="${g.id}">＋ Crear plan</button></div>`+(g.mio?`<div class="gr-btns"><button type="button" class="sec" data-grwa="${g.id}">📤 Invitar por WhatsApp</button><button type="button" class="sec" data-grcp="${g.id}">🔗 Copiar enlace</button></div>`:"")+
+  `<button type="button" class="p-gran gr-chatb" data-grchat2="${g.id}">${ic("chat")}Chat del grupo</button><div class="gr-btns gr-dos"><button type="button" class="sec" data-grpto="${g.id}">${ic("pin")}Enviar punto</button><button type="button" class="sec" data-grplan="${g.id}">${ic("plus")}Crear plan</button></div>`+(g.mio?`<div class="gr-btns"><button type="button" class="sec" data-grwa="${g.id}">📤 Invitar por WhatsApp</button><button type="button" class="sec" data-grcp="${g.id}">🔗 Copiar enlace</button></div>`:"")+
   `<div class="gr-ms">${ms.map(m=>`<div class="gr-m"${m.id!==uid?` data-grp="${esc(m.id)}"`:""}>${avPersona(m.id,m.nombre)}<b>${esc(m.id===uid?"Tú":m.nombre)}</b>${m.id===g.creador?'<span class="gr-tag">creador</span>':""}${!m.correo?'<span class="gr-tag gris">sin correo</span>':""}${g.mio&&m.id!==uid?`<button type="button" class="sec gr-echa" data-grecha="${g.id}|${esc(m.id)}">Echar</button>`:""}</div>`).join("")}</div>`+
   `<div class="gr-pie">${g.mio?`<button type="button" class="p-link" data-grnuevo="${g.id}">🔄 Cambiar enlace</button>`:""}<button type="button" class="p-link gr-salir" data-grsalir="${g.id}">Salir del grupo</button></div></details>`}
 async function pintaGrupos(){await cargaGrupos();$("gr-lista").innerHTML=misGr.length?misGr.map(filaGrupo).join(""):'<p class="meta">Crea un grupo y pega el enlace en tu grupo de WhatsApp.</p>'}
@@ -1375,7 +1409,7 @@ $("ge-ok").onclick=async()=>{
 function cajasNum(m){const c=(v,t)=>`<div><b>${v==null?"–":esc(String(v))}</b><small>${t}</small></div>`;m=m||{};return c(m.hechos,"planes hechos")+c(m.organizados,"organizados")+c(m.amigos,"amigos")}
 async function pintaPerfilExtra(){if(!biosP)biosP={};
   const on=!!me;$("p-extra").hidden=!on;$("p-prox").hidden=true;if(!on)return;
-  const bio=biosP[uid]||"";$("p-bio").textContent=bio;$("p-bio").hidden=!bio;$("p-bioedit").textContent=bio?"✏️ Cambiar":"✏️ Escribe algo sobre ti";
+  const bio=biosP[uid]||"";$("p-bio").textContent=bio;$("p-bio").hidden=!bio;$("p-bioedit").innerHTML=ic("pencil")+(bio?"Cambiar":"Escribe algo sobre ti");
   $("p-stats").innerHTML=cajasNum(misNum);
   const prox=data.filter(a=>a.kind!=="aqui"&&mia(a)&&!pasada(a)).sort((x,y)=>(tF(x)||9e15)-(tF(y)||9e15)).slice(0,3);
   $("p-prox").innerHTML=prox.length?`<h3 class="lgrupo">📅 Tus próximos planes</h3>`+prox.map(a=>`<div class="item" data-pprox="${a.id}"><div class="th" style="background:${col(a)}">${sym(a,22)}</div><div style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(textoCuando(a))}${soyOrg(a)?" · organizas tú":""}</small></div></div>`).join(""):"";
@@ -2525,14 +2559,14 @@ function render(){
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}${a.grupoId?`<p class="meta">👪 Solo lo ve el grupo «${esc(nomGrupo(a.grupoId))}»</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
-${soyOrg(a)&&puedeCobrar()?`<div class="mini"><button id="panGo" class="pango" type="button">📊 Panel del organizador</button></div>`:""}<button id="gochat" class="chatgo" type="button">💬 Chat del grupo${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?` <span class="chatnew">${sinLeerPlan(a)} nuevos</span>`:""}</button>
-<div class="mini fsh">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${(!a.priv||soyOrg(a))||((yo||soyOrg(a))&&amigosSet.size)?`<button id="shGo" class="sec" type="button">📤 Compartir</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
-<div id="shMenu" class="shm" hidden>${(yo||soyOrg(a))&&amigosSet.size?`<button id="invGo" type="button">👥 Invitar a mis amigos</button>`:""}${!a.priv||soyOrg(a)?`<button id="shNat" type="button">📤 Enviar el enlace</button>`:""}</div>
+${soyOrg(a)&&puedeCobrar()?`<div class="mini"><button id="panGo" class="pango" type="button">${ic("chart")}Panel del organizador</button></div>`:""}<button id="gochat" class="chatgo" type="button">${ic("chat")}Chat del grupo${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?` <span class="chatnew">${sinLeerPlan(a)} nuevos</span>`:""}</button>
+<div class="mini fsh">${soyOrg(a)?`<button id="editGo" class="sec" type="button">${ic("pencil")}Editar</button>`:""}${(!a.priv||soyOrg(a))||((yo||soyOrg(a))&&amigosSet.size)?`<button id="shGo" class="sec" type="button">${ic("share")}Compartir</button>`:""}<button id="gofotos" class="sec" type="button">${ic("image")}Fotos${nf?" ("+nf+")":""}</button></div>
+<div id="shMenu" class="shm" hidden>${(yo||soyOrg(a))&&amigosSet.size?`<button id="invGo" type="button">${ic("users")}Invitar a mis amigos</button>`:""}${!a.priv||soyOrg(a)?`<button id="shNat" type="button">${ic("share")}Enviar el enlace</button>`:""}</div>
 <div class="cajas">
-<div class="caja ancha"><span class="ci">📅</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
-<div class="caja ancha"><span class="ci">📍</span><small>Punto de encuentro</small><b>${esc(a.punto||"Marcado en el mapa")}</b><details class="irmapa" data-k="mapa"><summary>🧭 Cómo llegar</summary><a href="https://maps.apple.com/?daddr=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Apple Maps</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Google Maps</a></details></div>
-<div class="caja"><span class="ci">👥</span><small>Plazas</small><b>${libres?`${a.max-libres} ${a.max-libres===1?"apuntado":"apuntados"} · <span class="${libres===1?"plz-poco":""}">${libres===1?"queda 1":"quedan "+libres}</span>`:`<span class="plz-poco">Completo</span> (${a.max} de ${a.max})`}</b></div>
-${a.precio>0?`<div class="caja ancha"><span class="ci">💶</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${""}</div>`:`<div class="caja"><span class="ci">💶</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
+<div class="caja ancha"><span class="ci">${ic("cal")}</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
+<div class="caja ancha"><span class="ci">${ic("pin")}</span><small>Punto de encuentro</small><b>${esc(a.punto||"Marcado en el mapa")}</b><details class="irmapa" data-k="mapa"><summary>🧭 Cómo llegar</summary><a href="https://maps.apple.com/?daddr=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Apple Maps</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Google Maps</a></details></div>
+<div class="caja"><span class="ci">${ic("users")}</span><small>Plazas</small><b>${libres?`${a.max-libres} ${a.max-libres===1?"apuntado":"apuntados"} · <span class="${libres===1?"plz-poco":""}">${libres===1?"queda 1":"quedan "+libres}</span>`:`<span class="plz-poco">Completo</span> (${a.max} de ${a.max})`}</b></div>
+${a.precio>0?`<div class="caja ancha"><span class="ci">${ic("euro")}</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${""}</div>`:`<div class="caja"><span class="ci">${ic("euro")}</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
 </div>
 ${docsHTML(a)}${tiempoHTML(a)}
 ${tramoHTML(a)}
@@ -3123,10 +3157,10 @@ pintaPasos();
 function pintaOrg(){
   const e=$("org-estado"),b=$("org-abrir");{const mp=$("p-mipanel");if(mp)mp.hidden=!adminApp}
   if(!e)return;
-  if(adminApp){e.innerHTML="";b.textContent="👑 Panel del dueño";b.hidden=false;return}
-  if(verifSet.has(uid)){e.innerHTML="";b.textContent="📊 Mi panel de organizador";b.hidden=false;return}
+  if(adminApp){e.innerHTML="";b.innerHTML=ic("crown")+"Panel del dueño";b.hidden=false;return}
+  if(verifSet.has(uid)){e.innerHTML="";b.innerHTML=ic("chart")+"Mi panel de organizador";b.hidden=false;return}
   const o=miOrg;
-  if(!o){e.textContent="";b.textContent="💶 Organizar planes de pago";b.hidden=false;return}
+  if(!o){e.textContent="";b.innerHTML=ic("euro")+"Organizar planes de pago";b.hidden=false;return}
   if(o.estado==="pendiente"){e.textContent="Solicitud enviada ✓. La revisaremos pronto; aquí verás el resultado.";b.hidden=true;return}
   e.textContent="Tu solicitud no se ha aprobado"+(o.motivo?": "+o.motivo:".")+" Puedes corregir los datos y enviarla otra vez.";b.textContent="Volver a enviar la solicitud";b.hidden=false;
 }
@@ -3260,7 +3294,7 @@ function filaPlanOrg(a,abierto){
   const res=[gente.length+"/"+a.max+" apuntados"];if(pago){res.push(npg+" pagados ("+precioTxt(npg*a.precio)+")");if(npend)res.push('<span style="color:#C9761B;font-weight:700">🟠 '+npend+' sin pagar</span>')}if(nll)res.push(nll+" han llegado");
   const filas=gente.map(u=>{const p=pg.includes(u),l=ll.includes(u),n=nombres[u]||"Alguien",nd=(docsOrg[a.id]||[]).filter(d=>d.para===u).length;
     return `<div class="po-per">${avPersona(u,n)}<b class="po-pn">${esc(n)}</b>${pago?`<button type="button" class="po-chip ${p?"ok":"pend"}" data-pp="${a.id}|${esc(u)}">${p?"🟢 Pagado":"🟠 Sin pagar"}</button>`:""}<button type="button" class="po-chip${l?" ok":""}" data-ll="${a.id}|${esc(u)}">${l?"✅ Llegó":"⬜ Llegó"}</button>${a.viejo||!pago?"":`<button type="button" class="po-chip${nd?" ok":""}" data-doc="${a.id}|${esc(u)}" aria-label="Enviar billete">🎫 Billete${nd?" ✓":""}</button>`}</div>`}).join("");
-  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo||pasada(a)?" · ✔️ terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${""}${filas||'<p class="meta">Nadie todavía.</p>'}${pago&&gente.length&&!a.viejo?`<button class="sec po-doct" type="button" data-doct="${a.id}">📄 Documento para todos</button>`:""}${docsLista(a)}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir</button>`}</div></details>`;
+  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo||pasada(a)?" · ✔️ terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${""}${filas||'<p class="meta">Nadie todavía.</p>'}${pago&&gente.length&&!a.viejo?`<button class="sec po-doct" type="button" data-doct="${a.id}">📄 Documento para todos</button>`:""}${docsLista(a)}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">${ic("share")}Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir</button>`}</div></details>`;
 }
 async function pintaPanelOrg(){
   const todos=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid).sort((x,y)=>(x.viejo?1:0)-(y.viejo?1:0)||tF(x)-tF(y));
