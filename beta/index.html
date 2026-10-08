@@ -235,6 +235,16 @@ details.mas summary{cursor:pointer;font-weight:700;padding:6px 0}
 .item small{display:block}
 #dm{z-index:1150}
 #gchat{z-index:1150}
+#mapx{z-index:1300;padding:0;overflow:hidden}
+#mapx:not(.open){visibility:hidden}
+#mapx .x{position:absolute;float:none;top:calc(12px + env(safe-area-inset-top,0px));right:12px;margin:0;z-index:5}
+#mx-map{position:absolute;inset:0;z-index:0}
+.mx-pin{position:absolute;left:50%;top:50%;width:48px;height:48px;transform:translate(-50%,-100%);z-index:4;pointer-events:none;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35))}
+#mx-yo{position:absolute;right:16px;bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:4;width:50px;height:50px;border-radius:50%!important;padding:0!important;background:var(--card)!important;color:var(--ink)!important;border:0!important;box-shadow:0 2px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center}
+#mx-ok.p-gran{position:absolute;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:auto;z-index:4;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.mpt{display:flex;gap:6px;margin:6px 0 2px;flex-wrap:wrap;white-space:normal}
+.mpt a{flex:1 1 auto;text-align:center;padding:8px;border-radius:10px;background:var(--card);color:var(--ink);font-weight:700;font-size:13px;text-decoration:none;white-space:nowrap}
+.gr-dos{flex-direction:row}.gr-dos .sec{flex:1;width:auto}
 #gchat.chatv{top:0;bottom:0;max-height:none;height:100%;border-radius:0;padding:0;display:flex;flex-direction:column;overflow:hidden}
 #gchat.chatv .chat{flex:1 1 auto;min-height:0;max-height:none;margin:0;padding:12px;overflow-y:auto;-webkit-overflow-scrolling:touch}
 #gchat .cav{display:flex;align-items:center;justify-content:center;font-size:22px}
@@ -787,7 +797,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 180 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 181 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -824,7 +834,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 180 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 181 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -899,6 +909,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div class="chat" id="gc-msgs"></div>
 <div class="send cbar"><input id="gc-txt" maxlength="500" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="gc" aria-label="Poner mi ubicación">📍</button><button id="gc-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
 </section>
+<section id="mapx" class="sheet" aria-label="Enviar un punto"><button class="x" type="button" aria-label="Cerrar">✕</button><div id="mx-map"></div><svg class="mx-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="#FFD66B" stroke="#0A2A5E" stroke-width="1.6"/><circle cx="12" cy="10" r="2.6" fill="#0A2A5E"/></svg><button id="mx-yo" type="button" aria-label="Ir a mi ubicación"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button><button id="mx-ok" type="button" class="p-gran">📍 Enviar este punto</button></section>
 <section id="grupos" class="sheet" aria-label="Mis grupos">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2>👪 Mis grupos</h2>
@@ -1022,7 +1033,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 180 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 181 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1290,7 +1301,7 @@ const enlaceGrupo=c=>location.origin+location.pathname+"#grupo="+c;
 async function cargaGrupos(){if(!sb||!uid)return;try{const r=await sb.rpc("mis_grupos");if(r.error)throw r.error;misGr=r.data||[];misGr.forEach(g=>(g.miembros||[]).forEach(m=>{if(!nombres[m.id])nombres[m.id]=m.nombre;if(m.foto&&!fotosP[m.id])fotosP[m.id]=m.foto}))}catch(e){$("gr-msg").textContent="No se pudieron cargar tus grupos."}}
 function filaGrupo(g){const ms=g.miembros||[];
   return `<details class="gr-g" data-gr="${g.id}"${grAb.has(g.id)?" open":""}><summary><b>${esc(g.nombre)}</b><small>${ms.length} ${ms.length===1?"persona":"personas"}${g.mio?" · lo creaste tú":""}</small></summary>`+
-  `<button type="button" class="p-gran gr-chatb" data-grchat2="${g.id}">💬 Chat del grupo</button>`+(g.mio?`<div class="gr-btns"><button type="button" class="sec" data-grwa="${g.id}">📤 Invitar por WhatsApp</button><button type="button" class="sec" data-grcp="${g.id}">🔗 Copiar enlace</button></div>`:"")+
+  `<button type="button" class="p-gran gr-chatb" data-grchat2="${g.id}">💬 Chat del grupo</button><div class="gr-btns gr-dos"><button type="button" class="sec" data-grpto="${g.id}">📍 Enviar punto</button><button type="button" class="sec" data-grplan="${g.id}">＋ Crear plan</button></div>`+(g.mio?`<div class="gr-btns"><button type="button" class="sec" data-grwa="${g.id}">📤 Invitar por WhatsApp</button><button type="button" class="sec" data-grcp="${g.id}">🔗 Copiar enlace</button></div>`:"")+
   `<div class="gr-ms">${ms.map(m=>`<div class="gr-m"${m.id!==uid?` data-grp="${esc(m.id)}"`:""}>${avPersona(m.id,m.nombre)}<b>${esc(m.id===uid?"Tú":m.nombre)}</b>${m.id===g.creador?'<span class="gr-tag">creador</span>':""}${!m.correo?'<span class="gr-tag gris">sin correo</span>':""}${g.mio&&m.id!==uid?`<button type="button" class="sec gr-echa" data-grecha="${g.id}|${esc(m.id)}">Echar</button>`:""}</div>`).join("")}</div>`+
   `<div class="gr-pie">${g.mio?`<button type="button" class="p-link" data-grnuevo="${g.id}">🔄 Cambiar enlace</button>`:""}<button type="button" class="p-link gr-salir" data-grsalir="${g.id}">Salir del grupo</button></div></details>`}
 async function pintaGrupos(){await cargaGrupos();$("gr-lista").innerHTML=misGr.length?misGr.map(filaGrupo).join(""):'<p class="meta">Crea un grupo y pega el enlace en tu grupo de WhatsApp.</p>'}
@@ -1303,6 +1314,8 @@ document.addEventListener("click",async e=>{
   if((b=t.closest("[data-grecha]"))){e.stopPropagation();const p=b.dataset.grecha.split("|");if(b.dataset.ok!=="1"){b.dataset.ok="1";b.textContent="¿Seguro?";return}try{const r=await sb.rpc("echar_de_grupo",{p_grupo:+p[0],p_user:p[1]});if(r.error)throw r.error;await pintaGrupos()}catch(er){fallo(er)}return}
   if((b=t.closest("[data-grnuevo]"))){if(b.dataset.ok!=="1"){b.dataset.ok="1";b.textContent="El enlace viejo dejará de valer. ¿Seguro?";return}try{const r=await sb.rpc("nuevo_enlace_grupo",{p_grupo:+b.dataset.grnuevo});if(r.error)throw r.error;await pintaGrupos();avisa("🔄 Enlace nuevo creado")}catch(er){fallo(er)}return}
   if((b=t.closest("[data-grsalir]"))){if(b.dataset.ok!=="1"){b.dataset.ok="1";b.textContent="¿Seguro que quieres salir?";return}const id=+b.dataset.grsalir;try{const r=await sb.rpc("salir_grupo",{p_grupo:id});if(r.error)throw r.error;grAb=new Set([...grAb].filter(x=>x!==id));await pintaGrupos()}catch(er){fallo(er)}return}
+  if((b=t.closest("[data-grpto]"))){const id=+b.dataset.grpto;abreGChat(id);setTimeout(()=>{if($("gchat").classList.contains("open"))abreMapx("gc")},350);return}
+  if((b=t.closest("[data-grplan]"))){const id=+b.dataset.grplan;document.querySelectorAll(".sheet.open").forEach(s=>{s.dataset.desde="";cerrarSheet(s)});$("mPlan").click();if(colocando){fGrDef=id;$("f-vis").value="grupo";$("privBox").hidden=true;pintaVis()}return}
   if((b=t.closest("[data-grchat2]"))){abreGChat(+b.dataset.grchat2);return}
   if((b=t.closest("[data-grp]"))){if(t.closest("button"))return;$("grupos").classList.remove("open");abrePersona(b.dataset.grp)}
 });
@@ -2040,18 +2053,24 @@ $("po-planes").addEventListener("click",e=>{
   const q=e.target.closest("[data-docq]");if(q)docQuitar(q);
 });
 function enlaces(t){return esc(t).replace(/(https?:\/\/[^\s<]+|www\.[^\s<]+)/gi,u=>{let tail="";const mm=u.match(/[.,;:!?)\]]+$/);if(mm){tail=mm[0];u=u.slice(0,-tail.length)}if(!u)return tail;
+  {const pt=u.match(/^https?:\/\/(?:www\.)?(?:maps\.google\.[a-z.]+\/\?q=|google\.[a-z.]+\/maps\?q=)(-?\d{1,2}\.\d+),(-?\d{1,3}\.\d+)$/i);if(pt)return mptCard(pt[1],pt[2])+tail;}
   const href=/^https?:/i.test(u)?u:"https://"+u,vis=u.replace(/^https?:\/\//i,"").replace(/^www\./i,""),corto=vis.length>40?vis.slice(0,38)+"…":vis;
   const ico=/maps\.apple|maps\.app\.goo\.gl|goo\.gl\/maps|google\.[a-z.]+\/maps|maps\.google/i.test(u)?"📍 ":"🔗 ";
   return `<a class="msg-a" href="${href}" target="_blank" rel="noopener noreferrer nofollow">${ico}${corto}</a>${tail}`})}
-document.addEventListener("click",e=>{const b=e.target.closest("[data-ubi]");if(!b)return;const k=b.dataset.ubi;
-  if(!navigator.geolocation){alert("Este móvil no deja saber la ubicación.");return}
-  b.disabled=true;b.textContent="⏳";
-  const fin=()=>{const bb=document.querySelector('[data-ubi="'+k+'"]');if(bb){bb.disabled=false;bb.textContent="📍"}};
-  navigator.geolocation.getCurrentPosition(p=>{fin();const inp=$(k+"-txt");if(!inp)return;
-    inp.value="📍 Mi ubicación: https://maps.google.com/?q="+p.coords.latitude.toFixed(5)+","+p.coords.longitude.toFixed(5);
-    try{inp.focus()}catch(_e){}},
-    er=>{fin();alert(er&&er.code===1?"Kiplan no tiene permiso para ver tu ubicación. Actívalo en Ajustes → Privacidad → Localización → Safari.":"No se ha podido saber tu ubicación. Prueba otra vez.")},
-    {enableHighAccuracy:true,timeout:15000,maximumAge:30000})});
+function mptCard(la,ln){const d=la+","+ln;return `<span class="mpt"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${d}" target="_blank" rel="noopener noreferrer">Google Maps</a><a href="https://maps.apple.com/?daddr=${d}" target="_blank" rel="noopener">Apple Maps</a><a href="https://waze.com/ul?ll=${d}&amp;navigate=yes" target="_blank" rel="noopener noreferrer">Waze</a></span>`}
+var mxMap=null,mxK="";
+function abreMapx(k){mxK=k;$("mapx").classList.add("open");
+  let c0={lat:41.98,lng:2.82};try{if(typeof map!=="undefined"&&map)c0=map.getCenter()}catch(_e){}
+  setTimeout(()=>{try{if(!mxMap){mxMap=L.map("mx-map",{zoomControl:false,attributionControl:false}).setView([c0.lat,c0.lng],15);L.tileLayer("https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key="+CARTO_KEY,{maxZoom:20}).addTo(mxMap)}mxMap.invalidateSize()}catch(_e){}mxYo()},320)}
+function mxYo(){if(!navigator.geolocation||!mxMap)return;$("mx-yo").disabled=true;
+  navigator.geolocation.getCurrentPosition(p=>{$("mx-yo").disabled=false;try{mxMap.setView([p.coords.latitude,p.coords.longitude],17)}catch(_e){}},
+    er=>{$("mx-yo").disabled=false;if(er&&er.code===1)alert("Kiplan no tiene permiso para ver tu ubicación. Actívalo en Ajustes → Privacidad → Localización → Safari. También puedes mover el mapa a mano.")},
+    {enableHighAccuracy:true,timeout:15000,maximumAge:30000})}
+$("mx-yo").onclick=()=>mxYo();
+$("mx-ok").onclick=()=>{if(!mxMap)return;const c=mxMap.getCenter(),k=mxK;cerrarSheet($("mapx"));$("mapx").classList.remove("open");
+  const inp=$(k+"-txt"),ok=$(k+"-ok");if(!inp||!ok)return;
+  inp.value="📍 Punto de encuentro: https://maps.google.com/?q="+c.lat.toFixed(5)+","+c.lng.toFixed(5);ok.click()};
+document.addEventListener("click",e=>{const b=e.target.closest("[data-ubi]");if(!b)return;abreMapx(b.dataset.ubi)});
 function quitaMsg(k,id){try{
   if(k==="p"){for(const pid in chats){const l=chats[pid],i=l.findIndex(x=>x.id===id);if(i>=0){l.splice(i,1);const a=data.find(x=>x.id===+pid);if(a)a.chat=l}}render()}
   else if(k==="d"){for(const u in dms)dms[u]=dms[u].filter(x=>x.id!==id);if($("dm").classList.contains("open"))pintaDM();render()}
@@ -3260,6 +3279,7 @@ const FAQ=[
  {q:"¿Cómo guardo mi cuenta para no perderla?",p:["perfil"],k:["cuenta","correo","email","guardar","perder","entrar","dispositivo","movil","sesion","codigo"],a:"Toca tu nombre arriba a la derecha, busca «Tu cuenta», escribe tu correo y pulsa «Continuar»; te llegará un código que escribes en la app. Para entrar en otro móvil con tu cuenta, haz lo mismo con el mismo correo: la app ve sola que ya tienes cuenta."},
  {q:"¿Cómo busco personas y les escribo?",p:["mapa"],k:["amigo","amigos","buscar","persona","personas","mensaje","mensajes","escribir","seguir"],a:"Toca + y elige «🔍 Buscar personas», escribe su nombre y envía la solicitud de amistad. En la pestaña «Mensajes» están tus chats y los de tus planes. Solo puedes escribir directamente a quien comparte su ubicación con «Estoy aquí» o a quien ya te ha escrito."},
  {q:"¿Cómo envío billetes o documentos?",p:["plan"],k:["billete","billetes","documento","documentos","pdf","archivo","adjuntar"],a:"En los planes de pago, quien organiza abre «📊 Panel del organizador». En «👥 Quién viene» toca «🎫 Billete» al lado de una persona para mandarle su billete, o pulsa «📄 Documento para todos». Puede ser un PDF o una foto de hasta 10 MB. Quien va al plan lo ve dentro del plan, en «🎫 Tus billetes y documentos». Se borran solos 7 días después del plan."},
+ {q:"¿Cómo envío un punto de encuentro?",p:["mapa"],k:["punto","encuentro","ubicacion","donde","quedar","waze","google","maps","enviar"],a:"En cualquier chat toca 📍: se abre un mapa con una chincheta en tu sitio. Mueve el mapa si el punto es otro y toca «📍 Enviar este punto». Los demás verán botones para abrir la ruta en Google Maps, Apple Maps o Waze. En «Mis grupos» también tienes «📍 Enviar punto» y «＋ Crear plan» (un plan solo para ese grupo)."},
  {q:"¿Cómo hablo con el grupo de un plan?",p:["plan"],k:["chat","grupo","hablar","comentar","comentario","preguntar"],a:"Abre el plan y pulsa «💬 Chat del grupo». Los chats de tus planes también salen en la pestaña «Mensajes»."},
  {q:"¿Cómo hago que solo me vean mis amigos o con código?",p:["mapa","crear"],k:["amigos","codigo","privado","candado","ubicacion","aqui","visibilidad"],a:"Al compartir «Estoy aquí», o al crear un plan, elige en «¿Quién puede verlo?» la opción «👥 Solo mis amigos» o «🔒 Solo con código (privado)». Con el código, solo lo ve quien lo escriba en «🔒 Tengo un código»."},
  {q:"¿Cómo hago un plan privado?",p:["crear","editar"],k:["privado","codigo","secreto","invitar","visibilidad","amigos"],a:"Al crear el plan, en «¿Quién puede verlo?» elige «🔒 Solo con código (privado)» o «👥 Solo mis amigos». Comparte el código con quien quieras, o usa «👥 Invitar» dentro del plan. Para entrar a uno privado: toca + y elige «🔒 Tengo un código»."},
