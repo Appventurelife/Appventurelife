@@ -622,7 +622,7 @@ body:has(.sheet.open) .plusmenu{z-index:1400}
 #orgBox #org-abrir.p-gran::after,#orgBox #p-mipanel.p-gran::after,#orgBox #org-abrir .ico,#orgBox #p-mipanel .ico{color:#fff}
 #orgBox #p-amigos{border:1px solid var(--line)!important;border-radius:16px 16px 0 0!important;background:var(--card)!important}
 #orgBox #p-grupos{border:1px solid var(--line)!important;border-top:0!important;border-radius:0 0 16px 16px!important;background:var(--card)!important}
-.fsh{flex-wrap:nowrap}.fsh button{flex:1;min-width:0}
+.fsh{flex-wrap:wrap}.fsh button{flex:1 1 auto;min-width:0}
 .shm{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 10px;background:var(--card)}
 .shm[hidden]{display:none}
 .shm button{display:block;width:100%;text-align:left;padding:13px 16px!important;border:0!important;border-bottom:1px solid var(--line)!important;border-radius:0!important;background:none!important;color:var(--ink)!important;font-size:16px!important;box-shadow:none!important;margin:0!important}
@@ -846,7 +846,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 186 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 187 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -883,7 +883,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 186 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 187 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -905,6 +905,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <symbol id="i-euro" viewBox="0 0 24 24"><path d="M4 10h12M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></symbol>
 <symbol id="i-share" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></symbol>
 <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
 </defs></svg>
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-map"/></svg></span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-backpack"/></svg></span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg></span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi"><svg class="ico" aria-hidden="true"><use href="#i-user"/></svg></span><span class="bt">Perfil</span></button></nav>
 
@@ -1102,7 +1103,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 186 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 187 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2456,7 +2457,7 @@ function pinGrupo(l){
   const ic=L.divIcon({className:"",html:`<div class="pin grupo${pg?" conpago":""}">${l.length}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
   L.marker([la,ln],{icon:ic,zIndexOffset:400}).on("click",()=>{
     const box=document.createElement("div");box.className="glista";
-    box.innerHTML=l.map(a=>{const lib=Math.max(0,a.max-a.asist.length);return `<button type="button" data-g="${esc(String(a.id))}"${lib?"":` class="lleno"`}><span class="gi" style="background:${col(a)}">${sym(a,18)}</span><span style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(textoCuando(a))} · ${lib?lib+(lib===1?" plaza libre":" plazas libres"):"Completo"} · ${a.precio>0?precioTxt(a.precio):"Gratis"}</small></span></button>`}).join("");
+    box.innerHTML=l.map(a=>{const lib=Math.max(0,a.max-a.asist.length);return `<button type="button" data-g="${esc(String(a.id))}"${lib?"":` class="lleno"`}><span class="gi" style="background:${col(a)}">${sym(a,18)}</span><span style="flex:1;min-width:0"><b>${esc(a.titulo)}</b><small>${esc(textoCuando(a))} · ${lib?lib+(lib===1?" plaza libre":" plazas libres"):"Completo"}${a.precio>0?" · "+precioTxt(a.precio):""}</small></span></button>`}).join("");
     box.querySelectorAll("[data-g]").forEach(b=>{b.onclick=()=>{const p=l.find(a=>String(a.id)===b.dataset.g);map.closePopup();if(p)elegir(p.id)}});
     L.popup({maxWidth:290,autoPanPaddingTopLeft:[10,90],autoPanPaddingBottomRight:[10,90]}).setLatLng([la,ln]).setContent(box).openOn(map);
   }).addTo(capaPins);
@@ -2560,13 +2561,13 @@ ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="c
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}${a.grupoId?`<p class="meta">👪 Solo lo ve el grupo «${esc(nomGrupo(a.grupoId))}»</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
 ${soyOrg(a)&&puedeCobrar()?`<div class="mini"><button id="panGo" class="pango" type="button">${ic("chart")}Panel del organizador</button></div>`:""}<button id="gochat" class="chatgo" type="button">${ic("chat")}Chat del grupo${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?` <span class="chatnew">${sinLeerPlan(a)} nuevos</span>`:""}</button>
-<div class="mini fsh">${soyOrg(a)?`<button id="editGo" class="sec" type="button">${ic("pencil")}Editar</button>`:""}${(!a.priv||soyOrg(a))||((yo||soyOrg(a))&&amigosSet.size)?`<button id="shGo" class="sec" type="button">${ic("share")}Compartir</button>`:""}<button id="gofotos" class="sec" type="button">${ic("image")}Fotos${nf?" ("+nf+")":""}</button></div>
+<div class="mini fsh">${soyOrg(a)?`<button id="editGo" class="sec" type="button">${ic("pencil")}Editar</button>`:""}${(!a.priv||soyOrg(a))||((yo||soyOrg(a))&&amigosSet.size)?`<button id="shGo" class="sec" type="button">${ic("share")}Compartir</button>`:""}${!a.priv||soyOrg(a)?`<button id="copiar" class="sec" type="button">${ic("link")}Copiar enlace</button>`:""}<button id="gofotos" class="sec" type="button">${ic("image")}Fotos${nf?" ("+nf+")":""}</button></div>
 <div id="shMenu" class="shm" hidden>${(yo||soyOrg(a))&&amigosSet.size?`<button id="invGo" type="button">${ic("users")}Invitar a mis amigos</button>`:""}${!a.priv||soyOrg(a)?`<button id="shNat" type="button">${ic("share")}Enviar el enlace</button>`:""}</div>
 <div class="cajas">
 <div class="caja ancha"><span class="ci">${ic("cal")}</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
 <div class="caja ancha"><span class="ci">${ic("pin")}</span><small>Punto de encuentro</small><b>${esc(a.punto||"Marcado en el mapa")}</b><details class="irmapa" data-k="mapa"><summary>🧭 Cómo llegar</summary><a href="https://maps.apple.com/?daddr=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Apple Maps</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=${pe.lat},${pe.lng}" target="_blank" rel="noopener">Google Maps</a></details></div>
 <div class="caja"><span class="ci">${ic("users")}</span><small>Plazas</small><b>${libres?`${a.max-libres} ${a.max-libres===1?"apuntado":"apuntados"} · <span class="${libres===1?"plz-poco":""}">${libres===1?"queda 1":"quedan "+libres}</span>`:`<span class="plz-poco">Completo</span> (${a.max} de ${a.max})`}</b></div>
-${a.precio>0?`<div class="caja ancha"><span class="ci">${ic("euro")}</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${""}</div>`:`<div class="caja"><span class="ci">${ic("euro")}</span><small>Precio</small><b class="gratis">Gratis</b></div>`}
+${a.precio>0?`<div class="caja ancha"><span class="ci">${ic("euro")}</span><small>Precio</small><b>${precioTxt(a.precio)} por persona</b>${formas.length?`<div class="formas">${formas.map(f=>`<span>${esc(f)}</span>`).join("")}</div>`:""}${a.pago?`<p class="meta" style="margin:6px 0 0">Cómo pagar: ${esc(a.pago)}</p>`:""}${a.link?`<a class="payb" href="${esc(a.link)}" target="_blank" rel="noopener noreferrer">Pagar con Stripe</a>`:""}${""}${yo&&!soyOrg(a)&&!(a.pagosIds||[]).includes(uid)?`<br><button id="yapague" class="sec" type="button" style="margin-top:8px">Ya he pagado</button>`:""}${""}</div>`:""}
 </div>
 ${docsHTML(a)}${tiempoHTML(a)}
 ${tramoHTML(a)}
@@ -2593,7 +2594,7 @@ ${infoPlan(a)}
   on("verTramo",()=>{sel=null;verEnMapa(a.id);render();try{map.fitBounds([[a.ini.lat,a.ini.lng],[a.lat,a.lng]],{padding:[60,60]});$("map").scrollIntoView({behavior:"smooth",block:"center"})}catch(e){}});on("rutaGo",()=>calcularRuta(a));on("rutaVer",()=>{sel=null;verEnMapa(a.id);render()});on("rutaQuita",()=>{quitaRuta();render()});
   d.querySelectorAll("[data-rm]").forEach(el=>{el.onclick=()=>calcularRuta(a,el.dataset.rm)});
   on("copCod",async()=>{try{await navigator.clipboard.writeText(fmtCod(a.codigo));$("copCod").textContent="¡Copiado!"}catch(e){prompt("Código:",fmtCod(a.codigo))}});
-  on("shGo",()=>{const m=$("shMenu"),n=m?m.querySelectorAll("button").length:0;if(n>1){m.hidden=!m.hidden;return}if($("invGo")){abreInvitar(a.id);return}compartirNat(a)});on("shNat",()=>compartirNat(a));on("pmMas",()=>{const l=$("pmLista");if(l)l.hidden=!l.hidden});
+  on("shGo",()=>{const m=$("shMenu"),n=m?m.querySelectorAll("button").length:0;if(n>1){m.hidden=!m.hidden;return}if($("invGo")){abreInvitar(a.id);return}compartirNat(a)});on("shNat",()=>compartirNat(a));on("copiar",()=>copiar(a));on("pmMas",()=>{const l=$("pmLista");if(l)l.hidden=!l.hidden});
   on("yapague",async()=>{try{const r=await sb.from("mensajes").insert({plan_id:a.id,texto:"💶 Ya he pagado, ¿puedes confirmarlo?"});if(r.error)throw r.error;tab="chat";await recarga()}catch(e){fallo(e)}});
   on("unir",async()=>{
     if(!exigeAcepta(()=>{const b=$("unir");if(b)b.click()}))return;
