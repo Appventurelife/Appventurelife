@@ -771,7 +771,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 169 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 170 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -808,7 +808,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 169 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 170 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -1006,7 +1006,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 169 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 170 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1547,7 +1547,27 @@ function cerrarSheet(el){
   else if(el.id==="perfil"){el.classList.remove("open");cbNombre=null}
   else{el.classList.remove("open");const ds=el.dataset.desde||"";el.dataset.desde="";if(ds==="perfil")pedirNombre();else if(ds==="grupos")abrirGrupos()}
 }
-document.addEventListener("click",e=>{const x=e.target.closest(".x");if(x){const sh=x.closest(".sheet");if(sh)cerrarSheet(sh)}});
+var hojaUlt="",hojaUltT=0,hojaUltPlan=null,hojaPlan=null,hojaNav=0,hojaVolviendo=false;
+{const obsH=new MutationObserver(ms=>{ms.forEach(m=>{const el=m.target;
+  const ab=el.classList.contains("open"),antes=(" "+(m.oldValue||"")+" ").includes(" open ");
+  if(antes&&!ab){hojaUlt=el.id;hojaUltT=Date.now();hojaUltPlan=el.id==="detalle"?hojaPlan:null}
+  else if(!antes&&ab){
+    if(el.id==="detalle")hojaPlan=sel;
+    if(hojaVolviendo){hojaVolviendo=false;return}
+    if(Date.now()-hojaNav<900){el.dataset.prev="";return}
+    const otra=[...document.querySelectorAll(".sheet.open")].find(s=>s!==el);
+    const prev=(hojaUlt&&hojaUlt!==el.id&&Date.now()-hojaUltT<900)?hojaUlt:(otra?otra.id:"");
+    el.dataset.prev=prev;el.dataset.prevPlan=prev==="detalle"?String(hojaUltPlan!=null?hojaUltPlan:(sel||"")):"";
+  }})});
+ document.querySelectorAll(".sheet").forEach(s=>obsH.observe(s,{attributes:true,attributeFilter:["class"],attributeOldValue:true}))}
+function volverA(id,plan){const el=$(id);if(!id||!el||el.classList.contains("open"))return;
+  hojaVolviendo=true;setTimeout(()=>{hojaVolviendo=false},600);
+  try{if(id==="perfil")pedirNombre();else if(id==="grupos")abrirGrupos();else if(id==="admin")abrirAdmin();else if(id==="panelorg")abrirPanelOrg();
+    else if(id==="detalle"){const a=plan&&data.find(x=>x.id===+plan);if(a)elegir(a.id);else hojaVolviendo=false}
+    else if(id==="persona"){if(perCtx)abrePersona(perCtx);else hojaVolviendo=false}
+    else if(id==="nueva"){hojaVolviendo=false}
+    else el.classList.add("open")}catch(_e){hojaVolviendo=false}}
+document.addEventListener("click",e=>{const x=e.target.closest(".x");if(x){const sh=x.closest(".sheet");if(sh){const pv=sh.dataset.prev||"",pp=sh.dataset.prevPlan||"";sh.dataset.prev="";cerrarSheet(sh);if(pv&&pv!==sh.id&&!document.querySelector(".sheet.open"))volverA(pv,pp)}}});
 let sw=null;
 document.addEventListener("touchstart",e=>{const g=e.target.closest(".grab");if(!g)return;const sh=g.closest(".sheet");sw={sh,y:e.touches[0].clientY,dy:0};sh.style.transition="none"},{passive:true});
 document.addEventListener("touchmove",e=>{if(!sw)return;sw.dy=Math.max(0,e.touches[0].clientY-sw.y);sw.sh.style.transform="translateY("+sw.dy+"px)"},{passive:true});
@@ -2519,7 +2539,7 @@ function marcaBar(){const pe=$("panelExp"),m=vista==="mios"?"m":(!pe.hidden&&pe.
 function abrePanelExp(modo){const pe=$("panelExp");pe.dataset.modo=modo;$("pxTit").textContent=modo==="planes"?"Mis planes":"Explorar";$("listaDet").open=true;pe.hidden=false;marcaBar()}
 $("bExp").onclick=()=>{plusMenu(false);irA("explorar")};
 $("plusMenu").addEventListener("click",e=>{if(!e.target.closest("button"))return;document.querySelectorAll(".sheet.open").forEach(s=>{s.dataset.desde="";cerrarSheet(s)})},true);
-document.querySelector("nav.bar").addEventListener("click",e=>{const b=e.target.closest("button");if(!b||b.id==="crearBtn")return;document.querySelectorAll(".sheet.open").forEach(s=>{if(!(b.id==="bPerfil"&&s.id==="perfil")&&!(b.id==="bGrupos"&&s.id==="grupos")){s.dataset.desde="";cerrarSheet(s)}})},true);
+document.querySelector("nav.bar").addEventListener("click",e=>{const b=e.target.closest("button");if(!b||b.id==="crearBtn")return;hojaNav=Date.now();document.querySelectorAll(".sheet.open").forEach(s=>{if(!(b.id==="bPerfil"&&s.id==="perfil")&&!(b.id==="bGrupos"&&s.id==="grupos")){s.dataset.desde="";cerrarSheet(s)}})},true);
 function marcaHojas(){const po=$("perfil").classList.contains("open"),go=$("grupos").classList.contains("open");$("bPerfil").classList.toggle("on",po&&!go);$("bGrupos").classList.toggle("on",go);if(po||go)["bExp","bMios","bPlanes"].forEach(i=>$(i).classList.remove("on"));else marcaBar()}
 [$("perfil"),$("grupos")].forEach(el=>new MutationObserver(marcaHojas).observe(el,{attributes:true,attributeFilter:["class"]}));
 $("bPlanes").onclick=()=>{const pe=$("panelExp"),ab=vista==="explorar"&&!pe.hidden&&pe.dataset.modo==="planes";irA("explorar");if(!ab)abrePanelExp("planes")};
