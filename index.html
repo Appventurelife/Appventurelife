@@ -305,7 +305,11 @@ details[open]>summary::after{transform:rotate(180deg)!important}
 html,body,button,a,input,label,select,.bar,.sheet,.panel{touch-action:manipulation}
 .burbuja{position:absolute;left:50%;bottom:54px;transform:translateX(-50%);background:var(--card);color:var(--ink);border-radius:14px;padding:8px 12px;box-shadow:0 3px 12px rgba(0,0,0,.35);width:max-content;max-width:210px;text-align:center;cursor:pointer;z-index:5}
 .burbuja b{display:block;font-size:15px;line-height:1.2;white-space:normal}
-.burbuja small{display:block;color:var(--mut);font-size:12px;margin-top:2px;font-weight:400}
+.burbuja small{display:block;color:var(--mut);font-size:14px;margin-top:3px;font-weight:400}
+.burbuja{max-width:250px!important;text-align:left!important;padding:10px 12px!important}
+.burbuja b{font-size:16px!important}
+.burbuja .bur3{display:flex!important;justify-content:space-between;align-items:center;gap:12px;margin-top:5px!important;color:var(--ink)}
+.burbuja .burver{color:var(--cta);font-weight:700;white-space:nowrap}
 .burbuja::after{content:"";position:absolute;left:50%;bottom:-7px;margin-left:-7px;border:7px solid transparent;border-bottom:0;border-top-color:var(--card)}
 .bannersol{position:absolute;left:10px;right:10px;bottom:34px;z-index:550;display:flex;gap:8px;align-items:center;background:var(--card);color:var(--ink);border:2px solid #C8892B;border-radius:14px;padding:8px 10px;box-shadow:0 4px 14px rgba(0,0,0,.35);font-size:14px}
 .bannersol span{flex:1;min-width:0}
@@ -480,6 +484,16 @@ b.po-pn{min-width:70px}
 .dm-verplan{display:block;margin-top:8px;padding:8px 12px!important;font-size:15px}
 a.msg-a{color:inherit;text-decoration:underline;font-weight:700;overflow-wrap:anywhere;word-break:break-word}
 .cubi{flex:none;width:42px;height:42px;padding:0!important;font-size:22px;line-height:1;background:transparent!important;border:0!important;box-shadow:none!important;color:inherit}
+#msgs .msg,#dm-msgs .msg,#gc-msgs .msg{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.mmenu{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap;margin-top:8px}
+.mmenu button{padding:7px 12px!important;font-size:14px;font-weight:700;width:auto!important;border-radius:10px!important;background:var(--card)!important;color:var(--ink)!important;border:1px solid var(--line)!important;margin:0!important}
+.mmenu button.mdel{background:#C4472F!important;color:#fff!important;border:0!important;display:inline-block}
+#listaDM{overflow-x:hidden}
+#listaDM .conv{position:relative;transition:transform .18s ease-out;touch-action:pan-y;will-change:transform}
+.cswdel{visibility:hidden}
+#listaDM .conv.abierta .cswdel,#listaDM .conv.desliz .cswdel{visibility:visible;transition:none}
+.cswdel{position:absolute;top:0;bottom:0;right:-96px;width:96px;border-radius:0!important;background:#C4472F!important;color:#fff!important;font-weight:700;font-size:14px;padding:0!important;border:0!important;margin:0!important}
+.mdel{display:block;margin:6px 0 0 auto;padding:6px 12px!important;font-size:14px;font-weight:700;background:#C4472F!important;color:#fff!important;border:0!important;border-radius:10px;width:auto!important}
 .instala{position:fixed;left:12px;right:84px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:1500;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:16px;padding:12px 40px 12px 14px;box-shadow:0 6px 20px rgba(0,0,0,.3);font-size:15px;line-height:1.35;animation:entra .25s ease-out}
 .instala b{display:block;font-size:16px;margin-bottom:2px}
 .instala .ix{position:absolute;top:6px;right:6px;width:30px;height:30px;padding:0!important;border-radius:50%;background:transparent!important;color:var(--mut)!important;font-size:16px;box-shadow:none}
@@ -770,7 +784,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 172 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 180 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -807,7 +821,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 172 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 180 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -855,7 +869,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="aviso" class="aviso" hidden role="alert"></div>
 
 <section id="dm" class="sheet chatv" aria-label="Mensajes">
-<div class="chead"><button id="dm-back" class="cico" type="button" aria-label="Volver">‹</button><div id="dm-av"></div><div class="cnom"><b id="dm-t">Mensajes</b><small id="dm-sub"></small></div><button id="dm-plan" class="cplan" type="button" hidden>Ver plan</button><div class="cmenu"><button id="dm-mas" class="cico" type="button" aria-label="Opciones">⋯</button><div id="dm-menu" class="cmenu-l" hidden><button id="dm-add" type="button" hidden>Añadir a amigos</button><button id="dm-quitar" type="button" hidden>Quitar de amigos</button><button id="dm-bloq" type="button">Bloquear</button><button id="dm-den" type="button" class="rojo">Denunciar</button></div></div></div>
+<div class="chead"><button id="dm-back" class="cico" type="button" aria-label="Volver">‹</button><div id="dm-av"></div><div class="cnom"><b id="dm-t">Mensajes</b><small id="dm-sub"></small></div><button id="dm-plan" class="cplan" type="button" hidden>Ver plan</button><div class="cmenu"><button id="dm-mas" class="cico" type="button" aria-label="Opciones">⋯</button><div id="dm-menu" class="cmenu-l" hidden><button id="dm-add" type="button" hidden>Añadir a amigos</button><button id="dm-quitar" type="button" hidden>Quitar de amigos</button><button id="dm-bloq" type="button">Bloquear</button><button id="dm-vaciar" type="button">🗑️ Eliminar chat</button><button id="dm-den" type="button" class="rojo">Denunciar</button></div></div></div>
 <div class="chat" id="dm-msgs"></div>
 <div class="send cbar"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="dm" aria-label="Poner mi ubicación">📍</button><button id="dm-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
 </section>
@@ -922,7 +936,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <h2 id="np-t">Nuevo plan</h2>
 <div id="pasosBar" class="pasosbar"></div>
 <div class="paso" data-p="1">
-<div class="visbox"><b>¿Quién puede verlo?</b><div class="visop" id="f-visop"><button type="button" data-v="todos" class="on">🌍<span>Todos</span></button><button type="button" data-v="amigos">👥<span>Solo amigos</span></button><button type="button" data-v="codigo">🔒<span>Con código</span></button></div><p class="meta" id="f-vis-txt" style="margin:6px 0 0">Lo ve cualquiera en el mapa.</p><select id="f-vis" hidden><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option></select>
+<div class="visbox"><b>¿Quién puede verlo?</b><div class="visop" id="f-visop"><button type="button" data-v="todos" class="on">🌍<span>Todos</span></button><button type="button" data-v="amigos">👥<span>Solo amigos</span></button><button type="button" data-v="grupo">👪<span>Un grupo</span></button><button type="button" data-v="codigo">🔒<span>Con código</span></button></div><p class="meta" id="f-vis-txt" style="margin:6px 0 0">Lo ve cualquiera en el mapa.</p><div id="f-grsel" hidden style="margin-top:6px"></div><select id="f-vis" hidden><option value="todos">Todos</option><option value="amigos">👥 Solo mis amigos</option><option value="codigo">🔒 Solo con código (privado)</option><option value="grupo">👪 Un grupo</option></select>
 <div id="privBox" hidden><label for="f-cod">Código de acceso</label>
 <div class="row"><input id="f-cod" maxlength="20" autocapitalize="characters" autocomplete="off"><button id="f-cod-gen" class="sec" type="button" style="flex:none;padding:10px 14px">Otro</button></div>
 <p class="meta" style="margin:4px 0 0">Manda el enlace por WhatsApp y el código por otro lado o en persona. Mínimo 6 caracteres: cuanto más largo, más seguro.</p></div>
@@ -1005,7 +1019,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 172 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 180 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1949,13 +1963,14 @@ function menuConv(el){
   const nom=((el.querySelector(".ctx b")||{}).textContent||"Chat").replace(" 🔕","");
   const m=esMudo(k);
   let box=$("accmenu");if(!box){box=document.createElement("div");box.id="accmenu";document.body.appendChild(box)}
-  box.innerHTML=`<div class="accbg"></div><div class="acccard"><p>${esc(nom)}</p><button type="button" data-acc="mudo">${m?"🔔 Quitar silencio":"🔕 Silenciar"}</button><button type="button" data-acc="leido">✓ Marcar como leído</button><button type="button" data-acc="no" class="sec">Cancelar</button></div>`;
+  box.innerHTML=`<div class="accbg"></div><div class="acccard"><p>${esc(nom)}</p><button type="button" data-acc="mudo">${m?"🔔 Quitar silencio":"🔕 Silenciar"}</button><button type="button" data-acc="leido">✓ Marcar como leído</button><button type="button" data-acc="vaciar" class="rojo">🗑️ Eliminar chat</button><button type="button" data-acc="no" class="sec">Cancelar</button></div>`;
   box.hidden=false;
   box.onclick=e=>{
     const b=e.target.closest("[data-acc]");
     if(!b&&!e.target.classList.contains("accbg"))return;
-    box.hidden=true;if(!b)return;
+    if(b&&b.dataset.acc==="vaciar"&&b.dataset.ok!=="1"){b.dataset.ok="1";b.textContent="¿Seguro? Toca otra vez";return}box.hidden=true;if(!b)return;
     if(b.dataset.acc==="mudo"){ponMudo(k,!m);avisa(m?"🔔 Avisos activados en este chat":"🔕 Chat silenciado")}
+    else if(b.dataset.acc==="vaciar"){vaciarChat(k);return}
     else if(b.dataset.acc==="leido"){const l=k[0]==="d"?dms[k.slice(1)]:k[0]==="g"?(gchats[k.slice(1)]||[]):((data.find(x=>x.id===+k.slice(1))||{}).chat);visto[k]=ultimoId(l);guardaVisto()}
     pintaBandeja();
   };
@@ -2034,6 +2049,20 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-ubi]");if(
     try{inp.focus()}catch(_e){}},
     er=>{fin();alert(er&&er.code===1?"Kiplan no tiene permiso para ver tu ubicación. Actívalo en Ajustes → Privacidad → Localización → Safari.":"No se ha podido saber tu ubicación. Prueba otra vez.")},
     {enableHighAccuracy:true,timeout:15000,maximumAge:30000})});
+function quitaMsg(k,id){try{
+  if(k==="p"){for(const pid in chats){const l=chats[pid],i=l.findIndex(x=>x.id===id);if(i>=0){l.splice(i,1);const a=data.find(x=>x.id===+pid);if(a)a.chat=l}}render()}
+  else if(k==="d"){for(const u in dms)dms[u]=dms[u].filter(x=>x.id!==id);if($("dm").classList.contains("open"))pintaDM();render()}
+  else if(k==="g"){for(const g in gchats)gchats[g]=gchats[g].filter(x=>x.id!==id);if($("gchat").classList.contains("open"))pintaGChat();render()}
+}catch(_e){}}
+document.addEventListener("click",async e=>{
+  const del=e.target.closest("[data-mdel]");
+  if(del){e.stopPropagation();const [k,id]=del.dataset.mdel.split("|");if(del.dataset.ok!=="1"){del.dataset.ok="1";del.textContent="¿Seguro? Toca otra vez";return}
+    del.disabled=true;try{const r=await sb.rpc("borrar_mensaje",{p_tipo:k,p_id:+id});if(r.error)throw r.error;quitaMsg(k,+id)}catch(er){del.disabled=false;fallo(er)}return}
+  const b=null;
+  if(b)return;
+  if(!b||e.target.closest("a,.lnk"))return;
+  const ya=b.querySelector(".mdel");if(ya){ya.remove();return}
+  const x=document.createElement("button");x.type="button";x.className="mdel";x.dataset.mdel=b.dataset.mk+"|"+b.dataset.mid;x.textContent="🗑️ Eliminar";b.appendChild(x)});
 function crearGrupoYa(){if(!exigeAcepta(()=>crearGrupoYa()))return;abrirGrupos();setTimeout(()=>{try{$("gr-abrenuevo").click()}catch(_e){}},120)}
 document.addEventListener("click",e=>{if(e.target.closest("[data-nuevogr]"))crearGrupoYa()});
 $("mGrupo").onclick=()=>{plusMenu(false);crearGrupoYa()};
@@ -2049,7 +2078,7 @@ function pintaDM(){
   $("dm-sub").textContent=esAmigo(dmCon)?"👥 Amigo":solEnv.includes(dmCon)?"Solicitud de amistad enviada":pc?"Va a «"+pc.titulo+"»":"";
   $("dm-av").innerHTML=avPersona(dmCon,nom);
   $("dm-plan").hidden=!pc;
-  $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}${m.de===uid?palom(m):""}</small><div>${enlaces(m.txt)}</div>${m.pl&&m.de!==uid?`<button class="sec dm-verplan" type="button" data-dmplan="${+m.pl}">🎫 Ver mi billete</button>`:""}</div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
+  $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"${m.de===uid?` data-mid="${+m.id}" data-mk="d"`:""}><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}${m.de===uid?palom(m):""}</small><div>${enlaces(m.txt)}</div>${m.pl&&m.de!==uid?`<button class="sec dm-verplan" type="button" data-dmplan="${+m.pl}">🎫 Ver mi billete</button>`:""}</div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
   const c=$("dm-msgs");c.scrollTop=c.scrollHeight;
 }
 function palom(m){return `<span class="tk" aria-label="${m.rec?"Recibido":"Enviado"}">${m.rec?"✓✓":"✓"}</span>`}
@@ -2186,7 +2215,7 @@ async function recarga(){
     const codigos={};co.data.forEach(c=>{codigos[c.plan_id]=c.codigo});const emMap={};((emq&&emq.data)||[]).forEach(x=>{emMap[x.plan_id]=x.texto});
     const esViejo=r=>!!r.fecha&&Date.parse(String(r.fecha).slice(0,16))<Date.now()-27*3600000;const lista=pl.data.filter(r=>!bloqueados.has(r.org)).map(r=>{
       const f=r.fecha?String(r.fecha).slice(0,16):"";
-      return {viejo:esViejo(r),id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:emMap[r.id]||"",soloAmigos:!!r.solo_amigos,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
+      return {viejo:esViejo(r),id:r.id,tipo:r.tipo,titulo:r.titulo,fecha:f,cuando:f?fmtF(f):"Por definir",max:r.plazas,lat:r.lat,lng:r.lng,ini:(r.ini_lat!=null&&r.ini_lng!=null)?{lat:+r.ini_lat,lng:+r.ini_lng}:null,punto:r.punto||"",desc:r.descr||"",foto:r.foto?SB_URL+"/storage/v1/object/public/fotos/"+r.foto:"",fotoPath:r.foto||"",emoji:r.emoji||"",precio:+r.precio||0,link:r.link||"",pago:r.pago||"",efectivo:!!r.efectivo,equipo:r.equipo||"",emerg:emMap[r.id]||"",soloAmigos:!!r.solo_amigos,grupoId:r.grupo_id||null,priv:!!r.privado,codigo:codigos[r.id]||"",orgId:r.org,verificado:verifSet.has(r.org),org:nom(r.org),asist:[],asistIds:[],pagos:[],pagosIds:[],chat:chats[r.id]||[]};
     });
     const por={};lista.forEach(a=>{por[a.id]=a});
     il.data.forEach(r=>{const a=por[r.plan_id];if(a&&r.user_id!==uid)(a.invitados=a.invitados||[]).push(r.user_id)});
@@ -2205,6 +2234,9 @@ function suscribir(){
   enLinea();let tmr=null;const pronto=()=>{clearTimeout(tmr);tmr=setTimeout(recarga,400)};
   sb.channel("cambios")
     .on("postgres_changes",{event:"INSERT",schema:"public",table:"grupo_mensajes"},p=>{const m=p.new;if(!m||bloqueados.has(m.user_id))return;if(!meteGMsg(m))return;const abierto=$("gchat").classList.contains("open")&&gcId===m.grupo_id;if(abierto){pintaGChat();marcaGChat()}else{render();if(m.user_id!==uid&&!esMudo("g"+m.grupo_id)&&!msgMudo()){const g=(misGr||[]).find(x=>x.id===m.grupo_id);avisa("👪 "+(nombres[m.user_id]||"Alguien")+(g?" en «"+g.nombre+"»":"")+": "+String(m.texto).slice(0,60),()=>abreGChat(m.grupo_id))}}})
+    .on("postgres_changes",{event:"DELETE",schema:"public",table:"mensajes"},p=>{const o=p.old;if(o&&o.id)quitaMsg("p",+o.id)})
+    .on("postgres_changes",{event:"DELETE",schema:"public",table:"directos"},p=>{const o=p.old;if(o&&o.id)quitaMsg("d",+o.id)})
+    .on("postgres_changes",{event:"DELETE",schema:"public",table:"grupo_mensajes"},p=>{const o=p.old;if(o&&o.id)quitaMsg("g",+o.id)})
     .on("postgres_changes",{event:"*",schema:"public",table:"planes"},pronto)
     .on("postgres_changes",{event:"*",schema:"public",table:"participantes"},pronto)
     .on("postgres_changes",{event:"*",schema:"public",table:"aqui"},pronto)
@@ -2244,13 +2276,26 @@ function suscribir(){
 }
 async function arranca(){
   if(!sb){cargando=false;render();return}
-  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();cargaChatsGrupos();cuEsTemporal().then(t=>document.body.classList.toggle("sincorreo",t)).catch(()=>{})}
+  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();cargaVaciado();cargaChatsGrupos();cuEsTemporal().then(t=>document.body.classList.toggle("sincorreo",t)).catch(()=>{})}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
 var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
 function avion(){return '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>'}
 function hCorta(t){const d=new Date(t);return d.toDateString()===new Date().toDateString()?hora(t):d.toLocaleDateString("es",{day:"numeric",month:"short"})}
-function pintaBandeja(){
+var vaciado={};try{vaciado=JSON.parse(localStorage.getItem("kp_vaciado")||"{}")||{}}catch(_e){}
+function aplicaVaciado(){try{for(const k in vaciado){const h=+vaciado[k],t=k[0],id=k.slice(1);
+  if(t==="d"&&dms[id]){dms[id]=dms[id].filter(x=>x.id>h);if(!dms[id].length)delete dms[id]}
+  else if(t==="g"&&gchats[id])gchats[id]=gchats[id].filter(x=>x.id>h);
+  else if(t==="p"&&chats[id]){const l=chats[id];for(let i=l.length-1;i>=0;i--)if(l[i].id<=h)l.splice(i,1)}}}catch(_e){}}
+async function cargaVaciado(){if(!sb||!uid)return;try{const r=await sb.from("chat_vaciado").select("clave,hasta");if(!r.error){(r.data||[]).forEach(x=>{vaciado[x.clave]=Math.max(+vaciado[x.clave]||0,+x.hasta)});try{localStorage.setItem("kp_vaciado",JSON.stringify(vaciado))}catch(_e){}render()}}catch(_e){}}
+async function vaciarChat(k){const t=k[0],id=k.slice(1);const l=t==="d"?(dms[id]||[]):t==="g"?(gchats[id]||[]):(chats[id]||[]);
+  const h=l.reduce((m,x)=>Math.max(m,+x.id||0),0);if(!h)return;vaciado[k]=Math.max(+vaciado[k]||0,h);
+  try{localStorage.setItem("kp_vaciado",JSON.stringify(vaciado))}catch(_e){}
+  try{await sb.from("chat_vaciado").upsert({user_id:uid,clave:k,hasta:vaciado[k]})}catch(_e){}
+  aplicaVaciado();render();avisa("🗑️ Chat eliminado")}
+$("dm-vaciar").onclick=()=>{const b=$("dm-vaciar");if(b.dataset.ok!=="1"){b.dataset.ok="1";b.textContent="¿Seguro? Toca otra vez";return}
+  b.dataset.ok="";b.textContent="🗑️ Eliminar chat";$("dm-menu").hidden=true;const u=dmCon;$("dm").classList.remove("open");dmCon=null;if(u)vaciarChat("d"+u)};
+function pintaBandeja(){if(typeof swC!=="undefined"&&swC&&swC.on)return;aplicaVaciado();
   const bus=$("msgBusca"),q=((bus&&!bus.hidden)?$("msgQ").value:"").trim().toLowerCase();
   const nP=bandeja.p.reduce((n,c)=>n+(esMudo("p"+c.a.id)?0:sinLeerPlan(c.a)),0),nD=bandeja.d.reduce((n,c)=>n+(esMudo("d"+c.u)?0:sinLeerDM(c.u)),0),nG=gSinLeerTot();
   if(!msgTab)msgTab=(nG&&!nP&&!nD)?"g":((nD&&!nP)||(!bandeja.p.length&&bandeja.d.length))?"d":"p";
@@ -2277,7 +2322,7 @@ async function cargaChatsGrupos(){if(!sb||!uid)return;await cargaGrupos();const 
   render();if($("gchat").classList.contains("open"))pintaGChat()}
 function pintaGChat(){const g=(misGr||[]).find(x=>x.id===gcId);$("gc-t").textContent=g?g.nombre:"Grupo";$("gc-sub").textContent=g?(g.miembros||[]).length+" personas":"";
   const l=(gchats[gcId]||[]).filter(m=>!bloqueados.has(m.uid));
-  $("gc-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-gu="${esc(m.uid)}">${esc(nombres[m.uid]||m.n||"Alguien")}</span>`} · ${hora(m.t)}</small><div>${enlaces(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
+  $("gc-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.uid===uid?" yo":""}"${m.uid===uid?` data-mid="${+m.id}" data-mk="g"`:""}><small>${m.uid===uid?"Tú":`<span class="lnk" data-gu="${esc(m.uid)}">${esc(nombres[m.uid]||m.n||"Alguien")}</span>`} · ${hora(m.t)}</small><div>${enlaces(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
   const c=$("gc-msgs");c.scrollTop=c.scrollHeight}
 function marcaGChat(){const l=gchats[gcId]||[];if(l.length){visto["g"+gcId]=ultimoId(l);guardaVisto()}render()}
 function abreGChat(id){if(!exigeAcepta(()=>abreGChat(id)))return;gcId=id;pintaGChat();$("gchat").dataset.desde=$("grupos").classList.contains("open")?"grupos":"";$("grupos").classList.remove("open");$("gchat").classList.add("open");marcaGChat()}
@@ -2297,7 +2342,7 @@ function lgAbierto(k,n){const s=lgEstado();if(k==="inv"&&n>(s.invN||0))return tr
 document.addEventListener("toggle",e=>{const t=e.target;if(t&&t.classList&&t.classList.contains("lgdet")){const s=lgEstado();s[t.dataset.lg]=t.open;if(t.dataset.lg==="inv")s.invN=t.querySelectorAll(".item").length;try{localStorage.setItem("kp_lg",JSON.stringify(s))}catch(_e){}}},true);
 function pinUno(a){
   const pg=a.kind!=="aqui"&&a.precio>0,lleno=a.kind!=="aqui"&&a.asist.length>=a.max;
-    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}${pg?" pago":""}${lleno&&a.id!==burbuja?" lleno":""}" style="background:${col(a)}">${a.kind==="aqui"&&fotosP[a.orgId]?`<img class="pinfoto" src="${esc(urlP(a.orgId))}" alt="">`:sym(a,22)}${pg?`<span class="eur">€</span>`:""}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b><small>${a.kind==="aqui"?"📍 Toca para ver":esc(textoCuando(a))+" · "+a.asist.length+"/"+a.max+" · toca para ver"}</small></div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
+    const ic=L.divIcon({className:"",html:`<div class="pin${a.id===sel?" sel":""}${a.kind==="aqui"?" aqui":""}${conAmigos(a)&&a.id!==sel?" amigo":""}${pg?" pago":""}${lleno&&a.id!==burbuja?" lleno":""}" style="background:${col(a)}">${a.kind==="aqui"&&fotosP[a.orgId]?`<img class="pinfoto" src="${esc(urlP(a.orgId))}" alt="">`:sym(a,22)}${pg?`<span class="eur">€</span>`:""}${a.priv?`<span class="lock">🔒</span>`:""}${conAmigos(a)?`<span class="amigob">👥</span>`:""}${a.id===burbuja?`<div class="burbuja"><b>${a.kind==="aqui"?esc(a.org)+(a.titulo?" · "+esc(a.titulo):""):esc(a.titulo)}</b>${a.kind==="aqui"?"<small>📍 Toca para ver</small>":`<small>${esc(burCuando(a))}${a.precio>0?" · "+esc(precioTxt(a.precio)):""}</small><small class="bur3"><span>${plazTxt(a)}</span><span class="burver">Ver plan →</span></small>`}</div>`:""}</div>`,iconSize:[44,44],iconAnchor:[22,22]});
     L.marker([a.lat,a.lng],{icon:ic,zIndexOffset:a.id===burbuja?1000:0}).on("click",()=>{if(burbuja===a.id)elegir(a.id);else{burbuja=a.id;render()}}).addTo(capaPins);
 }
 function pinGrupo(l){
@@ -2326,7 +2371,7 @@ function pintaPins(l){
 }
 map.on("zoomend",()=>pintaPins());
 function render(){
-  capa.clearLayers();
+  aplicaVaciado();capa.clearLayers();
   const advAll=vivos().filter(a=>a.kind!=="aqui"),aq=vivos().filter(a=>a.kind==="aqui");
   const tiposV=[...new Set(advAll.map(a=>a.tipo))];
   if(filtro&&!tiposV.includes(filtro))filtro="";
@@ -2395,7 +2440,7 @@ function render(){
   if(tab==="chat"&&puede&&a.chat.length){const ult=ultimoId(a.chat);if((visto["p"+a.id]||0)<ult){visto["p"+a.id]=ult;guardaVisto()}}
   let body;
   if(tab==="chat"){
-    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}${m.uid===a.orgId?" org":""}"><small>${m.uid===a.orgId?'<b class="orgtag">⭐ Organizador</b> ':""}${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}${m.uid===uid?palomG(a,m):""}</small><div>${enlaces(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="c" aria-label="Poner mi ubicación">📍</button><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
+    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}${m.uid===a.orgId?" org":""}"${m.uid===uid?` data-mid="${+m.id}" data-mk="p"`:""}><small>${m.uid===a.orgId?'<b class="orgtag">⭐ Organizador</b> ':""}${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}${m.uid===uid?palomG(a,m):""}</small><div>${enlaces(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="c" aria-label="Poner mi ubicación">📍</button><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
   }else if(tab==="fotos"){
     body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Fotos del plan</h3>${puede?`<label class="subir" for="m-file" style="margin-bottom:6px">Añadir fotos</label><input id="m-file" type="file" accept="image/*" multiple hidden><p class="meta" id="m-estado"></p>`:`<p class="meta">Solo quien va al plan puede subir fotos.</p>`}<div class="gal">${ms.length?ms.map(f=>`<div class="tile" data-f="${esc(f.id)}"><img src="${esc(urlFoto(f))}" alt="" loading="lazy"></div>`).join(""):`<p class="meta" style="grid-column:1/-1;text-align:center">Aún no hay fotos. ¡Sube la primera!</p>`}</div><p class="meta" style="font-size:12px">Las fotos las ve quien puede ver el plan. Sube solo fotos tuyas o de personas que estén de acuerdo. Quien organiza puede borrar cualquier foto de su plan.</p>`;
   }else{
@@ -2406,7 +2451,7 @@ function render(){
 <h2 class="ftit">${esc(a.titulo)}</h2>
 <div class="forg"><span>Organiza <b class="lnk" data-u="${esc(a.orgId)}" style="color:var(--ink)">${esc(a.org)}</b></span>${a.verificado?`<span class="ver">✓ Verificado</span>`:""}${repTxt(a.orgId).replace(" · ✓ verificado","")}</div>
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
-${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
+${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}${a.grupoId?`<p class="meta">👪 Solo lo ve el grupo «${esc(nomGrupo(a.grupoId))}»</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
 ${soyOrg(a)&&puedeCobrar()?`<div class="mini"><button id="panGo" class="pango" type="button">📊 Panel del organizador</button></div>`:""}<button id="gochat" class="chatgo" type="button">💬 Chat del grupo${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?` <span class="chatnew">${sinLeerPlan(a)} nuevos</span>`:""}</button>
 <div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}${""}${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button><button id="copiar" class="sec" type="button">🔗 Copiar enlace</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
@@ -2469,7 +2514,7 @@ ${infoPlan(a)}
 }
 function limpiaForm(){
   ["f-titulo","f-dia","f-hora","f-punto","f-desc","f-emoji","f-tipo","f-precio","f-link","f-pago","f-equipo","f-emerg"].forEach(i=>{$(i).value=""});
-  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";tipoManual=false;prefillCobros=false;pagoOn=false;pintaTipos();pintaPrecioAviso();
+  $("f-efectivo").checked=false;$("f-plazas").value=6;$("f-vis").value="todos";fGrDef=null;$("privBox").hidden=true;pintaVis();$("f-cod").value="";tipoSel="otro";tipoManual=false;prefillCobros=false;pagoOn=false;pintaTipos();pintaPrecioAviso();
 }
 function abrirEdicion(a){
   editId=a.id;pend={lat:a.lat,lng:a.lng};iniNombre="";puntoAuto="";iniPend=a.ini?{lat:a.ini.lat,lng:a.ini.lng}:null;if(iniPend)ponIniMarker(iniPend);
@@ -2479,7 +2524,7 @@ function abrirEdicion(a){
   $("f-plazas").value=a.max;
   $("f-punto").value=a.punto||"";$("f-desc").value=a.desc||"";$("f-equipo").value=a.equipo||"";$("f-emerg").value=a.emerg||"";
   $("f-precio").value=a.precio||"";pintaPrecioAviso();$("f-link").value=a.link||"";$("f-pago").value=a.pago||"";$("f-efectivo").checked=!!a.efectivo;
-  $("f-vis").value=a.priv?"codigo":a.soloAmigos?"amigos":"todos";
+  fGrDef=a.grupoId||null;$("f-vis").value=a.priv?"codigo":a.grupoId?"grupo":a.soloAmigos?"amigos":"todos";
   $("privBox").hidden=!a.priv;pintaVis();$("f-cod").value=a.priv?fmtCod(a.codigo):"";
   $("np-t").textContent="Editar plan";$("f-ok").textContent="Guardar cambios";$("f-mover").hidden=false;
   foto="";quitarFoto=false;if(a.foto){$("prev").src=a.foto;$("prev").hidden=false;$("f-foto-quitar").hidden=false}else{$("prev").hidden=true;$("f-foto-quitar").hidden=true}
@@ -2814,7 +2859,40 @@ $("ahora").addEventListener("click",e=>{const i=e.target.closest(".item");if(i){
 $("colocarNo").onclick=()=>{if(modoIni){terminaIni(false);return}salirColocar();if(editId){const a=data.find(x=>x.id===editId);if(a)pend={lat:a.lat,lng:a.lng};$("nueva").classList.add("open")}else pend=null};
 $("f-mover").onclick=()=>{$("nueva").classList.remove("open");colocando=true;$("colocar").hidden=false;$("colocarTxt").textContent="Toca el nuevo lugar del plan";$("colocarOk").disabled=true;$("colocarOk").textContent="Usar este lugar";$("map").scrollIntoView({behavior:"smooth",block:"center"})};
 $("colocarOk").onclick=()=>{if(modoIni){terminaIni(true);return}if(!pend)return;colocando=false;$("colocar").hidden=true;if(!editId&&lugarSug&&!$("f-punto").value)$("f-punto").value=lugarSug.slice(0,80);if(!editId)paso=1;pasoErr("");pintaPasos();$("nueva").classList.add("open")};
-function pintaVis(){const v=$("f-vis").value;document.querySelectorAll("#f-visop button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));$("f-vis-txt").textContent={todos:"Lo ve cualquiera en el mapa.",amigos:"Solo lo ven tus amigos.",codigo:"Solo lo ve quien tenga el código. Te damos uno abajo."}[v]||""}
+var fGrDef=null;
+function fGrupoElegido(){const r=document.querySelector(".f-gr:checked");return r?+r.value:null}
+async function pintaFGr(v){const b=$("f-grsel");if(!b)return;if(v!=="grupo"){b.hidden=true;return}b.hidden=false;
+  if(!misGr.length){b.innerHTML='<p class="meta">Cargando tus grupos...</p>';await cargaGrupos()}
+  if($("f-vis").value!=="grupo")return;
+  if(!misGr.length){b.innerHTML='<p class="meta" style="margin:6px 0">Aún no estás en ningún grupo.</p><button type="button" class="sec" data-nuevogr="1" style="width:100%">👪 Crear un grupo</button>';return}
+  const def=misGr.some(g=>g.id===fGrDef)?fGrDef:misGr[0].id;
+  b.innerHTML=misGr.map(g=>`<label class="chk"><input type="radio" name="f-gr" class="f-gr" value="${g.id}"${g.id===def?" checked":""}> 👪 ${esc(g.nombre)} <small style="color:var(--mut)">(${(g.miembros||[]).length})</small></label>`).join("")}
+function nomGrupo(id){const g=(misGr||[]).find(x=>x.id===id);return g?g.nombre:"tu grupo"}
+function burCuando(a){if(!a.fecha)return "Sin fecha";const d=new Date(a.fecha),h=new Date(),n=Math.round((new Date(d.getFullYear(),d.getMonth(),d.getDate())-new Date(h.getFullYear(),h.getMonth(),h.getDate()))/864e5);
+  let s=n===0?"Hoy":n===1?"Mañana":d.toLocaleDateString("es-ES",{weekday:"short",day:"numeric",month:"short"}).replace(/\./g,"");s=s.charAt(0).toUpperCase()+s.slice(1);
+  return s+" · "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")}
+var lpMsgT=null,lpMsgXY=null,mmT=0;const selMsg="#msgs .msg,#dm-msgs .msg,#gc-msgs .msg";
+function cierraMsgMenu(){document.querySelectorAll(".mmenu").forEach(x=>x.remove())}
+function abreMsgMenu(b){cierraMsgMenu();mmT=Date.now();const m=document.createElement("div");m.className="mmenu";
+  m.innerHTML=`<button type="button" data-mcopy="1">📋 Copiar</button>${b.dataset.mid?`<button type="button" class="mdel" data-mdel="${b.dataset.mk}|${b.dataset.mid}">🗑️ Eliminar</button>`:""}`;b.appendChild(m);try{navigator.vibrate&&navigator.vibrate(20)}catch(_e){}}
+document.addEventListener("touchstart",e=>{const b=e.target.closest(selMsg);if(!b||e.target.closest(".mmenu,a,button,.lnk"))return;const t=e.touches[0];lpMsgXY=[t.clientX,t.clientY];clearTimeout(lpMsgT);lpMsgT=setTimeout(()=>{lpMsgXY=null;abreMsgMenu(b)},500)},{passive:true});
+document.addEventListener("touchmove",e=>{if(!lpMsgXY)return;const t=e.touches[0];if(Math.abs(t.clientX-lpMsgXY[0])>10||Math.abs(t.clientY-lpMsgXY[1])>10){clearTimeout(lpMsgT);lpMsgXY=null}},{passive:true});
+["touchend","touchcancel"].forEach(ev=>document.addEventListener(ev,()=>{clearTimeout(lpMsgT);lpMsgXY=null},{passive:true}));
+document.addEventListener("contextmenu",e=>{const b=e.target.closest(selMsg);if(b){e.preventDefault();abreMsgMenu(b)}});
+document.addEventListener("click",async e=>{const c=e.target.closest("[data-mcopy]");if(c){const b=c.closest(".msg"),d=b&&[...b.children].find(x=>x.tagName==="DIV"&&!x.classList.contains("mmenu"));try{await navigator.clipboard.writeText(d?d.textContent:"");avisa("📋 Copiado")}catch(_e){}cierraMsgMenu();return}
+  if(Date.now()-mmT<700)return;if(!e.target.closest(".mmenu"))cierraMsgMenu()});
+var swC=null,cierreTap=0;
+function ponBtnSw(c){if(c.querySelector(".cswdel"))return;const b=document.createElement("button");b.type="button";b.className="cswdel";b.textContent="🗑️ Eliminar";c.appendChild(b)}
+function cierraSw(ex){document.querySelectorAll("#listaDM .conv.abierta").forEach(x=>{if(x!==ex){x.classList.remove("abierta");x.style.transform=""}})}
+$("listaDM").addEventListener("touchstart",e=>{const c=e.target.closest(".conv");cierraSw(c);if(!c||e.target.closest(".cswdel"))return;if(c.classList.contains("abierta")){c.classList.remove("abierta");c.style.transform="";cierreTap=Date.now();swC=null;return}const t=e.touches[0];swC={c,x:t.clientX,y:t.clientY,dx:0,on:false,base:c.classList.contains("abierta")?-96:0}},{passive:true});
+$("listaDM").addEventListener("touchmove",e=>{if(!swC)return;const t=e.touches[0],dx=t.clientX-swC.x,dy=t.clientY-swC.y;
+  if(!swC.on){if(Math.abs(dx)>8&&Math.abs(dx)>Math.abs(dy)){swC.on=true;ponBtnSw(swC.c);swC.c.classList.add("desliz")}else if(Math.abs(dy)>12){swC=null;return}else return}
+  swC.dx=dx;const v=Math.max(-110,Math.min(0,swC.base+dx));swC.c.style.transition="none";swC.c.style.transform="translateX("+v+"px)"},{passive:true});
+$("listaDM").addEventListener("touchend",()=>{if(!swC)return;const s=swC;swC=null;if(!s.on)return;s.c.style.transition="";s.c.classList.remove("desliz");
+  if(s.base===0?s.dx<-30:s.dx<30){s.c.classList.add("abierta");s.c.style.transform="translateX(-96px)"}else{s.c.classList.remove("abierta");s.c.style.transform=""}},{passive:true});
+$("listaDM").addEventListener("click",e=>{const b=e.target.closest(".cswdel");if(b){e.stopPropagation();e.preventDefault();const c=b.closest(".conv");const k=c.dataset.dm?"d"+c.dataset.dm:c.dataset.grchat?"g"+c.dataset.grchat:"p"+c.dataset.planchat;vaciarChat(k);return}
+  if(Date.now()-cierreTap<700){e.stopPropagation();e.preventDefault();return}const ab=e.target.closest(".conv.abierta");if(ab){e.stopPropagation();e.preventDefault();ab.classList.remove("abierta");ab.style.transform=""}},true);
+function pintaVis(){const v=$("f-vis").value;pintaFGr(v);document.querySelectorAll("#f-visop button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));$("f-vis-txt").textContent={todos:"Lo ve cualquiera en el mapa.",amigos:"Solo lo ven tus amigos.",grupo:"Solo lo ve la gente del grupo que elijas.",codigo:"Solo lo ve quien tenga el código. Te damos uno abajo."}[v]||""}
 document.querySelectorAll("#f-visop button").forEach(b=>{b.onclick=()=>{$("f-vis").value=b.dataset.v;$("f-vis").dispatchEvent(new Event("change"))}});
 $("f-vis").addEventListener("change",()=>{pintaVis();const c=$("f-vis").value==="codigo";$("privBox").hidden=!c;if(c&&!$("f-cod").value)$("f-cod").value=fmtCod(genCod())});
 $("f-cod-gen").onclick=()=>{$("f-cod").value=fmtCod(genCod())};
@@ -2869,7 +2947,7 @@ $("f-ok").onclick=async()=>{if(!validaPasos())return;
   const lk=(+$("f-precio").value||0)>0?$("f-link").value.trim():"";
   if(lk&&!okLink(lk)){alert("El enlace de pago debe empezar por https://");$("f-link").focus();return}
   const vis=$("f-vis").value,priv=vis==="codigo",soloA=vis==="amigos",cod=normCod($("f-cod").value);
-  if(priv&&cod.length<6){alert("El código debe tener al menos 6 caracteres.");$("f-cod").focus();return}
+  if(vis==="grupo"&&!fGrupoElegido()){alert("Elige el grupo que podrá ver el plan.");return}if(priv&&cod.length<6){alert("El código debe tener al menos 6 caracteres.");$("f-cod").focus();return}
   if(!pend){alert("Elige primero el lugar en el mapa.");return}
   if(!me){pedirNombre(()=>$("f-ok").click());return}
   if(!sb||!uid){alert("Aún no hay conexión con el servidor. Espera un momento e inténtalo otra vez.");return}
@@ -2880,7 +2958,7 @@ $("f-ok").onclick=async()=>{if(!validaPasos())return;
     const custom=$("f-tipo").value.trim(),tipo=custom?norm(custom):tipoSel,t=$("f-titulo").value.trim()||(TIPOS[tipo]||tipo);
     const max=Math.max(2,Math.min(50,+$("f-plazas").value||6)),dia=$("f-dia").value,fch=dia?dia+"T"+($("f-hora").value||"10:00"):"",lat=pend.lat,lng=pend.lng;
     const iniCampos=(esTipoRuta()||(editId&&(data.find(x=>x.id===editId)||{}).ini))?{ini_lat:iniPend?iniPend.lat:null,ini_lng:iniPend?iniPend.lng:null}:{};
-    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:((+$("f-precio").value||0)>0&&okLink($("f-link").value))||null,pago:(+$("f-precio").value||0)>0?$("f-pago").value.trim():"",efectivo:(+$("f-precio").value||0)>0&&$("f-efectivo").checked,equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA,...iniCampos};
+    const campos={tipo,titulo:t,fecha:fch||null,plazas:max,lat,lng,punto:$("f-punto").value.trim(),descr:$("f-desc").value.trim(),emoji:ultimo($("f-emoji").value),precio:Math.max(0,+$("f-precio").value||0),link:((+$("f-precio").value||0)>0&&okLink($("f-link").value))||null,pago:(+$("f-precio").value||0)>0?$("f-pago").value.trim():"",efectivo:(+$("f-precio").value||0)>0&&$("f-efectivo").checked,equipo:$("f-equipo").value.trim(),emerg:$("f-emerg").value.trim(),privado:priv,solo_amigos:soloA,grupo_id:(vis==="grupo"?fGrupoElegido():null),...iniCampos};
     if(editId){
       const id=editId;
       const aPrev=data.find(x=>x.id===id);
