@@ -765,7 +765,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 164 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 165 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -802,7 +802,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 164 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 165 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -1000,7 +1000,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 164 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 165 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2969,12 +2969,12 @@ async function abrirAdmin(){
   await pintaAdmin();
 }
 const PUNTO={verde:"🟢",amarillo:"🟡",rojo:"🔴"};
-function filaSolicitud(f){
+function filaSolicitud(f,dentro){
   const mot=(f.motivos||[]).map(m=>`<small style="display:block">${esc(m)}</small>`).join("");
   const web=String(f.contacto_publico||"").trim();
   const esUrl=/^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/.*)?$/i.test(web);
   const enlace=esUrl?`<a class="payb sec2" href="${esc(/^https?:/i.test(web)?web:"https://"+web)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:6px">Abrir su web</a>`:(web?`<small style="display:block">${esc(web)}</small>`:"");
-  return `<div class="item" style="display:block;cursor:default"><b>${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")}</small>${mot}${enlace}<small style="display:block;margin-top:4px"><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" data-sem="${esc(f.semaforo||"")}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`;
+  return `<div class="item" style="display:block;cursor:default"><b>${dentro?"NIF: "+esc(f.nif):`${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal)} · ${esc(f.nif)}`}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")}</small>${mot}${enlace}<small style="display:block;margin-top:4px"><b>${f.estado==="aprobado"?"✅ Verificado":f.estado==="rechazado"?"❌ Rechazado":f.estado==="pendiente"?"⏳ Pendiente":esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" data-sem="${esc(f.semaforo||"")}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`;
 }
 var capaAdm=null;
 async function pinsAdmin(){try{
@@ -3039,7 +3039,7 @@ async function pintaAdmin(){pintaStats();admCor=null;pintaEstado();
     const sol=s1.data||[],ent=(e1&&e1.data)||[];
     const pend=sol.filter(f=>f.estado==="pendiente"),otras=sol.filter(f=>f.estado!=="pendiente");
     const pagos=data.filter(a=>a.kind!=="aqui"&&a.precio>0);
-    const filaOrg=f=>`<details class="adm-org" data-ao="${esc(f.user_id)}"${admAb.has(String(f.user_id))?" open":""}><summary>${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal||f.nombre||"Sin nombre")}${f.estado!=="aprobado"?` <small>· ${esc(f.estado)}</small>`:""}</summary>${filaSolicitud(f)}</details>`;
+    const filaOrg=f=>`<details class="adm-org" data-ao="${esc(f.user_id)}"${admAb.has(String(f.user_id))?" open":""}><summary>${f.estado==="aprobado"?"🟢":f.estado==="rechazado"?"🔴":(PUNTO[f.semaforo]||"⚪")} ${esc(f.nombre_legal||f.nombre||"Sin nombre")}${f.estado!=="aprobado"?` <small>· ${esc(f.estado)}</small>`:""}</summary>${filaSolicitud(f,1)}</details>`;
     box.innerHTML=
       (pend.length?`<h3 class="who-h">Solicitudes pendientes (${pend.length})</h3>`+pend.map(filaSolicitud).join(""):"")+
       `<h3 class="who-h" style="margin-top:14px">Organizadores (${otras.length})</h3>`+(otras.length?otras.map(filaOrg).join(""):'<p class="meta">Todavía no hay organizadores.</p>')+
