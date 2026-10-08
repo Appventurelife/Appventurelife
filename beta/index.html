@@ -880,7 +880,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 198 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 199 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -917,7 +917,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 198 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 199 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1141,7 +1141,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 198 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 199 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1932,8 +1932,8 @@ async function terminaIni(ok){
 const ICONO_TRAMO={pie:"🥾",bici:"🚲",coche:"🚗",recta:"🧭"};
 function modoTramo(a){
   const t=String(a.tipo||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
-  if(t==="bici"||/bici|ciclis|btt|mtb/.test(t))return "bici";
-  if(t==="ruta"||/sender|trekking|caminata|a pie|paseo/.test(t))return "pie";
+  if(t==="bici"||t==="ruedas"||/bici|ciclis|btt|mtb/.test(t))return "bici";
+  if(t==="ruta"||t==="montana"||/sender|trekking|caminata|a pie|paseo/.test(t))return "pie";
   if(/coche|auto|furgo|carretera|autocar/.test(t))return "coche";
   return "recta";
 }
@@ -3417,7 +3417,7 @@ const FAQ=[
  {q:"¿Cómo hablo con el grupo de un plan?",p:["plan"],k:["chat","grupo","hablar","comentar","comentario","preguntar"],a:"Abre el plan y pulsa «💬 Chat del grupo». Los chats de tus planes también salen en la pestaña «Mensajes»."},
  {q:"¿Cómo hago que solo me vean mis amigos o con código?",p:["mapa","crear"],k:["amigos","codigo","privado","candado","ubicacion","aqui","visibilidad"],a:"Al compartir «Estoy aquí», o al crear un plan, elige en «¿Quién puede verlo?» la opción «👥 Solo mis amigos» o «🔒 Solo con código (privado)». Con el código, solo lo ve quien lo escriba en «🔒 Tengo un código»."},
  {q:"¿Cómo hago un plan privado?",p:["crear","editar"],k:["privado","codigo","secreto","invitar","visibilidad","amigos"],a:"Al crear el plan, en «¿Quién puede verlo?» elige «🔒 Solo con código (privado)» o «👥 Solo mis amigos». Comparte el código con quien quieras, o usa «👥 Invitar» dentro del plan. Para entrar a uno privado: toca + y elige «🔒 Tengo un código»."},
- {q:"¿Cómo llego al sitio?",p:["plan"],k:["llegar","ruta","camino","coche","bici","pie","direccion","navegar","indicaciones"],a:"Abre el plan: en la tarjeta «Cómo llegar» elige coche, bici o a pie para ver la ruta en el mapa, o abre Apple Maps o Google Maps. Si el plan tiene punto de salida, te lleva hasta allí."},
+ {q:"¿Cómo llego al sitio?",p:["plan"],k:["llegar","ruta","camino","coche","bici","pie","direccion","navegar","indicaciones"],a:"Abre el plan y, en la línea del punto de encuentro, toca «🧭 Cómo llegar»: elige Apple Maps, Google Maps o Waze y te da la ruta. Si el plan sale desde otro sitio, te lleva hasta allí."},
  {q:"¿Cómo cambio el mapa?",p:["mapa"],k:["mapa","satelite","calles","montana","vista","capas"],a:"Toca el botón 🗺️ (arriba a la derecha, debajo del de tu ubicación) y elige Calles, Claro, Montaña o Satélite. Montaña y Satélite solo cubren España."},
  {q:"¿Cómo pago un plan de pago?",p:["plan"],k:["pagar","pago","precio","bizum","stripe","tarjeta","entrada"],a:"Para apuntarte a un plan de pago hace falta tener la cuenta guardada con tu correo. Paga con el enlace del plan («Pagar con Stripe») o con la otra forma de pago que indique quien organiza, como Bizum. Cuando esa persona marque que has pagado, te llega la entrada por correo."},
  {q:"¿Cómo cobro por mis planes?",p:["crear","organizador","perfil"],k:["cobrar","verificado","verificacion","organizador","vender","viajes","cobro"],a:"Para poner precio hay que ser organizador verificado: toca tu nombre, pulsa «Quiero ser organizador verificado», rellena nombre o razón social, NIF o CIF y tu web o Instagram, y acepta las condiciones. Se revisa a mano. Después tendrás el «📋 Panel de organizador» (en el menú +) para gestionar cobros, quién ha pagado y las entradas."},
