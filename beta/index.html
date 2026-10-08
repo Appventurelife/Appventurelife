@@ -481,6 +481,7 @@ b.po-pn{min-width:70px}
 .adm-dbtn button{flex:1 1 auto;padding:8px 10px!important;font-size:14px;width:auto!important}
 .dm-verplan{display:block;margin-top:8px;padding:8px 12px!important;font-size:15px}
 a.msg-a{color:inherit;text-decoration:underline;font-weight:700;overflow-wrap:anywhere;word-break:break-word}
+.cubi{flex:none;width:42px;height:42px;padding:0!important;font-size:22px;line-height:1;background:transparent!important;border:0!important;box-shadow:none!important;color:inherit}
 .instala{position:fixed;left:12px;right:84px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:1500;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:16px;padding:12px 40px 12px 14px;box-shadow:0 6px 20px rgba(0,0,0,.3);font-size:15px;line-height:1.35;animation:entra .25s ease-out}
 .instala b{display:block;font-size:16px;margin-bottom:2px}
 .instala .ix{position:absolute;top:6px;right:6px;width:30px;height:30px;padding:0!important;border-radius:50%;background:transparent!important;color:var(--mut)!important;font-size:16px;box-shadow:none}
@@ -772,7 +773,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 171 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 172 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -809,7 +810,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 171 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 172 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -859,7 +860,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <section id="dm" class="sheet chatv" aria-label="Mensajes">
 <div class="chead"><button id="dm-back" class="cico" type="button" aria-label="Volver">‹</button><div id="dm-av"></div><div class="cnom"><b id="dm-t">Mensajes</b><small id="dm-sub"></small></div><button id="dm-plan" class="cplan" type="button" hidden>Ver plan</button><div class="cmenu"><button id="dm-mas" class="cico" type="button" aria-label="Opciones">⋯</button><div id="dm-menu" class="cmenu-l" hidden><button id="dm-add" type="button" hidden>Añadir a amigos</button><button id="dm-quitar" type="button" hidden>Quitar de amigos</button><button id="dm-bloq" type="button">Bloquear</button><button id="dm-den" type="button" class="rojo">Denunciar</button></div></div></div>
 <div class="chat" id="dm-msgs"></div>
-<div class="send cbar"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="dm-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
+<div class="send cbar"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="dm" aria-label="Poner mi ubicación">📍</button><button id="dm-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
 </section>
 
 <section id="invitar" class="sheet" aria-label="Invitar amigos">
@@ -882,7 +883,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <section id="gchat" class="sheet chatv" aria-label="Chat del grupo">
 <div class="chead"><button id="gc-back" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:#0A2A5E">👪</div><div class="cnom"><b id="gc-t">Grupo</b><small id="gc-sub"></small></div><button id="gc-ver" class="cplan" type="button">Ver grupo</button></div>
 <div class="chat" id="gc-msgs"></div>
-<div class="send cbar"><input id="gc-txt" maxlength="500" placeholder="Escribe un mensaje..." autocomplete="off"><button id="gc-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
+<div class="send cbar"><input id="gc-txt" maxlength="500" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="gc" aria-label="Poner mi ubicación">📍</button><button id="gc-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
 </section>
 <section id="grupos" class="sheet" aria-label="Mis grupos">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1007,7 +1008,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 171 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 172 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2027,6 +2028,15 @@ function enlaces(t){return esc(t).replace(/(https?:\/\/[^\s<]+|www\.[^\s<]+)/gi,
   const href=/^https?:/i.test(u)?u:"https://"+u,vis=u.replace(/^https?:\/\//i,"").replace(/^www\./i,""),corto=vis.length>40?vis.slice(0,38)+"…":vis;
   const ico=/maps\.apple|maps\.app\.goo\.gl|goo\.gl\/maps|google\.[a-z.]+\/maps|maps\.google/i.test(u)?"📍 ":"🔗 ";
   return `<a class="msg-a" href="${href}" target="_blank" rel="noopener noreferrer nofollow">${ico}${corto}</a>${tail}`})}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-ubi]");if(!b)return;const k=b.dataset.ubi;
+  if(!navigator.geolocation){alert("Este móvil no deja saber la ubicación.");return}
+  b.disabled=true;b.textContent="⏳";
+  const fin=()=>{const bb=document.querySelector('[data-ubi="'+k+'"]');if(bb){bb.disabled=false;bb.textContent="📍"}};
+  navigator.geolocation.getCurrentPosition(p=>{fin();const inp=$(k+"-txt");if(!inp)return;
+    inp.value="📍 Mi ubicación: https://maps.google.com/?q="+p.coords.latitude.toFixed(5)+","+p.coords.longitude.toFixed(5);
+    try{inp.focus()}catch(_e){}},
+    er=>{fin();alert(er&&er.code===1?"Kiplan no tiene permiso para ver tu ubicación. Actívalo en Ajustes → Privacidad → Localización → Safari.":"No se ha podido saber tu ubicación. Prueba otra vez.")},
+    {enableHighAccuracy:true,timeout:15000,maximumAge:30000})});
 function crearGrupoYa(){if(!exigeAcepta(()=>crearGrupoYa()))return;abrirGrupos();setTimeout(()=>{try{$("gr-abrenuevo").click()}catch(_e){}},120)}
 document.addEventListener("click",e=>{if(e.target.closest("[data-nuevogr]"))crearGrupoYa()});
 $("mGrupo").onclick=()=>{plusMenu(false);crearGrupoYa()};
@@ -2388,7 +2398,7 @@ function render(){
   if(tab==="chat"&&puede&&a.chat.length){const ult=ultimoId(a.chat);if((visto["p"+a.id]||0)<ult){visto["p"+a.id]=ult;guardaVisto()}}
   let body;
   if(tab==="chat"){
-    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}${m.uid===a.orgId?" org":""}"><small>${m.uid===a.orgId?'<b class="orgtag">⭐ Organizador</b> ':""}${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}${m.uid===uid?palomG(a,m):""}</small><div>${enlaces(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
+    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}${m.uid===a.orgId?" org":""}"><small>${m.uid===a.orgId?'<b class="orgtag">⭐ Organizador</b> ':""}${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}${m.uid===uid?palomG(a,m):""}</small><div>${enlaces(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="c" aria-label="Poner mi ubicación">📍</button><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
   }else if(tab==="fotos"){
     body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Fotos del plan</h3>${puede?`<label class="subir" for="m-file" style="margin-bottom:6px">Añadir fotos</label><input id="m-file" type="file" accept="image/*" multiple hidden><p class="meta" id="m-estado"></p>`:`<p class="meta">Solo quien va al plan puede subir fotos.</p>`}<div class="gal">${ms.length?ms.map(f=>`<div class="tile" data-f="${esc(f.id)}"><img src="${esc(urlFoto(f))}" alt="" loading="lazy"></div>`).join(""):`<p class="meta" style="grid-column:1/-1;text-align:center">Aún no hay fotos. ¡Sube la primera!</p>`}</div><p class="meta" style="font-size:12px">Las fotos las ve quien puede ver el plan. Sube solo fotos tuyas o de personas que estén de acuerdo. Quien organiza puede borrar cualquier foto de su plan.</p>`;
   }else{
