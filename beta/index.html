@@ -460,6 +460,12 @@ html,body,button,a,input,label,select,.bar,.sheet,.panel{touch-action:manipulati
 .chead .cnom small{display:block;font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chead #volver{align-self:center}
 .cico{width:38px;height:38px;padding:0!important;border-radius:50%!important;background:transparent!important;color:var(--ink)!important;font-size:28px!important;line-height:1;flex:none;box-shadow:none!important;border:0!important}
+.p-head{position:relative}
+.p-fmenu{position:absolute;left:0;top:calc(100% + 6px);z-index:6;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.25);display:flex;flex-direction:column;min-width:200px;overflow:hidden}
+.p-fmenu[hidden]{display:none}
+.p-fmenu label,.p-fmenu button{display:block;width:100%;text-align:left;padding:13px 16px!important;margin:0!important;font-size:16px!important;font-weight:700;color:var(--ink)!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;cursor:pointer}
+.p-fmenu label{border-bottom:1px solid var(--line)!important}
+.p-fmenu button{color:#C0392B!important}
 .cplan{flex:none;padding:6px 12px!important;font-size:13px!important;border-radius:99px!important;background:var(--bg)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important;margin:0!important}
 .cmenu{position:relative;flex:none}
 .cmenu-l{position:absolute;right:0;top:44px;min-width:210px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.25);overflow:hidden;z-index:10}
@@ -805,7 +811,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 182 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 183 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -842,7 +848,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 182 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 183 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -1011,7 +1017,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 
 <section id="perfil" class="sheet" aria-label="Tu perfil">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
-<div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam">📷</span></label><input type="file" id="p-foto" accept="image/*" hidden><div class="p-hi"><div class="p-nrow"><h2 id="p-tit">Tu perfil</h2><button class="p-lapiz" id="p-edit" type="button" aria-label="Cambiar nombre" hidden>✏️</button></div><p class="meta" id="p-rep"></p><p class="meta" id="p-sub"></p><button class="p-link p-quita" id="p-quitafoto" type="button" hidden>Quitar foto</button></div></div>
+<div class="p-head"><label class="p-avw" for="p-foto" aria-label="Cambiar foto de perfil"><div id="p-av"></div><span class="p-cam">📷</span></label><input type="file" id="p-foto" accept="image/*" hidden><div id="p-fmenu" class="p-fmenu" hidden><label for="p-foto">📷 Cambiar foto</label><button id="p-quitafoto" type="button">🗑️ Quitar foto</button></div><div class="p-hi"><div class="p-nrow"><h2 id="p-tit">Tu perfil</h2><button class="p-lapiz" id="p-edit" type="button" aria-label="Cambiar nombre" hidden>✏️</button></div><p class="meta" id="p-rep"></p><p class="meta" id="p-sub"></p></div></div>
 <div id="p-extra" hidden><p class="p-biotxt" id="p-bio" hidden></p><button class="p-link" id="p-bioedit" type="button">✏️ Escribe algo sobre ti</button><div id="p-bioform" hidden><textarea id="p-biotx" maxlength="160" rows="2" placeholder="Ej. Me encanta la montaña y el kayak"></textarea><button id="p-biook" type="button" class="p-wide">Guardar</button></div><div class="p-stats" id="p-stats"></div></div>
 <div class="p-card" id="p-edbox">
 <input id="p-nombre" maxlength="24" placeholder="Tu nombre (ej. Marta)" aria-label="Tu nombre">
@@ -1041,7 +1047,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 182 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 183 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1366,6 +1372,9 @@ $("p-foto").onchange=async e=>{const f=e.target.files&&e.target.files[0];e.targe
 $("p-quitafoto").onclick=async()=>{const v=fotosP[uid];if(!v||!sb)return;if(!confirm("¿Quitar tu foto de perfil?"))return;
   try{const r=await sb.from("profiles").update({foto:null}).eq("id",uid);if(r.error)throw r.error;delete fotosP[uid];try{await sb.storage.from("fotos").remove([v])}catch(_e){}}catch(err){fallo(err)}
   pintaCabPerfil();render()};
+document.querySelector(".p-avw").addEventListener("click",e=>{if(!fotosP[uid])return;e.preventDefault();$("p-fmenu").hidden=!$("p-fmenu").hidden});
+document.addEventListener("click",e=>{const m=$("p-fmenu");if(m&&!m.hidden&&!e.target.closest(".p-avw,#p-fmenu"))m.hidden=true});
+$("p-fmenu").addEventListener("click",()=>setTimeout(()=>{$("p-fmenu").hidden=true},50));
 pintaYo();
 $("wicons").innerHTML=["moto","ruta","bici","surf","escalada"].map(k=>`<span>${icon(k,24)}</span>`).join("");
 /* fotos reales de portada: sube portada1.jpg, portada2.jpg... al repositorio y salen solas */
@@ -2106,7 +2115,7 @@ function crearGrupoYa(){if(!exigeAcepta(()=>crearGrupoYa()))return;abrirGrupos()
 document.addEventListener("click",e=>{if(e.target.closest("[data-nuevogr]"))crearGrupoYa()});
 $("mGrupo").onclick=()=>{plusMenu(false);crearGrupoYa()};
 function avPersona(u,n){n=n||"?";if(u&&fotosP[u])return `<div class="cav"><img src="${esc(urlP(u))}" alt=""></div>`;return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
-function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?"":"Aún no has puesto tu nombre";$("p-rep").textContent=me&&uid?miRepTxt():"";$("p-quitafoto").hidden=!fotosP[uid];if(me&&$("p-edbox").hidden)$("p-edit").hidden=false;pintaPerfilExtra()}
+function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?"":"Aún no has puesto tu nombre";$("p-rep").textContent=me&&uid?miRepTxt():"";$("p-fmenu").hidden=true;if(me&&$("p-edbox").hidden)$("p-edit").hidden=false;pintaPerfilExtra()}
 const reduceCuad=file=>new Promise((ok,ko)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=320;c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,320,320);URL.revokeObjectURL(u);c.toBlob(b=>b?ok(b):ko(new Error("No se pudo leer la foto")),"image/jpeg",.85)};im.onerror=()=>{URL.revokeObjectURL(u);ko(new Error("No se pudo leer la foto"))};im.src=u});
 function pintaDM(){
   const l=dms[dmCon]||[],nom=nombres[dmCon]||"Alguien",pc=planComun(dmCon);
