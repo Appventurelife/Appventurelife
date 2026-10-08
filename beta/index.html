@@ -545,10 +545,11 @@ body:has(.sheet.open) .plusmenu{z-index:1400}
 .lgrupo{font-size:19px;margin:16px 2px 8px}
 .lgrupo:first-child{margin-top:4px}
 .lgrupo span{font-size:14px;color:var(--mut);font-weight:600}
-#f-tipos .tchip{border:2px solid var(--tc)!important}
+#f-tipos .tchip{border:1.5px solid var(--line)!important}
+.sheet:not(.chatv):not(#mapx):not(#detalle):not(#perfil):not(#grupos){padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
 #f-tipos .tchip::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--tc);margin-right:6px;vertical-align:1px}
-#f-tipos .tchip.on{background:var(--tc)!important;color:#fff!important}
-#f-tipos .tchip.on::before{background:#fff}
+#f-tipos .tchip.on{background:var(--cta)!important;color:var(--ctat)!important;border-color:var(--cta)!important}
+#f-tipos .tchip.on::before{box-shadow:0 0 0 2px #fff}
 .dtrow>div{flex:1;min-width:0}
 .dtw{position:relative}
 .dtw input{width:100%;min-width:0;-webkit-appearance:none;appearance:none}
@@ -832,7 +833,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 184 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 185 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -869,7 +870,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 184 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 185 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -1068,7 +1069,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 184 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 185 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
