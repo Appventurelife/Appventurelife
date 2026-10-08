@@ -465,6 +465,27 @@ label.chk{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--in
 .po-per .cav{width:30px;height:30px;font-size:14px;flex:0 0 auto}
 .po-per{padding:6px 0!important;gap:8px!important}
 b.po-pn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px}
+.po-per{flex-wrap:wrap}
+b.po-pn{min-width:70px}
+.po-doct{display:block;width:100%;margin:10px 0 2px;font-size:15px}
+.pin-adm{position:relative;opacity:.85;outline:2px dashed rgba(0,0,0,.45);outline-offset:1px}
+.pin-lock{position:absolute;right:-6px;bottom:-6px;font-size:15px;line-height:1}
+#adm-est .who-h{margin-top:14px}
+.adm-lim{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+.adm-err{padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.adm-err small{color:var(--mut)}
+.adm-err div{color:var(--mut);overflow-wrap:anywhere;margin-top:2px}
+.adm-dbtn{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.adm-dbtn button{flex:1 1 auto;padding:8px 10px!important;font-size:14px;width:auto!important}
+.dm-verplan{display:block;margin-top:8px;padding:8px 12px!important;font-size:15px}
+a.msg-a{color:inherit;text-decoration:underline;font-weight:700;overflow-wrap:anywhere;word-break:break-word}
+.cubi{flex:none;width:42px;height:42px;padding:0!important;font-size:22px;line-height:1;background:transparent!important;border:0!important;box-shadow:none!important;color:inherit}
+.instala{position:fixed;left:12px;right:84px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:1500;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:16px;padding:12px 40px 12px 14px;box-shadow:0 6px 20px rgba(0,0,0,.3);font-size:15px;line-height:1.35;animation:entra .25s ease-out}
+.instala b{display:block;font-size:16px;margin-bottom:2px}
+.instala .ix{position:absolute;top:6px;right:6px;width:30px;height:30px;padding:0!important;border-radius:50%;background:transparent!important;color:var(--mut)!important;font-size:16px;box-shadow:none}
+body:has(.sheet.open) .plusmenu{z-index:1400}
+.mtabs button{position:relative;white-space:nowrap;gap:5px;padding:10px 4px;font-size:15px}
+.mtabs i{position:absolute;top:2px;right:4px;font-size:11px;padding:0 6px;line-height:16px}
 .po-chip{padding:5px 9px!important;font-size:13px!important;font-weight:700;border-radius:99px!important;white-space:nowrap;background:var(--bg)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;width:auto!important;margin:0!important;flex:0 0 auto}
 .po-chip.pend{border-color:#E8A24A!important}.po-chip.ok{border-color:#1F7A4D!important}
 .po-tip{display:block;color:var(--mut);font-size:12px;margin-bottom:2px}
@@ -749,7 +770,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 159 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 172 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -786,12 +807,12 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 159 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 172 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
 
-<div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mAdmin" type="button" hidden>👑 Panel del dueño</button><button id="mOrg" type="button" hidden>📋 Panel de organizador</button><button id="mAyuda" type="button">💬 Ayuda</button><button id="mPlan" type="button">Nuevo plan</button></div>
+<div id="plusMenu" class="plusmenu" hidden><button id="mBus" type="button">🔍 Buscar personas</button><button id="mCod" type="button">🔒 Tengo un código</button><button id="mAqui" type="button">Estoy aquí</button><button id="mAdmin" type="button" hidden>👑 Panel del dueño</button><button id="mOrg" type="button" hidden>📋 Panel de organizador</button><button id="mAyuda" type="button">💬 Ayuda</button><button id="mGrupo" type="button">👪 Crear grupo</button><button id="mPlan" type="button">Nuevo plan</button></div>
 
 <section id="aqui" class="sheet" aria-label="Estoy aquí">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -806,7 +827,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p class="meta" id="a-vis-n" style="margin:2px 0 8px"></p>
 <div id="a-eleg" hidden></div><div id="a-grsel" hidden></div>
 <label class="chk"><input type="checkbox" id="a-live" checked> Mover mi chincheta mientras me muevo</label>
-<p class="meta" style="margin:2px 0 0">Solo se actualiza con la app abierta; al bloquear el móvil se para.</p>
+<p class="meta" style="margin:2px 0 0">Solo se mueve mientras tienes Kiplan abierto en pantalla.</p>
 <div class="row" style="margin-top:14px"><button class="sec" id="a-cancel" type="button">Cancelar</button><button id="a-ok" type="button">Compartir mi ubicación</button></div>
 </section>
 
@@ -836,7 +857,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <section id="dm" class="sheet chatv" aria-label="Mensajes">
 <div class="chead"><button id="dm-back" class="cico" type="button" aria-label="Volver">‹</button><div id="dm-av"></div><div class="cnom"><b id="dm-t">Mensajes</b><small id="dm-sub"></small></div><button id="dm-plan" class="cplan" type="button" hidden>Ver plan</button><div class="cmenu"><button id="dm-mas" class="cico" type="button" aria-label="Opciones">⋯</button><div id="dm-menu" class="cmenu-l" hidden><button id="dm-add" type="button" hidden>Añadir a amigos</button><button id="dm-quitar" type="button" hidden>Quitar de amigos</button><button id="dm-bloq" type="button">Bloquear</button><button id="dm-den" type="button" class="rojo">Denunciar</button></div></div></div>
 <div class="chat" id="dm-msgs"></div>
-<div class="send cbar"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="dm-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
+<div class="send cbar"><input id="dm-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="dm" aria-label="Poner mi ubicación">📍</button><button id="dm-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
 </section>
 
 <section id="invitar" class="sheet" aria-label="Invitar amigos">
@@ -859,7 +880,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <section id="gchat" class="sheet chatv" aria-label="Chat del grupo">
 <div class="chead"><button id="gc-back" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:#0A2A5E">👪</div><div class="cnom"><b id="gc-t">Grupo</b><small id="gc-sub"></small></div><button id="gc-ver" class="cplan" type="button">Ver grupo</button></div>
 <div class="chat" id="gc-msgs"></div>
-<div class="send cbar"><input id="gc-txt" maxlength="500" placeholder="Escribe un mensaje..." autocomplete="off"><button id="gc-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
+<div class="send cbar"><input id="gc-txt" maxlength="500" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="gc" aria-label="Poner mi ubicación">📍</button><button id="gc-ok" class="cenv" type="button" aria-label="Enviar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></button></div>
 </section>
 <section id="grupos" class="sheet" aria-label="Mis grupos">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -984,7 +1005,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 159 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 172 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1001,8 +1022,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
 <h2>Panel del dueño</h2>
 <p class="meta">Solo lo ves tú.</p>
-<div class="adm-stats"><div><b id="adm-online">–</b><small>conectados ahora</small></div><div><b id="adm-usu">–</b><small>personas</small></div><div><b id="adm-cor">–</b><small>con correo</small></div></div>
-<details class="mas" id="adm-priv" data-k="adm-priv"><summary>🔒 Planes privados y de amigos</summary><div id="adm-privl" class="list"></div></details>
+<div class="adm-stats"><div><b id="adm-online">–</b><small>conectados ahora</small></div><div><b id="adm-usu">–</b><small>personas</small></div><div><b id="adm-cor">–</b><small>con correo</small></div></div><div id="adm-est"></div>
 <div id="adminLista" class="list"></div>
 </section>
 <section id="panelorg" class="sheet" aria-label="Panel del organizador">
@@ -1526,7 +1546,27 @@ function cerrarSheet(el){
   else if(el.id==="perfil"){el.classList.remove("open");cbNombre=null}
   else{el.classList.remove("open");const ds=el.dataset.desde||"";el.dataset.desde="";if(ds==="perfil")pedirNombre();else if(ds==="grupos")abrirGrupos()}
 }
-document.addEventListener("click",e=>{const x=e.target.closest(".x");if(x){const sh=x.closest(".sheet");if(sh)cerrarSheet(sh)}});
+var hojaUlt="",hojaUltT=0,hojaUltPlan=null,hojaPlan=null,hojaNav=0,hojaVolviendo=false;
+{const obsH=new MutationObserver(ms=>{ms.forEach(m=>{const el=m.target;
+  const ab=el.classList.contains("open"),antes=(" "+(m.oldValue||"")+" ").includes(" open ");
+  if(antes&&!ab){hojaUlt=el.id;hojaUltT=Date.now();hojaUltPlan=el.id==="detalle"?hojaPlan:null}
+  else if(!antes&&ab){
+    if(el.id==="detalle")hojaPlan=sel;
+    if(hojaVolviendo){hojaVolviendo=false;return}
+    if(Date.now()-hojaNav<900){el.dataset.prev="";return}
+    const otra=[...document.querySelectorAll(".sheet.open")].find(s=>s!==el);
+    const prev=(hojaUlt&&hojaUlt!==el.id&&Date.now()-hojaUltT<900)?hojaUlt:(otra?otra.id:"");
+    el.dataset.prev=prev;el.dataset.prevPlan=prev==="detalle"?String(hojaUltPlan!=null?hojaUltPlan:(sel||"")):"";
+  }})});
+ document.querySelectorAll(".sheet").forEach(s=>obsH.observe(s,{attributes:true,attributeFilter:["class"],attributeOldValue:true}))}
+function volverA(id,plan){const el=$(id);if(!id||!el||el.classList.contains("open"))return;
+  hojaVolviendo=true;setTimeout(()=>{hojaVolviendo=false},600);
+  try{if(id==="perfil")pedirNombre();else if(id==="grupos")abrirGrupos();else if(id==="admin")abrirAdmin();else if(id==="panelorg")abrirPanelOrg();
+    else if(id==="detalle"){const a=plan&&data.find(x=>x.id===+plan);if(a)elegir(a.id);else hojaVolviendo=false}
+    else if(id==="persona"){if(perCtx)abrePersona(perCtx);else hojaVolviendo=false}
+    else if(id==="nueva"){hojaVolviendo=false}
+    else el.classList.add("open")}catch(_e){hojaVolviendo=false}}
+document.addEventListener("click",e=>{const x=e.target.closest(".x");if(x){const sh=x.closest(".sheet");if(sh){const pv=sh.dataset.prev||"",pp=sh.dataset.prevPlan||"";sh.dataset.prev="";cerrarSheet(sh);if(pv&&pv!==sh.id&&!document.querySelector(".sheet.open"))volverA(pv,pp)}}});
 let sw=null;
 document.addEventListener("touchstart",e=>{const g=e.target.closest(".grab");if(!g)return;const sh=g.closest(".sheet");sw={sh,y:e.touches[0].clientY,dy:0};sh.style.transition="none"},{passive:true});
 document.addEventListener("touchmove",e=>{if(!sw)return;sw.dy=Math.max(0,e.touches[0].clientY-sw.y);sw.sh.style.transform="translateY("+sw.dy+"px)"},{passive:true});
@@ -1879,6 +1919,16 @@ const voy=a=>!!uid&&(a.asistIds||[]).includes(uid);
 const soyOrg=a=>!!uid&&a.orgId===uid;
 function msgMudo(){try{return localStorage.getItem("avl_mudo")==="1"}catch(e){return false}}
 function pintaMudo(){const b=$("msgMudo");if(!b)return;const m=msgMudo();b.textContent=m?"🔕":"🔔";b.setAttribute("aria-label",m?"Activar avisos de mensajes":"Silenciar avisos de mensajes")}
+function avisoInstalar(){try{
+  const ua=navigator.userAgent||"",ios=/iPhone|iPad|iPod/.test(ua),safari=/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS|GSA|OPiOS/.test(ua);
+  const inst=navigator.standalone===true||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches);
+  if(!ios||!safari||inst||localStorage.getItem("kp_inst"))return;
+  setTimeout(()=>{try{if(localStorage.getItem("kp_inst"))return;localStorage.setItem("kp_inst","1")}catch(_e){return}
+    const d=document.createElement("div");d.className="instala";
+    d.innerHTML=`<button class="ix" type="button" aria-label="Cerrar">✕</button><b>📲 Ten Kiplan como una app</b><span>En Safari toca <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Compartir" style="vertical-align:-3px"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg> Compartir (a veces está dentro de ⋯) y luego «Añadir a pantalla de inicio».</span>`;
+    document.body.appendChild(d);d.querySelector(".ix").onclick=()=>d.remove();
+  },5000);
+}catch(_e){}}
 function avisoEntrada(){try{if(msgMudo())return;const n=totalSinLeer();if(n>0)avisa("💬 Tienes "+n+(n===1?" mensaje sin leer":" mensajes sin leer"),()=>{if(!exigeAcepta(()=>irA("mios")))return;irA("mios")})}catch(e){}}
 function avisa(txt,fn){
   if(String(txt).startsWith("💬")&&msgMudo())return;
@@ -1922,7 +1972,7 @@ function docsHTML(a){
   const c=docsP[a.id];
   if(!c||(!c.cargando&&Date.now()-c.t>120000))docsPCarga(a.id);
   if(!c||!c.l.length)return "";
-  return `<h3 class="fsec">📎 Tus documentos</h3><div class="docs">${c.l.map(d=>`<a class="doc" href="${esc(d.url)}" target="_blank" rel="noopener"><b>${d.pdf?"📄":"🖼️"}</b><span>${esc(d.nombre)}</span><small>${d.para?"Solo para ti":"Para todos"}</small></a>`).join("")}</div>`;
+  return `<h3 class="fsec">🎫 Tus billetes y documentos</h3><div class="docs">${c.l.map(d=>`<a class="doc" href="${esc(d.url)}" target="_blank" rel="noopener"><b>${d.pdf?"📄":"🖼️"}</b><span>${esc(d.nombre)}</span><small>${d.para?"Solo para ti":"Para todos"}</small></a>`).join("")}</div>`;
 }
 async function docsPCarga(pid){
   const antes=docsP[pid];docsP[pid]={l:antes?antes.l:[],t:antes?antes.t:0,cargando:true};
@@ -1964,13 +2014,29 @@ async function docQuitar(btn){
     await pintaPanelOrg();
   }catch(e){fallo(e)}
 }
-function docsLista(a){const l=docsOrg[a.id]||[];if(!l.length)return "";return `<details class="mas po-docs"><summary>📎 Documentos enviados (${l.length})</summary>${l.map(d=>`<div class="po-doc"><span>${esc(d.nombre)} <small>· ${d.para?esc(nombres[d.para]||"Alguien"):"para todos"}</small></span><button class="sec" type="button" data-docq="${esc(d.id)}">Quitar</button></div>`).join("")}</details>`}
+function docsLista(a){const l=docsOrg[a.id]||[];if(!l.length)return "";return `<details class="mas po-docs"><summary>🎫 Billetes y documentos enviados (${l.length})</summary>${l.map(d=>`<div class="po-doc"><span>${esc(d.nombre)} <small>· ${d.para?esc(nombres[d.para]||"Alguien"):"para todos"}</small></span><button class="sec" type="button" data-docq="${esc(d.id)}">Quitar</button></div>`).join("")}</details>`}
 $("doc-file").onchange=e=>{const f=e.target.files&&e.target.files[0];docSubir(f)};
 $("po-planes").addEventListener("click",e=>{
   const b=e.target.closest("[data-doc]");if(b){const [p,u]=b.dataset.doc.split("|");docElegir(+p,u);return}
   const t=e.target.closest("[data-doct]");if(t){docElegir(+t.dataset.doct,null);return}
   const q=e.target.closest("[data-docq]");if(q)docQuitar(q);
 });
+function enlaces(t){return esc(t).replace(/(https?:\/\/[^\s<]+|www\.[^\s<]+)/gi,u=>{let tail="";const mm=u.match(/[.,;:!?)\]]+$/);if(mm){tail=mm[0];u=u.slice(0,-tail.length)}if(!u)return tail;
+  const href=/^https?:/i.test(u)?u:"https://"+u,vis=u.replace(/^https?:\/\//i,"").replace(/^www\./i,""),corto=vis.length>40?vis.slice(0,38)+"…":vis;
+  const ico=/maps\.apple|maps\.app\.goo\.gl|goo\.gl\/maps|google\.[a-z.]+\/maps|maps\.google/i.test(u)?"📍 ":"🔗 ";
+  return `<a class="msg-a" href="${href}" target="_blank" rel="noopener noreferrer nofollow">${ico}${corto}</a>${tail}`})}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-ubi]");if(!b)return;const k=b.dataset.ubi;
+  if(!navigator.geolocation){alert("Este móvil no deja saber la ubicación.");return}
+  b.disabled=true;b.textContent="⏳";
+  const fin=()=>{const bb=document.querySelector('[data-ubi="'+k+'"]');if(bb){bb.disabled=false;bb.textContent="📍"}};
+  navigator.geolocation.getCurrentPosition(p=>{fin();const inp=$(k+"-txt");if(!inp)return;
+    inp.value="📍 Mi ubicación: https://maps.google.com/?q="+p.coords.latitude.toFixed(5)+","+p.coords.longitude.toFixed(5);
+    try{inp.focus()}catch(_e){}},
+    er=>{fin();alert(er&&er.code===1?"Kiplan no tiene permiso para ver tu ubicación. Actívalo en Ajustes → Privacidad → Localización → Safari.":"No se ha podido saber tu ubicación. Prueba otra vez.")},
+    {enableHighAccuracy:true,timeout:15000,maximumAge:30000})});
+function crearGrupoYa(){if(!exigeAcepta(()=>crearGrupoYa()))return;abrirGrupos();setTimeout(()=>{try{$("gr-abrenuevo").click()}catch(_e){}},120)}
+document.addEventListener("click",e=>{if(e.target.closest("[data-nuevogr]"))crearGrupoYa()});
+$("mGrupo").onclick=()=>{plusMenu(false);crearGrupoYa()};
 function avPersona(u,n){n=n||"?";if(u&&fotosP[u])return `<div class="cav"><img src="${esc(urlP(u))}" alt=""></div>`;return `<div class="cav" style="background:hsl(${hash(n)%360} 45% 40%)">${esc((Array.from(n)[0]||"?").toUpperCase())}</div>`}
 function pintaCabPerfil(){$("p-av").innerHTML=avPersona(uid,me||"?");$("p-tit").textContent=me||"Tu perfil";$("p-sub").textContent=me?"":"Aún no has puesto tu nombre";$("p-rep").textContent=me&&uid?miRepTxt():"";$("p-quitafoto").hidden=!fotosP[uid];if(me&&$("p-edbox").hidden)$("p-edit").hidden=false;pintaPerfilExtra()}
 const reduceCuad=file=>new Promise((ok,ko)=>{const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const s=Math.min(im.width,im.height),c=document.createElement("canvas");c.width=c.height=320;c.getContext("2d").drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,320,320);URL.revokeObjectURL(u);c.toBlob(b=>b?ok(b):ko(new Error("No se pudo leer la foto")),"image/jpeg",.85)};im.onerror=()=>{URL.revokeObjectURL(u);ko(new Error("No se pudo leer la foto"))};im.src=u});
@@ -1983,7 +2049,7 @@ function pintaDM(){
   $("dm-sub").textContent=esAmigo(dmCon)?"👥 Amigo":solEnv.includes(dmCon)?"Solicitud de amistad enviada":pc?"Va a «"+pc.titulo+"»":"";
   $("dm-av").innerHTML=avPersona(dmCon,nom);
   $("dm-plan").hidden=!pc;
-  $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}${m.de===uid?palom(m):""}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
+  $("dm-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.de===uid?" yo":""}"><small>${m.de===uid?"Tú":esc(nombres[m.de]||"Alguien")} · ${hora(m.t)}${m.de===uid?palom(m):""}</small><div>${enlaces(m.txt)}</div>${m.pl&&m.de!==uid?`<button class="sec dm-verplan" type="button" data-dmplan="${+m.pl}">🎫 Ver mi billete</button>`:""}</div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
   const c=$("dm-msgs");c.scrollTop=c.scrollHeight;
 }
 function palom(m){return `<span class="tk" aria-label="${m.rec?"Recibido":"Enviado"}">${m.rec?"✓✓":"✓"}</span>`}
@@ -2097,7 +2163,7 @@ async function recarga(){
     const er=res.find((x,i)=>i!==2&&x.error)||(pr.error?pr:null);if(er)throw er.error;
     const [pl,pa,,aq,co,ms,dr,am,bl,sl,il,ve,og,ad,cb,fo,ac,emq]=res;
     await cargaRepu();
-    adminApp=!!(ad&&ad.data===true);$("mAdmin").hidden=!adminApp;
+    adminApp=!!(ad&&ad.data===true);$("mAdmin").hidden=!adminApp;pinsAdmin();
     verifSet=new Set((ve.data||[]).map(r=>r.user_id));if(adminApp)verifSet.add(uid);miOrg=(og.data&&og.data[0])||null;
     miCobros=(cb&&cb.data&&cb.data[0])||null;$("mOrg").hidden=!verifSet.has(uid);
     fotosAll=((fo&&fo.data)||[]).map(r=>({id:r.id,plan_id:r.plan_id,user_id:r.user_id,ruta:r.ruta,t:Date.parse(r.creado)}));miAquiCod=(ac&&ac.data&&ac.data[0]&&ac.data[0].codigo)||"";
@@ -2113,7 +2179,7 @@ async function recarga(){
     if(solInit&&nuevasSol.length)avisa("👥 "+nom(nuevasSol[0])+" quiere ser tu amigo",()=>abrePersona(nuevasSol[0]));
     solVista=new Set(solRec);solInit=true;
     chats={};ms.data.filter(m=>!bloqueados.has(m.user_id)).forEach(m=>{(chats[m.plan_id]=chats[m.plan_id]||[]).push({id:m.id,uid:m.user_id,n:nom(m.user_id),t:Date.parse(m.creado),txt:m.texto})});
-    dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado),rec:m.recibido,lei:m.leido})});
+    dms={};dr.data.filter(m=>!bloqueados.has(m.de===uid?m.para:m.de)).forEach(m=>{const o=m.de===uid?m.para:m.de;(dms[o]=dms[o]||[]).push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado),rec:m.recibido,lei:m.leido,pl:m.plan_id})});
     amigosSet=new Set(am.data.map(r=>r.amigo_id).filter(u=>!bloqueados.has(u)));
     if(dr.data.some(m=>m.para===uid&&!m.recibido))sb.rpc("dm_marcar",{}).then(()=>{},()=>{});
     sb.rpc("chat_marcar",{}).then(()=>sb.from("chat_visto").select("plan_id,user_id,recibido")).then(r=>{if(r&&r.data){cvisto={};r.data.forEach(x=>{(cvisto[x.plan_id]=cvisto[x.plan_id]||{})[x.user_id]=+x.recibido});render()}},()=>{});
@@ -2166,7 +2232,7 @@ function suscribir(){
       const m=p.new;if(!m||(m.para!==uid&&m.de!==uid)||bloqueados.has(m.de))return;
       const u=m.de===uid?m.para:m.de,l=(dms[u]=dms[u]||[]);
       if(l.some(x=>x.id===m.id))return;
-      l.push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado),rec:m.recibido,lei:m.leido});
+      l.push({id:m.id,de:m.de,para:m.para,txt:m.texto,t:Date.parse(m.creado),rec:m.recibido,lei:m.leido,pl:m.plan_id});
       if(m.de!==uid){
         const abierto=$("dm").classList.contains("open")&&dmCon===u;
         if(abierto){pintaDM();marcaDM()}
@@ -2178,7 +2244,7 @@ function suscribir(){
 }
 async function arranca(){
   if(!sb){cargando=false;render();return}
-  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();avisoEntrada();cargaChatsGrupos();cuEsTemporal().then(t=>document.body.classList.toggle("sincorreo",t)).catch(()=>{})}
+  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();cargaChatsGrupos();cuEsTemporal().then(t=>document.body.classList.toggle("sincorreo",t)).catch(()=>{})}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
 var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
@@ -2190,9 +2256,8 @@ function pintaBandeja(){
   if(!msgTab)msgTab=(nG&&!nP&&!nD)?"g":((nD&&!nP)||(!bandeja.p.length&&bandeja.d.length))?"d":"p";
   let l=(msgTab==="g"?convGrupos():bandeja[msgTab])||[];
   if(q)l=l.filter(c=>nombreConv(c).toLowerCase().includes(q));
-  const tabs=`<div class="mtabs">`+[["p","🎒 Planes",nP],["g","👪 Grupos",nG],["d","👤 Privados",nD]].map(t=>`<button type="button" data-mt="${t[0]}" class="${msgTab===t[0]?"on":""}">${t[1]}${t[2]?`<i>${t[2]}</i>`:""}</button>`).join("")+`</div>`;
-  $("listaDM").innerHTML=tabs+(l.length?`<div class="lista-conv">`+l.map(filaConv).join("")+`</div>`:`<p class="meta">${q?"No hay chats con ese nombre.":msgTab==="p"?"Aún no hay chats de planes. Apúntate a un plan para hablar con el grupo.":msgTab==="g"?"Aún no estás en ningún grupo. Créalo en Perfil → 👪 Mis grupos.":"Aún no tienes mensajes privados. Toca el nombre de alguien en un plan para escribirle."}</p>`);
-  if(l.length)avisoPulsar();
+  const tabs=`<div class="mtabs">`+[["p","🎒 Planes",nP],["g","👪 Mis grupos",nG],["d","👤 Privados",nD]].map(t=>`<button type="button" data-mt="${t[0]}" class="${msgTab===t[0]?"on":""}">${t[1]}${t[2]?`<i>${t[2]}</i>`:""}</button>`).join("")+`</div>`;
+  $("listaDM").innerHTML=tabs+(l.length?`<div class="lista-conv">`+l.map(filaConv).join("")+`</div>`:`<p class="meta">${q?"No hay chats con ese nombre.":msgTab==="p"?"Aún no hay chats de planes. Apúntate a un plan para hablar con el grupo.":msgTab==="g"?"Aún no estás en ningún grupo.<br><button type='button' class='p-gran' data-nuevogr='1' style='margin-top:12px;width:100%'>＋ Crear grupo</button>":"Aún no tienes mensajes privados. Toca el nombre de alguien en un plan para escribirle."}</p>`);
 }
 function nombreConv(c){return c.tipo==="d"?(nombres[c.u]||""):c.tipo==="g"?c.g.nombre:(c.a.titulo||"")}
 function convGrupos(){return (misGr||[]).map(g=>{const ul=(gchats[g.id]||[]).slice(-1)[0];return {tipo:"g",g,t:ul?ul.t:(Date.parse(g.creado)||0)}}).sort((x,y)=>y.t-x.t)}
@@ -2212,7 +2277,7 @@ async function cargaChatsGrupos(){if(!sb||!uid)return;await cargaGrupos();const 
   render();if($("gchat").classList.contains("open"))pintaGChat()}
 function pintaGChat(){const g=(misGr||[]).find(x=>x.id===gcId);$("gc-t").textContent=g?g.nombre:"Grupo";$("gc-sub").textContent=g?(g.miembros||[]).length+" personas":"";
   const l=(gchats[gcId]||[]).filter(m=>!bloqueados.has(m.uid));
-  $("gc-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-gu="${esc(m.uid)}">${esc(nombres[m.uid]||m.n||"Alguien")}</span>`} · ${hora(m.t)}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
+  $("gc-msgs").innerHTML=l.length?l.map(m=>`<div class="msg${m.uid===uid?" yo":""}"><small>${m.uid===uid?"Tú":`<span class="lnk" data-gu="${esc(m.uid)}">${esc(nombres[m.uid]||m.n||"Alguien")}</span>`} · ${hora(m.t)}</small><div>${enlaces(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`;
   const c=$("gc-msgs");c.scrollTop=c.scrollHeight}
 function marcaGChat(){const l=gchats[gcId]||[];if(l.length){visto["g"+gcId]=ultimoId(l);guardaVisto()}render()}
 function abreGChat(id){if(!exigeAcepta(()=>abreGChat(id)))return;gcId=id;pintaGChat();$("gchat").dataset.desde=$("grupos").classList.contains("open")?"grupos":"";$("grupos").classList.remove("open");$("gchat").classList.add("open");marcaGChat()}
@@ -2330,7 +2395,7 @@ function render(){
   if(tab==="chat"&&puede&&a.chat.length){const ult=ultimoId(a.chat);if((visto["p"+a.id]||0)<ult){visto["p"+a.id]=ult;guardaVisto()}}
   let body;
   if(tab==="chat"){
-    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}${m.uid===a.orgId?" org":""}"><small>${m.uid===a.orgId?'<b class="orgtag">⭐ Organizador</b> ':""}${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}${m.uid===uid?palomG(a,m):""}</small><div>${esc(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
+    body=`<div class="chead"><button id="volver" class="cico" type="button" aria-label="Volver">‹</button><div class="cav" style="background:${col(a)}">${a.foto?`<img src="${a.foto}" alt="">`:sym(a,22)}</div><div class="cnom"><b>${esc(a.titulo)}</b><small>Chat del grupo · ${a.asist.length} ${a.asist.length===1?"persona":"personas"}</small></div><button id="verPlanC" class="cplan" type="button">Ver plan</button></div>`+(puede?`<div class="chat" id="msgs">${a.chat.length?a.chat.map(m=>`<div class="msg${m.uid===uid?" yo":""}${m.uid===a.orgId?" org":""}"><small>${m.uid===a.orgId?'<b class="orgtag">⭐ Organizador</b> ':""}${m.uid===uid?"Tú":`<span class="lnk" data-u="${esc(m.uid)}">${esc(m.n)}</span>`} · ${hora(m.t)}${m.uid===uid?palomG(a,m):""}</small><div>${enlaces(m.txt)}</div></div>`).join(""):`<p class="meta" style="text-align:center">Aún no hay mensajes. Escribe el primero.</p>`}</div><div class="send cbar"><input id="c-txt" maxlength="300" placeholder="Escribe un mensaje..." autocomplete="off"><button class="cubi" type="button" data-ubi="c" aria-label="Poner mi ubicación">📍</button><button id="c-ok" class="cenv" type="button" aria-label="Enviar">${avion()}</button></div>`:`<p class="meta" style="text-align:center;padding:24px 8px">Apúntate al plan para entrar al chat.</p>`);
   }else if(tab==="fotos"){
     body=`<button id="volver" class="sec" type="button">← Volver</button><h3 class="who-h">Fotos del plan</h3>${puede?`<label class="subir" for="m-file" style="margin-bottom:6px">Añadir fotos</label><input id="m-file" type="file" accept="image/*" multiple hidden><p class="meta" id="m-estado"></p>`:`<p class="meta">Solo quien va al plan puede subir fotos.</p>`}<div class="gal">${ms.length?ms.map(f=>`<div class="tile" data-f="${esc(f.id)}"><img src="${esc(urlFoto(f))}" alt="" loading="lazy"></div>`).join(""):`<p class="meta" style="grid-column:1/-1;text-align:center">Aún no hay fotos. ¡Sube la primera!</p>`}</div><p class="meta" style="font-size:12px">Las fotos las ve quien puede ver el plan. Sube solo fotos tuyas o de personas que estén de acuerdo. Quien organiza puede borrar cualquier foto de su plan.</p>`;
   }else{
@@ -2343,7 +2408,7 @@ function render(){
 ${a.priv?`<p class="meta">🔒 Plan privado${soyOrg(a)?` · Código: <b style="color:var(--ink);letter-spacing:1px">${fmtCod(a.codigo)}</b> <button id="copCod" class="sec" type="button" style="padding:4px 10px;font-size:13px">Copiar</button>`:""}</p>`:""}
 ${a.soloAmigos?`<p class="meta">👥 Solo lo ven tus amigos</p>`:""}
 ${invitadoA.has(a.id)&&!yo?`<p class="meta">✉️ <b class="lnk" data-u="${esc(invitadoA.get(a.id))}">${esc(nombres[invitadoA.get(a.id)]||"Alguien")}</b> te ha invitado a este plan. <button id="rechInv" class="sec" type="button" style="padding:4px 10px;font-size:13px">Rechazar</button></p>`:""}${(a.invitados&&a.invitados.length&&(yo||soyOrg(a)))?`<p class="meta">Invitados pendientes: ${esc(a.invitados.map(u=>nombres[u]||"Alguien").join(", "))}</p>`:""}
-${soyOrg(a)?`<div class="mini"><button id="panGo" class="pango" type="button">📊 Panel del organizador</button></div>`:""}<button id="gochat" class="chatgo" type="button">💬 Chat del grupo${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?` <span class="chatnew">${sinLeerPlan(a)} nuevos</span>`:""}</button>
+${soyOrg(a)&&puedeCobrar()?`<div class="mini"><button id="panGo" class="pango" type="button">📊 Panel del organizador</button></div>`:""}<button id="gochat" class="chatgo" type="button">💬 Chat del grupo${a.chat.length?" ("+a.chat.length+")":""}${sinLeerPlan(a)?` <span class="chatnew">${sinLeerPlan(a)} nuevos</span>`:""}</button>
 <div class="mini">${soyOrg(a)?`<button id="editGo" class="sec" type="button">✏️ Editar</button>`:""}${""}${(yo||soyOrg(a))?`<button id="invGo" class="sec" type="button">👥 Invitar</button>`:""}${""}${!a.priv||soyOrg(a)?`<button id="wa" class="sec" type="button">WhatsApp</button><button id="copiar" class="sec" type="button">🔗 Copiar enlace</button>`:""}<button id="gofotos" class="sec" type="button">📷 Fotos${nf?" ("+nf+")":""}</button></div>
 <div class="cajas">
 <div class="caja ancha"><span class="ci">📅</span><small>Fecha y hora</small><b>${esc(textoCuando(a))}</b></div>
@@ -2488,7 +2553,8 @@ $("resMapa").addEventListener("click",e=>{
 function marcaBar(){const pe=$("panelExp"),m=vista==="mios"?"m":(!pe.hidden&&pe.dataset.modo==="planes")?"p":"e";$("bExp").classList.toggle("on",m==="e");$("bMios").classList.toggle("on",m==="m");$("bPlanes").classList.toggle("on",m==="p")}
 function abrePanelExp(modo){const pe=$("panelExp");pe.dataset.modo=modo;$("pxTit").textContent=modo==="planes"?"Mis planes":"Explorar";$("listaDet").open=true;pe.hidden=false;marcaBar()}
 $("bExp").onclick=()=>{plusMenu(false);irA("explorar")};
-document.querySelector("nav.bar").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll(".sheet.open").forEach(s=>{if(!(b.id==="bPerfil"&&s.id==="perfil")&&!(b.id==="bGrupos"&&s.id==="grupos")){s.dataset.desde="";cerrarSheet(s)}})},true);
+$("plusMenu").addEventListener("click",e=>{if(!e.target.closest("button"))return;document.querySelectorAll(".sheet.open").forEach(s=>{s.dataset.desde="";cerrarSheet(s)})},true);
+document.querySelector("nav.bar").addEventListener("click",e=>{const b=e.target.closest("button");if(!b||b.id==="crearBtn")return;hojaNav=Date.now();document.querySelectorAll(".sheet.open").forEach(s=>{if(!(b.id==="bPerfil"&&s.id==="perfil")&&!(b.id==="bGrupos"&&s.id==="grupos")){s.dataset.desde="";cerrarSheet(s)}})},true);
 function marcaHojas(){const po=$("perfil").classList.contains("open"),go=$("grupos").classList.contains("open");$("bPerfil").classList.toggle("on",po&&!go);$("bGrupos").classList.toggle("on",go);if(po||go)["bExp","bMios","bPlanes"].forEach(i=>$(i).classList.remove("on"));else marcaBar()}
 [$("perfil"),$("grupos")].forEach(el=>new MutationObserver(marcaHojas).observe(el,{attributes:true,attributeFilter:["class"]}));
 $("bPlanes").onclick=()=>{const pe=$("panelExp"),ab=vista==="explorar"&&!pe.hidden&&pe.dataset.modo==="planes";irA("explorar");if(!ab)abrePanelExp("planes")};
@@ -2955,13 +3021,24 @@ async function abrirAdmin(){
   await pintaAdmin();
 }
 const PUNTO={verde:"🟢",amarillo:"🟡",rojo:"🔴"};
-function filaSolicitud(f){
+function filaSolicitud(f,dentro){
   const mot=(f.motivos||[]).map(m=>`<small style="display:block">${esc(m)}</small>`).join("");
   const web=String(f.contacto_publico||"").trim();
   const esUrl=/^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/.*)?$/i.test(web);
   const enlace=esUrl?`<a class="payb sec2" href="${esc(/^https?:/i.test(web)?web:"https://"+web)}" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:6px">Abrir su web</a>`:(web?`<small style="display:block">${esc(web)}</small>`:"");
-  return `<div class="item" style="display:block;cursor:default"><b>${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal)} · ${esc(f.nif)}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")}</small>${mot}${enlace}<small style="display:block;margin-top:4px"><b>${esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" data-sem="${esc(f.semaforo||"")}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`;
+  return `<div class="item" style="display:block;cursor:default"><b>${dentro?"NIF: "+esc(f.nif):`${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal)} · ${esc(f.nif)}`}</b><small>${esc(f.nombre||"")} · ${esc(f.email||"sin correo")}</small>${mot}${enlace}<small style="display:block;margin-top:4px"><b>${f.estado==="aprobado"?"✅ Verificado":f.estado==="rechazado"?"❌ Rechazado":f.estado==="pendiente"?"⏳ Pendiente":esc(f.estado)}</b>${f.motivo?" · "+esc(f.motivo):""}</small>${f.estado==="pendiente"?`<div class="row" style="margin-top:6px"><button class="sec" data-ap="${esc(f.user_id)}" data-sem="${esc(f.semaforo||"")}" type="button">Aprobar</button><button class="sec" data-re="${esc(f.user_id)}" type="button">Rechazar</button></div>`:(f.estado==="aprobado"?`<button class="sec" data-re="${esc(f.user_id)}" type="button" style="margin-top:6px">Quitar verificación</button>`:"")}</div>`;
 }
+var capaAdm=null;
+async function pinsAdmin(){try{
+  if(!adminApp||!sb){if(capaAdm)capaAdm.clearLayers();return}
+  const r=await sb.rpc("admin_planes_privados");if(r.error)return;
+  if(!capaAdm)capaAdm=L.layerGroup().addTo(map);capaAdm.clearLayers();
+  const ya=new Set(data.map(a=>a.id));
+  (r.data||[]).filter(p=>p.lat!=null&&p.lng!=null&&!ya.has(p.plan_id)).forEach(p=>{
+    const ic=L.divIcon({className:"",html:`<div class="pin pin-adm" style="background:${col({tipo:p.tipo})}">${esc(p.emoji||"")}<span class="pin-lock">🔒</span></div>`,iconSize:[44,44],iconAnchor:[22,22]});
+    L.marker([+p.lat,+p.lng],{icon:ic}).bindPopup(`<b>${p.privado?"🔒":"👥"} ${esc(p.titulo||"")}</b><br>${esc(p.organiza||"Alguien")}<br>${p.fecha?esc(String(p.fecha).slice(0,16).replace("T"," ")):""} · ${+p.apuntados||0} apuntados<br><small>${p.privado?"Plan con código":"Solo amigos"} · solo lo ves tú</small>`).addTo(capaAdm)});
+}catch(_e){}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-dmplan]");if(!b)return;const a=data.find(x=>x.id===+b.dataset.dmplan);if(!a){avisa("Ese plan ya no está disponible.");return}$("dm").classList.remove("open");dmCon=null;map.setView([a.lat,a.lng],14);elegir(a.id)});
 let admMap=null;
 async function pintaPrivados(){
   const box=$("adm-privl");if(!box||!sb)return;
@@ -2981,8 +3058,30 @@ async function pintaPrivados(){
 document.addEventListener("click",e=>{const s=e.target.closest(".infoplan>summary");if(!s)return;const dd=s.parentElement;if(dd.open)return;setTimeout(()=>{const sh=dd.closest(".sheet");if(sh&&dd.open)sh.scrollTo({top:sh.scrollHeight,behavior:"smooth"})},80)});
 document.addEventListener("toggle",e=>{if(e.target&&e.target.id==="adm-priv"&&e.target.open)pintaPrivados()},true);
 document.addEventListener("click",e=>{const it=e.target.closest("[data-pver]");if(!it||!admMap)return;const [la,ln]=it.dataset.pver.split(",").map(Number);admMap.setView([la,ln],14);const m=$("adm-pmap");if(m)m.scrollIntoView({behavior:"smooth",block:"center"})});
-var admAb=new Set();document.addEventListener("toggle",e=>{const t=e.target;if(t&&t.dataset&&t.dataset.ao){if(t.open)admAb.add(t.dataset.ao);else admAb.delete(t.dataset.ao)}},true);
-async function pintaAdmin(){pintaStats();
+var admAb=new Set();
+var admCor=null,admCorPid=0,denBorOk=null;
+function filaDen(d){const que=d.contra_plan?`Plan «${esc(d.plan_t||"ya borrado")}»`:`Persona: ${esc(d.contra_n||"Alguien")}`;
+  return `<div class="item" style="display:block;cursor:default"><b>🚩 ${que}</b><small>${esc(d.motivo||"")}${d.detalle?" · "+esc(d.detalle):""}</small><small>Denuncia de ${esc(d.de_n||"Alguien")} · ${esc(new Date(d.creado).toLocaleDateString("es-ES",{day:"numeric",month:"short"}))}</small><div class="adm-dbtn">${d.contra_plan&&d.lat!=null?`<button class="sec" type="button" data-denver="${+d.lat},${+d.lng},${+d.contra_plan}">Ver plan</button>`:""}${d.contra_user?`<button class="sec" type="button" data-denper="${esc(d.contra_user)}">Ver persona</button>`:""}${d.contra_plan&&d.plan_t?`<button class="sec" type="button" data-denbor="${+d.id}">🗑️ Borrar plan</button>`:""}<button type="button" data-denok="${+d.id}">✔️ Revisada</button></div></div>`}
+async function pintaEstado(){const box=$("adm-est");if(!box||!sb)return;
+  try{const r=await sb.rpc("admin_estado");if(r.error)throw r.error;const s=r.data||{},sem=s.semana||{},den=s.denuncias||[],er=s.errores||[];
+    const pct=(v,m)=>Math.round((+v||0)*100/m);
+    const lim=[["✉️ Correos hoy",admCor==null?"…":admCor+" de 100",admCor==null?0:pct(admCor,100)],["🖼️ Fotos y billetes",s.espacio_mb+" MB de 1 GB",pct(s.espacio_mb,1024)],["🗄️ Base de datos",s.bd_mb+" MB de 500 MB",pct(s.bd_mb,500)],["🤖 Ayuda IA",!s.ia_activa?"apagada":s.ia_descansa?"descansando":(s.ia_hoy+" preguntas hoy"),(!s.ia_activa||s.ia_descansa)?95:0]];
+    const luz=p=>p>=90?"🔴":p>=70?"🟡":"🟢",peor=lim.reduce((m,x)=>Math.max(m,x[2]||0),0);
+    const fh=t=>new Date(t).toLocaleString("es-ES",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+    box.innerHTML=(den.length?`<h3 class="who-h">🚩 Denuncias (${den.length})</h3>`+den.map(filaDen).join(""):"")+
+      `<h3 class="who-h">Esta semana</h3><div class="adm-stats"><div><b>${+sem.personas||0}</b><small>personas nuevas</small></div><div><b>${+sem.planes||0}</b><small>planes nuevos</small></div><div><b>${+sem.apuntados||0}</b><small>apuntados</small></div></div>`+
+      `<details class="mas" data-ao="lim"${admAb.has("lim")?" open":""}><summary>${luz(peor)} Límites gratis</summary>${lim.map(x=>`<div class="adm-lim"><span>${luz(x[2]||0)} ${x[0]}</span><b>${esc(String(x[1]))}</b></div>`).join("")}</details>`;
+  }catch(e){box.innerHTML='<p class="meta">No se pudo cargar el estado.</p>';return}
+  if(admCor==null&&!admCorPid){admCorPid=1;try{const c=await sb.functions.invoke("admin-correos",{body:{}});if(c.data&&c.data.ok){admCor=c.data.hoy;admCorPid=0;pintaEstado();return}}catch(_e){}admCorPid=0}
+}
+document.addEventListener("click",async e=>{
+  const v=e.target.closest("[data-denver]");if(v){const [la,ln,id]=v.dataset.denver.split(",").map(Number);$("admin").classList.remove("open");map.setView([la,ln],15);if(data.find(x=>x.id===id))elegir(id);return}
+  const p=e.target.closest("[data-denper]");if(p){$("admin").classList.remove("open");abrePersona(p.dataset.denper);return}
+  const b=e.target.closest("[data-denbor]");if(b){if(denBorOk!==b.dataset.denbor){denBorOk=b.dataset.denbor;b.textContent="¿Seguro? Toca otra vez";return}denBorOk=null;
+    try{const r=await sb.rpc("admin_denuncia",{p_id:+b.dataset.denbor,p_accion:"borrar_plan"});if(r.error)throw r.error;avisa("🗑️ Plan borrado");await recarga();pintaEstado()}catch(er){fallo(er)}return}
+  const k=e.target.closest("[data-denok]");if(k){try{const r=await sb.rpc("admin_denuncia",{p_id:+k.dataset.denok,p_accion:"revisada"});if(r.error)throw r.error;pintaEstado()}catch(er){fallo(er)}}
+});document.addEventListener("toggle",e=>{const t=e.target;if(t&&t.dataset&&t.dataset.ao){if(t.open)admAb.add(t.dataset.ao);else admAb.delete(t.dataset.ao)}},true);
+async function pintaAdmin(){pintaStats();admCor=null;pintaEstado();
   const box=$("adminLista");if(!box||!sb)return;
   box.innerHTML='<p class="meta">Cargando...</p>';
   try{
@@ -2991,7 +3090,7 @@ async function pintaAdmin(){pintaStats();
     const sol=s1.data||[],ent=(e1&&e1.data)||[];
     const pend=sol.filter(f=>f.estado==="pendiente"),otras=sol.filter(f=>f.estado!=="pendiente");
     const pagos=data.filter(a=>a.kind!=="aqui"&&a.precio>0);
-    const filaOrg=f=>`<details class="adm-org" data-ao="${esc(f.user_id)}"${admAb.has(String(f.user_id))?" open":""}><summary>${PUNTO[f.semaforo]||"⚪"} ${esc(f.nombre_legal||f.nombre||"Sin nombre")}${f.estado!=="aprobado"?` <small>· ${esc(f.estado)}</small>`:""}</summary>${filaSolicitud(f)}</details>`;
+    const filaOrg=f=>`<details class="adm-org" data-ao="${esc(f.user_id)}"${admAb.has(String(f.user_id))?" open":""}><summary>${f.estado==="aprobado"?"🟢":f.estado==="rechazado"?"🔴":(PUNTO[f.semaforo]||"⚪")} ${esc(f.nombre_legal||f.nombre||"Sin nombre")}${f.estado!=="aprobado"?` <small>· ${esc(f.estado)}</small>`:""}</summary>${filaSolicitud(f,1)}</details>`;
     box.innerHTML=
       (pend.length?`<h3 class="who-h">Solicitudes pendientes (${pend.length})</h3>`+pend.map(filaSolicitud).join(""):"")+
       `<h3 class="who-h" style="margin-top:14px">Organizadores (${otras.length})</h3>`+(otras.length?otras.map(filaOrg).join(""):'<p class="meta">Todavía no hay organizadores.</p>')+
@@ -3009,8 +3108,8 @@ function filaPlanOrg(a,abierto){
   const npg=gente.filter(u=>pg.includes(u)).length,npend=gente.length-npg,nll=gente.filter(u=>ll.includes(u)).length;
   const res=[gente.length+"/"+a.max+" apuntados"];if(pago){res.push(npg+" pagados ("+precioTxt(npg*a.precio)+")");if(npend)res.push('<span style="color:#C9761B;font-weight:700">🟠 '+npend+' sin pagar</span>')}if(nll)res.push(nll+" han llegado");
   const filas=gente.map(u=>{const p=pg.includes(u),l=ll.includes(u),n=nombres[u]||"Alguien",nd=(docsOrg[a.id]||[]).filter(d=>d.para===u).length;
-    return `<div class="po-per">${avPersona(u,n)}<b class="po-pn">${esc(n)}</b>${pago?`<button type="button" class="po-chip ${p?"ok":"pend"}" data-pp="${a.id}|${esc(u)}">${p?"🟢 Pagado":"🟠 Sin pagar"}</button>`:""}<button type="button" class="po-chip${l?" ok":""}" data-ll="${a.id}|${esc(u)}">${l?"✅ Llegó":"⬜ Llegó"}</button>${a.viejo?"":`<button type="button" class="po-chip${nd?" ok":""}" data-doc="${a.id}|${esc(u)}" aria-label="Enviar billete">📎${nd?" "+nd:""}</button>`}</div>`}).join("");
-  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo||pasada(a)?" · ✔️ terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${""}${filas||'<p class="meta">Nadie todavía.</p>'}${docsLista(a)}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje</button><button class="sec" type="button" data-doct="${a.id}">📎 Documento para todos</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir</button>`}</div></details>`;
+    return `<div class="po-per">${avPersona(u,n)}<b class="po-pn">${esc(n)}</b>${pago?`<button type="button" class="po-chip ${p?"ok":"pend"}" data-pp="${a.id}|${esc(u)}">${p?"🟢 Pagado":"🟠 Sin pagar"}</button>`:""}<button type="button" class="po-chip${l?" ok":""}" data-ll="${a.id}|${esc(u)}">${l?"✅ Llegó":"⬜ Llegó"}</button>${a.viejo||!pago?"":`<button type="button" class="po-chip${nd?" ok":""}" data-doc="${a.id}|${esc(u)}" aria-label="Enviar billete">🎫 Billete${nd?" ✓":""}</button>`}</div>`}).join("");
+  return `<details class="po-plan" data-pl="${a.id}"${abierto?" open":""}><summary><b>${esc(a.titulo)}${pago?` <span class="pg">${precioTxt(a.precio)}</span>`:""}</b><small>${esc(a.cuando||"")}${a.viejo||pasada(a)?" · ✔️ terminado":""}</small><small class="po-res">${res.join(" · ")}</small></summary>${""}<b class="po-qv">👥 Quién viene (${gente.length})</b>${""}${filas||'<p class="meta">Nadie todavía.</p>'}${pago&&gente.length&&!a.viejo?`<button class="sec po-doct" type="button" data-doct="${a.id}">📄 Documento para todos</button>`:""}${docsLista(a)}<div class="po-btns">${pago&&npend&&!a.viejo?`<button class="sec" type="button" data-rec="${a.id}">💶 Recordar (${npend})</button>`:""}${gente.length&&!a.viejo?`<button class="sec" type="button" data-msg="${a.id}">📢 Mensaje</button>`:""}${a.viejo?"":`<button class="sec" type="button" data-wa="${a.id}">📤 Compartir</button><button class="sec" type="button" data-abrir="${a.id}">Abrir</button>`}</div></details>`;
 }
 async function pintaPanelOrg(){
   const todos=data.concat(viejosOrg).filter(a=>a.kind!=="aqui"&&a.orgId===uid).sort((x,y)=>(x.viejo?1:0)-(y.viejo?1:0)||tF(x)-tF(y));
@@ -3079,7 +3178,7 @@ const FAQ=[
  {q:"¿Cómo cambio mi nombre?",p:["perfil"],k:["nombre","perfil","llamo","apodo","cambiar"],a:"Toca tu nombre arriba a la derecha. Ahí cambias el nombre y eliges si apareces cuando otras personas buscan por nombre."},
  {q:"¿Cómo guardo mi cuenta para no perderla?",p:["perfil"],k:["cuenta","correo","email","guardar","perder","entrar","dispositivo","movil","sesion","codigo"],a:"Toca tu nombre arriba a la derecha, busca «Tu cuenta», escribe tu correo y pulsa «Continuar»; te llegará un código que escribes en la app. Para entrar en otro móvil con tu cuenta, haz lo mismo con el mismo correo: la app ve sola que ya tienes cuenta."},
  {q:"¿Cómo busco personas y les escribo?",p:["mapa"],k:["amigo","amigos","buscar","persona","personas","mensaje","mensajes","escribir","seguir"],a:"Toca + y elige «🔍 Buscar personas», escribe su nombre y envía la solicitud de amistad. En la pestaña «Mensajes» están tus chats y los de tus planes. Solo puedes escribir directamente a quien comparte su ubicación con «Estoy aquí» o a quien ya te ha escrito."},
- {q:"¿Cómo envío billetes o documentos?",p:["plan"],k:["billete","billetes","documento","documentos","pdf","archivo","adjuntar"],a:"Si organizas: abre «📊 Panel del organizador». En «👥 Quién viene» toca 📎 al lado de una persona para mandarle su billete, o pulsa «📎 Documento para todos». Puede ser un PDF o una foto de hasta 10 MB. Quien va al plan lo ve dentro del plan, en «📎 Tus documentos». Se borran solos 7 días después del plan."},
+ {q:"¿Cómo envío billetes o documentos?",p:["plan"],k:["billete","billetes","documento","documentos","pdf","archivo","adjuntar"],a:"En los planes de pago, quien organiza abre «📊 Panel del organizador». En «👥 Quién viene» toca «🎫 Billete» al lado de una persona para mandarle su billete, o pulsa «📄 Documento para todos». Puede ser un PDF o una foto de hasta 10 MB. Quien va al plan lo ve dentro del plan, en «🎫 Tus billetes y documentos». Se borran solos 7 días después del plan."},
  {q:"¿Cómo hablo con el grupo de un plan?",p:["plan"],k:["chat","grupo","hablar","comentar","comentario","preguntar"],a:"Abre el plan y pulsa «💬 Chat del grupo». Los chats de tus planes también salen en la pestaña «Mensajes»."},
  {q:"¿Cómo hago que solo me vean mis amigos o con código?",p:["mapa","crear"],k:["amigos","codigo","privado","candado","ubicacion","aqui","visibilidad"],a:"Al compartir «Estoy aquí», o al crear un plan, elige en «¿Quién puede verlo?» la opción «👥 Solo mis amigos» o «🔒 Solo con código (privado)». Con el código, solo lo ve quien lo escriba en «🔒 Tengo un código»."},
  {q:"¿Cómo hago un plan privado?",p:["crear","editar"],k:["privado","codigo","secreto","invitar","visibilidad","amigos"],a:"Al crear el plan, en «¿Quién puede verlo?» elige «🔒 Solo con código (privado)» o «👥 Solo mis amigos». Comparte el código con quien quieras, o usa «👥 Invitar» dentro del plan. Para entrar a uno privado: toca + y elige «🔒 Tengo un código»."},
