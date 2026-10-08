@@ -480,6 +480,12 @@ b.po-pn{min-width:70px}
 .adm-dbtn{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .adm-dbtn button{flex:1 1 auto;padding:8px 10px!important;font-size:14px;width:auto!important}
 .dm-verplan{display:block;margin-top:8px;padding:8px 12px!important;font-size:15px}
+.instala{position:fixed;left:12px;right:84px;bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:1500;background:var(--card);color:var(--ink);border:1.5px solid var(--line);border-radius:16px;padding:12px 40px 12px 14px;box-shadow:0 6px 20px rgba(0,0,0,.3);font-size:15px;line-height:1.35;animation:entra .25s ease-out}
+.instala b{display:block;font-size:16px;margin-bottom:2px}
+.instala .ix{position:absolute;top:6px;right:6px;width:30px;height:30px;padding:0!important;border-radius:50%;background:transparent!important;color:var(--mut)!important;font-size:16px;box-shadow:none}
+body:has(.sheet.open) .plusmenu{z-index:1400}
+.mtabs button{position:relative;white-space:nowrap;gap:5px;padding:10px 4px;font-size:15px}
+.mtabs i{position:absolute;top:2px;right:4px;font-size:11px;padding:0 6px;line-height:16px}
 .po-chip{padding:5px 9px!important;font-size:13px!important;font-weight:700;border-radius:99px!important;white-space:nowrap;background:var(--bg)!important;color:var(--ink)!important;border:1.5px solid var(--line)!important;width:auto!important;margin:0!important;flex:0 0 auto}
 .po-chip.pend{border-color:#E8A24A!important}.po-chip.ok{border-color:#1F7A4D!important}
 .po-tip{display:block;color:var(--mut);font-size:12px;margin-bottom:2px}
@@ -765,7 +771,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 167 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 168 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -802,7 +808,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 167 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 168 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <nav class="bar bar5"><button id="bExp" type="button" class="on"><span class="bi">🗺️</span><span class="bt">Mapa</span></button><button id="bMios" type="button"><span class="bi">💬</span><span class="bt">Mensajes</span><span id="bNum" class="bnum" hidden></span></button><button id="crearBtn" type="button" class="plus" aria-label="Crear">+</button><button id="bPlanes" type="button"><span class="bi">🎒</span><span class="bt">Mis planes</span></button><button id="bGrupos" type="button"><span class="bi">👪</span><span class="bt">Grupos</span></button><button id="bPerfil" type="button"><span class="bi">👤</span><span class="bt">Perfil</span></button></nav>
@@ -1000,7 +1006,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 167 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 168 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1894,6 +1900,16 @@ const voy=a=>!!uid&&(a.asistIds||[]).includes(uid);
 const soyOrg=a=>!!uid&&a.orgId===uid;
 function msgMudo(){try{return localStorage.getItem("avl_mudo")==="1"}catch(e){return false}}
 function pintaMudo(){const b=$("msgMudo");if(!b)return;const m=msgMudo();b.textContent=m?"🔕":"🔔";b.setAttribute("aria-label",m?"Activar avisos de mensajes":"Silenciar avisos de mensajes")}
+function avisoInstalar(){try{
+  const ua=navigator.userAgent||"",ios=/iPhone|iPad|iPod/.test(ua),safari=/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS|GSA|OPiOS/.test(ua);
+  const inst=navigator.standalone===true||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches);
+  if(!ios||!safari||inst||localStorage.getItem("kp_inst"))return;
+  setTimeout(()=>{try{if(localStorage.getItem("kp_inst"))return;localStorage.setItem("kp_inst","1")}catch(_e){return}
+    const d=document.createElement("div");d.className="instala";
+    d.innerHTML=`<button class="ix" type="button" aria-label="Cerrar">✕</button><b>📲 Ten Kiplan como una app</b><span>En Safari toca <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-label="Compartir" style="vertical-align:-3px"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg> Compartir (a veces está dentro de ⋯) y luego «Añadir a pantalla de inicio».</span>`;
+    document.body.appendChild(d);d.querySelector(".ix").onclick=()=>d.remove();
+  },5000);
+}catch(_e){}}
 function avisoEntrada(){try{if(msgMudo())return;const n=totalSinLeer();if(n>0)avisa("💬 Tienes "+n+(n===1?" mensaje sin leer":" mensajes sin leer"),()=>{if(!exigeAcepta(()=>irA("mios")))return;irA("mios")})}catch(e){}}
 function avisa(txt,fn){
   if(String(txt).startsWith("💬")&&msgMudo())return;
@@ -2193,7 +2209,7 @@ function suscribir(){
 }
 async function arranca(){
   if(!sb){cargando=false;render();return}
-  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();cargaChatsGrupos();cuEsTemporal().then(t=>document.body.classList.toggle("sincorreo",t)).catch(()=>{})}
+  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();avisoInstalar();cargaChatsGrupos();cuEsTemporal().then(t=>document.body.classList.toggle("sincorreo",t)).catch(()=>{})}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
 var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
