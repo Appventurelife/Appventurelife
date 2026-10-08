@@ -787,6 +787,11 @@ input[type=checkbox]{width:22px;height:22px;padding:0;flex:none}
 .escbtn{width:100%;margin:8px 0 10px}
 .mientrada{margin:10px 0 12px;padding:14px;border:2px dashed #0A2A5E;border-radius:14px;text-align:center;background:var(--card)}
 .mientrada b{display:block;margin-bottom:8px}
+.mientrada>summary{list-style:none;cursor:pointer;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px}
+.mientrada>summary::-webkit-details-marker{display:none}
+.mientrada>summary::after{content:"›";font-size:24px;line-height:1;color:var(--mut);transition:transform .2s}
+.mientrada[open]>summary{margin-bottom:10px}
+.mientrada[open]>summary::after{transform:rotate(90deg)}
 .mientrada .qr{display:inline-block;padding:8px;background:#fff;border-radius:10px}
 .mientrada .qr img,.mientrada .qr canvas{display:block}
 .mientrada .cod{font-weight:800;letter-spacing:2px;font-size:20px;margin:8px 0 2px;color:var(--ink)}
@@ -872,7 +877,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 195 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 196 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -909,7 +914,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 195 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 196 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1130,7 +1135,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 195 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 196 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="appventurelife.com" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -2250,7 +2255,7 @@ function entradaHtml(a){
   if(a.kind==="aqui"||!uid)return "";
   if(soyOrg(a))return "";
   const c=misEntradas[a.id];if(!c||pasada(a))return "";
-  return `<div class="mientrada"><b>🎟️ Tu entrada</b><div class="qr" data-qr="${URL_ENTRADA+c}"></div><div class="cod">${esc(c)}</div><small>Enséñala a quien organiza al llegar</small></div>`;
+  return `<details class="mientrada" data-k="ent"><summary>🎟️ Tu entrada</summary><div class="qr" data-qr="${URL_ENTRADA+c}"></div><div class="cod">${esc(c)}</div><small>Enséñala a quien organiza al llegar</small></details>`;
 }
 new MutationObserver(()=>{
   const els=[...document.querySelectorAll(".qr[data-qr]:not([data-ok])")];if(!els.length)return;
