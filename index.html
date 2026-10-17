@@ -429,6 +429,10 @@ html,body,button,a,input,label,select,.bar,.sheet,.panel{touch-action:manipulati
 .mtabs button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:transparent;color:var(--mut);padding:9px 6px;border-radius:9px;font-size:15px;font-weight:700;box-shadow:none}
 .mtabs button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
 .mtabs i{font-style:normal;background:#1E7BFF;color:#fff;border-radius:99px;font-size:11px;padding:1px 7px}
+#pushCard{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:0 0 10px;color:var(--ink);font-size:15px;line-height:1.3}
+#pushCard[hidden]{display:none}
+#pushCard span{flex:1}
+#pushCard button{flex:none;background:var(--cta);color:var(--ctat);border:0;border-radius:10px;padding:10px 14px;font:700 15px system-ui,sans-serif}
 .lista-conv{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 10px}
 .conv{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid var(--line);cursor:pointer}
 .conv:last-child{border-bottom:0}
@@ -877,7 +881,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <p>Encuentra planes de aventura cerca de ti y apúntate con un toque.</p>
 <button id="entrar" type="button">Explorar mapa</button>
 </div>
-<div class="wlegal">Kiplan · versión 201 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="kiplan.es" href="#">correo de contacto</a></div>
+<div class="wlegal">Kiplan · versión 202 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="kiplan.es" href="#">correo de contacto</a></div>
 </div>
 
 <main>
@@ -911,10 +915,10 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 </section>
 <section id="vMios" class="panel der" hidden>
 <div class="phead"><h2>Mensajes</h2><button id="msgLupa" type="button" aria-label="Buscar chat">🔍</button><button id="msgMudo" type="button" aria-label="Silenciar avisos de mensajes">🔔</button><button id="pxMios" type="button" aria-label="Cerrar">✕</button></div>
-<div id="dmBox"><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
+<div id="dmBox"><div id="pushCard" hidden><span>🔔 Activa los avisos para enterarte de los mensajes aunque tengas Kiplan cerrada</span><button type="button" id="pushOn" onclick="pushActivar()">Activar</button></div><div id="msgBusca" hidden><input id="msgQ" type="search" placeholder="🔍 Buscar chat por nombre" autocomplete="off"></div><div id="listaDM" class="list"></div></div>
 <!-- amigos: ahora en Perfil -->
 </section>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 201 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="kiplan.es" href="#">correo de contacto</a><br><span id="srv"></span></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 202 (en pruebas)<br><a href="terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="kiplan.es" href="#">correo de contacto</a><br><span id="srv"></span></p>
 </main>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -1138,7 +1142,7 @@ body.sincorreo #a-visop [data-v="amigos"],body.sincorreo #a-visop [data-v="elegi
 <button id="p-borrar" class="p-borrar" type="button">Borrar todos mis datos</button>
 </div>
 </details>
-<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 201 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="kiplan.es" href="#">correo de contacto</a></p>
+<p class="meta" style="text-align:center;margin:22px 0 0">Kiplan · versión 202 (en pruebas)<br><a href="beta/terminos.html" target="_blank" rel="noopener">Términos</a> · <a href="beta/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="beta/aviso-legal.html" target="_blank" rel="noopener">Aviso legal</a> · <a href="beta/cookies.html" target="_blank" rel="noopener">Cookies</a><br>Contacto: <a class="corr" data-u="contacto" data-d="kiplan.es" href="#">correo de contacto</a></p>
 </section>
 <section id="orgver" class="sheet" aria-label="Organizador verificado">
 <div class="grab"></div><button class="x" type="button" aria-label="Cerrar">✕</button>
@@ -1350,6 +1354,7 @@ function importaEnlace(){
   const mEnt=h.match(/^#entrada=((?:AVL|KIP)-[A-Z0-9]{4}-[A-Z0-9]{4})/i);
   if(mEnt){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;verEntrada(mEnt[1].toUpperCase());return}
   if(m){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;const a=data.find(x=>x.id===+m[1]);if(a)abreImportado(a);else alert("No encontré ese plan. Puede que sea privado o que ya no exista.");return}
+  if(/^#(dm|chat|gchat)=|^#amigos$/.test(h)){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;setTimeout(()=>abreDesdeAviso(h),1200);return}
   if(/^#codigo/.test(h)){history.replaceState(null,"",location.pathname);$("bienvenida").hidden=true;abrirCodigo()}
 }
 /* añadir al calendario (.ics) */
@@ -2086,7 +2091,7 @@ const sinLeerPlan=a=>(a.chat||[]).filter(m=>m.uid!==uid&&m.id>(visto["p"+a.id]||
 const sinLeerDM=u=>(dms[u]||[]).filter(m=>m.de!==uid&&m.id>(visto["d"+u]||0)).length;
 let mudos=new Set();try{mudos=new Set(JSON.parse(localStorage.getItem("avl_mudos")||"[]"))}catch(e){}
 const esMudo=k=>mudos.has(k);
-function ponMudo(k,on){if(on)mudos.add(k);else mudos.delete(k);try{localStorage.setItem("avl_mudos",JSON.stringify([...mudos]))}catch(e){}}
+function ponMudo(k,on){if(on)mudos.add(k);else mudos.delete(k);try{localStorage.setItem("avl_mudos",JSON.stringify([...mudos]))}catch(e){}pushSilencio()}
 const totalSinLeer=()=>gSinLeerTot()+data.filter(a=>a.kind!=="aqui"&&(voy(a)||soyOrg(a))&&!esMudo("p"+a.id)).reduce((n,a)=>n+sinLeerPlan(a),0)+Object.keys(dms).filter(u=>!esMudo("d"+u)).reduce((n,u)=>n+sinLeerDM(u),0);
 let lpHecho=false,lpTmr=null;
 function menuConv(el){
@@ -2427,7 +2432,7 @@ function suscribir(){
 }
 async function arranca(){
   if(!sb){cargando=false;render();return}
-  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();cargaVaciado();cargaChatsGrupos();cuEsTemporal().then(t=>document.body.classList.toggle("sincorreo",t)).catch(()=>{})}
+  try{await iniciaSesion();if(aceptado())registraAceptacion();await recarga();suscribir();vistaInicial();importaEnlace();cargaVaciado();pushArranca();cargaChatsGrupos();cuEsTemporal().then(t=>document.body.classList.toggle("sincorreo",t)).catch(()=>{})}
   catch(e){errCon=(e&&e.message)||"No pude conectar.";if(/anonymous/i.test(errCon))errCon="Falta activar «Allow anonymous sign-ins» en Supabase (Authentication).";cargando=false;render()}
 }
 var capaPins=null,ultPins=[],bandeja={d:[],p:[]},msgTab=null,chatDesde="";
@@ -2446,7 +2451,32 @@ async function vaciarChat(k){const t=k[0],id=k.slice(1);const l=t==="d"?(dms[id]
   aplicaVaciado();render();avisa("🗑️ Chat eliminado")}
 $("dm-vaciar").onclick=()=>{const b=$("dm-vaciar");if(b.dataset.ok!=="1"){b.dataset.ok="1";b.textContent="¿Seguro? Toca otra vez";return}
   b.dataset.ok="";b.textContent="🗑️ Eliminar chat";$("dm-menu").hidden=true;const u=dmCon;$("dm").classList.remove("open");dmCon=null;if(u)vaciarChat("d"+u)};
-function pintaBandeja(){if(typeof swC!=="undefined"&&swC&&swC.on)return;aplicaVaciado();
+/* avisos al móvil (notificaciones) */
+var VAPID_PUB="BFeSgsM90kSQGdN5tVRfCwEW44cFMAnLkllAaPRI7i6zAQ368HcEbx32VPPqz2j4L9XIqwhZYOsIIu7sDN4BKJE",pushReg=null,pushOido=false;
+function pushPuede(){try{return !!(uid&&sb&&("serviceWorker" in navigator)&&("PushManager" in window)&&("Notification" in window))}catch(_e){return false}}
+function pushRuta(){return location.pathname.indexOf("/beta")===0?"/beta/":"/"}
+function pushRegistra(){if(!pushReg)pushReg=navigator.serviceWorker.register(pushRuta()+"sw.js",{scope:pushRuta()}).catch(()=>null);return pushReg}
+function pushB64(s){s=String(s).replace(/-/g,"+").replace(/_/g,"/");s+="===".slice((s.length+3)%4);const r=atob(s),a=new Uint8Array(r.length);for(let i=0;i<r.length;i++)a[i]=r.charCodeAt(i);return a}
+async function pushSuscribe(){try{
+  const reg=await pushRegistra();if(!reg)return false;
+  const r=await navigator.serviceWorker.ready;let s=await r.pushManager.getSubscription();
+  if(!s)s=await r.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:pushB64(VAPID_PUB)});
+  const j=s.toJSON();const x=await sb.rpc("push_guardar",{p_endpoint:j.endpoint,p_p256dh:j.keys.p256dh,p_auth:j.keys.auth});
+  if(x.error)return false;pushSilencio();return true}catch(_e){return false}}
+function pushSilencio(){try{if(!pushPuede()||Notification.permission!=="granted")return;sb.rpc("push_silencio",{p_todo:msgMudo(),p_claves:[...mudos]}).then(()=>{},()=>{})}catch(_e){}}
+function pintaPush(){const c=$("pushCard");if(!c)return;let v=false;try{v=pushPuede()&&Notification.permission==="default"}catch(_e){}c.hidden=!v}
+function pushActivar(){const b=$("pushOn");try{if(b)b.disabled=true;
+  Notification.requestPermission().then(p=>{if(p!=="granted")return;return pushSuscribe().then(ok=>{avisa(ok?"🔔 Avisos activados":"No he podido activar los avisos. Inténtalo otra vez.")})})
+  .catch(()=>{}).then(()=>{if(b)b.disabled=false;pintaPush()})}catch(_e){if(b)b.disabled=false}}
+function pushArranca(){if(!pushPuede())return;pushRegistra();try{if(Notification.permission==="granted")pushSuscribe()}catch(_e){}pintaPush();
+  if(!pushOido){pushOido=true;navigator.serviceWorker.addEventListener("message",e=>{const d=e.data||{};if(d.kp==="aviso"){const h=d.h;Promise.resolve().then(()=>recarga()).catch(()=>{}).then(()=>abreDesdeAviso(h))}})}}
+function abreDesdeAviso(h){h=String(h||"");let m;
+  if((m=h.match(/^#dm=([0-9a-f-]{36})$/i))){abreDM(m[1]);return}
+  if((m=h.match(/^#chat=(\d+)$/))){const pl=data.find(x=>x.id===+m[1]);if(pl){irA("explorar");map.setView([pl.lat,pl.lng],14);elegir(pl.id);tab="chat";chatDesde="bandeja";render()}return}
+  if((m=h.match(/^#gchat=(\d+)$/))){abreGChat(+m[1]);return}
+  if((m=h.match(/^#p=(\d+)$/))){const a=data.find(x=>x.id===+m[1]);if(a)abreImportado(a);return}
+  if(h==="#amigos")abreAmigos()}
+function pintaBandeja(){pintaPush();if(typeof swC!=="undefined"&&swC&&swC.on)return;aplicaVaciado();
   const bus=$("msgBusca"),q=((bus&&!bus.hidden)?$("msgQ").value:"").trim().toLowerCase();
   const nP=bandeja.p.reduce((n,c)=>n+(esMudo("p"+c.a.id)?0:sinLeerPlan(c.a)),0),nD=bandeja.d.reduce((n,c)=>n+(esMudo("d"+c.u)?0:sinLeerDM(c.u)),0),nG=gSinLeerTot();
   if(!msgTab)msgTab=(nG&&!nP&&!nD)?"g":((nD&&!nP)||(!bandeja.p.length&&bandeja.d.length))?"d":"p";
@@ -2758,7 +2788,7 @@ function marcaHojas(){const po=$("perfil").classList.contains("open"),go=$("grup
 $("bPlanes").onclick=()=>{const pe=$("panelExp"),ab=vista==="explorar"&&!pe.hidden&&pe.dataset.modo==="planes";irA("explorar");if(!ab)abrePanelExp("planes")};
 $("bPerfil").onclick=()=>{plusMenu(false);if($("perfil").classList.contains("open")){cerrarSheet($("perfil"));return}irA("explorar");pedirNombre()};
 $("bGrupos").onclick=()=>{plusMenu(false);if($("grupos").classList.contains("open")){cerrarSheet($("grupos"));return}abrirGrupos()};
-$("pxExp").onclick=()=>irA("explorar");$("pxMios").onclick=()=>irA("explorar");$("msgMudo").onclick=()=>{const m=!msgMudo();try{localStorage.setItem("avl_mudo",m?"1":"0")}catch(e){}pintaMudo();avisa(m?"🔕 Avisos de mensajes silenciados":"🔔 Avisos de mensajes activados")};pintaMudo();
+$("pxExp").onclick=()=>irA("explorar");$("pxMios").onclick=()=>irA("explorar");$("msgMudo").onclick=()=>{const m=!msgMudo();try{localStorage.setItem("avl_mudo",m?"1":"0")}catch(e){}pintaMudo();pushSilencio();avisa(m?"🔕 Avisos de mensajes silenciados":"🔔 Avisos de mensajes activados")};pintaMudo();
 {const pie=document.querySelector("main>p.meta");if(pie)pie.hidden=true}
 $("bMios").onclick=()=>{if(vista==="mios"){irA("explorar");return}if(!exigeAcepta(()=>irA("mios")))return;irA("mios")};
 function plusMenu(v){$("plusMenu").hidden=!v;if(v)$("crearBtn").classList.add("open");else $("crearBtn").classList.remove("open")}
