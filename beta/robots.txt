@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /beta/
 
-Sitemap: https://appventurelife.com/sitemap.xml
+Sitemap: https://kiplan.es/sitemap.xml
